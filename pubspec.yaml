@@ -29,6 +29,7 @@ dev_dependencies:
   json_serializable: ^6.1.1
   build_runner: ^2.1.5
 
+
 dependency_overrides:
   flutter_logger:
     path: ../xiaomi/mi_flutter_plugins/packages/flutter_logger
