@@ -1,0 +1,59 @@
+
+import java.nio.file.Paths
+import groovy.json.JsonSlurper
+
+final String DEFAULT_MAVEN_HOST = "https://storage.googleapis.com"
+
+File flutterRoot
+
+String flutterRootPath = resolveProperty("flutter.sdk", System.env.FLUTTER_ROOT)
+if (flutterRootPath == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file or with a FLUTTER_ROOT environment variable.")
+}
+flutterRoot = project.file(flutterRootPath)
+if (!flutterRoot.isDirectory()) {
+    throw new GradleException("flutter.sdk must point to the Flutter SDK directory")
+}
+
+String engineVersion = project.hasProperty('local-engine-repo')
+        ? "+" // Match any version since there's only one.
+        : "1.0.0-" + Paths.get(flutterRoot.absolutePath, "bin", "internal", "engine.version").toFile().text.trim()
+
+String hostedRepository = System.env.FLUTTER_STORAGE_BASE_URL ?: DEFAULT_MAVEN_HOST
+String repository = project.hasProperty('local-engine-repo')
+        ? project.property('local-engine-repo')
+        : "$hostedRepository/download.flutter.io"
+
+project.rootProject.allprojects {
+    repositories {
+        maven {
+            url repository
+        }
+    }
+}
+
+// compileOnly "io.flutter:flutter_embedding_debug:1.0.0-b8752bbfff0419c8bf616b602bc59fd28f6a3d1b"
+project.dependencies.add("compileOnly", "io.flutter:flutter_embedding_debug:$engineVersion")
+
+private String resolveProperty(String name, String defaultValue) {
+    String result
+    if (project.hasProperty(name)) {
+        result = project.property(name)
+    }
+    if (result == null) {
+        Properties localProperties = readPropertiesIfExist(new File(rootProject.projectDir, "local.properties"))
+        result = localProperties.getProperty(name)
+    }
+    if (result == null) {
+        result = defaultValue
+    }
+    return result
+}
+
+private static Properties readPropertiesIfExist(File propertiesFile) {
+    Properties result = new Properties()
+    if (propertiesFile.exists()) {
+        propertiesFile.withReader('UTF-8') { reader -> result.load(reader) }
+    }
+    return result
+}

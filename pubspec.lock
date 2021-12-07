@@ -347,6 +347,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.12.10"
+  media:
+    dependency: "direct main"
+    description:
+      path: media
+      relative: true
+    source: path
+    version: "0.0.1"
   meta:
     dependency: transitive
     description:
