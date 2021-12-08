@@ -1,26 +1,33 @@
-cmake_minimum_required(VERSION 3.10.2)
+cmake_minimum_required(VERSION 3.4.1)
 
-aux_source_directory(. SOURCE)
-
+include_directories("${CMAKE_SOURCE_DIR}/include")
+#aux_source_directory(../../ SOURCE)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${CMAKE_SOURCE_DIR}/../../../libs/${ANDROID_ABI}")
 add_library( # Sets the name of the library.
-             media
+        media-lib
+        # Sets the library as a shared library.
+        SHARED
+        # Provides a relative path to your source file(s).
+        media-lib.cpp)
 
-             # Sets the library as a shared library.
-             SHARED
-
-             # Provides a relative path to your source file(s).
-             ${SOURCE} )
+find_library(
+        log-lib
+        log
+)
 
 # 设置一个变量
-set(libs ${CMAKE_SOURCE_DIR}/${CMAKE_ANDROID_ARCH_ABI})
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${libs}")
+#set(libs ${CMAKE_SOURCE_DIR}/../../../libs/${ANDROID_ABI})
+#set(libs ${CMAKE_SOURCE_DIR})
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L${libs}")
 
-include_directories(include)
+message(WARNING ${CMAKE_SOURCE_DIR}/../../../libs/${ANDROID_ABI})
 
+# avformat avcodec avutil swscale swresample z
 target_link_libraries( # Specifies the target library.
-                       media
-
-                        OpenSLES log
-                       # Links the target library to the log library
-                       # included in the NDK.
-                      )
+        media-lib
+        avfilter avformat avcodec avutil swscale swresample
+        z
+        ${log-lib}
+        # Links the target library to the log library
+        # included in the NDK.
+        )

@@ -38,6 +38,7 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
+        main.jniLibs.srcDirs = ['libs']
     }
 
     defaultConfig {
@@ -45,15 +46,22 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags ''
+                abiFilters 'arm64-v8a'
             }
+        }
+
+        ndk{
+            //配置第三方库的架构类型，由于我们这里只有armeabi-v7a的因此只配置了它
+//            abiFilters 'arm64-v8a'
         }
     }
     externalNativeBuild {
         cmake {
             path file('src/main/cpp/CMakeLists.txt')
-            version '3.10.2'
+//            version '3.10.2'
         }
     }
+
 }
 
 
