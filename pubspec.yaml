@@ -15,6 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  ffi: ^1.1.2
   flutter_bloc: ^8.0.0
   cupertino_icons: ^1.0.2
   json_annotation: ^4.4.0
@@ -24,6 +25,7 @@ dependencies:
 
   flutter_layout:
     path: ../xiaomi/mi_flutter_plugins/packages/flutter_layout
+  mmkv: ^1.2.12
 
 dev_dependencies:
   flutter_test:
