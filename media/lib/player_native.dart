@@ -27,3 +27,6 @@ final int Function(int handler, Pointer<Uint8> path) _nativeSetDataSource =
         .lookup<NativeFunction<Int32 Function(Int64, Pointer<Uint8>)>>(
             "setDataSource")
         .asFunction();
+
+final int Function(int handler) _nativeStart =
+    _native.lookup<NativeFunction<Int32 Function(Int64)>>("start").asFunction();

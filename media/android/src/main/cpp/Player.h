@@ -6,11 +6,20 @@
 #define MEDIA_PLAYER_H
 
 #include <pthread.h>
+#include "utils/SafeQueue.h"
 #include "utils/logger.h"
 #include "Callback.h"
+//#include "BaseChannel.h"
+#include "VideoChannel.h"
+
+extern "C" {
+#include <libavformat/avformat.h>
+#include <libavcodec/avcodec.h>
+}
 
 class Player {
     friend void *prepare_t(void *args);
+    friend void *start_t(void *args);
 
 public:
     Player(Callback *callback);
@@ -21,13 +30,23 @@ public:
 
     void prepare();
 
+    void start();
+
     Callback *callback;
 
 private:
-    char *path;
-    pthread_t prepareTask;
-
     void _prepare();
+    void _start();
+
+private:
+    char *path = nullptr;
+    pthread_t prepareTask = 0;
+    int64_t duration = 0;
+    VideoChannel *videoChannel = nullptr;
+
+    bool isPlaying = false;
+    pthread_t startTask;
+    AVFormatContext *avFormatContext;
 };
 
 

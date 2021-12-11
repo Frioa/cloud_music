@@ -1,7 +1,10 @@
 #include <string>
 #include "AudioChannel.h"
-#include "Callback.h"
 #include "Player.h"
+
+/// TODO:
+#include "BaseChannel.h"
+#include "VideoChannel.h"
 
 #define CPPSURPOT extern "C" __attribute__((visibility("default"))) __attribute__((used))
 
@@ -36,4 +39,11 @@ CPPSURPOT
 void prepare(int64_t nativeHandler) {
     auto *player = reinterpret_cast<Player *>(nativeHandler);
     player->prepare();
+}
+
+CPPSURPOT
+void start(int64_t nativeHandler) {
+    auto *player = reinterpret_cast<Player *>(nativeHandler);
+    LOGI("start: nativeHandler %ld", nativeHandler);
+    player->start();
 }

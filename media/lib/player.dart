@@ -6,31 +6,39 @@ import 'package:flutter/material.dart';
 part 'player_native.dart';
 
 class Player {
+  VoidCallback? _prepare;
+  ValueChanged<int>? _progress;
+  ValueChanged<int>? _error;
+
   static final Player instance = Player();
 
   int nativeHandle = 0;
 
-  static void onPrepare() {
-    print('onPrepare');
+  static void _onPrepare() {
+    instance._prepare?.call();
   }
 
-  static void onProgress(int value) {
-    print('onProgress $value');
+  static void _onProgress(int value) {
+    instance._progress?.call(value);
   }
 
-  static void onError(int code) {
-    print('onError $code');
+  static void _onError(int code) {
+    instance._error?.call(code);
   }
 
   void init({
-    VoidCallback? prepare,
-    ValueChanged<int>? progress,
-    ValueChanged<int>? error,
+    VoidCallback? onPrepare,
+    ValueChanged<int>? onProgress,
+    ValueChanged<int>? onError,
   }) {
+    _prepare = onPrepare;
+    _progress = onProgress;
+    _error = onError;
+
     nativeHandle = _nativeInit(
-      Pointer.fromFunction<OnPrepare>(onPrepare),
-      Pointer.fromFunction<OnProgress>(onProgress),
-      Pointer.fromFunction<OnError>(onError),
+      Pointer.fromFunction<OnPrepare>(_onPrepare),
+      Pointer.fromFunction<OnProgress>(_onProgress),
+      Pointer.fromFunction<OnError>(_onError),
     );
   }
 
@@ -40,7 +48,9 @@ class Player {
 
   void prepare() {}
 
-  void start() {}
+  void start() {
+    _nativeStart(nativeHandle);
+  }
 
   void pause() {}
 

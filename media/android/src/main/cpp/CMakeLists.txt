@@ -14,6 +14,5 @@ add_library( # Sets the name of the library.
 target_link_libraries( # Specifies the target library.
         media-lib
         avfilter avformat avcodec avutil swscale swresample
-        z
-        log
+        android z log
         )

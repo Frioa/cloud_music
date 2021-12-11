@@ -12,6 +12,7 @@
 class AudioChannel {
 public:
     AudioChannel();
+
     ~AudioChannel();
 
 };

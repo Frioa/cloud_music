@@ -5,13 +5,12 @@
 #include "Callback.h"
 
 Callback::Callback(OnPrepare prepare, OnProgress progress, OnError error) {
-    onPrepare = prepare;
-    onProgress = progress;
-    onError = error;
+    this->onPrepare = prepare;
+    this->onProgress = progress;
+    this->onError = error;
 }
 
-Callback::~Callback() {
-}
+Callback::~Callback() = default;
 
 
 
