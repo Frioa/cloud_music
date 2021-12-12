@@ -4,6 +4,8 @@
 
 #ifndef MEDIA_CALLBACK_H
 #define MEDIA_CALLBACK_H
+#include "utils/JavaCallback.h"
+
 typedef void (*OnPrepare)();
 
 typedef void (*OnProgress)(int);
@@ -38,9 +40,19 @@ public:
 
     ~Callback();
 
-    OnPrepare onPrepare;
-    OnProgress onProgress;
-    OnError onError;
+    void onPrepare(bool isMainThread = true);
+
+    void onProgress(int value, bool isMainThread = true);
+
+    void onError(int code, bool isMainThread = true);
+
+    JavaCallback *_javaCallback = 0;
+private:
+
+    ///
+    OnPrepare _onPrepare;
+    OnProgress _onProgress;
+    OnError _onError;
 };
 
 

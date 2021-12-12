@@ -15,34 +15,50 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TextButton(
-              onPressed: () {
-                Player.instance.init(
-                  onPrepare: () {
-                    print('object onPrepare');
+      body: Stack(
+        children: [
+          if (Player.instance.textureId != null)
+            Texture(textureId: Player.instance.textureId!),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                TextButton(
+                  onPressed: () async {
+                    await Player.instance.init(
+                      onPrepare: () {
+                        print('object onPrepare');
+                      },
+                      onProgress: (value) {
+                        print('object onProgress $value');
+                      },
+                      onError: (value) {
+                        print('object onError $value');
+                      },
+                    );
+                    // Player.instance.setDataSource('/sdcard/1.mp4');
+                    // Player.instance.prepare();
+
+                    setState(() {});
                   },
-                  onProgress: (value) {
-                    print('object onProgress $value');
+                  child: const Text("初始化"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Player.instance.prepare();
                   },
-                  onError: (value) {
-                    print('object onError $value');
+                  child: const Text("权限"),
+                ),
+                TextButton(
+                  onPressed: () {
+                    methodChannel.invokeMethod('ceshi');
                   },
-                );
-              },
-              child: const Text("初始化"),
+                  child: const Text("测试"),
+                )
+              ],
             ),
-            TextButton(
-              onPressed: () {
-                Player.instance.setDataSource('path');
-              },
-              child: const Text("path"),
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

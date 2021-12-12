@@ -1,9 +1,11 @@
 import 'package:cloud_music/page/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_layout/flutter_layout.dart';
+import 'package:flutter_logger/flutter_logger.dart';
 
 void main() {
   runApp(const MyApp());
+  Logger.init(enableLogger: true);
 }
 
 class MyApp extends StatelessWidget {

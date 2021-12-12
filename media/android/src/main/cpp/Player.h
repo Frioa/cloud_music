@@ -6,8 +6,10 @@
 #define MEDIA_PLAYER_H
 
 #include <pthread.h>
+
 #include "utils/SafeQueue.h"
 #include "utils/logger.h"
+#include "utils/JavaCallback.h"
 #include "Callback.h"
 //#include "BaseChannel.h"
 #include "VideoChannel.h"
@@ -17,8 +19,10 @@ extern "C" {
 #include <libavcodec/avcodec.h>
 }
 
+
 class Player {
     friend void *prepare_t(void *args);
+
     friend void *start_t(void *args);
 
 public:
@@ -32,10 +36,14 @@ public:
 
     void start();
 
-    Callback *callback;
+    void setSurfaceTexture(ASurfaceTexture *surface);
+
+    Callback *callback = 0;
+//    JavaCallback *javaCallback = 0;
 
 private:
     void _prepare();
+
     void _start();
 
 private:
@@ -45,8 +53,9 @@ private:
     VideoChannel *videoChannel = nullptr;
 
     bool isPlaying = false;
-    pthread_t startTask;
-    AVFormatContext *avFormatContext;
+    pthread_t startTask = 0;
+    AVFormatContext *avFormatContext = nullptr;
+    ASurfaceTexture *surfaceTexture = nullptr;
 };
 
 

@@ -266,7 +266,7 @@ packages:
     source: hosted
     version: "1.0.4"
   flutter_logger:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../xiaomi/mi_flutter_plugins/packages/flutter_logger"
       relative: true

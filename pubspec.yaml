@@ -18,12 +18,15 @@ dependencies:
   flutter_bloc: ^8.0.0
   cupertino_icons: ^1.0.2
   json_annotation: ^4.4.0
+  #  permission_handler: ^8.3.0
 
   media:
     path: media
 
   flutter_layout:
     path: ../xiaomi/mi_flutter_plugins/packages/flutter_layout
+  flutter_logger:
+    path: ../xiaomi/mi_flutter_plugins/packages/flutter_logger
   mmkv: ^1.2.12
 
 dev_dependencies:

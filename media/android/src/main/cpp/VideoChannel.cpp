@@ -4,16 +4,22 @@
 
 #include "VideoChannel.h"
 
+extern "C" {
+#include <libavutil/rational.h>
+#include <libavutil/imgutils.h>
+#include <libswscale/swscale.h>
+}
+
 VideoChannel::VideoChannel(int channelId, Callback *callback, AVCodecContext *avCodecContext,
                            AVRational &base, int fps) : BaseChannel(channelId, callback,
                                                                     avCodecContext, base),
                                                         fps(fps) {
-
+    pthread_mutex_init(&surfaceMutex, nullptr);
 }
 
 
 VideoChannel::~VideoChannel() {
-
+    pthread_mutex_destroy(&surfaceMutex);
 }
 
 
@@ -41,7 +47,41 @@ void VideoChannel::play() {
 
 
 void VideoChannel::_play() {
+    // 缩放，与格式转换
+    SwsContext *swsContext = sws_getContext(avCodecContext->width,
+                                            avCodecContext->height,
+                                            avCodecContext->pix_fmt,
+                                            avCodecContext->width,
+                                            avCodecContext->height,
+                                            AV_PIX_FMT_RGBA, SWS_FAST_BILINEAR,
+                                            0, 0, 0);
+    uint8_t *data[4];
+    int linesize[4];
+    AVFrame *frame = nullptr;
+    av_image_alloc(data, linesize, avCodecContext->width, avCodecContext->height, AV_PIX_FMT_ARGB,
+                   1);
+    int ret;
+    while (isPlaying) {
+        // 阻塞方法
+        ret = frame_queue.deQueue(frame);
+        // 可能用户停止播放
+        if (!isPlaying) break;
+        if (!ret) continue;
 
+        // 2. 指针数据 RGBA
+        // 3. 每一行数据个数
+        // 4. offset
+        // 5. 要转换的高
+        sws_scale(swsContext, frame->data, frame->linesize, 0, frame->height,
+                  data, linesize);
+
+        onDraw(data, linesize, avCodecContext->width, avCodecContext->height);
+    }
+
+    av_free(&data[0]);
+    isPlaying = false;
+    releaseAvFrame(frame);
+    sws_freeContext(swsContext);
 }
 
 
@@ -80,4 +120,49 @@ void VideoChannel::stop() {
 
 void VideoChannel::decode() {
 
+}
+
+void VideoChannel::setSurfaceTexture(ASurfaceTexture *texture) {
+    pthread_mutex_lock(&surfaceMutex);
+    if (pTexture) {
+        ASurfaceTexture_release(pTexture);
+    }
+    pTexture = texture;
+    pthread_mutex_unlock(&surfaceMutex);
+}
+
+void VideoChannel::onDraw(uint8_t **data, int *linesize, int width, int height) {
+    pthread_mutex_lock(&surfaceMutex);
+    if (pTexture) {
+        pthread_mutex_unlock(&surfaceMutex);
+
+        return;
+    }
+
+    auto *window = ASurfaceTexture_acquireANativeWindow(pTexture);
+    ANativeWindow_setBuffersGeometry(window, width, height, WINDOW_FORMAT_RGBA_8888);
+    ANativeWindow_Buffer buffer;
+    if (ANativeWindow_lock(window, &buffer, 0) != 0) {
+        ANativeWindow_release(window);
+        window = 0;
+        pthread_mutex_unlock(&surfaceMutex);
+        return;
+    }
+
+    // 把数据刷到 buffer
+    uint8_t *srcData = static_cast<uint8_t *>(buffer.bits);
+    // 视频图像的RGB数 据
+    int dstSize = buffer.stride * 4;
+    // 视频图像的 RGB 数据
+    uint8_t *dstData = data[0];
+    int srcSize = linesize[0];
+
+    // 一行一行拷贝
+    for (int i = 0; i < buffer.height; i++) {
+        memcpy(dstData + i * dstSize, srcData + i * srcSize, srcSize);
+    }
+
+
+    ANativeWindow_unlockAndPost(window);
+    pthread_mutex_unlock(&surfaceMutex);
 }

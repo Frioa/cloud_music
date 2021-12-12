@@ -6,6 +6,7 @@
 #define MEDIA_VIDEOCHANNEL_H
 
 #include "BaseChannel.h"
+#include <android/surface_texture.h>
 
 extern "C" {
 #include <libavcodec/avcodec.h>
@@ -14,7 +15,8 @@ extern "C" {
 
 class VideoChannel : public BaseChannel {
 
-    friend void* videoPlay_t(void* arg);
+    friend void *videoPlay_t(void *arg);
+
 public:
     VideoChannel(int channelId, Callback *callback, AVCodecContext *avCodecContext, AVRational
     &base, int fps);
@@ -27,14 +29,20 @@ public:
 
     virtual void decode();
 
+    void setSurfaceTexture(ASurfaceTexture *pTexture);
+
 private:
     void _play();
+
 private:
     int fps = 0;
+    pthread_mutex_t surfaceMutex;
     pthread_t videoDecodeTask = 0;
     pthread_t videoPlayTask = 0;
-
     bool isPlaying = false;
+    ASurfaceTexture *pTexture = 0;
+
+    void onDraw(uint8_t **data, int *linesize, int width, int height);
 };
 
 

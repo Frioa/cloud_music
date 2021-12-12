@@ -1,5 +1,7 @@
 part of 'player.dart';
 
+const MethodChannel methodChannel = MethodChannel('media');
+
 final DynamicLibrary _native = Platform.isAndroid
     ? DynamicLibrary.open("libmedia-lib.so")
     : DynamicLibrary.process();
@@ -30,3 +32,7 @@ final int Function(int handler, Pointer<Uint8> path) _nativeSetDataSource =
 
 final int Function(int handler) _nativeStart =
     _native.lookup<NativeFunction<Int32 Function(Int64)>>("start").asFunction();
+
+final int Function(int handler) _nativePrepare = _native
+    .lookup<NativeFunction<Int32 Function(Int64)>>("prepare")
+    .asFunction();
