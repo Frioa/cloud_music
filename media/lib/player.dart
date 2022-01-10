@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_logger/flutter_logger.dart';
 
 part 'player_native.dart';
 
@@ -65,8 +64,7 @@ class Player {
     textureId = await methodChannel
         .invokeMethod('surfaceTextureId', {'nativeHandle': nativeHandle});
 
-    print('textureId $textureId');
-    Logger.tag("init: $textureId");
+    print('init: $textureId');
   }
 
   void setDataSource(String path) {

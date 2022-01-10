@@ -23,10 +23,9 @@ dependencies:
   media:
     path: media
 
-  flutter_layout:
-    path: ../xiaomi/mi_flutter_plugins/packages/flutter_layout
-  flutter_logger:
-    path: ../xiaomi/mi_flutter_plugins/packages/flutter_logger
+  flutter_screenutil: 5.0.3
+
+  logger: ^1.1.0
   mmkv: ^1.2.12
 
 dev_dependencies:
@@ -37,9 +36,6 @@ dev_dependencies:
   json_serializable: ^6.1.1
   build_runner: ^2.1.5
 
-dependency_overrides:
-  flutter_logger:
-    path: ../xiaomi/mi_flutter_plugins/packages/flutter_logger
 
 flutter:
 
