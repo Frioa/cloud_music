@@ -12,6 +12,11 @@ Callback::Callback(OnPrepare prepare, OnProgress progress, OnError error) {
     this->_onError = error;
 }
 
+Callback::~Callback() {
+    delete _javaCallback;
+    _javaCallback = nullptr;
+}
+
 void Callback::onPrepare(bool isMainThread) {
     if (enableJava) {
         return _javaCallback->onPrepare(isMainThread);
@@ -33,7 +38,7 @@ void Callback::onError(int code, bool isMainThread) {
     _onError(code);
 }
 
-Callback::~Callback() = default;
+
 
 
 

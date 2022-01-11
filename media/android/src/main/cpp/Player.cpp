@@ -19,17 +19,16 @@ Player::~Player() {
 }
 
 void Player::setDataSource(const char *p) {
+    delete path;
     path = new char[strlen(p) + 1];
     strcpy(path, p);
-    LOGI("layer::setDataSource: path: %s", path);
+    LOGI("Player::setDataSource: path: %s", path);
 }
 
 void *prepare_t(void *args) {
-
     Player *player = static_cast<Player *> (args);
     LOGI("prepareTask 子线程准备完成");
-    player->callback->onPrepare(false);
-//    player->_prepare();
+    player->_prepare();
     return nullptr;
 }
 
@@ -37,8 +36,7 @@ void Player::prepare() {
     // 解析媒体文件
     // this 传给 prepare_t 的参数
     LOGI("Player::prepare");
-    callback->onPrepare();
-//    pthread_create(&prepareTask, nullptr, prepare_t, this);
+    pthread_create(&prepareTask, nullptr, prepare_t, this);
 }
 
 void Player::_prepare() {
@@ -49,15 +47,15 @@ void Player::_prepare() {
     avFormatContext = avformat_alloc_context();
     // 参数 3 输入文件的封装格式。 avi / flv null 表示自动检测格式
     // 参数 4 map 集合配置信息，如打开网络文件
-    AVDictionary *ops;
-    av_dict_set(&ops, "timeout", "3000000", 0);
-    int ret = avformat_open_input(&avFormatContext, path, nullptr, &ops);
+//    AVDictionary *ops;
+//    av_dict_set(&ops, "timeout", "3000000", 0);
+    int ret = avformat_open_input(&avFormatContext, path, nullptr, nullptr);
     if (ret != 0) {
         LOGE("打开 %s 失败，返回：%d %s", path, ret, av_err2str(ret));
-        callback->onError(FFMPEG_CAN_NOT_OPEN_URL);
+        callback->onError(FFMPEG_CAN_NOT_OPEN_URL, false);
         return;
     }
-    LOGE("_prepare 打开媒体文件成功");
+    LOGE("_prepare 打开媒体文件成功 ret: %d", ret);
 
     /**
      * 2. 查找媒体流
@@ -68,29 +66,32 @@ void Player::_prepare() {
         callback->onError(FFMPEG_CAN_NOT_FIND_STREAM);
         return;
     }
-    LOGE("_prepare 查找媒体流成功");
+    LOGE("_prepare 查找媒体流成功 ret: %d %s",ret, av_err2str(ret));
 
     // 得到视频时长单位 s
     duration = avFormatContext->duration / AV_TIME_BASE;
     LOGE("_prepare 媒体文件的单位时长：avFormatContext->duration=%ld", avFormatContext->duration);
     LOGE("_prepare 媒体文件的单位时长：duration=%ld", duration);
-    LOGE("_prepare 这个媒体文件有几个流：nb_streams=%ld", avFormatContext->nb_streams);
+    LOGE("_prepare 这个媒体文件有几个流：nb_streams=%d", avFormatContext->nb_streams);
+
 
     // 这个媒体文件有几个流
     for (int i = 0; i < avFormatContext->nb_streams; i++) {
         LOGE("_prepare 处理媒体文件中的流文件 i=%d -------------", i);
         // AVStream: 包含解码信息
         AVStream *avStream = avFormatContext->streams[i];
-        // 解码信息
         AVCodecParameters *param = avStream->codecpar;
+        // 解码信息
+        LOGE("_prepare 时间长度 duration=%ld",  avStream->duration / AV_TIME_BASE);
+
         const AVCodec *dec = avcodec_find_decoder(param->codec_id);
         if (!dec) {
             LOGE("_prepare 查找解码器失败 ");
             callback->onError(FFMPEG_OPEN_DECODER_FAIL);
             return;
         }
-        LOGE("_prepare 查找解码器成功 ");
 
+        LOGE("_prepare 查找解码器成功 ");
         AVCodecContext *codecContext = avcodec_alloc_context3(dec);
         // 把解码信息赋值给了解码上下文中的各种成员, 可以获得视频的 宽、高。
         ret = avcodec_parameters_to_context(codecContext, param);
@@ -108,19 +109,18 @@ void Player::_prepare() {
             callback->onError(FFMPEG_OPEN_DECODER_FAIL);
             return;
         }
-        LOGE("_prepare 打开解码器成功 ");
+        LOGE("_prepare 宽高 width=%d height=%d", codecContext->width, codecContext->height);
 
         if (param->codec_type == AVMEDIA_TYPE_AUDIO) {
             LOGE("_prepare 处理音频流 i=%d", i);
-
-
         } else if (param->codec_type == AVMEDIA_TYPE_VIDEO) {
-            LOGE("_prepare 处理视频流  i=%d", i);
             int fps = (int) av_q2d(avStream->r_frame_rate);
+            LOGE("_prepare 处理视频流  i=%d fps=%d den=%d", i, fps, avStream->time_base.den);
+
             videoChannel = new VideoChannel(i, callback, codecContext, avStream->time_base, fps);
         }
     }
-    LOGE("_prepare 初始化成功 Channel ");
+    LOGE("_prepare 初始化成功 videoChannel: %p", videoChannel);
 
     // 如果媒体文件中没有视频、
     if (!videoChannel) {
@@ -129,7 +129,7 @@ void Player::_prepare() {
         return;
     }
 
-    callback->onPrepare();
+    callback->onPrepare(false);
 }
 
 void *start_t(void *arg) {
@@ -155,15 +155,20 @@ void Player::_start() {
         // 读数据放入 Packet
         AVPacket *avPacket = av_packet_alloc();
         ret = av_read_frame(avFormatContext, avPacket);
+//        LOGE("startTask 线程: 读数据放入 Packet ");
+
         if (ret == 0) {
             if (videoChannel && avPacket->stream_index == videoChannel->channelId) {
+                LOGE("startTask 线程: pkt_queue.enQueue ");
                 videoChannel->pkt_queue.enQueue(avPacket);
             }
 
         } else if (ret == AVERROR_EOF) {
             // 读取完毕不一定播放结束
+//            LOGE("读取完毕不一定播放结束");
             if (videoChannel->pkt_queue.empty() && videoChannel->frame_queue.empty()) {
                 // 播放完毕
+                LOGE("播放完毕");
                 break;
             }
 
@@ -179,6 +184,13 @@ void Player::setSurfaceTexture(ASurfaceTexture *surface) {
     surfaceTexture = surface;
     if (videoChannel) {
         videoChannel->setSurfaceTexture(surfaceTexture);
+    }
+}
+
+void Player::setWindow(ANativeWindow *window_) {
+    window = window_;
+    if (videoChannel) {
+        videoChannel->setWindow(window);
     }
 }
 

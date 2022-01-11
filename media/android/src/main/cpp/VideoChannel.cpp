@@ -57,9 +57,10 @@ void VideoChannel::_play() {
                                             0, 0, 0);
     uint8_t *data[4];
     int linesize[4];
-    AVFrame *frame = nullptr;
     av_image_alloc(data, linesize, avCodecContext->width, avCodecContext->height, AV_PIX_FMT_ARGB,
                    1);
+    AVFrame *frame = nullptr;
+
     int ret;
     while (isPlaying) {
         // 阻塞方法
@@ -85,42 +86,60 @@ void VideoChannel::_play() {
 }
 
 
-void VideoChannel::stop() {
+void VideoChannel::decode() {
+    LOGI("开始解码: window:%p", window);
+
     AVPacket *packet;
     while (isPlaying) {
         // 阻塞
         // 1. 能够取到数据
         // 2. 停止播放: 退出循环
         int ret = pkt_queue.deQueue(packet);
-        if (!isPlaying) break;
+        LOGI("从 pkt_queue 取出 AVPacket");
+
+        if (!isPlaying) {
+            LOGI("停止播放退出");
+            break;
+        }
         if (!ret) continue;
 
+        LOGI("向解码器发送解码数据");
         // 向解码器发送解码数据
         ret = avcodec_send_packet(avCodecContext, packet);
         releaseAvPacket(packet);
 
         if (ret < 0) {
+            LOGI("发生错误 decode（）1");
             break;
         }
 
-        // 从解码器中取出解码好的数据
+        LOGI("从解码器中取出解码好的数据");
         AVFrame *frame = av_frame_alloc();
         ret = avcodec_receive_frame(avCodecContext, frame);
-        if (ret == AVERROR(EAGAIN)) { // 此数据包的数据已经读取完
-            // 取到的可能是 B 帧需要其他帧做参考
+        if (ret == AVERROR(EAGAIN)) {
+            LOGI("此数据包的数据已经读取完, 取到的可能是 B 帧需要其他帧做参考");
             continue;
         } else if (ret < 0) {
+            LOGI("发生错误 decode（）2");
             break;
         }
+        LOGI("放入 frame_queue 播放队列");
         frame_queue.enQueue(frame);
     }
     releaseAvPacket(packet);
-
 }
 
-void VideoChannel::decode() {
+void VideoChannel::setWindow(ANativeWindow *window_) {
+    LOGI("VideoChannel::setWindow window: %p", window_);
 
+    pthread_mutex_lock(&surfaceMutex);
+    if (window) {
+        ANativeWindow_release(window);
+    }
+    window = window_;
+    pthread_mutex_unlock(&surfaceMutex);
 }
+
 
 void VideoChannel::setSurfaceTexture(ASurfaceTexture *texture) {
     pthread_mutex_lock(&surfaceMutex);
@@ -132,37 +151,45 @@ void VideoChannel::setSurfaceTexture(ASurfaceTexture *texture) {
 }
 
 void VideoChannel::onDraw(uint8_t **data, int *linesize, int width, int height) {
-    pthread_mutex_lock(&surfaceMutex);
-    if (pTexture) {
-        pthread_mutex_unlock(&surfaceMutex);
+    LOGI("开始画画：window %p", window);
 
+    pthread_mutex_lock(&surfaceMutex);
+    if (!window) {
+        LOGI("onDraw：window是空");
+        pthread_mutex_unlock(&surfaceMutex);
         return;
     }
 
-    auto *window = ASurfaceTexture_acquireANativeWindow(pTexture);
     ANativeWindow_setBuffersGeometry(window, width, height, WINDOW_FORMAT_RGBA_8888);
     ANativeWindow_Buffer buffer;
+    LOGI("锁定 window：");
     if (ANativeWindow_lock(window, &buffer, 0) != 0) {
+        LOGI("锁定 window 失败：");
         ANativeWindow_release(window);
         window = 0;
         pthread_mutex_unlock(&surfaceMutex);
         return;
     }
 
-    // 把数据刷到 buffer
+    LOGI("把数据刷到：");
     uint8_t *srcData = static_cast<uint8_t *>(buffer.bits);
-    // 视频图像的RGB数 据
+    LOGI("视频图像的RGB数据 ：");
     int dstSize = buffer.stride * 4;
     // 视频图像的 RGB 数据
     uint8_t *dstData = data[0];
     int srcSize = linesize[0];
 
-    // 一行一行拷贝
+    LOGI("一行一行拷贝 buffer.height: %d", buffer.height);
     for (int i = 0; i < buffer.height; i++) {
         memcpy(dstData + i * dstSize, srcData + i * srcSize, srcSize);
     }
 
-
     ANativeWindow_unlockAndPost(window);
     pthread_mutex_unlock(&surfaceMutex);
+    LOGI("画画完成, 释放资源 ");
+}
+
+void VideoChannel::stop() {
+    LOGE("VideoChannel::stop ");
+
 }

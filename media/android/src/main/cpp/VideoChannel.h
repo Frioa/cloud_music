@@ -29,6 +29,8 @@ public:
 
     virtual void decode();
 
+    void setWindow(ANativeWindow *window_);
+
     void setSurfaceTexture(ASurfaceTexture *pTexture);
 
 private:
@@ -41,6 +43,8 @@ private:
     pthread_t videoPlayTask = 0;
     bool isPlaying = false;
     ASurfaceTexture *pTexture = 0;
+
+    ANativeWindow *window = 0;
 
     void onDraw(uint8_t **data, int *linesize, int width, int height);
 };

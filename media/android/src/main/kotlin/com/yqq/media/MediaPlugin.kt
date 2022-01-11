@@ -1,56 +1,84 @@
 package com.yqq.media
 
-import android.os.Handler
-import android.os.Looper
+import android.app.Activity
+import android.view.Surface
+import android.view.SurfaceHolder
 import androidx.annotation.NonNull
-
+import com.yqq.media.view.MediaSurfaceViewFactory
 import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.view.TextureRegistry
 
-/** MediaPlugin */
-class MediaPlugin : FlutterPlugin, MethodCallHandler {
-    /// The MethodChannel that will the communication between Flutter and native Android
-    ///
-    /// This local reference serves to register the plugin with the Flutter Engine and unregister it
-    /// when the Flutter Engine is detached from the Activity
+class MediaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var channel: MethodChannel
     private lateinit var surfaceTextureEntry: TextureRegistry.SurfaceTextureEntry
-    private var nativeHandler: Long = 0
-    private lateinit var dartCallback: DartCallback
-    private var handler: Handler = Handler(Looper.getMainLooper())
+
+    //    private var nativeHandler: Long = 0
+    private var playManager: PlayManager? = null
+
+    //    private lateinit var dartCallback: DartCallback
+    private lateinit var activity: Activity
+//    private var surface: Surface? = null
 
 
-    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        println("初始化 onAttachedToEngine")
-        channel = MethodChannel(flutterPluginBinding.binaryMessenger, "media")
-        surfaceTextureEntry = flutterPluginBinding.textureRegistry.createSurfaceTexture()
+    override fun onAttachedToEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+        println("onAttachedToEngine ")
+        channel = MethodChannel(binding.binaryMessenger, "media")
+        surfaceTextureEntry = binding.textureRegistry.createSurfaceTexture()
         channel.setMethodCallHandler(this)
+        val factory = MediaSurfaceViewFactory(object : SurfaceHolder.Callback {
+            override fun surfaceCreated(holder: SurfaceHolder) {
+                playManager!!.setSurface(holder.surface)
+                println("surfaceCreated ")
+            }
+
+            override fun surfaceChanged(
+                holder: SurfaceHolder,
+                format: Int,
+                width: Int,
+                height: Int
+            ) {
+                println("surfaceChanged ")
+                if (playManager == null) return
+                playManager!!.setSurface(holder.surface)
+                println("surfaceChanged  setSurface()")
+            }
+
+            override fun surfaceDestroyed(holder: SurfaceHolder) {
+            }
+        })
+        binding.platformViewRegistry.registerViewFactory("android_surface_view", factory)
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-        println("onMethodCall nativeHandle:$nativeHandler")
-
-        if (call.method == "surfaceTextureId") {
-            nativeHandler = (call.arguments as Map<*, *>)["nativeHandle"] as Long
-            println("onMethodCall nativeHandle:$nativeHandler")
-            dartCallback = DartCallback(channel, handler)
-            dartCallback.surfaceTexture(nativeHandler, surfaceTextureEntry.surfaceTexture())
-            println("onMethodCall 设置 surfaceTexture 完成")
-            channel.invokeMethod("onPrepare", null)
-
-            result.success(surfaceTextureEntry.id())
-        } else if (call.method == "ceshi") {
-            handler.post {
-                println("Kotlin：onPrepare111 ")
+        when (call.method) {
+            "surfaceTextureId" -> {
+//                dartCallback = DartCallback(channel)
                 channel.invokeMethod("onPrepare", null)
+                result.success(surfaceTextureEntry.id())
             }
-//            dartCallback.ceshi(nativeHandler)
-        } else {
-            result.notImplemented()
+            "init" -> {
+                playManager = PlayManager(channel)
+                result.success(playManager!!.nativeHandler)
+            }
+            "setDataSource" -> {
+                val arg = call.arguments as Map<*, *>
+                val path = arg["path"] as String
+                playManager!!.setDataSource(path)
+                result.success(true)
+            }
+            "start" -> {
+                playManager!!.start()
+                result.success(true)
+            }
+            else -> {
+                result.notImplemented()
+            }
         }
     }
 
@@ -58,4 +86,23 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler {
         channel.setMethodCallHandler(null)
     }
 
+    override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+        activity = binding.activity
+    }
+
+    override fun onDetachedFromActivityForConfigChanges() {
+    }
+
+    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+        activity = binding.activity
+    }
+
+    override fun onDetachedFromActivity() {
+    }
+
+//    override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
+//        GeneratedPluginRegistrant.registerWith(flutterEngine)
+//        val registry = flutterEngine.platformViewsController.registry
+//        registry.registerViewFactory("platform_text_view", AndroidTextViewFactory())
+//    }
 }

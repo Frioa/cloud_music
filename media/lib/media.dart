@@ -1,1 +1,3 @@
-  export 'player.dart';
+export 'player.dart';
+export 'player_jni.dart';
+export 'widget/surface_view_widget.dart';

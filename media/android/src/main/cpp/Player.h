@@ -17,6 +17,9 @@
 extern "C" {
 #include <libavformat/avformat.h>
 #include <libavcodec/avcodec.h>
+
+#include <libavformat/avformat.h>
+#include <libavcodec/avcodec.h>
 }
 
 
@@ -35,6 +38,8 @@ public:
     void prepare();
 
     void start();
+
+    void setWindow(ANativeWindow *window_);
 
     void setSurfaceTexture(ASurfaceTexture *surface);
 
@@ -56,6 +61,8 @@ private:
     pthread_t startTask = 0;
     AVFormatContext *avFormatContext = nullptr;
     ASurfaceTexture *surfaceTexture = nullptr;
+public:
+    ANativeWindow *window = 0;
 };
 
 
