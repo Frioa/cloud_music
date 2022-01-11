@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_logger/flutter_logger.dart';
+import 'package:media/utils/logger_extensions.dart';
 
 const MethodChannel _methodChannel = MethodChannel('media');
 
@@ -23,29 +23,29 @@ class PlayerJni {
 
       switch (method) {
         case "onPrepare":
-          Logger.tagD("onPrepare");
+          logger.d("onPrepare");
           return prepare?.call();
         case "onProgress":
           final arg = call.arguments as Map;
-          Logger.tagD("onPrepare onProgress ${arg['value']}");
+          logger.d("onPrepare onProgress ${arg['value']}");
           return progress?.call(arg['value']);
         case "onError":
           final arg = call.arguments as Map;
-          Logger.tagD("onPrepare onError ${arg['code']}");
+          logger.d("onPrepare onError ${arg['code']}");
           return error?.call(arg['code']);
       }
       return;
     });
-    Logger.tagD("nativeHandler $nativeHandler");
+    logger.d("nativeHandler $nativeHandler");
   }
 
   Future<void> setDataSource(String path) async {
-    Logger.tagD("");
+    logger.d("");
     await _methodChannel.invokeMethod('setDataSource', {"path": path});
   }
 
   Future<void> start() async {
-    Logger.tagD("");
+    logger.d("");
     await _methodChannel.invokeMethod('start');
   }
 
