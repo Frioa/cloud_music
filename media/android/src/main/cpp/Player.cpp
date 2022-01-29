@@ -82,8 +82,6 @@ void Player::_prepare() {
         AVStream *avStream = avFormatContext->streams[i];
         AVCodecParameters *param = avStream->codecpar;
         // 解码信息
-        LOGE("_prepare 时间长度 duration=%ld",  avStream->duration / AV_TIME_BASE);
-
         const AVCodec *dec = avcodec_find_decoder(param->codec_id);
         if (!dec) {
             LOGE("_prepare 查找解码器失败 ");
@@ -100,7 +98,6 @@ void Player::_prepare() {
             callback->onError(FFMPEG_CODEC_CONTEXT_PARAMETERS_FAIL);
             return;
         }
-        LOGE("_prepare 根据流信息，配置上下文参数成功 ");
 
         // 打开解码器
         ret = avcodec_open2(codecContext, dec, nullptr);
@@ -112,10 +109,10 @@ void Player::_prepare() {
         LOGE("_prepare 宽高 width=%d height=%d", codecContext->width, codecContext->height);
 
         if (param->codec_type == AVMEDIA_TYPE_AUDIO) {
-            LOGE("_prepare 处理音频流 i=%d", i);
+            LOGE("_prepare 当前处理的是处理音频流 i=%d", i);
         } else if (param->codec_type == AVMEDIA_TYPE_VIDEO) {
-            int fps = (int) av_q2d(avStream->r_frame_rate);
-            LOGE("_prepare 处理视频流  i=%d fps=%d den=%d", i, fps, avStream->time_base.den);
+            int fps = (int) av_q2d(avStream->avg_frame_rate);
+            LOGE("_prepare 当前处理的是处理视频流  i=%d fps=%d den=%d", i, fps, avStream->time_base.den);
 
             videoChannel = new VideoChannel(i, callback, codecContext, avStream->time_base, fps);
         }
@@ -159,7 +156,6 @@ void Player::_start() {
 
         if (ret == 0) {
             if (videoChannel && avPacket->stream_index == videoChannel->channelId) {
-                LOGE("startTask 线程: pkt_queue.enQueue ");
                 videoChannel->pkt_queue.enQueue(avPacket);
             }
 

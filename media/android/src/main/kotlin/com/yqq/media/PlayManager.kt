@@ -23,6 +23,7 @@ class PlayManager constructor(val channel: MethodChannel) {
 
     fun setSurface(surface: Surface) {
         this.surface = surface
+        setSurface(nativeHandler, surface)
     }
 
     private fun prepare() {

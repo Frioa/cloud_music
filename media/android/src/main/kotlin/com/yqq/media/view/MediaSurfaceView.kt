@@ -1,12 +1,7 @@
 package com.yqq.media.view
 
-import android.app.Activity
 import android.content.Context
 import android.view.*
-import android.widget.TextView
-import io.flutter.plugin.common.BinaryMessenger
-import io.flutter.plugin.common.MethodCall
-import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
 
 
@@ -19,8 +14,8 @@ class MediaSurfaceView(
     lateinit var surface: Surface
 
     init {
-        println("初始化 MediaSurfaceView ")
         surfaceView.holder.addCallback(callback)
+        println("初始化 MediaSurfaceView width= ${surfaceView.width}, height ${surfaceView.height}")
     }
 
 
