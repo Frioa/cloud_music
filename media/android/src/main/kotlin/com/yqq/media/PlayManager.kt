@@ -66,6 +66,8 @@ class PlayManager constructor(val channel: MethodChannel) {
 
     private external fun start(nativeHandler: Long)
 
+    private external fun stop(nativeHandler: Long)
+
     private external fun setSurface(nativeHandler: Long, surface: Surface)
 
     companion object {

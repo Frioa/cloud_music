@@ -23,7 +23,4 @@ class DartCallback(val channel: MethodChannel, val handler: Handler) {
 
     fun onProgress(value: Int) {
     }
-
-//    external fun surfaceTexture(p: Long, t: SurfaceTexture?)
-//    external fun ceshi(p: Long)
 }

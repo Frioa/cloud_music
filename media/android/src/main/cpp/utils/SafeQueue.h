@@ -48,8 +48,8 @@ public:
 
     int deQueue(T &value) {
         int ret = 0;
-        pthread_mutex_lock(&mutex);
 
+        pthread_mutex_lock(&mutex);
         // 在多核处理器下，可能存在竞争唤醒 包括 jdk 也说明了
         while (mEnable && q.empty()) {
             pthread_cond_wait(&cond, &mutex);

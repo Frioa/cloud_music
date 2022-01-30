@@ -7,8 +7,16 @@
 extern "C" {
 #include <libavutil/rational.h>
 #include <libavutil/imgutils.h>
+#include <libavutil/time.h>
 #include <libswscale/swscale.h>
 }
+
+/* no AV sync correction is done if below the minimum AV sync threshold */
+// 最低同步阈值，如果低于该值，则不需要同步校正
+#define AV_SYNC_THRESHOLD_MIN 0.04
+/* AV sync correction is done if above the maximum AV sync threshold */
+// 最大同步阈值，如果大于该值，则需要同步校正
+#define AV_SYNC_THRESHOLD_MAX 0.1
 
 VideoChannel::VideoChannel(int channelId, Callback *callback, AVCodecContext *avCodecContext,
                            AVRational &base, int fps) : BaseChannel(channelId, callback,
@@ -37,11 +45,11 @@ void *videoPlay_t(void *arg) {
 
 void VideoChannel::play() {
     isPlaying = true;
-    // 开启队列的工作
+//    // 开启队列的工作
     setEnable(true);
     // 解码
     pthread_create(&videoDecodeTask, nullptr, videoDecode_t, this);
-    // 播放
+//     播放
     pthread_create(&videoPlayTask, nullptr, videoPlay_t, this);
 }
 
@@ -60,9 +68,9 @@ void VideoChannel::_play() {
     av_image_alloc(data, linesize, avCodecContext->width, avCodecContext->height, AV_PIX_FMT_ARGB,
                    1);
     AVFrame *frame = nullptr;
-    LOGI("_play(缩放，与格式转换) 视频的宽高 width=%d height=%d", avCodecContext->width, avCodecContext->height);
 
     int ret;
+    double frame_delay = 1.0 / fps;
     while (isPlaying) {
         // 阻塞方法
         ret = frame_queue.deQueue(frame);
@@ -70,6 +78,35 @@ void VideoChannel::_play() {
         if (!isPlaying) break;
         if (!ret) continue;
 
+        // 按照 fps 进行休眠, 让视频流畅播放
+        double extra_delay = frame->repeat_pict / (2.0 * fps);
+        double delay = extra_delay + frame_delay;
+
+        if (audioChannel) {
+            // best_effort_timestamp: 值 pts
+            clock = frame->best_effort_timestamp * av_q2d(time_base);
+            double diff = clock - audioChannel->clock;
+
+            // 给到一个时间范围内误差, 允许的误差范围
+            /**
+             * 1. delay < 0.04 就是 0.04
+             * 2. delay > 0.1 就是 0.1
+             * 3. 0.04 < delay < 0.1
+             */
+            double sync = FFMAX(AV_SYNC_THRESHOLD_MIN, FFMIN(AV_SYNC_THRESHOLD_MAX, delay));
+            //
+            if (diff <= -sync) {
+                delay = FFMAX(0.0, delay + diff);
+            } else if (diff > sync) {
+                // 视频快了，等音频速度上来
+                delay = delay + diff;
+            }
+
+            LOGE("Video: %f Audio: %f delay: %lf A-V=%lf ", clock, audioChannel->clock, delay,
+                 -diff);
+        }
+
+        av_usleep((int) (delay * 1000000));
         // 2. 指针数据 RGBA
         // 3. 每一行数据个数
         // 4. offset
@@ -78,18 +115,23 @@ void VideoChannel::_play() {
                   data, linesize);
 
         onDraw(data, linesize, avCodecContext->width, avCodecContext->height);
+        releaseAvFrame(frame);
     }
 
-    av_free(&data[0]);
+    LOGE("VideoChannel _play 结束1 %p", &data[0]);
+    av_freep(&data[0]);
+    LOGE("VideoChannel _play 结束2");
     isPlaying = false;
+    LOGE("VideoChannel _play 结束3");
     releaseAvFrame(frame);
+    LOGE("VideoChannel _play 结束4");
     sws_freeContext(swsContext);
+
+    LOGE("VideoChannel _play 结束5");
 }
 
 
 void VideoChannel::decode() {
-    LOGI("开始解码: window:%p", window);
-
     AVPacket *packet;
     while (isPlaying) {
         // 阻塞
@@ -121,6 +163,12 @@ void VideoChannel::decode() {
             LOGI("发生错误");
             break;
         }
+
+        /// TODO: 这里还有音频，更好的实现是需要时在解码，只需要一个线程与一个待解码队列。
+        while (frame_queue.size() > fps * 10 && isPlaying) {
+            av_usleep(1000 * 10);
+        }
+
         frame_queue.enQueue(frame);
     }
     releaseAvPacket(packet);
@@ -185,5 +233,14 @@ void VideoChannel::onDraw(uint8_t **data, int *linesize, int width, int height) 
 
 void VideoChannel::stop() {
     LOGE("VideoChannel::stop ");
+    isPlaying = false;
+    callback = nullptr;
+    setEnable(false);
 
+    pthread_join(videoDecodeTask, nullptr);
+    pthread_join(videoPlayTask, nullptr);
+    if (window) {
+        ANativeWindow_release(window);
+        window = nullptr;
+    }
 }

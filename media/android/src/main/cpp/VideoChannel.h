@@ -7,6 +7,7 @@
 
 #include "BaseChannel.h"
 #include <android/surface_texture.h>
+#include "AudioChannel.h"
 
 extern "C" {
 #include <libavcodec/avcodec.h>
@@ -45,6 +46,8 @@ private:
     ASurfaceTexture *pTexture = 0;
 
     ANativeWindow *window = 0;
+public:
+    AudioChannel *audioChannel = 0;
 
     void onDraw(uint8_t **data, int *linesize, int width, int height);
 };

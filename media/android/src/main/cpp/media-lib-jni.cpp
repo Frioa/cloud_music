@@ -59,3 +59,11 @@ Java_com_yqq_media_PlayManager_start(JNIEnv *env, jobject thiz, jlong native_han
     auto *player = reinterpret_cast<Player *>(native_handler);
     player->start();
 }
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_yqq_media_PlayManager_stop(JNIEnv *env, jobject thiz, jlong native_handler) {
+    LOGI("Java_com_yqq_media_PlayManager_stop nativeHandler: %ld", native_handler);
+    auto *player = reinterpret_cast<Player *>(native_handler);
+    player->stop();
+    delete player;
+}

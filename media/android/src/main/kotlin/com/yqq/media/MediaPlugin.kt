@@ -21,9 +21,7 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     //    private var nativeHandler: Long = 0
     private var playManager: PlayManager? = null
 
-    //    private lateinit var dartCallback: DartCallback
     private lateinit var activity: Activity
-//    private var surface: Surface? = null
 
 
     override fun onAttachedToEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
@@ -100,9 +98,4 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     override fun onDetachedFromActivity() {
     }
 
-//    override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
-//        GeneratedPluginRegistrant.registerWith(flutterEngine)
-//        val registry = flutterEngine.platformViewsController.registry
-//        registry.registerViewFactory("platform_text_view", AndroidTextViewFactory())
-//    }
 }

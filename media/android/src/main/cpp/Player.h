@@ -11,15 +11,11 @@
 #include "utils/logger.h"
 #include "utils/JavaCallback.h"
 #include "Callback.h"
-//#include "BaseChannel.h"
 #include "VideoChannel.h"
+#include "AudioChannel.h"
 
 extern "C" {
 #include <libavformat/avformat.h>
-#include <libavcodec/avcodec.h>
-
-#include <libavformat/avformat.h>
-#include <libavcodec/avcodec.h>
 }
 
 
@@ -39,6 +35,10 @@ public:
 
     void start();
 
+    void stop();
+
+    void release();
+
     void setWindow(ANativeWindow *window_);
 
     void setSurfaceTexture(ASurfaceTexture *surface);
@@ -55,6 +55,7 @@ private:
     char *path = nullptr;
     pthread_t prepareTask = 0;
     int64_t duration = 0;
+    AudioChannel *audioChannel = nullptr;
     VideoChannel *videoChannel = nullptr;
 
     bool isPlaying = false;

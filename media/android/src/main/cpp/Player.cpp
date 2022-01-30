@@ -8,14 +8,18 @@
 
 Player::Player(Callback *callback) {
     this->callback = callback;
-//    this->javaCallback = _javaCallback;
-    videoChannel = nullptr;
     avformat_network_init();
 }
 
 Player::~Player() {
+    avformat_network_deinit();
+
     delete callback;
-//    delete javaCallback;
+    callback = nullptr;
+    if (path) {
+        delete[] path;
+        path = nullptr;
+    }
 }
 
 void Player::setDataSource(const char *p) {
@@ -47,8 +51,6 @@ void Player::_prepare() {
     avFormatContext = avformat_alloc_context();
     // 参数 3 输入文件的封装格式。 avi / flv null 表示自动检测格式
     // 参数 4 map 集合配置信息，如打开网络文件
-//    AVDictionary *ops;
-//    av_dict_set(&ops, "timeout", "3000000", 0);
     int ret = avformat_open_input(&avFormatContext, path, nullptr, nullptr);
     if (ret != 0) {
         LOGE("打开 %s 失败，返回：%d %s", path, ret, av_err2str(ret));
@@ -66,14 +68,10 @@ void Player::_prepare() {
         callback->onError(FFMPEG_CAN_NOT_FIND_STREAM);
         return;
     }
-    LOGE("_prepare 查找媒体流成功 ret: %d %s",ret, av_err2str(ret));
 
     // 得到视频时长单位 s
     duration = avFormatContext->duration / AV_TIME_BASE;
-    LOGE("_prepare 媒体文件的单位时长：avFormatContext->duration=%ld", avFormatContext->duration);
     LOGE("_prepare 媒体文件的单位时长：duration=%ld", duration);
-    LOGE("_prepare 这个媒体文件有几个流：nb_streams=%d", avFormatContext->nb_streams);
-
 
     // 这个媒体文件有几个流
     for (int i = 0; i < avFormatContext->nb_streams; i++) {
@@ -108,19 +106,31 @@ void Player::_prepare() {
         }
         LOGE("_prepare 宽高 width=%d height=%d", codecContext->width, codecContext->height);
 
-        if (param->codec_type == AVMEDIA_TYPE_AUDIO) {
-            LOGE("_prepare 当前处理的是处理音频流 i=%d", i);
-        } else if (param->codec_type == AVMEDIA_TYPE_VIDEO) {
-            int fps = (int) av_q2d(avStream->avg_frame_rate);
-            LOGE("_prepare 当前处理的是处理视频流  i=%d fps=%d den=%d", i, fps, avStream->time_base.den);
+        switch (param->codec_type) {
+            case AVMEDIA_TYPE_AUDIO:
+                LOGE("_prepare 当前处理的是处理音频流 i=%d", i);
+                audioChannel = new AudioChannel(i, callback, codecContext, avStream->time_base);
+                break;
+            case AVMEDIA_TYPE_VIDEO:
+                int fps = (int) av_q2d(avStream->avg_frame_rate);
+                if (isnan(fps) || fps == 0) {
+                    fps = (int) av_q2d(avStream->r_frame_rate);
+                }
+                if (isnan(fps) || fps == 0) {// 猜 fps
+                    fps = (int) av_q2d(av_guess_frame_rate(avFormatContext, avStream, 0));
+                }
 
-            videoChannel = new VideoChannel(i, callback, codecContext, avStream->time_base, fps);
+                LOGE("_prepare 当前处理的是处理视频流  i=%d fps=%d den=%d", i, fps, avStream->time_base.den);
+                videoChannel = new VideoChannel(i, callback, codecContext, avStream->time_base,
+                                                fps);
+                break;
         }
+
     }
     LOGE("_prepare 初始化成功 videoChannel: %p", videoChannel);
 
     // 如果媒体文件中没有视频、
-    if (!videoChannel) {
+    if (!videoChannel && !audioChannel) {
         LOGE("_prepare 媒体文件没有视频 ");
         callback->onError(FFMPEG_NOMEDIA);
         return;
@@ -141,7 +151,11 @@ void Player::start() {
 
     isPlaying = true;
     if (videoChannel) {
+        videoChannel->audioChannel = audioChannel;
         videoChannel->play();
+    }
+    if (audioChannel) {
+        audioChannel->play();
     }
     pthread_create(&startTask, nullptr, start_t, this);
 }
@@ -152,29 +166,65 @@ void Player::_start() {
         // 读数据放入 Packet
         AVPacket *avPacket = av_packet_alloc();
         ret = av_read_frame(avFormatContext, avPacket);
-//        LOGE("startTask 线程: 读数据放入 Packet ");
-
         if (ret == 0) {
             if (videoChannel && avPacket->stream_index == videoChannel->channelId) {
+                // 开始播放视频
                 videoChannel->pkt_queue.enQueue(avPacket);
+            } else if (audioChannel && avPacket->stream_index == audioChannel->channelId) {
+                // 开始播放音频
+                audioChannel->pkt_queue.enQueue(avPacket);
+            } else {
+                // 其他流
+                av_packet_free(&avPacket);
             }
-
-        } else if (ret == AVERROR_EOF) {
-            // 读取完毕不一定播放结束
-//            LOGE("读取完毕不一定播放结束");
-            if (videoChannel->pkt_queue.empty() && videoChannel->frame_queue.empty()) {
-                // 播放完毕
-                LOGE("播放完毕");
+        } else {
+            av_packet_free(&avPacket);
+            if (ret == AVERROR_EOF) {
+                // 读取完毕不一定播放结束
+                if (videoChannel->pkt_queue.empty() && videoChannel->frame_queue.empty() &&
+                    audioChannel->pkt_queue.empty() && audioChannel->frame_queue.empty() ) {
+                    LOGE("播放完毕");
+                    break;
+                }
+            } else  {
+                LOGE("读取数据包失败，返回:%d 错误描述：%s", ret, av_err2str(ret));
                 break;
             }
-
-        } else {
-            break;
         }
+
     }
     isPlaying = false;
+    audioChannel->stop();
     videoChannel->stop();
 }
+
+
+void Player::stop() {
+    isPlaying = false;
+    // 等prepareTask,startTask执行完，在执行 release();
+    pthread_join(prepareTask, nullptr);
+    pthread_join(startTask, nullptr);
+
+    release();
+}
+
+void Player::release() {
+    if (audioChannel) {
+        delete audioChannel;
+        audioChannel = nullptr;
+    }
+    if (videoChannel) {
+        delete videoChannel;
+        videoChannel = nullptr;
+    }
+
+    if (avFormatContext) {
+        avformat_close_input(&avFormatContext);
+        avformat_free_context(avFormatContext);
+        avFormatContext = nullptr;
+    }
+}
+
 
 void Player::setSurfaceTexture(ASurfaceTexture *surface) {
     surfaceTexture = surface;
@@ -189,5 +239,6 @@ void Player::setWindow(ANativeWindow *window_) {
         videoChannel->setWindow(window);
     }
 }
+
 
 
