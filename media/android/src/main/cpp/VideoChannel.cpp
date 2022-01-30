@@ -32,13 +32,13 @@ VideoChannel::~VideoChannel() {
 
 
 void *videoDecode_t(void *arg) {
-    VideoChannel *videoChannel = static_cast<VideoChannel *>(arg);
+    auto *videoChannel = static_cast<VideoChannel *>(arg);
     videoChannel->decode();
     return nullptr;
 }
 
 void *videoPlay_t(void *arg) {
-    VideoChannel *videoChannel = static_cast<VideoChannel *>(arg);
+    auto *videoChannel = static_cast<VideoChannel *>(arg);
     videoChannel->_play();
     return nullptr;
 }
@@ -62,7 +62,7 @@ void VideoChannel::_play() {
                                             avCodecContext->width,
                                             avCodecContext->height,
                                             AV_PIX_FMT_RGBA, SWS_FAST_BILINEAR,
-                                            0, 0, 0);
+                                            nullptr, nullptr, nullptr);
     uint8_t *data[4];
     int linesize[4];
     av_image_alloc(data, linesize, avCodecContext->width, avCodecContext->height, AV_PIX_FMT_ARGB,
@@ -118,13 +118,9 @@ void VideoChannel::_play() {
         releaseAvFrame(frame);
     }
 
-    LOGE("VideoChannel _play 结束1 %p", &data[0]);
     av_freep(&data[0]);
-    LOGE("VideoChannel _play 结束2");
     isPlaying = false;
-    LOGE("VideoChannel _play 结束3");
     releaseAvFrame(frame);
-    LOGE("VideoChannel _play 结束4");
     sws_freeContext(swsContext);
 
     LOGE("VideoChannel _play 结束5");
@@ -207,7 +203,7 @@ void VideoChannel::onDraw(uint8_t **data, int *linesize, int width, int height) 
     LOGI("onDraw 设置 window 的宽高 w=%d h=%d", width, height);
 
     ANativeWindow_Buffer buffer;
-    if (ANativeWindow_lock(window, &buffer, 0) != 0) {
+    if (ANativeWindow_lock(window, &buffer, nullptr) != 0) {
         LOGI("锁定 window 失败：");
         ANativeWindow_release(window);
         window = nullptr;

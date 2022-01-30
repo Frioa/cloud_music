@@ -18,7 +18,6 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var channel: MethodChannel
     private lateinit var surfaceTextureEntry: TextureRegistry.SurfaceTextureEntry
 
-    //    private var nativeHandler: Long = 0
     private var playManager: PlayManager? = null
 
     private lateinit var activity: Activity
@@ -56,7 +55,6 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         when (call.method) {
             "surfaceTextureId" -> {
-//                dartCallback = DartCallback(channel)
                 channel.invokeMethod("onPrepare", null)
                 result.success(surfaceTextureEntry.id())
             }
