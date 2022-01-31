@@ -48,6 +48,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 TextButton(
                   onPressed: () async {
+                    player.seek(10);
+                  },
+                  child: const Text("seek"),
+                ),
+                TextButton(
+                  onPressed: () async {
                     player.stop();
                   },
                   child: const Text("stop"),

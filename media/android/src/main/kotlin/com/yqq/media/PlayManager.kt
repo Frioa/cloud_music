@@ -67,6 +67,12 @@ class PlayManager constructor(val channel: MethodChannel) {
         Log.d(TAG, "stop end.")
     }
 
+    fun seek(time: Double) {
+        Log.d(TAG, "seek .progress=$time")
+        if (nativeHandler == 0L) return
+        seek(nativeHandler, time)
+    }
+
 
     private fun onError(code: Int) {
         handler.post {
@@ -74,10 +80,10 @@ class PlayManager constructor(val channel: MethodChannel) {
         }
     }
 
-    private fun onPrepare() {
+    private fun onPrepare(duration: Double) {
         setSurface(nativeHandler, surface!!)
         handler.post {
-            channel.invokeMethod("onPrepare", null)
+            channel.invokeMethod("onPrepare", mapOf("duration" to duration))
         }
     }
 
@@ -94,6 +100,8 @@ class PlayManager constructor(val channel: MethodChannel) {
     private external fun prepare(nativeHandler: Long)
 
     private external fun start(nativeHandler: Long)
+
+    private external fun seek(nativeHandler: Long, progress: Double)
 
     private external fun stop(nativeHandler: Long)
 

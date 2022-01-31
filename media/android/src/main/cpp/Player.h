@@ -35,6 +35,8 @@ public:
 
     void start();
 
+    void seek(double curTime);
+
     void stop();
 
     void release();
@@ -59,6 +61,10 @@ private:
     VideoChannel *videoChannel = nullptr;
 
     bool isPlaying = false;
+
+    bool isSeek = false;
+    pthread_mutex_t seekMutex;
+
     pthread_t startTask = 0;
     AVFormatContext *avFormatContext = nullptr;
     ASurfaceTexture *surfaceTexture = nullptr;

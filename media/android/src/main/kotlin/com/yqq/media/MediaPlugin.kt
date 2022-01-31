@@ -12,6 +12,7 @@ import io.flutter.plugin.common.MethodChannel.Result
 
 class MediaPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
+
     // TODO: Dart 实现
 //    private lateinit var surfaceTextureEntry: TextureRegistry.SurfaceTextureEntry
     private lateinit var playManager: PlayManager
@@ -69,6 +70,12 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler {
             }
             "stop" -> {
                 playManager.stop()
+                result.success(true)
+            }
+            "seek" -> {
+                val arg = call.arguments as Map<*, *>
+                val time = arg["time"] as Double? ?: 0.0
+                playManager.seek(time)
                 result.success(true)
             }
             else -> {

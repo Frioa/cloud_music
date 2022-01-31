@@ -242,3 +242,15 @@ void VideoChannel::stop() {
     }
     LOGE("VideoChannel::stop end.");
 }
+
+void VideoChannel::stopWork() {
+    LOGE("VideoChannel::stop ");
+    isPlaying = false;
+    callback = nullptr;
+    setEnable(false);
+
+    pthread_join(videoDecodeTask, nullptr);
+    pthread_join(videoPlayTask, nullptr);
+
+    LOGE("VideoChannel::stop end.");
+}

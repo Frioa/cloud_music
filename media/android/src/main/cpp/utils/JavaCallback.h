@@ -16,7 +16,7 @@ public:
         jclass jclazz = env->GetObjectClass(jobj);
 
         jmid_error = env->GetMethodID(jclazz, "onError", "(I)V");
-        jmid_prepare = env->GetMethodID(jclazz, "onPrepare", "()V");
+        jmid_prepare = env->GetMethodID(jclazz, "onPrepare", "(D)V");
         jmid_progress = env->GetMethodID(jclazz, "onProgress", "(I)V");
     };
 
@@ -39,15 +39,15 @@ public:
         }
     }
 
-    void onPrepare(bool isMainThread = true) {
+    void onPrepare(double duration,bool isMainThread = true) {
         if (isMainThread) {
-            env->CallVoidMethod(jobj, jmid_prepare);
+            env->CallVoidMethod(jobj, jmid_prepare, duration);
         } else {
             JNIEnv *jniEnv;
             if (vm->AttachCurrentThread(&jniEnv, 0) != JNI_OK) {
                 return;
             }
-            jniEnv->CallVoidMethod(jobj, jmid_prepare);
+            jniEnv->CallVoidMethod(jobj, jmid_prepare, duration);
             vm->DetachCurrentThread();
         }
     }

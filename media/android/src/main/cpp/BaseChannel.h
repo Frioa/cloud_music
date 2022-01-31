@@ -37,6 +37,11 @@ public:
 
     virtual void decode() = 0;
 
+    void clear() {
+        pkt_queue.clear();
+        frame_queue.clear();
+    }
+
     void setEnable(bool e) {
         pkt_queue.setEnable(e);
         frame_queue.setEnable(e);
@@ -68,6 +73,5 @@ public:
     bool isPlaying = false;
     double clock = 0;
 };
-
 
 #endif //MEDIA_BASECHANNEL_H

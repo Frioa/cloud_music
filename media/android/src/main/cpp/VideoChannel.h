@@ -23,6 +23,8 @@ public:
 
     virtual void stop();
 
+    void stopWork();
+
     virtual void decode();
 
     void setWindow(ANativeWindow *window_);

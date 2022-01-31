@@ -220,6 +220,7 @@ void AudioChannel::stop() {
     pthread_join(audioDecodeTask, nullptr);
     pthread_join(audioPlayTask, nullptr);
 
+    _releaseOpenSLES();
     if (swrContext) {
         swr_free(&swrContext);
         swrContext = nullptr;

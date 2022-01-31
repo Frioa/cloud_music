@@ -17,9 +17,9 @@ Callback::~Callback() {
     _javaCallback = nullptr;
 }
 
-void Callback::onPrepare(bool isMainThread) {
+void Callback::onPrepare(double duration, bool isMainThread) {
     if (enableJava) {
-        return _javaCallback->onPrepare(isMainThread);
+        return _javaCallback->onPrepare(duration, isMainThread);
     }
     _onPrepare();
 }

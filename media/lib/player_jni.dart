@@ -17,17 +17,16 @@ class PlayerJni {
   PlayerJni() {
     _methodChannel.setMethodCallHandler((call) async {
       final method = call.method;
+      final arg = call.arguments as Map;
 
       switch (method) {
         case "onPrepare":
-          logger.d("onPrepare");
+          logger.d("onPrepare duration = ${arg['duration']}");
           return prepare?.call();
         case "onProgress":
-          final arg = call.arguments as Map;
           logger.d("onPrepare onProgress ${arg['value']}");
           return progress?.call(arg['value']);
         case "onError":
-          final arg = call.arguments as Map;
           logger.d("onPrepare onError ${arg['code']}");
           return error?.call(arg['code']);
       }
@@ -40,12 +39,10 @@ class PlayerJni {
     await _methodChannel.invokeMethod('setDataSource', {"path": path});
   }
 
-
   Future<void> init() async {
     logger.d("init");
     await _methodChannel.invokeMethod('init');
   }
-
 
   Future<void> start() async {
     logger.d("start");
@@ -55,6 +52,11 @@ class PlayerJni {
   Future<void> stop() async {
     logger.d("stop");
     await _methodChannel.invokeMethod('stop');
+  }
+
+  Future<void> seek(double time) async {
+    logger.d("seek time=$time");
+    await _methodChannel.invokeMethod('seek', {"time": time});
   }
 
   Future<void> dispose() async {

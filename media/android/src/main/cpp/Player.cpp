@@ -13,11 +13,13 @@ extern "C" {
 
 Player::Player(Callback *callback) {
     this->callback = callback;
+    pthread_mutex_init(&seekMutex, 0);
     avformat_network_init();
 }
 
 Player::~Player() {
     avformat_network_deinit();
+    pthread_mutex_destroy(&seekMutex);
 
     delete callback;
     callback = nullptr;
@@ -105,15 +107,14 @@ void Player::_prepare() {
             callback->onError(FFMPEG_OPEN_DECODER_FAIL, false);
             return;
         }
-        LOGE("_prepare 宽高 width=%d height=%d", codecContext->width, codecContext->height);
 
+        int fps = (int) av_q2d(avStream->avg_frame_rate);
         switch (param->codec_type) {
             case AVMEDIA_TYPE_AUDIO:
                 LOGE("_prepare 当前处理的是处理音频流 i=%d", i);
                 audioChannel = new AudioChannel(i, callback, codecContext, avStream->time_base);
                 break;
             case AVMEDIA_TYPE_VIDEO:
-                int fps = (int) av_q2d(avStream->avg_frame_rate);
                 if (isnan(fps) || fps == 0) {
                     fps = (int) av_q2d(avStream->r_frame_rate);
                 }
@@ -122,13 +123,15 @@ void Player::_prepare() {
                 }
 
                 LOGE("_prepare 当前处理的是处理视频流  i=%d fps=%d den=%d", i, fps, avStream->time_base.den);
+                LOGE("_prepare 宽高 width=%d height=%d", codecContext->width, codecContext->height);
                 videoChannel = new VideoChannel(i, callback, codecContext, avStream->time_base,
                                                 fps);
+                break;
+            default:
                 break;
         }
 
     }
-    LOGE("_prepare 初始化成功 videoChannel: %p", videoChannel);
 
     // 如果媒体文件中没有视频、
     if (!videoChannel && !audioChannel) {
@@ -137,7 +140,7 @@ void Player::_prepare() {
         return;
     }
 
-    callback->onPrepare(false);
+    callback->onPrepare(duration, false);
 }
 
 void *start_t(void *arg) {
@@ -175,9 +178,19 @@ void Player::_start() {
             continue;
         }
 
+        // 锁住 avFormatContext
+        pthread_mutex_lock(&seekMutex);
+
         // 读数据放入 Packet
         AVPacket *avPacket = av_packet_alloc();
         ret = av_read_frame(avFormatContext, avPacket);
+
+        pthread_mutex_unlock(&seekMutex);
+        if (isSeek) {
+            av_packet_free(&avPacket);
+            continue;
+        }
+
         if (ret == 0) {
             if (videoChannel && avPacket->stream_index == videoChannel->channelId) {
                 // 开始播放视频
@@ -214,23 +227,54 @@ void Player::_start() {
     isPlaying = false;
     audioChannel->stop();
     videoChannel->stop();
-    LOGI(" Player::_start() end.");
+}
+
+
+void Player::seek(double time) {
+    LOGI("Player::seek1 %lf %ld", time, duration);
+
+    if (time >= duration) return;
+    LOGI("Player::seek1");
+
+    if (!audioChannel && !videoChannel) return;
+    LOGI("Player::seek2");
+
+    if (!avFormatContext) return;
+    LOGI("Player::seek3");
+
+    isSeek = true;
+    pthread_mutex_lock(&seekMutex);
+    int64_t seek = time * AV_TIME_BASE;
+    av_seek_frame(avFormatContext, -1, seek, AVSEEK_FLAG_BACKWARD);
+
+    if (audioChannel) {
+        audioChannel->stop();
+        audioChannel->clear();
+        audioChannel->play();
+    }
+    if (videoChannel) {
+        videoChannel->stopWork();
+        videoChannel->clear();
+        videoChannel->play();
+    }
+
+    pthread_mutex_unlock(&seekMutex);
+    isSeek = false;
 }
 
 
 void Player::stop() {
-    LOGI(" Player::stop() start.");
+    LOGI("Player::stop()");
     isPlaying = false;
     // 等prepareTask,startTask执行完，在执行 release();
     pthread_join(prepareTask, nullptr);
     pthread_join(startTask, nullptr);
 
     release();
-    LOGI(" Player::stop() end.");
 }
 
 void Player::release() {
-    LOGI("Player::release() start");
+    LOGI("Player::release()");
     if (audioChannel) {
         delete audioChannel;
         audioChannel = nullptr;
@@ -246,7 +290,6 @@ void Player::release() {
         avformat_free_context(avFormatContext);
         avFormatContext = nullptr;
     }
-    LOGI("Player::release() end.");
 }
 
 
