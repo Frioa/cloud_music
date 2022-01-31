@@ -5,13 +5,8 @@
 #ifndef MEDIA_VIDEOCHANNEL_H
 #define MEDIA_VIDEOCHANNEL_H
 
-#include "BaseChannel.h"
 #include <android/surface_texture.h>
 #include "AudioChannel.h"
-
-extern "C" {
-#include <libavcodec/avcodec.h>
-}
 
 
 class VideoChannel : public BaseChannel {

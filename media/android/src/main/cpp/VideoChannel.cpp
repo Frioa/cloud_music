@@ -5,7 +5,6 @@
 #include "VideoChannel.h"
 
 extern "C" {
-#include <libavutil/rational.h>
 #include <libavutil/imgutils.h>
 #include <libavutil/time.h>
 #include <libswscale/swscale.h>

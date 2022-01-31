@@ -83,7 +83,7 @@ void Player::_prepare() {
         const AVCodec *dec = avcodec_find_decoder(param->codec_id);
         if (!dec) {
             LOGE("_prepare 查找解码器失败 ");
-            callback->onError(FFMPEG_OPEN_DECODER_FAIL);
+            callback->onError(FFMPEG_OPEN_DECODER_FAIL, false);
             return;
         }
 
@@ -93,7 +93,7 @@ void Player::_prepare() {
         ret = avcodec_parameters_to_context(codecContext, param);
         if (ret < 0) {
             LOGE("_prepare 根据流信息，配置上下文参数失败 ");
-            callback->onError(FFMPEG_CODEC_CONTEXT_PARAMETERS_FAIL);
+            callback->onError(FFMPEG_CODEC_CONTEXT_PARAMETERS_FAIL, false);
             return;
         }
 
@@ -101,7 +101,7 @@ void Player::_prepare() {
         ret = avcodec_open2(codecContext, dec, nullptr);
         if (ret != 0) {
             LOGE("_prepare 打开解码器失败 ");
-            callback->onError(FFMPEG_OPEN_DECODER_FAIL);
+            callback->onError(FFMPEG_OPEN_DECODER_FAIL, false);
             return;
         }
         LOGE("_prepare 宽高 width=%d height=%d", codecContext->width, codecContext->height);
@@ -132,7 +132,7 @@ void Player::_prepare() {
     // 如果媒体文件中没有视频、
     if (!videoChannel && !audioChannel) {
         LOGE("_prepare 媒体文件没有视频 ");
-        callback->onError(FFMPEG_NOMEDIA);
+        callback->onError(FFMPEG_NOMEDIA, false);
         return;
     }
 

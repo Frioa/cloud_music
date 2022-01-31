@@ -20,15 +20,16 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text(widget.title)),
       body: Stack(
         children: [
-          init ? LayoutBuilder(builder: (_, c) {
+          init
+              ? LayoutBuilder(builder: (_, c) {
                   return Container(
                     color: Colors.amber,
                     width: c.maxWidth,
                     height: c.maxHeight,
-                    child: SurfaceViewWidget(),
+                    child: const SurfaceViewWidget(),
                   );
                 })
-              : SizedBox(),
+              : const SizedBox(),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -38,14 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     await player.init();
                     init = true;
                     setState(() {});
-                    print('object $init');
                   },
                   child: const Text("初始化"),
                 ),
                 TextButton(
                   onPressed: () async {
-                    await player.setDataSource(
-                        '/data/data/com.yqq.cloudmusic.cloud_music/cache/11-04-2008.flv');
+                    await player.setDataSource('http://vjs.zencdn.net/v/oceans.mp4');
                   },
                   child: const Text("setDataSource"),
                 ),
