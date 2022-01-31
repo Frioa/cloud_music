@@ -17,7 +17,7 @@ JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, void *re) {
 extern "C"
 JNIEXPORT jlong JNICALL
 Java_com_yqq_media_PlayManager_nativeInit(JNIEnv *env, jobject thiz) {
-    auto *player = new Player(new Callback(0, 0, 0));
+    auto *player = new Player(new Callback(nullptr, nullptr, nullptr));
     player->callback->_javaCallback = new JavaCallback(javaVm, env, thiz);
     LOGI("Java_com_yqq_media_PlayManager_nativeInit %ld", reinterpret_cast<jlong>(player));
 
@@ -46,16 +46,15 @@ JNIEXPORT void JNICALL
 Java_com_yqq_media_PlayManager_setSurface(JNIEnv *env, jobject thiz, jlong native_handler,
                                           jobject surface) {
     auto *player = reinterpret_cast<Player *>(native_handler);
+    LOGI("Java_com_yqq_media_PlayManager_setSurface nativeHandler: %ld", native_handler);
     ANativeWindow *window = ANativeWindow_fromSurface(env, surface);
     player->setWindow(window);
-    LOGI("Java_com_yqq_media_PlayManager_setSurface nativeHandler: %ld window: %p", native_handler, window);
 }
 
 extern "C"
 JNIEXPORT void JNICALL
 Java_com_yqq_media_PlayManager_start(JNIEnv *env, jobject thiz, jlong native_handler) {
     LOGI("Java_com_yqq_media_PlayManager_start nativeHandler: %ld", native_handler);
-
     auto *player = reinterpret_cast<Player *>(native_handler);
     player->start();
 }

@@ -6,6 +6,11 @@
 #include <malloc.h>
 #include <cstring>
 
+extern "C" {
+#include <libavutil/time.h>
+}
+
+
 Player::Player(Callback *callback) {
     this->callback = callback;
     avformat_network_init();
@@ -31,7 +36,6 @@ void Player::setDataSource(const char *p) {
 
 void *prepare_t(void *args) {
     Player *player = static_cast<Player *> (args);
-    LOGI("prepareTask 子线程准备完成");
     player->_prepare();
     return nullptr;
 }
@@ -39,7 +43,6 @@ void *prepare_t(void *args) {
 void Player::prepare() {
     // 解析媒体文件
     // this 传给 prepare_t 的参数
-    LOGI("Player::prepare");
     pthread_create(&prepareTask, nullptr, prepare_t, this);
 }
 
@@ -57,7 +60,6 @@ void Player::_prepare() {
         callback->onError(FFMPEG_CAN_NOT_OPEN_URL, false);
         return;
     }
-    LOGE("_prepare 打开媒体文件成功 ret: %d", ret);
 
     /**
      * 2. 查找媒体流
@@ -87,7 +89,6 @@ void Player::_prepare() {
             return;
         }
 
-        LOGE("_prepare 查找解码器成功 ");
         AVCodecContext *codecContext = avcodec_alloc_context3(dec);
         // 把解码信息赋值给了解码上下文中的各种成员, 可以获得视频的 宽、高。
         ret = avcodec_parameters_to_context(codecContext, param);
@@ -163,6 +164,17 @@ void Player::start() {
 void Player::_start() {
     int ret;
     while (isPlaying) {
+        /// 读取文件的时候没有网络请求一下子读完，防止 OOM
+        if (audioChannel && audioChannel->pkt_queue.size() > 100) {
+            av_usleep(1000 * 10);
+            continue;
+        }
+
+        if (videoChannel && videoChannel->pkt_queue.size() > 100) {
+            av_usleep(1000 * 10);
+            continue;
+        }
+
         // 读数据放入 Packet
         AVPacket *avPacket = av_packet_alloc();
         ret = av_read_frame(avFormatContext, avPacket);
@@ -181,12 +193,18 @@ void Player::_start() {
             av_packet_free(&avPacket);
             if (ret == AVERROR_EOF) {
                 // 读取完毕不一定播放结束
-                if (videoChannel->pkt_queue.empty() && videoChannel->frame_queue.empty() &&
-                    audioChannel->pkt_queue.empty() && audioChannel->frame_queue.empty() ) {
+                bool videoChannelEmpty = (videoChannel == nullptr) ||
+                                         (videoChannel->pkt_queue.empty() &&
+                                          videoChannel->frame_queue.empty());
+                bool audioChannelEmpty = (audioChannel == nullptr) ||
+                                         (audioChannel->pkt_queue.empty() &&
+                                          audioChannel->frame_queue.empty());
+
+                if (videoChannelEmpty && audioChannelEmpty) {
                     LOGE("播放完毕");
                     break;
                 }
-            } else  {
+            } else {
                 LOGE("读取数据包失败，返回:%d 错误描述：%s", ret, av_err2str(ret));
                 break;
             }
@@ -196,23 +214,28 @@ void Player::_start() {
     isPlaying = false;
     audioChannel->stop();
     videoChannel->stop();
+    LOGI(" Player::_start() end.");
 }
 
 
 void Player::stop() {
+    LOGI(" Player::stop() start.");
     isPlaying = false;
     // 等prepareTask,startTask执行完，在执行 release();
     pthread_join(prepareTask, nullptr);
     pthread_join(startTask, nullptr);
 
     release();
+    LOGI(" Player::stop() end.");
 }
 
 void Player::release() {
+    LOGI("Player::release() start");
     if (audioChannel) {
         delete audioChannel;
         audioChannel = nullptr;
     }
+
     if (videoChannel) {
         delete videoChannel;
         videoChannel = nullptr;
@@ -223,6 +246,7 @@ void Player::release() {
         avformat_free_context(avFormatContext);
         avFormatContext = nullptr;
     }
+    LOGI("Player::release() end.");
 }
 
 

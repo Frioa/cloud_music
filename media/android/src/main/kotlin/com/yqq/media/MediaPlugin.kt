@@ -18,13 +18,11 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler {
 
 
     private fun setSurface(surface: Surface) {
-        if (!this::playManager.isInitialized) return
         playManager.setSurface(surface)
     }
 
     override fun onAttachedToEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
         println("onAttachedToEngine ")
-        //        surfaceTextureEntry = binding.textureRegistry.createSurfaceTexture()
         channel = MethodChannel(binding.binaryMessenger, "media")
         channel.setMethodCallHandler(this)
         val factory = MediaSurfaceViewFactory(object : SurfaceHolder.Callback {
@@ -46,6 +44,7 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler {
             override fun surfaceDestroyed(holder: SurfaceHolder) {
             }
         })
+        playManager = PlayManager(channel)
         binding.platformViewRegistry.registerViewFactory("android_surface_view", factory)
     }
 
@@ -53,12 +52,9 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler {
         when (call.method) {
             "surfaceTextureId" -> {
                 channel.invokeMethod("onPrepare", null)
-//                result.success(surfaceTextureEntry.id())
             }
             "init" -> {
-                if (!this::playManager.isInitialized) {
-                    playManager = PlayManager(channel)
-                }
+                playManager.init()
                 result.success(playManager.nativeHandler)
             }
             "setDataSource" -> {
@@ -69,6 +65,10 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler {
             }
             "start" -> {
                 playManager.start()
+                result.success(true)
+            }
+            "stop" -> {
+                playManager.stop()
                 result.success(true)
             }
             else -> {

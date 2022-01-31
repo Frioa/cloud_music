@@ -22,7 +22,8 @@ AudioChannel::AudioChannel(int channelId, Callback *callback, AVCodecContext *av
 }
 
 AudioChannel::~AudioChannel() {
-    delete [] buffer;
+    free(buffer);
+    buffer = nullptr;
 }
 
 void *audioPlay_t(void *args) {
@@ -131,7 +132,7 @@ int AudioChannel::_getData() {
 
 void AudioChannel::_play() {
     /// 创建引擎对象
-    SLObjectItf engineObj = nullptr;
+    engineObj = nullptr;
     SLresult result = slCreateEngine(&engineObj, 0, NULL, 0, NULL, NULL);
     if (SL_RESULT_SUCCESS != result) return;
 
@@ -149,8 +150,9 @@ void AudioChannel::_play() {
      * 2. 设置混音器
      */
     // 通过接口创建混音器
-    SLObjectItf outputMixObject = nullptr;
-    result = (*engineInterface)->CreateOutputMix(engineInterface, &outputMixObject, 0, 0, 0);
+    outputMixObject = nullptr;
+    result = (*engineInterface)->CreateOutputMix(engineInterface, &outputMixObject, 0, nullptr,
+                                                 nullptr);
     if (SL_RESULT_SUCCESS != result) return;
 
     // 初始化混音器
@@ -180,7 +182,7 @@ void AudioChannel::_play() {
     SLDataSink audioSink = {&outputMix, nullptr};
 
     // 播放器相当于对混音器进行了一层包装，提供了开始、停止等方法。真正由混音器播放声音。
-    SLObjectItf bqPlayerObject = nullptr;
+    bqPlayerObject = nullptr;
     // 需要的接口
     const SLInterfaceID ids[1] = {SL_IID_BUFFERQUEUE};
     const SLboolean req[1] = {SL_BOOLEAN_TRUE}; // 必须需要，某些接口不同的 Android 手机可能不支持。
@@ -200,7 +202,6 @@ void AudioChannel::_play() {
     // 设置回调 (启动播放器后的回调，用来获取数据的方法)
     (*bgPlayerBufferQueue)->RegisterCallback(bgPlayerBufferQueue, bgPlayerCallback, this);
 
-
     // 获取播放状态接口
     SLPlayItf bgPlayerInterface = nullptr;
     (*bqPlayerObject)->GetInterface(bqPlayerObject, SL_IID_PLAY, &bgPlayerInterface);
@@ -209,7 +210,6 @@ void AudioChannel::_play() {
 
     // 手动调用一次回调方法才能播放
     bgPlayerCallback(bgPlayerBufferQueue, this);
-
 }
 
 
@@ -224,6 +224,23 @@ void AudioChannel::stop() {
         swr_free(&swrContext);
         swrContext = nullptr;
     }
-
 }
+
+void AudioChannel::_releaseOpenSLES() {
+    if (bqPlayerObject) {
+        (*bqPlayerObject)->Destroy(bqPlayerObject);
+        bqPlayerObject = nullptr;
+    }
+
+    if (outputMixObject) {
+        (*outputMixObject)->Destroy(outputMixObject);
+        outputMixObject = nullptr;
+    }
+
+    if (engineObj) {
+        (*engineObj)->Destroy(engineObj);
+        engineObj = nullptr;
+    }
+}
+
 

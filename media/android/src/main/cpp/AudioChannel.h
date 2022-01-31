@@ -46,6 +46,12 @@ private:
     pthread_t audioDecodeTask = 0;
     pthread_t audioPlayTask = 0;
     SwrContext *swrContext = 0;
+
+    SLObjectItf engineObj = nullptr;
+    SLObjectItf outputMixObject = nullptr;
+    SLObjectItf bqPlayerObject = nullptr;
+
+    void _releaseOpenSLES();
 };
 
 

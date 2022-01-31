@@ -5,19 +5,16 @@ import 'package:media/utils/logger_extensions.dart';
 const MethodChannel _methodChannel = MethodChannel('media');
 
 class PlayerJni {
+  static late final PlayerJni _instance = PlayerJni();
+
+  static PlayerJni get instance => _instance;
+
   late int nativeHandler;
-  final VoidCallback? prepare;
-  final ValueChanged<int>? progress;
-  final ValueChanged<int>? error;
+  VoidCallback? prepare;
+  ValueChanged<int>? progress;
+  ValueChanged<int>? error;
 
-  PlayerJni({
-    this.prepare,
-    this.progress,
-    this.error,
-  });
-
-  Future<void> init() async {
-    nativeHandler = await _methodChannel.invokeMethod('init');
+  PlayerJni() {
     _methodChannel.setMethodCallHandler((call) async {
       final method = call.method;
 
@@ -36,17 +33,28 @@ class PlayerJni {
       }
       return;
     });
-    logger.d("nativeHandler $nativeHandler");
   }
 
   Future<void> setDataSource(String path) async {
-    logger.d("");
+    logger.d("setDataSource");
     await _methodChannel.invokeMethod('setDataSource', {"path": path});
   }
 
+
+  Future<void> init() async {
+    logger.d("init");
+    await _methodChannel.invokeMethod('init');
+  }
+
+
   Future<void> start() async {
-    logger.d("");
+    logger.d("start");
     await _methodChannel.invokeMethod('start');
+  }
+
+  Future<void> stop() async {
+    logger.d("stop");
+    await _methodChannel.invokeMethod('stop');
   }
 
   Future<void> dispose() async {

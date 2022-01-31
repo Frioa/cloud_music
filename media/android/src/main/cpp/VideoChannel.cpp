@@ -95,10 +95,12 @@ void VideoChannel::_play() {
             double sync = FFMAX(AV_SYNC_THRESHOLD_MIN, FFMIN(AV_SYNC_THRESHOLD_MAX, delay));
             //
             if (diff <= -sync) {
+                LOGE("音频快了，等视频速度上来 delay=%lf diff=%lf sum=%lf", delay, diff, delay + diff);
                 delay = FFMAX(0.0, delay + diff);
             } else if (diff > sync) {
                 // 视频快了，等音频速度上来
                 delay = delay + diff;
+                LOGE("视频快了，等音频速度上来 %lf", delay);
             }
 
             LOGE("Video: %f Audio: %f delay: %lf A-V=%lf ", clock, audioChannel->clock, delay,
@@ -122,7 +124,7 @@ void VideoChannel::_play() {
     releaseAvFrame(frame);
     sws_freeContext(swsContext);
 
-    LOGE("VideoChannel _play 结束5");
+    LOGE("VideoChannel _play 结束");
 }
 
 
@@ -238,4 +240,5 @@ void VideoChannel::stop() {
         ANativeWindow_release(window);
         window = nullptr;
     }
+    LOGE("VideoChannel::stop end.");
 }

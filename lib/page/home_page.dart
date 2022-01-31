@@ -12,7 +12,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final player = PlayerJni();
-  bool init = false;
 
   @override
   Widget build(BuildContext context) {
@@ -20,16 +19,15 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(title: Text(widget.title)),
       body: Stack(
         children: [
-          init
-              ? LayoutBuilder(builder: (_, c) {
-                  return Container(
-                    color: Colors.amber,
-                    width: c.maxWidth,
-                    height: c.maxHeight,
-                    child: const SurfaceViewWidget(),
-                  );
-                })
-              : const SizedBox(),
+          LayoutBuilder(
+            builder: (_, c) {
+              return SizedBox(
+                width: c.maxWidth,
+                height: c.maxHeight,
+                child: const SurfaceViewWidget(),
+              );
+            },
+          ),
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -37,25 +35,23 @@ class _MyHomePageState extends State<MyHomePage> {
                 TextButton(
                   onPressed: () async {
                     await player.init();
-                    init = true;
-                    setState(() {});
+                    await player.setDataSource(
+                        '/data/data/com.yqq.cloudmusic.cloud_music/cache/oceans.mp4');
                   },
-                  child: const Text("初始化"),
-                ),
-                TextButton(
-                  onPressed: () async {
-                    await player.setDataSource('http://vjs.zencdn.net/v/oceans.mp4');
-                  },
-                  child: const Text("setDataSource"),
+                  child: const Text("init"),
                 ),
                 TextButton(
                   onPressed: () async {
                     player.start();
-
-                    // methodChannel.invokeMethod('ceshi');
                   },
                   child: const Text("start"),
-                )
+                ),
+                TextButton(
+                  onPressed: () async {
+                    player.stop();
+                  },
+                  child: const Text("stop"),
+                ),
               ],
             ),
           ),
