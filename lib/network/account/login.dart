@@ -1,12 +1,12 @@
-import 'package:cloud_music/model/account/login.dart';
-import 'package:cloud_music/network/network.dart';
+import 'package:cloud_music/common/common.dart';
+import 'package:cloud_music/model/model.dart';
 import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/http.dart';
 
 part 'login.g.dart';
 
-@RestApi(baseUrl: HttpUrls.nestBase)
+@RestApi(baseUrl: Constants.nestBase)
 @JsonSerializable(createFactory: false)
 abstract class NestLoginClient {
   factory NestLoginClient(Dio dio, {String baseUrl}) = _NestLoginClient;
