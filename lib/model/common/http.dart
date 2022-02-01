@@ -2,12 +2,27 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'http.g.dart';
 
-@JsonSerializable(genericArgumentFactories: true)
-class HttpResponse<T> {
+@JsonSerializable(createToJson: false)
+class BaseHttpResponse {
   final int code;
+
+  BaseHttpResponse(this.code);
+
+  factory BaseHttpResponse.fromJson(Map<String, dynamic> json) {
+    return _$BaseHttpResponseFromJson(json);
+  }
+
+  @override
+  String toString() {
+    return 'BaseHttpResponse{code: $code}';
+  }
+}
+
+@JsonSerializable(genericArgumentFactories: true, createToJson: false)
+class HttpResponse<T> extends BaseHttpResponse {
   final T data;
 
-  HttpResponse({this.code = 404,required this.data});
+  HttpResponse({int code = 404, required this.data}) : super(code);
 
   factory HttpResponse.fromJson(
     Map<String, dynamic> json,
@@ -15,9 +30,6 @@ class HttpResponse<T> {
   ) {
     return _$HttpResponseFromJson(json, fromJsonT);
   }
-
-  Map<String, dynamic> toJson(HttpResponse<T> instance, Object? Function(T value) toJsonT) =>
-      _$HttpResponseToJson<T>(instance, toJsonT);
 
   @override
   String toString() {

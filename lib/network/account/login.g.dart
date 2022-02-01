@@ -18,6 +18,29 @@ class _NestLoginClient implements NestLoginClient {
   String? baseUrl;
 
   @override
+  Future<NestCallPhoneResponse> cellPhone(phone, password,
+      {md5Password, captcha}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'phone': phone,
+      r'password': password,
+      r'md5_password': md5Password,
+      r'captcha': captcha
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<NestCallPhoneResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/login/cellphone',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = NestCallPhoneResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<HttpResponse<NestQrKeyResponse>> getQrKey() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

@@ -6,8 +6,22 @@ import 'package:flutter_test/flutter_test.dart';
 void main() async {
   final dio = Dio();
   final client = NestLoginClient(dio);
+  const phone = 'xxxxxxx';
 
   group('登录', () {
+    test('发送短信验证码', () async {
+      await client.sentCaptcha(phone).then((value) async {
+        logger.d('sentCaptcha $value');
+      });
+    });
+
+    test('手机号登录(验证码登录)', () async {
+      const captcha = '7374';
+      await client.cellPhone(phone, '', captcha: captcha).then((value) async {
+        logger.d('cellPhone $value');
+      });
+    });
+
     test('二维码登录', () async {
       String key = '';
       await client.getQrKey().then((it) async {
@@ -22,12 +36,6 @@ void main() async {
       });
     });
 
-    const phone = 'xxxxxxxxx';
-    test('发送短信验证码', () async {
-      await client.sentCaptcha(phone).then((value) async {
-        logger.d('sentCaptcha $value');
-      });
-    });
     test('验证短信验证码', () async {
       const captcha = '7931';
       await client.verifyCaptcha(phone, captcha).then((value) {

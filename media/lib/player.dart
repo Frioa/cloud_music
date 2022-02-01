@@ -63,8 +63,6 @@ class Player {
 
     textureId = await methodChannel
         .invokeMethod('surfaceTextureId', {'nativeHandle': nativeHandle});
-
-    print('init: $textureId');
   }
 
   void setDataSource(String path) {
