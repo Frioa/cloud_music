@@ -12,25 +12,12 @@ NestQrKeyResponse _$NestQrKeyResponseFromJson(Map<String, dynamic> json) =>
       unikey: json['unikey'] as String? ?? '',
     );
 
-Map<String, dynamic> _$NestQrKeyResponseToJson(NestQrKeyResponse instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-      'unikey': instance.unikey,
-    };
-
 NestQrCreateResponse _$NestQrCreateResponseFromJson(
         Map<String, dynamic> json) =>
     NestQrCreateResponse(
       qrurl: json['qrurl'] as String? ?? '',
       qrimg: json['qrimg'] as String? ?? '',
     );
-
-Map<String, dynamic> _$NestQrCreateResponseToJson(
-        NestQrCreateResponse instance) =>
-    <String, dynamic>{
-      'qrurl': instance.qrurl,
-      'qrimg': instance.qrimg,
-    };
 
 NestQrCheckResponse _$NestQrCheckResponseFromJson(Map<String, dynamic> json) =>
     NestQrCheckResponse(
@@ -41,14 +28,6 @@ NestQrCheckResponse _$NestQrCheckResponseFromJson(Map<String, dynamic> json) =>
       cookie: json['cookie'] as String? ?? '',
     );
 
-Map<String, dynamic> _$NestQrCheckResponseToJson(
-        NestQrCheckResponse instance) =>
-    <String, dynamic>{
-      'code': _$NestQrCheckResultEnumMap[instance.code],
-      'message': instance.message,
-      'cookie': instance.cookie,
-    };
-
 const _$NestQrCheckResultEnumMap = {
   NestQrCheckResult.expire: 800,
   NestQrCheckResult.wait: 801,
@@ -56,18 +35,18 @@ const _$NestQrCheckResultEnumMap = {
   NestQrCheckResult.succeeded: 803,
 };
 
-SentNestCaptchaResponse _$SentNestCaptchaResponseFromJson(
+VerifyNestCaptchaResponse _$VerifyNestCaptchaResponseFromJson(
         Map<String, dynamic> json) =>
-    SentNestCaptchaResponse(
+    VerifyNestCaptchaResponse(
       code: json['code'] as int? ?? 404,
       data: json['data'] as bool? ?? false,
       message: json['message'] as String? ?? '',
     );
 
-Map<String, dynamic> _$SentNestCaptchaResponseToJson(
-        SentNestCaptchaResponse instance) =>
-    <String, dynamic>{
-      'code': instance.code,
-      'data': instance.data,
-      'message': instance.message,
-    };
+SentNestVerifyResponse _$SentNestVerifyResponseFromJson(
+        Map<String, dynamic> json) =>
+    SentNestVerifyResponse(
+      code: json['code'] as int? ?? 404,
+      data: json['data'] as bool? ?? false,
+      message: json['message'] as String? ?? '',
+    );

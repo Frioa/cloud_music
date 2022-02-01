@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'login.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class NestQrKeyResponse {
   final int code;
   final String unikey;
@@ -19,7 +19,7 @@ class NestQrKeyResponse {
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class NestQrCreateResponse {
   final String qrurl;
   final String qrimg;
@@ -51,7 +51,7 @@ enum NestQrCheckResult {
   succeeded,
 }
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class NestQrCheckResponse {
   @JsonKey(unknownEnumValue: NestQrCheckResult.expire)
   final NestQrCheckResult code;
@@ -72,22 +72,42 @@ class NestQrCheckResponse {
   }
 }
 
-@JsonSerializable()
-class SentNestCaptchaResponse {
+@JsonSerializable(createToJson: false)
+class VerifyNestCaptchaResponse {
   final int code;
 
   final bool data;
 
   final String message;
 
-  SentNestCaptchaResponse({this.code = 404, this.data = false, this.message = ''});
+  VerifyNestCaptchaResponse({this.code = 404, this.data = false, this.message = ''});
 
-  factory SentNestCaptchaResponse.fromJson(Map<String, dynamic> json) {
-    return _$SentNestCaptchaResponseFromJson(json);
+  factory VerifyNestCaptchaResponse.fromJson(Map<String, dynamic> json) {
+    return _$VerifyNestCaptchaResponseFromJson(json);
   }
 
   @override
   String toString() {
-    return 'SentNestCaptchaResponse{code: $code, data: $data, message: $message}';
+    return 'VerifyNestCaptchaResponse{code: $code, data: $data, message: $message}';
+  }
+}
+
+@JsonSerializable(createToJson: false)
+class SentNestVerifyResponse {
+  final int code;
+
+  final bool data;
+
+  final String message;
+
+  SentNestVerifyResponse({this.code = 404, this.data = false, this.message = ''});
+
+  factory SentNestVerifyResponse.fromJson(Map<String, dynamic> json) {
+    return _$SentNestVerifyResponseFromJson(json);
+  }
+
+  @override
+  String toString() {
+    return 'SentNestVerifyResponse{code: $code, data: $data, message: $message}';
   }
 }

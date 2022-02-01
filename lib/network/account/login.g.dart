@@ -73,18 +73,37 @@ class _NestLoginClient implements NestLoginClient {
   }
 
   @override
-  Future<SentNestCaptchaResponse> sentCaptcha(phone) async {
+  Future<VerifyNestCaptchaResponse> sentCaptcha(phone) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'phone': phone};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<SentNestCaptchaResponse>(
+        _setStreamType<VerifyNestCaptchaResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/captcha/sent',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = SentNestCaptchaResponse.fromJson(_result.data!);
+    final value = VerifyNestCaptchaResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<VerifyNestCaptchaResponse> verifyCaptcha(phone, captcha) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'phone': phone,
+      r'captcha': captcha
+    };
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<VerifyNestCaptchaResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/captcha/verify',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = VerifyNestCaptchaResponse.fromJson(_result.data!);
     return value;
   }
 

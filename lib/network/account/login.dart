@@ -46,5 +46,19 @@ abstract class NestLoginClient {
   /// 可选参数 : ctcode: 国家区号,默认 86 即中国
   ///
   @GET("/captcha/sent")
-  Future<SentNestCaptchaResponse> sentCaptcha(@Query("phone") String phone);
+  Future<VerifyNestCaptchaResponse> sentCaptcha(@Query("phone") String phone);
+
+  ///
+  /// 验证验证码
+  ///
+  /// 说明 : 调用此接口 ,传入手机号码和验证码, 可校验验证码是否正确
+  ///
+  /// 必选参数 : phone: 手机号码, captcha: 验证码
+  /// 可选参数 : ctcode: 国家区号,默认 86 即中国
+  ///
+  @GET("/captcha/verify")
+  Future<VerifyNestCaptchaResponse> verifyCaptcha(
+    @Query("phone") String phone,
+    @Query("captcha") String captcha,
+  );
 }

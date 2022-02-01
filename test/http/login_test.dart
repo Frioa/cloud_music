@@ -22,9 +22,16 @@ void main() async {
       });
     });
 
+    const phone = 'xxxxxxxxx';
     test('发送短信验证码', () async {
-      await client.sentCaptcha('xxxxxxxxx').then((value) {
+      await client.sentCaptcha(phone).then((value) async {
         logger.d('sentCaptcha $value');
+      });
+    });
+    test('验证短信验证码', () async {
+      const captcha = '7931';
+      await client.verifyCaptcha(phone, captcha).then((value) {
+        logger.d('sentVerify $value');
       });
     });
   });
