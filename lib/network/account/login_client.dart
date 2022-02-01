@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/http.dart';
 
-part 'login.g.dart';
+part 'login_client.g.dart';
 
 ///
 /// 登录
