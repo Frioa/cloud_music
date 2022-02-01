@@ -11,7 +11,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final player = PlayerJni();
+  final player = PlayerJni.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: () async {
                     await player.init();
                     await player.setDataSource(
-                        '/data/data/com.yqq.cloudmusic.cloud_music/cache/oceans.mp4');
+                        'http://vodkgeyttp8.vod.126.net/cloudmusic/3793/core/de43/667c55c652dbc078566ca5b4447a6e7b.mp4?wsSecret=f8b975678c101b00bb97d13e74667ea0&wsTime=1643628520');
                   },
                   child: const Text("init"),
                 ),

@@ -18,6 +18,7 @@ dependencies:
   flutter_bloc: ^8.0.0
   cupertino_icons: ^1.0.2
   json_annotation: ^4.4.0
+  dio: ^4.0.4
   #  permission_handler: ^8.3.0
 
   media:
@@ -26,15 +27,16 @@ dependencies:
   flutter_screenutil: 5.0.3
 
   logger: ^1.1.0
-  mmkv: ^1.2.12
+  retrofit: ^3.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  retrofit_generator: ^4.0.1
+  build_runner: ^2.1.5
   flutter_lints: ^1.0.4
   json_serializable: ^6.1.1
-  build_runner: ^2.1.5
 
 
 flutter:

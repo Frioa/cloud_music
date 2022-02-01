@@ -4,8 +4,11 @@ import 'package:media/utils/logger_extensions.dart';
 
 const MethodChannel _methodChannel = MethodChannel('media');
 
+///
+/// TODO: 播放大视频OOM问题
+///
 class PlayerJni {
-  static late final PlayerJni _instance = PlayerJni();
+  static late final PlayerJni _instance = PlayerJni._();
 
   static PlayerJni get instance => _instance;
 
@@ -14,7 +17,7 @@ class PlayerJni {
   ValueChanged<int>? progress;
   ValueChanged<int>? error;
 
-  PlayerJni() {
+  PlayerJni._() {
     _methodChannel.setMethodCallHandler((call) async {
       final method = call.method;
       final arg = call.arguments as Map;
@@ -54,6 +57,7 @@ class PlayerJni {
     await _methodChannel.invokeMethod('stop');
   }
 
+  /// @time: 时间，单位"秒"
   Future<void> seek(double time) async {
     logger.d("seek time=$time");
     await _methodChannel.invokeMethod('seek', {"time": time});
