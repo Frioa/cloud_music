@@ -3,13 +3,6 @@
 part of 'login.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-Map<String, dynamic> _$NestLoginClientToJson(NestLoginClient instance) =>
-    <String, dynamic>{};
-
-// **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
 
@@ -17,7 +10,7 @@ Map<String, dynamic> _$NestLoginClientToJson(NestLoginClient instance) =>
 
 class _NestLoginClient implements NestLoginClient {
   _NestLoginClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://flutter-cloud-music-api.vercel.app/';
+    baseUrl ??= 'https://flutter-cloud-music-api.vercel.app';
   }
 
   final Dio _dio;
@@ -25,57 +18,73 @@ class _NestLoginClient implements NestLoginClient {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<QrKeyResponse>> getQrKey() async {
+  Future<HttpResponse<NestQrKeyResponse>> getQrKey() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<QrKeyResponse>>(
+        _setStreamType<HttpResponse<NestQrKeyResponse>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/login/qr/key',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = HttpResponse<QrKeyResponse>.fromJson(
+    final value = HttpResponse<NestQrKeyResponse>.fromJson(
       _result.data!,
-      (json) => QrKeyResponse.fromJson(json as Map<String, dynamic>),
+      (json) => NestQrKeyResponse.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }
 
   @override
-  Future<HttpResponse<QrCreateResponse>> getQrCreate(key,
+  Future<HttpResponse<NestQrCreateResponse>> getQrCreate(key,
       {qrimg = true}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'key': key, r'qrimg': qrimg};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<QrCreateResponse>>(
+        _setStreamType<HttpResponse<NestQrCreateResponse>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/login/qr/create',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = HttpResponse<QrCreateResponse>.fromJson(
+    final value = HttpResponse<NestQrCreateResponse>.fromJson(
       _result.data!,
-      (json) => QrCreateResponse.fromJson(json as Map<String, dynamic>),
+      (json) => NestQrCreateResponse.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }
 
   @override
-  Future<QrCheckResponse> getQrCheck(key) async {
+  Future<NestQrCheckResponse> getQrCheck(key) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'key': key};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<QrCheckResponse>(
+        _setStreamType<NestQrCheckResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/login/qr/check',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = QrCheckResponse.fromJson(_result.data!);
+    final value = NestQrCheckResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<SentNestCaptchaResponse> sentCaptcha(phone) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'phone': phone};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<SentNestCaptchaResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/captcha/sent',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = SentNestCaptchaResponse.fromJson(_result.data!);
     return value;
   }
 

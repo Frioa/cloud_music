@@ -1,0 +1,12 @@
+targets:
+  $default:
+    builders:
+      json_serializable:json_serializable:
+        generate_for:
+          - lib/model/**
+          - lib/network/**
+#      copy_with_extension_gen:copy_with_extension_gen:
+#        generate_for:
+#          - lib/debug/model/**
+#          - lib/model/**
+#          - lib/redux/**/*_state.dart

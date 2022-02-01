@@ -7,20 +7,20 @@ import 'package:retrofit/http.dart';
 part 'login.g.dart';
 
 @RestApi(baseUrl: Constants.nestBase)
-@JsonSerializable(createFactory: false)
+@JsonSerializable(createFactory: false, createToJson: false)
 abstract class NestLoginClient {
   factory NestLoginClient(Dio dio, {String baseUrl}) = _NestLoginClient;
 
   /// 二维码 key 生成接口
   @GET("/login/qr/key")
-  Future<HttpResponse<QrKeyResponse>> getQrKey();
+  Future<HttpResponse<NestQrKeyResponse>> getQrKey();
 
   /// 二维码生成接口
   ///
   /// 必选参数: key,由第一个接口生成
   // 可选参数: qrimg 传入后会额外返回二维码图片 base64 编码
   @GET("/login/qr/create")
-  Future<HttpResponse<QrCreateResponse>> getQrCreate(
+  Future<HttpResponse<NestQrCreateResponse>> getQrCreate(
     @Query("key") String key, {
     @Query("qrimg") bool qrimg = true,
   });
@@ -35,5 +35,16 @@ abstract class NestLoginClient {
   ///
   /// 必选参数: key,由第一个接口生成
   @GET("/login/qr/check")
-  Future<QrCheckResponse> getQrCheck(@Query("key") String key);
+  Future<NestQrCheckResponse> getQrCheck(@Query("key") String key);
+
+  ///
+  /// 发送验证码
+  ///
+  /// 说明 : 调用此接口 ,传入手机号码, 可发送验证码
+  ///
+  /// 必选参数 : phone: 手机号码
+  /// 可选参数 : ctcode: 国家区号,默认 86 即中国
+  ///
+  @GET("/captcha/sent")
+  Future<SentNestCaptchaResponse> sentCaptcha(@Query("phone") String phone);
 }
