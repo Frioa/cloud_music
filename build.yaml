@@ -5,8 +5,7 @@ targets:
         generate_for:
           - lib/model/**
           - lib/network/**
-#      copy_with_extension_gen:copy_with_extension_gen:
-#        generate_for:
-#          - lib/debug/model/**
-#          - lib/model/**
-#          - lib/redux/**/*_state.dart
+      copy_with_extension_gen:copy_with_extension_gen:
+        generate_for:
+          - lib/bloc/**
+          - lib/model/**

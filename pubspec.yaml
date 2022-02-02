@@ -14,6 +14,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  copy_with_extension: ^4.0.0
+  equatable: ^2.0.3
   ffi: ^1.1.2
   flutter_bloc: ^8.0.1
   cupertino_icons: ^1.0.2
@@ -33,6 +35,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  copy_with_extension_gen: ^4.0.0
   retrofit_generator: ^4.0.1
   build_runner: ^2.1.5
   flutter_lints: ^1.0.4
