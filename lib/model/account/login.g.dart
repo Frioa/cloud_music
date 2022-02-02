@@ -6,9 +6,8 @@ part of 'login.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-NestCallPhoneResponse _$NestCallPhoneResponseFromJson(
-        Map<String, dynamic> json) =>
-    NestCallPhoneResponse(
+NestLoginResponse _$NestLoginResponseFromJson(Map<String, dynamic> json) =>
+    NestLoginResponse(
       code: json['code'] as int? ?? 404,
       loginType: json['loginType'] as int? ?? -1,
       token: json['token'] as String? ?? '',

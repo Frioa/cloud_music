@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'login.g.dart';
 
 @JsonSerializable(createToJson: false)
-class NestCallPhoneResponse extends BaseHttpResponse {
+class NestLoginResponse extends BaseHttpResponse {
   final int loginType;
   final String token;
   final String cookie;
@@ -12,7 +12,7 @@ class NestCallPhoneResponse extends BaseHttpResponse {
   final NestProfile? profile;
   final List<NestBinding>? bindings;
 
-  NestCallPhoneResponse({
+  NestLoginResponse({
     int code = 404,
     this.loginType = -1,
     this.token = '',
@@ -22,13 +22,13 @@ class NestCallPhoneResponse extends BaseHttpResponse {
     this.bindings,
   }) : super(code);
 
-  factory NestCallPhoneResponse.fromJson(Map<String, dynamic> json) {
-    return _$NestCallPhoneResponseFromJson(json);
+  factory NestLoginResponse.fromJson(Map<String, dynamic> json) {
+    return _$NestLoginResponseFromJson(json);
   }
 
   @override
   String toString() {
-    return 'NestCallPhoneResponse{loginType: $loginType, token: $token, cookie: $cookie, account: $account, profile: $profile, bindings: $bindings}';
+    return 'NestLoginResponse{loginType: $loginType, token: $token, cookie: $cookie, account: $account, profile: $profile, bindings: $bindings}';
   }
 }
 

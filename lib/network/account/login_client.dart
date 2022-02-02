@@ -8,8 +8,8 @@ part 'login_client.g.dart';
 
 ///
 /// 登录
-// 说明 : 登录有三个接口,建议使用encodeURIComponent对密码编码或者使用POST请求,
-// 避免某些特殊字符无法解析,如#(#在 url 中会被识别为 hash,而不是 query)
+/// 说明 : 登录有三个接口,建议使用encodeURIComponent对密码编码或者使用POST请求,
+/// 避免某些特殊字符无法解析,如#(#在 url 中会被识别为 hash,而不是 query)
 ///
 @RestApi(baseUrl: Constants.nestBase)
 @JsonSerializable(createFactory: false, createToJson: false)
@@ -31,25 +31,53 @@ abstract class NestLoginClient {
   ///
   ///
   @GET("/login/cellphone")
-  Future<NestCallPhoneResponse> cellPhone(
+  Future<NestLoginResponse> cellPhone(
     @Query("phone") String phone,
     @Query("password") String password, {
     @Query("md5_password") String? md5Password,
     @Query("captcha") String? captcha,
   });
 
-  /// 二维码 key 生成接口
-  @GET("/login/qr/key")
-  Future<HttpResponse<NestQrKeyResponse>> getQrKey();
+  ///
+  /// 邮箱登录
+  ///
+  /// 必选参数 :
+  /// email: 163 网易邮箱, password: 密码
+  ///
+  /// 可选参数 :
+  /// md5_password: md5 加密后的密码,传入后 password 参数将失效
+  ///
+  /// 完成登录后 , 会在浏览器保存一个 Cookies 用作登录凭证 ,
+  /// 大部分 API 都需要用到这个 Cookies,非跨域情况请求会自动带上 Cookies,跨域情况参考调用前须知
+  ///
+  ///
+  @GET("/login")
+  Future<NestLoginResponse> email(
+    @Query("email") String email,
+    @Query("password") String password, {
+    @Query("md5_password") String? md5Password,
+  });
 
-  /// 二维码生成接口
+  /// 二维码登录：
+  ///
+  /// 说明: 二维码登录涉及到 3 个接口,调用务必带上时间戳,防止缓存。
+  ///
+  /// 1. 二维码 key 生成接口
+  @GET("/login/qr/key")
+  Future<HttpResponse<NestQrKeyResponse>> getQrKey({
+    @Query("timestamp") int? timestamp,
+  });
+
+  /// 二维码生成接口:
   ///
   /// 必选参数: key,由第一个接口生成
-  // 可选参数: qrimg 传入后会额外返回二维码图片 base64 编码
+  /// 可选参数: qrimg 传入后会额外返回二维码图片 base64 编码
+  ///
   @GET("/login/qr/create")
   Future<HttpResponse<NestQrCreateResponse>> getQrCreate(
     @Query("key") String key, {
     @Query("qrimg") bool qrimg = true,
+    @Query("timestamp") int? timestamp,
   });
 
   /// 二维码检测扫码状态接口
@@ -62,7 +90,10 @@ abstract class NestLoginClient {
   ///
   /// 必选参数: key,由第一个接口生成
   @GET("/login/qr/check")
-  Future<NestQrCheckResponse> getQrCheck(@Query("key") String key);
+  Future<NestQrCheckResponse> getQrCheck(
+    @Query("key") String key, {
+    @Query("timestamp") int? timestamp,
+  });
 
   ///
   /// 发送验证码

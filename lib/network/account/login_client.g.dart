@@ -18,7 +18,7 @@ class _NestLoginClient implements NestLoginClient {
   String? baseUrl;
 
   @override
-  Future<NestCallPhoneResponse> cellPhone(phone, password,
+  Future<NestLoginResponse> cellPhone(phone, password,
       {md5Password, captcha}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -31,19 +31,41 @@ class _NestLoginClient implements NestLoginClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<NestCallPhoneResponse>(
+        _setStreamType<NestLoginResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/login/cellphone',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = NestCallPhoneResponse.fromJson(_result.data!);
+    final value = NestLoginResponse.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<HttpResponse<NestQrKeyResponse>> getQrKey() async {
+  Future<NestLoginResponse> email(email, password, {md5Password}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'email': email,
+      r'password': password,
+      r'md5_password': md5Password
+    };
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<NestLoginResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/login',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = NestLoginResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<HttpResponse<NestQrKeyResponse>> getQrKey({timestamp}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'timestamp': timestamp};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -61,9 +83,14 @@ class _NestLoginClient implements NestLoginClient {
 
   @override
   Future<HttpResponse<NestQrCreateResponse>> getQrCreate(key,
-      {qrimg = true}) async {
+      {qrimg = true, timestamp}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'key': key, r'qrimg': qrimg};
+    final queryParameters = <String, dynamic>{
+      r'key': key,
+      r'qrimg': qrimg,
+      r'timestamp': timestamp
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -80,9 +107,13 @@ class _NestLoginClient implements NestLoginClient {
   }
 
   @override
-  Future<NestQrCheckResponse> getQrCheck(key) async {
+  Future<NestQrCheckResponse> getQrCheck(key, {timestamp}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'key': key};
+    final queryParameters = <String, dynamic>{
+      r'key': key,
+      r'timestamp': timestamp
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(

@@ -22,6 +22,13 @@ void main() async {
       });
     });
 
+    test('邮箱登录', () async {
+      const email = 'xxx@163.com';
+      await client.email(email, 'xxx').then((value) async {
+        logger.d('email $value');
+      });
+    });
+
     test('二维码登录', () async {
       String key = '';
       await client.getQrKey().then((it) async {
