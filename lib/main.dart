@@ -1,4 +1,4 @@
-import 'package:cloud_music/page/home_page.dart';
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,14 +11,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final PageRouterDelegate pageRouterDelegate = PageRouterDelegate();
+
     return ScreenUtilInit(
       builder: () {
-        return MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        return MaterialApp.router(
+          title: 'Cloud Music',
+          routerDelegate: pageRouterDelegate,
+          routeInformationParser: RouteParser(),
+          backButtonDispatcher: BackDispatcher(pageRouterDelegate),
         );
       },
     );
