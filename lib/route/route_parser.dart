@@ -21,6 +21,8 @@ class RouteParser extends RouteInformationParser<PageConfiguration> {
     switch (path) {
       case Routes.homePath:
         return SynchronousFuture(Routes.homePageConfig);
+      case Routes.loginPath:
+        return SynchronousFuture(Routes.loginPageConfig);
     }
     return SynchronousFuture(Routes.homePageConfig);
   }
@@ -31,6 +33,8 @@ class RouteParser extends RouteInformationParser<PageConfiguration> {
     switch (configuration.uiPage) {
       case Pages.home:
         return const RouteInformation(location: Routes.homePath);
+      case Pages.login:
+        return const RouteInformation(location: Routes.loginPath);
     }
   }
 }

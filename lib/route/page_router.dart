@@ -5,10 +5,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:media/utils/logger_extensions.dart';
 
-class PageRouterDelegate extends RouterDelegate<PageConfiguration>
+///
+/// TODO:1. onGenerateRoute，等接口的作用。
+/// 2. 构造函数初始化 [_pages] 略搓。
+///
+class PageRouter extends RouterDelegate<PageConfiguration>
     with PopNavigatorRouterDelegateMixin<PageConfiguration>, ChangeNotifier {
-  PageRouterDelegate() {
-    addPage(Routes.homePageConfig);
+  PageRouter() {
+    _addPage(Routes.homePageConfig);
   }
 
   final List<MaterialPage> _pages = [];
@@ -16,11 +20,11 @@ class PageRouterDelegate extends RouterDelegate<PageConfiguration>
   /// Getter for a list that cannot be changed
   List<MaterialPage> get pages => List.unmodifiable(_pages);
 
-  static PageRouterDelegate of(BuildContext context) {
-    logger.d('');
+  static PageRouter of(BuildContext context) {
+    logger.d('PageRouter.of(context)');
     final delegate = Router.of(context).routerDelegate as RouterDelegate<Object>;
-    assert(delegate is PageRouterDelegate, 'Delegate type mismatch!');
-    return delegate as PageRouterDelegate;
+    assert(delegate is PageRouter, 'Delegate type mismatch!');
+    return delegate as PageRouter;
   }
 
   @override
@@ -44,7 +48,7 @@ class PageRouterDelegate extends RouterDelegate<PageConfiguration>
 
     if (shouldAddPage) {
       _pages.clear();
-      addPage(configuration);
+      _addPage(configuration);
     }
     return SynchronousFuture(null);
   }
@@ -64,7 +68,7 @@ class PageRouterDelegate extends RouterDelegate<PageConfiguration>
     if (_pages.isNotEmpty) {
       _pages.removeLast();
     }
-    addPage(newRoute);
+    _addPage(newRoute);
   }
 
   void setPath(List<MaterialPage> path) {
@@ -80,8 +84,7 @@ class PageRouterDelegate extends RouterDelegate<PageConfiguration>
 
   void push(PageConfiguration newRoute) {
     logger.d('push path: $newRoute');
-    addPage(newRoute);
-    notifyListeners();
+    _addPage(newRoute);
   }
 
   void pushWidget(Widget child, PageConfiguration newRoute) {
@@ -93,7 +96,7 @@ class PageRouterDelegate extends RouterDelegate<PageConfiguration>
     logger.d('addAll routes: $routes');
     _pages.clear();
     for (final route in routes) {
-      addPage(route);
+      _addPage(route);
     }
   }
 
@@ -103,24 +106,24 @@ class PageRouterDelegate extends RouterDelegate<PageConfiguration>
     if (canPop) {
       _removePage(_pages.last);
     }
-    notifyListeners();
   }
 
-  void addPage(PageConfiguration pageConfig) {
+  void _addPage(PageConfiguration pageConfig) {
     final shouldAddPage = _pages.isEmpty ||
         (_pages.last.arguments as PageConfiguration?)?.uiPage != pageConfig.uiPage;
 
-    logger.d('addPage pageConfig: $pageConfig shouldAddPage: $shouldAddPage');
+    logger.d('_addPage pageConfig: $pageConfig shouldAddPage: $shouldAddPage');
     if (shouldAddPage) {
       switch (pageConfig.uiPage) {
         case Pages.home:
           _addPageData(const HomePage(title: 'home'), Routes.homePageConfig);
           break;
-
-        default:
+        case Pages.login:
+          _addPageData(const LoginPage(), Routes.loginPageConfig);
           break;
       }
     }
+    notifyListeners();
   }
 
   void _addPageData(Widget child, PageConfiguration pageConfig) {
@@ -138,11 +141,11 @@ class PageRouterDelegate extends RouterDelegate<PageConfiguration>
     if (page != null) {
       _pages.remove(page);
     }
+    notifyListeners();
   }
 
   bool _onPopPage(Route<dynamic> route, dynamic result) {
     logger.d('_onPopPage: $route, result: $result');
-
     final didPop = route.didPop(result);
     if (!didPop) {
       return false;
@@ -161,7 +164,6 @@ class PageRouterDelegate extends RouterDelegate<PageConfiguration>
       key: navigatorKey,
       pages: pages,
       onPopPage: _onPopPage,
-      // transitionDelegate: NoAnimationTransitionDelegate(),
     );
   }
 }

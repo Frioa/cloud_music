@@ -11,7 +11,7 @@ part 'login_client.g.dart';
 /// 说明 : 登录有三个接口,建议使用encodeURIComponent对密码编码或者使用POST请求,
 /// 避免某些特殊字符无法解析,如#(#在 url 中会被识别为 hash,而不是 query)
 ///
-@RestApi(baseUrl: Constants.nestBase)
+@RestApi(baseUrl: Constants.nestBaseUrl)
 @JsonSerializable(createFactory: false, createToJson: false)
 abstract class NestLoginClient {
   factory NestLoginClient(Dio dio, {String baseUrl}) = _NestLoginClient;

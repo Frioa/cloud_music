@@ -1,3 +1,4 @@
+import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:media/media.dart';
 
@@ -57,6 +58,12 @@ class _HomePageState extends State<HomePage> {
                     player.stop();
                   },
                   child: const Text("stop"),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    PageRouter.of(context).push(Routes.loginPageConfig);
+                  },
+                  child: const Text("login"),
                 ),
               ],
             ),

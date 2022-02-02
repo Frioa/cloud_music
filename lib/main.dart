@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final PageRouterDelegate pageRouterDelegate = PageRouterDelegate();
+    final PageRouter pageRouterDelegate = PageRouter();
 
     return ScreenUtilInit(
       builder: () {

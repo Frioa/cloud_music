@@ -15,7 +15,6 @@ class MediaSurfaceView(
 
     init {
         surfaceView.holder.addCallback(callback)
-        println("初始化 MediaSurfaceView width= ${surfaceView.width}, height ${surfaceView.height}")
     }
 
 
@@ -24,7 +23,6 @@ class MediaSurfaceView(
     }
 
     override fun dispose() {
-        println(" MediaSurfaceView() dispose ")
         surfaceView.holder.removeCallback(callback)
     }
 

@@ -28,7 +28,6 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler {
         channel.setMethodCallHandler(this)
         val factory = MediaSurfaceViewFactory(object : SurfaceHolder.Callback {
             override fun surfaceCreated(holder: SurfaceHolder) {
-                println("surfaceCreated ")
                 setSurface(holder.surface)
             }
 
