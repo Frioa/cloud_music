@@ -14,7 +14,7 @@ class RouteParser extends RouteInformationParser<PageConfiguration> {
     logger.d('parseRouteInformation: uri: $uri');
 
     if (uri.pathSegments.isEmpty) {
-      return Future.value(Routes.homePageConfig);
+      return SynchronousFuture(Routes.homePageConfig);
     }
     final path = '/' + uri.pathSegments[0];
 
@@ -30,11 +30,6 @@ class RouteParser extends RouteInformationParser<PageConfiguration> {
   @override
   RouteInformation? restoreRouteInformation(PageConfiguration configuration) {
     logger.d('restoreRouteInformation: $configuration');
-    switch (configuration.uiPage) {
-      case Pages.home:
-        return const RouteInformation(location: Routes.homePath);
-      case Pages.login:
-        return const RouteInformation(location: Routes.loginPath);
-    }
+    return RouteInformation(location: configuration.path);
   }
 }

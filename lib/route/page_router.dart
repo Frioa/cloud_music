@@ -1,13 +1,12 @@
 import 'package:cloud_music/model/model.dart';
 import 'package:cloud_music/page/page.dart';
 import 'package:cloud_music/route/pages.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:media/utils/logger_extensions.dart';
 
 ///
 /// TODO:1. onGenerateRoute，等接口的作用。
-/// 2. 构造函数初始化 [_pages] 略搓。
 ///
 class PageRouter extends RouterDelegate<PageConfiguration>
     with PopNavigatorRouterDelegateMixin<PageConfiguration>, ChangeNotifier {
@@ -15,10 +14,8 @@ class PageRouter extends RouterDelegate<PageConfiguration>
     _addPage(Routes.homePageConfig);
   }
 
-  final List<MaterialPage> _pages = [];
-
-  /// Getter for a list that cannot be changed
-  List<MaterialPage> get pages => List.unmodifiable(_pages);
+  final GlobalKey<NavigatorState> key = GlobalKey();
+  final List<Page> _pages = [];
 
   static PageRouter of(BuildContext context) {
     logger.d('PageRouter.of(context)');
@@ -28,7 +25,7 @@ class PageRouter extends RouterDelegate<PageConfiguration>
   }
 
   @override
-  GlobalKey<NavigatorState> get navigatorKey => GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState> get navigatorKey => key;
 
   @override
   PageConfiguration? get currentConfiguration {
@@ -71,7 +68,7 @@ class PageRouter extends RouterDelegate<PageConfiguration>
     _addPage(newRoute);
   }
 
-  void setPath(List<MaterialPage> path) {
+  void setPath(List<Page> path) {
     logger.d('setPath path: $path');
     _pages.clear();
     _pages.addAll(path);
@@ -116,19 +113,19 @@ class PageRouter extends RouterDelegate<PageConfiguration>
     if (shouldAddPage) {
       switch (pageConfig.uiPage) {
         case Pages.home:
-          _addPageData(const HomePage(title: 'home'), Routes.homePageConfig);
+          _addPageData(Routes.homePageConfig.widget!, Routes.homePageConfig);
           break;
         case Pages.login:
           _addPageData(const LoginPage(), Routes.loginPageConfig);
           break;
       }
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   void _addPageData(Widget child, PageConfiguration pageConfig) {
     _pages.add(
-      MaterialPage(
+      CupertinoPage(
         child: child,
         key: ValueKey(pageConfig.key),
         name: pageConfig.path,
@@ -137,7 +134,7 @@ class PageRouter extends RouterDelegate<PageConfiguration>
     );
   }
 
-  void _removePage(MaterialPage? page) {
+  void _removePage(Page? page) {
     if (page != null) {
       _pages.remove(page);
     }
@@ -145,8 +142,9 @@ class PageRouter extends RouterDelegate<PageConfiguration>
   }
 
   bool _onPopPage(Route<dynamic> route, dynamic result) {
-    logger.d('_onPopPage: $route, result: $result');
     final didPop = route.didPop(result);
+    logger.d(
+        '_onPopPage: name=${(route as PageRoute).settings.name}, result: $result, didPop: $didPop');
     if (!didPop) {
       return false;
     }
@@ -162,7 +160,7 @@ class PageRouter extends RouterDelegate<PageConfiguration>
   Widget build(BuildContext context) {
     return Navigator(
       key: navigatorKey,
-      pages: pages,
+      pages: List.unmodifiable(_pages),
       onPopPage: _onPopPage,
     );
   }
