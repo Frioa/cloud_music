@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 TextButton(
                   onPressed: () async {
-                    PageRouter.of(context).push(Routes.loginPageConfig);
+                    R.of(context).push(Routes.loginPageConfig);
                   },
                   child: const Text("login"),
                 ),

@@ -13,6 +13,9 @@
   },
   "loginPage": {
     "title": "Login Page",
-    "hintText": "Phone"
+    "hintPhone": "Phone",
+    "hintCaptcha": "Captcha",
+    "btLogin": "Login"
+
   }
 }

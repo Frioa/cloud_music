@@ -1,8 +1,8 @@
 import 'package:cloud_music/bloc/app/app.dart';
 import 'package:cloud_music/bloc/common/common.dart';
+import 'package:cloud_music/utils/logger_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:media/utils/logger_extensions.dart';
 
 enum AppEvent {
   lightTheme,

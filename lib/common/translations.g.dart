@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 16 (8.0 per locale)
+ * Strings: 20 (10.0 per locale)
  *
- * Built on 2022-02-04 at 04:04 UTC
+ * Built on 2022-02-04 at 14:34 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -411,7 +411,9 @@ class _TranslationsLoginPageEn {
 
 	// Translations
 	String get title => 'Login Page';
-	String get hintText => 'Phone';
+	String get hintPhone => 'Phone';
+	String get hintCaptcha => 'Captcha';
+	String get btLogin => 'Login';
 }
 
 // Path: <root>
@@ -480,7 +482,9 @@ class _TranslationsLoginPageCn implements _TranslationsLoginPageEn {
 
 	// Translations
 	@override String get title => '登录页';
-	@override String get hintText => '手机号';
+	@override String get hintPhone => '手机号';
+	@override String get hintCaptcha => '验证码';
+	@override String get btLogin => '登录';
 }
 
 /// Flat map(s) containing all translations.
@@ -498,7 +502,9 @@ extension on _TranslationsEn {
 			'locales.en': 'English',
 			'locales.de': 'German',
 			'loginPage.title': 'Login Page',
-			'loginPage.hintText': 'Phone',
+			'loginPage.hintPhone': 'Phone',
+			'loginPage.hintCaptcha': 'Captcha',
+			'loginPage.btLogin': 'Login',
 		};
 	}
 }
@@ -515,7 +521,9 @@ extension on _TranslationsCn {
 			'locales.en': 'Englisch',
 			'locales.de': 'Deutsch',
 			'loginPage.title': '登录页',
-			'loginPage.hintText': '手机号',
+			'loginPage.hintPhone': '手机号',
+			'loginPage.hintCaptcha': '验证码',
+			'loginPage.btLogin': '登录',
 		};
 	}
 }

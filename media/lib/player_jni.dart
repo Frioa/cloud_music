@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:media/utils/logger_extensions.dart';
+import 'package:media/utils/logger.dart';
 
 const MethodChannel _methodChannel = MethodChannel('media');
 

@@ -1,11 +1,15 @@
 import 'package:cloud_music/bloc/bloc.dart';
+import 'package:cloud_music/network/network.dart';
 import 'package:cloud_music/route/routes.dart';
 import 'package:cloud_music/widget/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cloud_music/common/common.dart';
 
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  initDio();
   LocaleSettings.useDeviceLocale(); // initialize with the right locale
   LocaleSettings.setLocale(AppLocale.cn);
 
@@ -18,7 +22,7 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final PageRouter pageRouterDelegate = PageRouter();
+  final R pageRouterDelegate = R();
   final RouteParser parser = RouteParser();
 
   late final BackDispatcher backDispatcher = BackDispatcher(pageRouterDelegate);

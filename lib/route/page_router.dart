@@ -3,25 +3,25 @@ import 'package:cloud_music/page/page.dart';
 import 'package:cloud_music/route/pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:media/utils/logger_extensions.dart';
+import 'package:media/utils/logger.dart';
 
 ///
 /// TODO:1. onGenerateRoute，等接口的作用。
 ///
-class PageRouter extends RouterDelegate<PageConfiguration>
+class R extends RouterDelegate<PageConfiguration>
     with PopNavigatorRouterDelegateMixin<PageConfiguration>, ChangeNotifier {
-  PageRouter() {
+  R() {
     _addPage(Routes.homePageConfig);
   }
 
   final GlobalKey<NavigatorState> key = GlobalKey();
   final List<Page> _pages = [];
 
-  static PageRouter of(BuildContext context) {
+  static R of(BuildContext context) {
     logger.d('PageRouter.of(context)');
     final delegate = Router.of(context).routerDelegate as RouterDelegate<Object>;
-    assert(delegate is PageRouter, 'Delegate type mismatch!');
-    return delegate as PageRouter;
+    assert(delegate is R, 'Delegate type mismatch!');
+    return delegate as R;
   }
 
   @override

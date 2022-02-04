@@ -119,4 +119,12 @@ abstract class NestLoginClient {
     @Query("phone") String phone,
     @Query("captcha") String captcha,
   );
+
+  ///
+  /// 登录状态
+  ///
+  // 说明 : 调用此接口,可获取登录状态
+  //
+  @GET("/login/status")
+  Future<NestLoginResponse> loginStatus();
 }

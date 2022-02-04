@@ -1,4 +1,5 @@
 import 'package:cloud_music/bloc/bloc.dart';
+import 'package:cloud_music/bloc/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/common/common.dart';
 
@@ -27,6 +28,7 @@ class _BlocWrapperState extends State<BlocWrapper> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AppBloc>(create: (_) => AppBloc()),
+        BlocProvider<LoginBloc>(create: (_) => LoginBloc()),
       ],
       child: TranslationProvider(child: widget.child),
     );

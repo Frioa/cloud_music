@@ -14,6 +14,8 @@
 
   "loginPage": {
     "title": "登录页",
-    "hintText": "手机号"
+    "hintPhone": "手机号",
+    "hintCaptcha": "验证码",
+    "btLogin": "登录"
   }
 }

@@ -1,8 +1,8 @@
+import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/model/model.dart';
 import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:media/utils/logger_extensions.dart';
 
 class RouteParser extends RouteInformationParser<PageConfiguration> {
   @override

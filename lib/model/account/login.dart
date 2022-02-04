@@ -1,8 +1,10 @@
 import 'package:cloud_music/model/common/http.dart';
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'login.g.dart';
 
+@CopyWith()
 @JsonSerializable(createToJson: false)
 class NestLoginResponse extends BaseHttpResponse {
   final int loginType;

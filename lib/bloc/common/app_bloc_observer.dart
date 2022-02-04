@@ -1,5 +1,4 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:media/utils/logger_extensions.dart';
+import 'package:cloud_music/common/common.dart';
 
 /// Custom [BlocObserver] that observes all bloc and cubit state changes.
 class AppBlocObserver extends BlocObserver {
