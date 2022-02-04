@@ -43,7 +43,7 @@ public:
 
     void setWindow(ANativeWindow *window_);
 
-    void setSurfaceTexture(ASurfaceTexture *surface);
+//    void setSurfaceTexture(ASurfaceTexture *surface);
 
     Callback *callback = 0;
 //    JavaCallback *javaCallback = 0;
@@ -67,7 +67,7 @@ private:
 
     pthread_t startTask = 0;
     AVFormatContext *avFormatContext = nullptr;
-    ASurfaceTexture *surfaceTexture = nullptr;
+//    ASurfaceTexture *surfaceTexture = nullptr;
 public:
     ANativeWindow *window = 0;
 };

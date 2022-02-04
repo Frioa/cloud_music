@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 28
+        minSdkVersion 19
         externalNativeBuild {
             cmake {
                 cppFlags ''

@@ -5,8 +5,9 @@
 #ifndef MEDIA_VIDEOCHANNEL_H
 #define MEDIA_VIDEOCHANNEL_H
 
-#include <android/surface_texture.h>
+//#include <android/surface_texture.h>
 #include "AudioChannel.h"
+#include <android/native_window.h>
 
 
 class VideoChannel : public BaseChannel {
@@ -29,7 +30,7 @@ public:
 
     void setWindow(ANativeWindow *window_);
 
-    void setSurfaceTexture(ASurfaceTexture *pTexture);
+//    void setSurfaceTexture(ASurfaceTexture *pTexture);
 
 private:
     void _play();
@@ -40,7 +41,7 @@ private:
     pthread_t videoDecodeTask = 0;
     pthread_t videoPlayTask = 0;
     bool isPlaying = false;
-    ASurfaceTexture *pTexture = 0;
+//    ASurfaceTexture *pTexture = 0;
 
     ANativeWindow *window = 0;
 public:

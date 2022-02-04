@@ -183,14 +183,14 @@ void VideoChannel::setWindow(ANativeWindow *window) {
 }
 
 
-void VideoChannel::setSurfaceTexture(ASurfaceTexture *texture) {
-    pthread_mutex_lock(&surfaceMutex);
-    if (pTexture) {
-        ASurfaceTexture_release(pTexture);
-    }
-    pTexture = texture;
-    pthread_mutex_unlock(&surfaceMutex);
-}
+//void VideoChannel::setSurfaceTexture(ASurfaceTexture *texture) {
+//    pthread_mutex_lock(&surfaceMutex);
+//    if (pTexture) {
+//        ASurfaceTexture_release(pTexture);
+//    }
+//    pTexture = texture;
+//    pthread_mutex_unlock(&surfaceMutex);
+//}
 
 void VideoChannel::onDraw(uint8_t **data, int *linesize, int width, int height) {
     pthread_mutex_lock(&surfaceMutex);

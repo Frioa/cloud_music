@@ -293,12 +293,12 @@ void Player::release() {
 }
 
 
-void Player::setSurfaceTexture(ASurfaceTexture *surface) {
-    surfaceTexture = surface;
-    if (videoChannel) {
-        videoChannel->setSurfaceTexture(surfaceTexture);
-    }
-}
+//void Player::setSurfaceTexture(ASurfaceTexture *surface) {
+//    surfaceTexture = surface;
+//    if (videoChannel) {
+//        videoChannel->setSurfaceTexture(surfaceTexture);
+//    }
+//}
 
 void Player::setWindow(ANativeWindow *window_) {
     window = window_;
