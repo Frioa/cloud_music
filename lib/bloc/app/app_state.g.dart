@@ -7,6 +7,8 @@ part of 'app_state.dart';
 // **************************************************************************
 
 abstract class _$AppStateCWProxy {
+  AppState nestLoginResponse(NestLoginResponse nestLoginResponse);
+
   AppState theme(ThemeData theme);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AppState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -16,6 +18,7 @@ abstract class _$AppStateCWProxy {
   /// AppState(...).copyWith(id: 12, name: "My name")
   /// ````
   AppState call({
+    NestLoginResponse? nestLoginResponse,
     ThemeData? theme,
   });
 }
@@ -25,6 +28,10 @@ class _$AppStateCWProxyImpl implements _$AppStateCWProxy {
   final AppState _value;
 
   const _$AppStateCWProxyImpl(this._value);
+
+  @override
+  AppState nestLoginResponse(NestLoginResponse nestLoginResponse) =>
+      this(nestLoginResponse: nestLoginResponse);
 
   @override
   AppState theme(ThemeData theme) => this(theme: theme);
@@ -38,10 +45,16 @@ class _$AppStateCWProxyImpl implements _$AppStateCWProxy {
   /// AppState(...).copyWith(id: 12, name: "My name")
   /// ````
   AppState call({
+    Object? nestLoginResponse = const $CopyWithPlaceholder(),
     Object? theme = const $CopyWithPlaceholder(),
   }) {
     return AppState(
-      theme: theme == const $CopyWithPlaceholder()
+      nestLoginResponse: nestLoginResponse == const $CopyWithPlaceholder() ||
+              nestLoginResponse == null
+          ? _value.nestLoginResponse
+          // ignore: cast_nullable_to_non_nullable
+          : nestLoginResponse as NestLoginResponse,
+      theme: theme == const $CopyWithPlaceholder() || theme == null
           ? _value.theme
           // ignore: cast_nullable_to_non_nullable
           : theme as ThemeData,

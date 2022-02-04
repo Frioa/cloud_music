@@ -3,8 +3,12 @@ import 'package:cloud_music/route/routes.dart';
 import 'package:cloud_music/widget/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cloud_music/common/common.dart';
 
 void main() {
+  LocaleSettings.useDeviceLocale(); // initialize with the right locale
+  LocaleSettings.setLocale(AppLocale.cn);
+
   BlocOverrides.runZoned(
     () => runApp(MyApp()),
     blocObserver: AppBlocObserver(),
@@ -16,6 +20,7 @@ class MyApp extends StatelessWidget {
 
   final PageRouter pageRouterDelegate = PageRouter();
   final RouteParser parser = RouteParser();
+
   late final BackDispatcher backDispatcher = BackDispatcher(pageRouterDelegate);
 
   @override

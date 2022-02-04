@@ -1,0 +1,18 @@
+{
+  "mainScreen": {
+    "title": "An English Title",
+    "counter": {
+      "one": "You pressed $count time.",
+      "other": "You pressed $count times."
+    },
+    "tapMe": "Tap me"
+  },
+  "locales": {
+    "en": "English",
+    "de": "German"
+  },
+  "loginPage": {
+    "title": "Login Page",
+    "hintText": "Phone"
+  }
+}

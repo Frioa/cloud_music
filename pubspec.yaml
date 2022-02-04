@@ -13,10 +13,13 @@ parameters:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   copy_with_extension: ^4.0.0
   equatable: ^2.0.3
   ffi: ^1.1.2
+  fast_i18n: ^5.9.0
   flutter_bloc: ^8.0.1
   cupertino_icons: ^1.0.2
   json_annotation: ^4.4.0
@@ -45,6 +48,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/
+
 
   uses-material-design: true
 

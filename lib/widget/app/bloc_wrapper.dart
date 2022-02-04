@@ -1,5 +1,6 @@
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_music/common/common.dart';
 
 class BlocWrapper extends StatefulWidget {
   final Widget child;
@@ -27,7 +28,7 @@ class _BlocWrapperState extends State<BlocWrapper> {
       providers: [
         BlocProvider<AppBloc>(create: (_) => AppBloc()),
       ],
-      child: widget.child,
+      child: TranslationProvider(child: widget.child),
     );
   }
 }

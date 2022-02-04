@@ -9,3 +9,9 @@ targets:
         generate_for:
           - lib/bloc/**
           - lib/model/**
+      fast_i18n:
+        options:
+          input_directory: lib/i18n
+          output_directory: lib/common
+          output_file_name: translations.g.dart
+          translate_var: S

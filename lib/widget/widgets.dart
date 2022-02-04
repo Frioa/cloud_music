@@ -1,1 +1,1 @@
-export 'app/bloc_wrapper.dart';
+export 'app/app.dart';

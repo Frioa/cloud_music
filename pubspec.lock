@@ -168,7 +168,7 @@ packages:
       name: copy_with_extension_gen
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.0.0"
+    version: "4.0.1"
   crypto:
     dependency: transitive
     description:
@@ -176,6 +176,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.1"
+  csv:
+    dependency: transitive
+    description:
+      name: csv
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "5.0.1"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -211,6 +218,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0"
+  fast_i18n:
+    dependency: "direct main"
+    description:
+      name: fast_i18n
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "5.9.0"
   ffi:
     dependency: "direct main"
     description:
@@ -251,6 +265,11 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.4"
+  flutter_localizations:
+    dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -298,6 +317,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "4.0.0"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.17.0"
   io:
     dependency: transitive
     description:

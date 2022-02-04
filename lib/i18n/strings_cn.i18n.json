@@ -1,0 +1,19 @@
+{
+  "mainScreen": {
+    "title": "Ein deutscher Titel",
+    "counter": {
+      "one": "Du hast einmal gedrückt.",
+      "other": "Du hast $count mal gedrückt."
+    },
+    "tapMe": "Drück mich"
+  },
+  "locales": {
+    "en": "Englisch",
+    "de": "Deutsch"
+  },
+
+  "loginPage": {
+    "title": "登录页",
+    "hintText": "手机号"
+  }
+}

@@ -1,6 +1,4 @@
-import 'package:cloud_music/bloc/bloc.dart';
-import 'package:cloud_music/route/routes.dart';
-import 'package:cloud_music/utils/extension/ui_extension.dart';
+import 'package:cloud_music/common/common.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,33 +9,23 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  @override
-  void initState() {
-    super.initState();
-    addPostFrame(() {
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   // NestLoginClient(dio).;
+  //   // addPostFrame(() {});
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('登录页')),
+      appBar: AppBar(title: Text(S.loginPage.title)),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            TextButton(
-              onPressed: () async {
-                context.read<AppBloc>().add(AppEvent.darkTheme);
-              },
-              child: const Text("toggleTheme"),
-            ),
-            TextButton(
-              onPressed: () async {
-                PageRouter.of(context).push(Routes.loginPageConfig);
-              },
-              child: const Text("push"),
-            ),
+            // InputWidget(hintText: '手机号',),
+            // InputWidget(textInputType: TextInputType.),
           ],
         ),
       ),
