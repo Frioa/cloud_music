@@ -1,7 +1,6 @@
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/network/network.dart';
 import 'package:cloud_music/route/routes.dart';
-import 'package:cloud_music/widget/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cloud_music/common/common.dart';

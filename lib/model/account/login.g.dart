@@ -122,6 +122,80 @@ extension $NestLoginResponseCopyWith on NestLoginResponse {
       _$NestLoginResponseCWProxyImpl(this);
 }
 
+abstract class _$NestLoginStatusResponseCWProxy {
+  NestLoginStatusResponse account(NestAccount? account);
+
+  NestLoginStatusResponse code(int code);
+
+  NestLoginStatusResponse profile(NestProfile? profile);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NestLoginStatusResponse(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// NestLoginStatusResponse(...).copyWith(id: 12, name: "My name")
+  /// ````
+  NestLoginStatusResponse call({
+    NestAccount? account,
+    int? code,
+    NestProfile? profile,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfNestLoginStatusResponse.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfNestLoginStatusResponse.copyWith.fieldName(...)`
+class _$NestLoginStatusResponseCWProxyImpl
+    implements _$NestLoginStatusResponseCWProxy {
+  final NestLoginStatusResponse _value;
+
+  const _$NestLoginStatusResponseCWProxyImpl(this._value);
+
+  @override
+  NestLoginStatusResponse account(NestAccount? account) =>
+      this(account: account);
+
+  @override
+  NestLoginStatusResponse code(int code) => this(code: code);
+
+  @override
+  NestLoginStatusResponse profile(NestProfile? profile) =>
+      this(profile: profile);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NestLoginStatusResponse(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// NestLoginStatusResponse(...).copyWith(id: 12, name: "My name")
+  /// ````
+  NestLoginStatusResponse call({
+    Object? account = const $CopyWithPlaceholder(),
+    Object? code = const $CopyWithPlaceholder(),
+    Object? profile = const $CopyWithPlaceholder(),
+  }) {
+    return NestLoginStatusResponse(
+      account: account == const $CopyWithPlaceholder()
+          ? _value.account
+          // ignore: cast_nullable_to_non_nullable
+          : account as NestAccount?,
+      code: code == const $CopyWithPlaceholder() || code == null
+          ? _value.code
+          // ignore: cast_nullable_to_non_nullable
+          : code as int,
+      profile: profile == const $CopyWithPlaceholder()
+          ? _value.profile
+          // ignore: cast_nullable_to_non_nullable
+          : profile as NestProfile?,
+    );
+  }
+}
+
+extension $NestLoginStatusResponseCopyWith on NestLoginStatusResponse {
+  /// Returns a callable class that can be used as follows: `instanceOfclass NestLoginStatusResponse extends BaseHttpResponse.name.copyWith(...)` or like so:`instanceOfclass NestLoginStatusResponse extends BaseHttpResponse.name.copyWith.fieldName(...)`.
+  _$NestLoginStatusResponseCWProxy get copyWith =>
+      _$NestLoginStatusResponseCWProxyImpl(this);
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -143,6 +217,18 @@ NestLoginResponse _$NestLoginResponseFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
+NestLoginStatusResponse _$NestLoginStatusResponseFromJson(
+        Map<String, dynamic> json) =>
+    NestLoginStatusResponse(
+      code: json['code'] as int? ?? 404,
+      account: json['account'] == null
+          ? null
+          : NestAccount.fromJson(json['account'] as Map<String, dynamic>),
+      profile: json['profile'] == null
+          ? null
+          : NestProfile.fromJson(json['profile'] as Map<String, dynamic>),
+    );
+
 NestAccount _$NestAccountFromJson(Map<String, dynamic> json) => NestAccount(
       id: json['id'] as int?,
       userName: json['userName'] as String?,
@@ -159,6 +245,7 @@ NestAccount _$NestAccountFromJson(Map<String, dynamic> json) => NestAccount(
       viptypeVersion: json['viptypeVersion'] as int?,
       anonimousUser: json['anonimousUser'] as bool?,
       uninitialized: json['uninitialized'] as bool?,
+      paidFee: json['paidFee'] as bool?,
     );
 
 NestProfile _$NestProfileFromJson(Map<String, dynamic> json) => NestProfile(
@@ -173,8 +260,11 @@ NestProfile _$NestProfileFromJson(Map<String, dynamic> json) => NestProfile(
       vipType: json['vipType'] as int?,
       gender: json['gender'] as int?,
       avatarImgId: json['avatarImgId'] as int?,
+      accountType: json['accountType'] as int?,
       nickname: json['nickname'] as String?,
+      userName: json['userName'] as String?,
       backgroundImgId: json['backgroundImgId'] as int?,
+      shortUserName: json['shortUserName'] as String?,
       birthday: json['birthday'] as int?,
       city: json['city'] as int?,
       avatarUrl: json['avatarUrl'] as String?,
@@ -196,6 +286,13 @@ NestProfile _$NestProfileFromJson(Map<String, dynamic> json) => NestProfile(
       avatarDetail: json['avatarDetail'],
       playlistCount: json['playlistCount'] as int?,
       playlistBeSubscribedCount: json['playlistBeSubscribedCount'] as int?,
+      createTime: json['createTime'] as int?,
+      locationStatus: json['locationStatus'] as int?,
+      authenticated: json['authenticated'] as bool?,
+      lastLoginTime: json['lastLoginTime'] as int?,
+      lastLoginIP: json['lastLoginIP'] as String?,
+      authenticationTypes: json['authenticationTypes'] as int?,
+      anchor: json['anchor'] as bool?,
     );
 
 NestBinding _$NestBindingFromJson(Map<String, dynamic> json) => NestBinding(
@@ -208,6 +305,14 @@ NestBinding _$NestBindingFromJson(Map<String, dynamic> json) => NestBinding(
       refreshTime: json['refreshTime'] as int?,
       id: json['id'] as int?,
       type: json['type'] as int?,
+    );
+
+NestProfileVillageInfo _$NestProfileVillageInfoFromJson(
+        Map<String, dynamic> json) =>
+    NestProfileVillageInfo(
+      title: json['title'] as String?,
+      imageUrl: json['imageUrl'] as String?,
+      targetUrl: json['targetUrl'] as String?,
     );
 
 NestQrKeyResponse _$NestQrKeyResponseFromJson(Map<String, dynamic> json) =>

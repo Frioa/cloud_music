@@ -162,18 +162,37 @@ class _NestLoginClient implements NestLoginClient {
   }
 
   @override
-  Future<NestLoginResponse> loginStatus() async {
+  Future<HttpResponse<NestLoginStatusResponse>> loginStatus() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<NestLoginResponse>(
+        _setStreamType<HttpResponse<NestLoginStatusResponse>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/login/status',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = NestLoginResponse.fromJson(_result.data!);
+    final value = HttpResponse<NestLoginStatusResponse>.fromJson(
+      _result.data!,
+      (json) => NestLoginStatusResponse.fromJson(json as Map<String, dynamic>),
+    );
+    return value;
+  }
+
+  @override
+  Future<BaseHttpResponse> refreshLogin() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseHttpResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/login/refresh',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BaseHttpResponse.fromJson(_result.data!);
     return value;
   }
 

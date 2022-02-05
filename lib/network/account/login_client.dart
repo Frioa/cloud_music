@@ -126,5 +126,13 @@ abstract class NestLoginClient {
   // 说明 : 调用此接口,可获取登录状态
   //
   @GET("/login/status")
-  Future<NestLoginResponse> loginStatus();
+  Future<HttpResponse<NestLoginStatusResponse>> loginStatus();
+
+  ///
+  /// 刷新登录
+  ///
+  /// 说明 : 调用此接口 , 可刷新登录状态
+  //
+  @GET("/login/refresh")
+  Future<BaseHttpResponse> refreshLogin();
 }

@@ -34,6 +34,29 @@ class NestLoginResponse extends BaseHttpResponse {
   }
 }
 
+@CopyWith()
+@JsonSerializable(createToJson: false)
+class NestLoginStatusResponse extends BaseHttpResponse {
+  final NestAccount? account;
+  final NestProfile? profile;
+
+  NestLoginStatusResponse({
+    int code = 404,
+    this.account,
+    this.profile,
+  }) : super(code);
+
+  factory NestLoginStatusResponse.fromJson(Map<String, dynamic> json) {
+    return _$NestLoginStatusResponseFromJson(json);
+  }
+
+  @override
+  String toString() {
+    return 'NestLoginStatusResponse{account: $account, profile: $profile}';
+  }
+}
+
+
 @JsonSerializable(createToJson: false)
 class NestAccount {
   final int? id;
@@ -51,6 +74,7 @@ class NestAccount {
   final int? viptypeVersion;
   final bool? anonimousUser;
   final bool? uninitialized;
+  final bool? paidFee;
 
   NestAccount({
     this.id,
@@ -68,6 +92,7 @@ class NestAccount {
     this.viptypeVersion,
     this.anonimousUser,
     this.uninitialized,
+    this.paidFee,
   });
 
   factory NestAccount.fromJson(Map<String, dynamic> json) {
@@ -76,7 +101,7 @@ class NestAccount {
 
   @override
   String toString() {
-    return 'NestAccount{id: $id, userName: $userName, type: $type, status: $status, whitelistAuthority: $whitelistAuthority, createTime: $createTime, salt: $salt, tokenVersion: $tokenVersion, ban: $ban, baoyueVersion: $baoyueVersion, donateVersion: $donateVersion, vipType: $vipType, viptypeVersion: $viptypeVersion, anonimousUser: $anonimousUser, uninitialized: $uninitialized}';
+    return 'NestAccount{id: $id, userName: $userName, type: $type, status: $status, whitelistAuthority: $whitelistAuthority, createTime: $createTime, salt: $salt, tokenVersion: $tokenVersion, ban: $ban, baoyueVersion: $baoyueVersion, donateVersion: $donateVersion, vipType: $vipType, viptypeVersion: $viptypeVersion, anonimousUser: $anonimousUser, uninitialized: $uninitialized, paidFee: $paidFee}';
   }
 }
 
@@ -93,7 +118,10 @@ class NestProfile {
   final int? vipType;
   final int? gender;
   final int? avatarImgId;
+  final int? accountType;
   final String? nickname;
+  final String? userName;
+  final String? shortUserName;
   final int? backgroundImgId;
   final int? birthday;
   final int? city;
@@ -116,6 +144,13 @@ class NestProfile {
   final Object? avatarDetail;
   final int? playlistCount;
   final int? playlistBeSubscribedCount;
+  final int? createTime;
+  final int? locationStatus;
+  final bool? authenticated;
+  final int? lastLoginTime;
+  final String? lastLoginIP;
+  final int? authenticationTypes;
+  final bool? anchor;
 
   NestProfile({
     this.detailDescription,
@@ -129,8 +164,11 @@ class NestProfile {
     this.vipType,
     this.gender,
     this.avatarImgId,
+    this.accountType,
     this.nickname,
+    this.userName,
     this.backgroundImgId,
+    this.shortUserName,
     this.birthday,
     this.city,
     this.avatarUrl,
@@ -152,45 +190,18 @@ class NestProfile {
     this.avatarDetail,
     this.playlistCount,
     this.playlistBeSubscribedCount,
+    this.createTime,
+    this.locationStatus,
+    this.authenticated,
+    this.lastLoginTime,
+    this.lastLoginIP,
+    this.authenticationTypes,
+    this.anchor,
   });
 
   @override
   String toString() {
-    return 'NestProfile{detailDescription: $detailDescription,'
-        ' followed: $followed,'
-        ' backgroundUrl: $backgroundUrl, '
-        'backgroundImgIdStr: $backgroundImgIdStr, '
-        'avatarImgIdStr: $avatarImgIdStr, '
-        'userId: $userId, '
-        'userType: $userType, '
-        'accountStatus: $accountStatus, '
-        'vipType: $vipType, '
-        'gender: $gender, '
-        'avatarImgId: $avatarImgId, '
-        'nickname: $nickname, '
-        'backgroundImgId: $backgroundImgId, '
-        'birthday: $birthday, '
-        'city: $city, '
-        'avatarUrl: $avatarUrl, '
-        'province: $province, '
-        'defaultAvatar: $defaultAvatar, '
-        'expertTags: $expertTags, '
-        'experts: $experts, '
-        'mutual: $mutual, '
-        'remarkName: $remarkName, '
-        'authStatus: $authStatus, '
-        'djStatus: $djStatus, '
-        'description: $description, '
-        'signature: $signature, '
-        'authority: $authority, '
-        'avatarImgId_str: $avatarImgId_str, '
-        'followeds: $followeds, '
-        'follows: $follows, '
-        'eventCount: $eventCount, '
-        'avatarDetail: $avatarDetail,'
-        ' playlistCount: $playlistCount, '
-        'playlistBeSubscribedCount: $playlistBeSubscribedCount'
-        '}';
+    return 'NestProfile{detailDescription: $detailDescription, followed: $followed, backgroundUrl: $backgroundUrl, backgroundImgIdStr: $backgroundImgIdStr, avatarImgIdStr: $avatarImgIdStr, userId: $userId, userType: $userType, accountStatus: $accountStatus, vipType: $vipType, gender: $gender, avatarImgId: $avatarImgId, accountType: $accountType, nickname: $nickname, userName: $userName, shortUserName: $shortUserName, backgroundImgId: $backgroundImgId, birthday: $birthday, city: $city, avatarUrl: $avatarUrl, province: $province, defaultAvatar: $defaultAvatar, expertTags: $expertTags, experts: $experts, mutual: $mutual, remarkName: $remarkName, authStatus: $authStatus, djStatus: $djStatus, description: $description, signature: $signature, authority: $authority, avatarImgId_str: $avatarImgId_str, followeds: $followeds, follows: $follows, eventCount: $eventCount, avatarDetail: $avatarDetail, playlistCount: $playlistCount, playlistBeSubscribedCount: $playlistBeSubscribedCount, createTime: $createTime, locationStatus: $locationStatus, authenticated: $authenticated, lastLoginTime: $lastLoginTime, lastLoginIP: $lastLoginIP, authenticationTypes: $authenticationTypes, anchor: $anchor}';
   }
 
   factory NestProfile.fromJson(Map<String, dynamic> json) {
@@ -229,6 +240,28 @@ class NestBinding {
   @override
   String toString() {
     return 'NestBinding{userId: $userId, url: $url, expired: $expired, bindingTime: $bindingTime, tokenJsonStr: $tokenJsonStr, expiresIn: $expiresIn, refreshTime: $refreshTime, id: $id, type: $type}';
+  }
+}
+
+@JsonSerializable(createToJson: false)
+class NestProfileVillageInfo {
+  final String? title;
+  final String? imageUrl;
+  final String? targetUrl;
+
+  NestProfileVillageInfo({
+    this.title,
+    this.imageUrl,
+    this.targetUrl,
+  });
+
+  factory NestProfileVillageInfo.fromJson(Map<String, dynamic> json) {
+    return _$NestProfileVillageInfoFromJson(json);
+  }
+
+  @override
+  String toString() {
+    return 'NestProfileVillageInfo{title: $title, imageUrl: $imageUrl, targetUrl: $targetUrl}';
   }
 }
 

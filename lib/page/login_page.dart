@@ -1,6 +1,5 @@
 import 'package:cloud_music/bloc/login/login.dart';
 import 'package:cloud_music/common/common.dart';
-import 'package:cloud_music/model/account/login.dart';
 import 'package:cloud_music/network/network.dart';
 import 'package:cloud_music/route/routes.dart';
 import 'package:cloud_music/widget/widgets.dart';
@@ -26,14 +25,20 @@ class _LoginPageState extends State<LoginPage> {
     nestLoginClient
         .cellPhone(phoneController.text, '', captcha: captchaController.text)
         .then((response) {
-      context.read<LoginBloc>().add(response);
+      final action = LoginStateAction(nestLoginResponse: response, action: LoginAction.login);
+      context.read<LoginBloc>().add(action);
       R.of(context).pop();
     });
   }
 
   void requestStatus() {
     nestLoginClient.loginStatus().then((response) {
-      context.read<LoginBloc>().add(response);
+      final action = LoginStateAction(
+        nestLoginStatusResponse: response.data,
+        action: LoginAction.login,
+      );
+
+      context.read<LoginBloc>().add(action);
       R.of(context).pop();
     });
   }
