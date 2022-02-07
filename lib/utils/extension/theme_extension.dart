@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension ThemeExtension on ThemeData {
   bool get isLight => brightness == Brightness.light;
@@ -39,5 +40,9 @@ extension ThemeExtension on ThemeData {
   /// 用于辅助、次要的文字信息、icon
   Color get dividerColor2 {
     return isLight ? Colors.black.withOpacity(0.05) : Colors.white.withOpacity(0.03);
+  }
+
+  TextStyle get tsNavigator {
+    return TextStyle(color: primaryTextColor, fontSize: 17.2.sp);
   }
 }

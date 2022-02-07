@@ -15,7 +15,9 @@ class ThemeCubit extends Cubit<ThemeData> {
     ),
     scaffoldBackgroundColor: const Color(0xFFF2F4F5),
     dividerColor: Colors.black.withOpacity(0.1),
+    cardColor: Colors.white,
     brightness: Brightness.light,
+    appBarTheme: const AppBarTheme(backgroundColor: Color(0xFFF2F4F5), elevation: 0),
   );
 
   static late final darkTheme = ThemeData(
@@ -26,6 +28,11 @@ class ThemeCubit extends Cubit<ThemeData> {
     scaffoldBackgroundColor: const Color(0xFF111215),
     dividerColor: Colors.white.withOpacity(0.05),
     brightness: Brightness.dark,
+    cardColor: Colors.white,
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Color(0xFF111215),
+      elevation: 0,
+    ),
   );
 
   /// Toggles the current brightness between light and dark.
