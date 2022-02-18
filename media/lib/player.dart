@@ -45,6 +45,7 @@ class Player {
       Pointer.fromFunction<OnError>(_onError),
     );
 
+    methodChannel.setMethodCallHandler(null);
     methodChannel.setMethodCallHandler((call) async {
       final method = call.method;
 
