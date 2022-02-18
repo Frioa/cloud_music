@@ -17,6 +17,7 @@ class ThemeCubit extends Cubit<ThemeData> {
     dividerColor: Colors.black.withOpacity(0.1),
     cardColor: Colors.white,
     brightness: Brightness.light,
+    unselectedWidgetColor: const Color(0xff303134),
     appBarTheme: const AppBarTheme(backgroundColor: Color(0xFFF2F4F5), elevation: 0),
   );
 
@@ -28,11 +29,12 @@ class ThemeCubit extends Cubit<ThemeData> {
     scaffoldBackgroundColor: const Color(0xFF111215),
     dividerColor: Colors.white.withOpacity(0.05),
     brightness: Brightness.dark,
-    cardColor: Colors.white,
+    cardColor: const Color(0xffadaeb3),
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xFF111215),
       elevation: 0,
     ),
+    unselectedWidgetColor: const Color(0xffCCCCCC),
   );
 
   /// Toggles the current brightness between light and dark.

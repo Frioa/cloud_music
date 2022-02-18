@@ -21,10 +21,11 @@ class LoginState extends Equatable {
     this.nestUserDetailResponse,
   });
 
+  bool get isLogin => nestLoginStatusResponse?.profile != null;
+
   factory LoginState.initial() {
     return LoginState(
       nestLoginResponse: NestLoginResponse.fromJson(const {}),
-      nestLoginStatusResponse: NestLoginStatusResponse.fromJson(const {}),
       nestUserDetailResponse: NestUserDetailResponse.fromJson(const {}),
     );
   }

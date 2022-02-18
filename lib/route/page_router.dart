@@ -118,6 +118,9 @@ class R extends RouterDelegate<PageConfiguration>
         case Pages.login:
           _addPageData(const LoginPage(), Routes.loginPageConfig);
           break;
+        case Pages.dailySong:
+          _addPageData(const DailySongPage(), Routes.dailysongConfig);
+          break;
       }
       notifyListeners();
     }

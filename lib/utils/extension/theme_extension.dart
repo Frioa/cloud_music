@@ -1,3 +1,4 @@
+import 'package:cloud_music/bloc/common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,7 +35,9 @@ extension ThemeExtension on ThemeData {
 
   /// 用于辅助、次要的文字信息、icon
   Color get invalidBlack {
-    return isLight ? const Color(0xffCCCCCC) : const Color(0xff303134);
+    return isLight
+        ? ThemeCubit.lightTheme.unselectedWidgetColor
+        : ThemeCubit.darkTheme.unselectedWidgetColor;
   }
 
   /// 用于辅助、次要的文字信息、icon
@@ -43,6 +46,6 @@ extension ThemeExtension on ThemeData {
   }
 
   TextStyle get tsNavigator {
-    return TextStyle(color: primaryTextColor, fontSize: 17.2.sp);
+    return TextStyle(color: black1, fontSize: 17.2.sp);
   }
 }

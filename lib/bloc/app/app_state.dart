@@ -18,7 +18,7 @@ class AppState extends Equatable {
 
   factory AppState.initial() {
     return AppState(
-      theme: ThemeCubit.lightTheme,
+      theme: ThemeCubit.darkTheme,
       nestLoginResponse: NestLoginResponse.fromJson(const {}),
     );
   }

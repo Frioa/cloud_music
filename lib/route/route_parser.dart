@@ -23,6 +23,8 @@ class RouteParser extends RouteInformationParser<PageConfiguration> {
         return SynchronousFuture(Routes.homePageConfig);
       case Routes.loginPath:
         return SynchronousFuture(Routes.loginPageConfig);
+      case Routes.dailySongPath:
+        return SynchronousFuture(Routes.dailysongConfig);
     }
     return SynchronousFuture(Routes.homePageConfig);
   }

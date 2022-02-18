@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 20 (10.0 per locale)
+ * Strings: 22 (11.0 per locale)
  *
- * Built on 2022-02-05 at 06:39 UTC
+ * Built on 2022-02-18 at 14:14 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -372,6 +372,7 @@ class _TranslationsEn {
 	late final _TranslationsMainScreenEn mainScreen = _TranslationsMainScreenEn._(_root);
 	late final _TranslationsLocalesEn locales = _TranslationsLocalesEn._(_root);
 	late final _TranslationsLoginPageEn loginPage = _TranslationsLoginPageEn._(_root);
+	late final _TranslationsMyPageEn myPage = _TranslationsMyPageEn._(_root);
 }
 
 // Path: mainScreen
@@ -416,6 +417,17 @@ class _TranslationsLoginPageEn {
 	String get btLogin => 'Login';
 }
 
+// Path: myPage
+class _TranslationsMyPageEn {
+	_TranslationsMyPageEn._(this._root);
+
+	// ignore: unused_field
+	final _TranslationsEn _root;
+
+	// Translations
+	String get loginBtn => 'Login In';
+}
+
 // Path: <root>
 class _TranslationsCn implements _TranslationsEn {
 
@@ -443,6 +455,7 @@ class _TranslationsCn implements _TranslationsEn {
 	@override late final _TranslationsMainScreenCn mainScreen = _TranslationsMainScreenCn._(_root);
 	@override late final _TranslationsLocalesCn locales = _TranslationsLocalesCn._(_root);
 	@override late final _TranslationsLoginPageCn loginPage = _TranslationsLoginPageCn._(_root);
+	@override late final _TranslationsMyPageCn myPage = _TranslationsMyPageCn._(_root);
 }
 
 // Path: mainScreen
@@ -487,6 +500,17 @@ class _TranslationsLoginPageCn implements _TranslationsLoginPageEn {
 	@override String get btLogin => '登录';
 }
 
+// Path: myPage
+class _TranslationsMyPageCn implements _TranslationsMyPageEn {
+	_TranslationsMyPageCn._(this._root);
+
+	// ignore: unused_field
+	@override final _TranslationsCn _root;
+
+	// Translations
+	@override String get loginBtn => '立即登录>';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -505,6 +529,7 @@ extension on _TranslationsEn {
 			'loginPage.hintPhone': 'Phone',
 			'loginPage.hintCaptcha': 'Captcha',
 			'loginPage.btLogin': 'Login',
+			'myPage.loginBtn': 'Login In',
 		};
 	}
 }
@@ -524,6 +549,7 @@ extension on _TranslationsCn {
 			'loginPage.hintPhone': '手机号',
 			'loginPage.hintCaptcha': '验证码',
 			'loginPage.btLogin': '登录',
+			'myPage.loginBtn': '立即登录>',
 		};
 	}
 }

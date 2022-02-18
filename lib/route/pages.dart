@@ -5,11 +5,13 @@ import 'package:cloud_music/page/page.dart';
 enum Pages {
   home,
   login,
+  dailySong
 }
 
 class Routes {
   static const String homePath = '/';
   static const String loginPath = '/login';
+  static const String dailySongPath = '/dailysong';
 
   static final PageConfiguration homePageConfig = PageConfiguration(
     key: homePath,
@@ -23,5 +25,12 @@ class Routes {
     path: loginPath,
     uiPage: Pages.login,
     widget: const LoginPage(),
+  );
+
+  static final PageConfiguration dailysongConfig = PageConfiguration(
+    key: dailySongPath,
+    path: dailySongPath,
+    uiPage: Pages.dailySong,
+    widget: const DailySongPage(),
   );
 }

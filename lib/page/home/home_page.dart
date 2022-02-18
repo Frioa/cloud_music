@@ -2,6 +2,7 @@ import 'package:cloud_music/page/home/home.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
 import 'package:cloud_music/widget/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -63,12 +64,12 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.people), label: "我的"),
         ],
         selectedItemColor: Theme.of(context).primaryColor,
-        unselectedItemColor:Theme.of(context).invalidBlack,
+        unselectedItemColor: Theme.of(context).invalidBlack,
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: true,
         onTap: _onItemTapped,
         currentIndex: _selectedIndex,
-        selectedFontSize: 12.0,
+        selectedFontSize: 12.0.sp,
       ),
     );
   }

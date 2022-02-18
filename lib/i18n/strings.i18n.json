@@ -16,6 +16,8 @@
     "hintPhone": "Phone",
     "hintCaptcha": "Captcha",
     "btLogin": "Login"
-
+  },
+  "myPage": {
+    "loginBtn": "Login In"
   }
 }

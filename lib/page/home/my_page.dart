@@ -12,7 +12,7 @@ class MyPage extends StatefulWidget {
   _MyPageState createState() => _MyPageState();
 }
 
-class _MyPageState extends State<MyPage> {
+class _MyPageState extends State<MyPage>  with AutomaticKeepAliveClientMixin{
   @override
   void initState() {
     super.initState();
@@ -26,7 +26,11 @@ class _MyPageState extends State<MyPage> {
   }
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return ScaffoldWidget(
         appBar: AppBar(
           leading: IconButtonWidget(
