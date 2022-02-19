@@ -214,6 +214,7 @@ void AudioChannel::_play() {
 
 
 void AudioChannel::stop() {
+    LOGI("AudioChannel::stop");
     isPlaying = false;
     callback = nullptr;
     setEnable(false);
@@ -225,6 +226,7 @@ void AudioChannel::stop() {
         swr_free(&swrContext);
         swrContext = nullptr;
     }
+
 }
 
 void AudioChannel::_releaseOpenSLES() {
@@ -242,6 +244,7 @@ void AudioChannel::_releaseOpenSLES() {
         (*engineObj)->Destroy(engineObj);
         engineObj = nullptr;
     }
+
 }
 
 

@@ -28,9 +28,9 @@ class _DailySongPageState extends State<DailySongPage> {
   void request(String id) {
     SearchClient(dio).songUrl(id).then((value) async {
       songUrlResponse = value;
-       PlayerJni.instance.prepare = () {
-          PlayerJni.instance.start();
-       };
+      PlayerJni.instance.prepare = () {
+        PlayerJni.instance.start();
+      };
       await PlayerJni.instance.init();
       await PlayerJni.instance.setDataSource(value.data![0].url!);
 
@@ -54,14 +54,14 @@ class _DailySongPageState extends State<DailySongPage> {
       body: response == null
           ? const SizedBox()
           : Stack(
-            children: [
-              const SurfaceViewWidget(),
-              ListView.builder(
+              children: [
+                SizedBox(width: 1, height: 1, child: const SurfaceViewWidget()),
+                ListView.builder(
                   itemCount: response!.dailySongs.length,
                   itemBuilder: itemBuilder,
                 ),
-            ],
-          ),
+              ],
+            ),
     );
   }
 }

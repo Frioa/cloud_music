@@ -224,9 +224,9 @@ void Player::_start() {
         }
 
     }
-    isPlaying = false;
-    audioChannel->stop();
-    videoChannel->stop();
+
+    if (audioChannel) audioChannel->stop();
+    if (videoChannel) videoChannel->stop();
 }
 
 
