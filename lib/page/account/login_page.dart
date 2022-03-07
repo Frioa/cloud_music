@@ -27,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
         .then((response) {
       final action = LoginStateAction(nestLoginResponse: response, action: LoginAction.login);
       context.read<LoginBloc>().add(action);
+      requestStatus();
       R.of(context).pop();
     });
   }
@@ -35,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
     nestLoginClient.loginStatus().then((response) {
       final action = LoginStateAction(
         nestLoginStatusResponse: response.data,
-        action: LoginAction.login,
+        action: LoginAction.loginStatus,
       );
 
       context.read<LoginBloc>().add(action);

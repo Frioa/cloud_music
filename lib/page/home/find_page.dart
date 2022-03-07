@@ -15,15 +15,20 @@ class _FundPageState extends State<FindPage> {
   Widget build(BuildContext context) {
     return ScaffoldWidget(
       appBar: AppBar(
-        title: Text('find'),
+        title: const Text('find'),
       ),
       body: Column(
         children: [
           CupertinoButton(
-            child: Text('每日歌曲'),
+            child: const Text('每日歌曲'),
             onPressed: () {
-              print('object');
               R.of(context).push(Routes.dailysongConfig);
+            },
+          ),
+          CupertinoButton(
+            child: const Text('播放记录'),
+            onPressed: () {
+              R.of(context).push(Routes.playRecordConfig);
             },
           ),
         ],

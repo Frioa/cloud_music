@@ -13,7 +13,6 @@ class DailySongPage extends StatefulWidget {
 
 class _DailySongPageState extends State<DailySongPage> {
   DailySongResponse? response;
-  SongUrlResponse? songUrlResponse;
 
   @override
   void initState() {
@@ -27,7 +26,6 @@ class _DailySongPageState extends State<DailySongPage> {
 
   void request(String id) {
     SearchClient(dio).songUrl(id).then((value) async {
-      songUrlResponse = value;
       PlayerJni.instance.prepare = () {
         PlayerJni.instance.start();
       };

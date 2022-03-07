@@ -2,16 +2,20 @@ import 'package:cloud_music/model/model.dart';
 import 'package:cloud_music/page/account/login_page.dart';
 import 'package:cloud_music/page/page.dart';
 
+/// Todo: Navigator 2.0
 enum Pages {
   home,
   login,
-  dailySong
+  dailySong,
+  playRecord,
 }
 
 class Routes {
   static const String homePath = '/';
   static const String loginPath = '/login';
   static const String dailySongPath = '/dailysong';
+  static const String playRecord = '/playRecord';
+
 
   static final PageConfiguration homePageConfig = PageConfiguration(
     key: homePath,
@@ -32,5 +36,12 @@ class Routes {
     path: dailySongPath,
     uiPage: Pages.dailySong,
     widget: const DailySongPage(),
+  );
+
+  static final PageConfiguration playRecordConfig = PageConfiguration(
+    key: playRecord,
+    path: playRecord,
+    uiPage: Pages.playRecord,
+    widget: const PlayRecordPage(),
   );
 }

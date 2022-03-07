@@ -19,5 +19,8 @@
   },
   "myPage": {
     "loginBtn": "Login In"
+  },
+  "playRecordPage": {
+    "title": "Playback Record"
   }
 }

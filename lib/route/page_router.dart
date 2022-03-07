@@ -113,13 +113,16 @@ class R extends RouterDelegate<PageConfiguration>
     if (shouldAddPage) {
       switch (pageConfig.uiPage) {
         case Pages.home:
-          _addPageData(Routes.homePageConfig.widget!, Routes.homePageConfig);
+          _addPageData(pageConfig.widget!, Routes.homePageConfig);
           break;
         case Pages.login:
-          _addPageData(const LoginPage(), Routes.loginPageConfig);
+          _addPageData(pageConfig.widget!, Routes.loginPageConfig);
           break;
         case Pages.dailySong:
-          _addPageData(const DailySongPage(), Routes.dailysongConfig);
+          _addPageData(pageConfig.widget!, Routes.dailysongConfig);
+          break;
+        case Pages.playRecord:
+          _addPageData(pageConfig.widget!, Routes.dailysongConfig);
           break;
       }
       notifyListeners();

@@ -98,3 +98,47 @@ class NestUserAccountResponse extends BaseHttpResponse {
     return 'NestUserAccountResponse{account: $account, profile: $profile}';
   }
 }
+
+@CopyWith()
+@JsonSerializable(createToJson: false)
+class UserRecordSong {
+  final String? name;
+  final int? id;
+  final List<Artist>? ar;
+  final List<String>? alia;
+  final AL? al;
+
+  UserRecordSong({this.name, this.id, this.ar, this.alia, this.al});
+
+  factory UserRecordSong.fromJson(Map<String, dynamic> json) {
+    return _$UserRecordSongFromJson(json);
+  }
+}
+
+@CopyWith()
+@JsonSerializable(createToJson: false)
+class NestUserRecord {
+  final int? playCount;
+  final int? score;
+  final UserRecordSong? song;
+
+  NestUserRecord({this.playCount, this.score, this.song});
+
+  factory NestUserRecord.fromJson(Map<String, dynamic> json) {
+    return _$NestUserRecordFromJson(json);
+  }
+}
+
+@CopyWith()
+@JsonSerializable(createToJson: false)
+class NestUserRecordResponse {
+  final int? code;
+  final List<NestUserRecord>? allData;
+  final List<NestUserRecord>? weekData;
+
+  NestUserRecordResponse({this.code, this.allData, this.weekData});
+
+  factory NestUserRecordResponse.fromJson(Map<String, dynamic> json) {
+    return _$NestUserRecordResponseFromJson(json);
+  }
+}

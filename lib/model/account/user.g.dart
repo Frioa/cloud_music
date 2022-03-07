@@ -391,6 +391,242 @@ extension $NestUserAccountResponseCopyWith on NestUserAccountResponse {
       _$NestUserAccountResponseCWProxyImpl(this);
 }
 
+abstract class _$UserRecordSongCWProxy {
+  UserRecordSong al(AL? al);
+
+  UserRecordSong alia(List<String>? alia);
+
+  UserRecordSong ar(List<Artist>? ar);
+
+  UserRecordSong id(int? id);
+
+  UserRecordSong name(String? name);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `UserRecordSong(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// UserRecordSong(...).copyWith(id: 12, name: "My name")
+  /// ````
+  UserRecordSong call({
+    AL? al,
+    List<String>? alia,
+    List<Artist>? ar,
+    int? id,
+    String? name,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfUserRecordSong.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfUserRecordSong.copyWith.fieldName(...)`
+class _$UserRecordSongCWProxyImpl implements _$UserRecordSongCWProxy {
+  final UserRecordSong _value;
+
+  const _$UserRecordSongCWProxyImpl(this._value);
+
+  @override
+  UserRecordSong al(AL? al) => this(al: al);
+
+  @override
+  UserRecordSong alia(List<String>? alia) => this(alia: alia);
+
+  @override
+  UserRecordSong ar(List<Artist>? ar) => this(ar: ar);
+
+  @override
+  UserRecordSong id(int? id) => this(id: id);
+
+  @override
+  UserRecordSong name(String? name) => this(name: name);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `UserRecordSong(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// UserRecordSong(...).copyWith(id: 12, name: "My name")
+  /// ````
+  UserRecordSong call({
+    Object? al = const $CopyWithPlaceholder(),
+    Object? alia = const $CopyWithPlaceholder(),
+    Object? ar = const $CopyWithPlaceholder(),
+    Object? id = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+  }) {
+    return UserRecordSong(
+      al: al == const $CopyWithPlaceholder()
+          ? _value.al
+          // ignore: cast_nullable_to_non_nullable
+          : al as AL?,
+      alia: alia == const $CopyWithPlaceholder()
+          ? _value.alia
+          // ignore: cast_nullable_to_non_nullable
+          : alia as List<String>?,
+      ar: ar == const $CopyWithPlaceholder()
+          ? _value.ar
+          // ignore: cast_nullable_to_non_nullable
+          : ar as List<Artist>?,
+      id: id == const $CopyWithPlaceholder()
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as int?,
+      name: name == const $CopyWithPlaceholder()
+          ? _value.name
+          // ignore: cast_nullable_to_non_nullable
+          : name as String?,
+    );
+  }
+}
+
+extension $UserRecordSongCopyWith on UserRecordSong {
+  /// Returns a callable class that can be used as follows: `instanceOfclass UserRecordSong.name.copyWith(...)` or like so:`instanceOfclass UserRecordSong.name.copyWith.fieldName(...)`.
+  _$UserRecordSongCWProxy get copyWith => _$UserRecordSongCWProxyImpl(this);
+}
+
+abstract class _$NestUserRecordCWProxy {
+  NestUserRecord playCount(int? playCount);
+
+  NestUserRecord score(int? score);
+
+  NestUserRecord song(UserRecordSong? song);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NestUserRecord(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// NestUserRecord(...).copyWith(id: 12, name: "My name")
+  /// ````
+  NestUserRecord call({
+    int? playCount,
+    int? score,
+    UserRecordSong? song,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfNestUserRecord.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfNestUserRecord.copyWith.fieldName(...)`
+class _$NestUserRecordCWProxyImpl implements _$NestUserRecordCWProxy {
+  final NestUserRecord _value;
+
+  const _$NestUserRecordCWProxyImpl(this._value);
+
+  @override
+  NestUserRecord playCount(int? playCount) => this(playCount: playCount);
+
+  @override
+  NestUserRecord score(int? score) => this(score: score);
+
+  @override
+  NestUserRecord song(UserRecordSong? song) => this(song: song);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NestUserRecord(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// NestUserRecord(...).copyWith(id: 12, name: "My name")
+  /// ````
+  NestUserRecord call({
+    Object? playCount = const $CopyWithPlaceholder(),
+    Object? score = const $CopyWithPlaceholder(),
+    Object? song = const $CopyWithPlaceholder(),
+  }) {
+    return NestUserRecord(
+      playCount: playCount == const $CopyWithPlaceholder()
+          ? _value.playCount
+          // ignore: cast_nullable_to_non_nullable
+          : playCount as int?,
+      score: score == const $CopyWithPlaceholder()
+          ? _value.score
+          // ignore: cast_nullable_to_non_nullable
+          : score as int?,
+      song: song == const $CopyWithPlaceholder()
+          ? _value.song
+          // ignore: cast_nullable_to_non_nullable
+          : song as UserRecordSong?,
+    );
+  }
+}
+
+extension $NestUserRecordCopyWith on NestUserRecord {
+  /// Returns a callable class that can be used as follows: `instanceOfclass NestUserRecord.name.copyWith(...)` or like so:`instanceOfclass NestUserRecord.name.copyWith.fieldName(...)`.
+  _$NestUserRecordCWProxy get copyWith => _$NestUserRecordCWProxyImpl(this);
+}
+
+abstract class _$NestUserRecordResponseCWProxy {
+  NestUserRecordResponse allData(List<NestUserRecord>? allData);
+
+  NestUserRecordResponse code(int? code);
+
+  NestUserRecordResponse weekData(List<NestUserRecord>? weekData);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NestUserRecordResponse(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// NestUserRecordResponse(...).copyWith(id: 12, name: "My name")
+  /// ````
+  NestUserRecordResponse call({
+    List<NestUserRecord>? allData,
+    int? code,
+    List<NestUserRecord>? weekData,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfNestUserRecordResponse.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfNestUserRecordResponse.copyWith.fieldName(...)`
+class _$NestUserRecordResponseCWProxyImpl
+    implements _$NestUserRecordResponseCWProxy {
+  final NestUserRecordResponse _value;
+
+  const _$NestUserRecordResponseCWProxyImpl(this._value);
+
+  @override
+  NestUserRecordResponse allData(List<NestUserRecord>? allData) =>
+      this(allData: allData);
+
+  @override
+  NestUserRecordResponse code(int? code) => this(code: code);
+
+  @override
+  NestUserRecordResponse weekData(List<NestUserRecord>? weekData) =>
+      this(weekData: weekData);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NestUserRecordResponse(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// NestUserRecordResponse(...).copyWith(id: 12, name: "My name")
+  /// ````
+  NestUserRecordResponse call({
+    Object? allData = const $CopyWithPlaceholder(),
+    Object? code = const $CopyWithPlaceholder(),
+    Object? weekData = const $CopyWithPlaceholder(),
+  }) {
+    return NestUserRecordResponse(
+      allData: allData == const $CopyWithPlaceholder()
+          ? _value.allData
+          // ignore: cast_nullable_to_non_nullable
+          : allData as List<NestUserRecord>?,
+      code: code == const $CopyWithPlaceholder()
+          ? _value.code
+          // ignore: cast_nullable_to_non_nullable
+          : code as int?,
+      weekData: weekData == const $CopyWithPlaceholder()
+          ? _value.weekData
+          // ignore: cast_nullable_to_non_nullable
+          : weekData as List<NestUserRecord>?,
+    );
+  }
+}
+
+extension $NestUserRecordResponseCopyWith on NestUserRecordResponse {
+  /// Returns a callable class that can be used as follows: `instanceOfclass NestUserRecordResponse.name.copyWith(...)` or like so:`instanceOfclass NestUserRecordResponse.name.copyWith.fieldName(...)`.
+  _$NestUserRecordResponseCWProxy get copyWith =>
+      _$NestUserRecordResponseCWProxyImpl(this);
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -445,4 +681,38 @@ NestUserAccountResponse _$NestUserAccountResponseFromJson(
       profile: json['profile'] == null
           ? null
           : NestProfile.fromJson(json['profile'] as Map<String, dynamic>),
+    );
+
+UserRecordSong _$UserRecordSongFromJson(Map<String, dynamic> json) =>
+    UserRecordSong(
+      name: json['name'] as String?,
+      id: json['id'] as int?,
+      ar: (json['ar'] as List<dynamic>?)
+          ?.map((e) => Artist.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      alia: (json['alia'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      al: json['al'] == null
+          ? null
+          : AL.fromJson(json['al'] as Map<String, dynamic>),
+    );
+
+NestUserRecord _$NestUserRecordFromJson(Map<String, dynamic> json) =>
+    NestUserRecord(
+      playCount: json['playCount'] as int?,
+      score: json['score'] as int?,
+      song: json['song'] == null
+          ? null
+          : UserRecordSong.fromJson(json['song'] as Map<String, dynamic>),
+    );
+
+NestUserRecordResponse _$NestUserRecordResponseFromJson(
+        Map<String, dynamic> json) =>
+    NestUserRecordResponse(
+      code: json['code'] as int?,
+      allData: (json['allData'] as List<dynamic>?)
+          ?.map((e) => NestUserRecord.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      weekData: (json['weekData'] as List<dynamic>?)
+          ?.map((e) => NestUserRecord.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );

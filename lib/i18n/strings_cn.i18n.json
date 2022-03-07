@@ -20,5 +20,8 @@
   },
   "myPage": {
     "loginBtn": "立即登录>"
+  },
+  "playRecordPage": {
+    "title": "Playback Record"
   }
 }
