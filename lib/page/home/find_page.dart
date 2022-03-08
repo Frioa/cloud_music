@@ -1,4 +1,4 @@
-import 'package:cloud_music/route/routes.dart';
+import 'package:cloud_music/router/routes.dart';
 import 'package:cloud_music/widget/app/app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-// import 'package:cloud_music/route/routes.dart';
+// import 'package:cloud_music/router/routes.dart';
 // import 'package:flutter/material.dart';
 // import 'package:media/media.dart';
 //
