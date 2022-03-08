@@ -64,7 +64,7 @@ class _PlayRecordPageState extends State<PlayRecordPage> {
 
     return Stack(
       children: [
-        SizedBox(width: 1, height: 1, child: const SurfaceViewWidget()),
+        const SizedBox(width: 1, height: 1, child: SurfaceViewWidget()),
         ListView.builder(
           itemCount: userRecord!.allData!.length,
           itemBuilder: itemBuilder,

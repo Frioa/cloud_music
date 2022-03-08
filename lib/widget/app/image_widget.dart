@@ -259,6 +259,7 @@ class GifImage extends AssetImage {
     /// `key.bundle.load` has a non-nullable return type, but might be null when
     /// running with weak checking, so we need to null check it anyway (and
     /// ignore the warning that the null-handling logic is dead code).
+    /// ignore: unnecessary_null_comparison
     if (data == null) {
       PaintingBinding.instance!.imageCache!.evict(key);
       throw StateError('Unable to read data');

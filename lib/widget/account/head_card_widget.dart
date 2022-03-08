@@ -1,6 +1,5 @@
 import 'package:cloud_music/bloc/login/login.dart';
 import 'package:cloud_music/common/common.dart';
-import 'package:cloud_music/route/routes.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
 import 'package:cloud_music/widget/app/app.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,7 @@ class HeadCardWidget extends StatelessWidget {
           onTap: () {
             if (state.isLogin) return;
 
-            R.of(context).push(Routes.loginPageConfig);
+            R.of(context).push(Pages.login);
           },
           child: SizedBox(
             height: 140.r,

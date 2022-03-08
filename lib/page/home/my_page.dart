@@ -46,7 +46,7 @@ class _MyPageState extends State<MyPage>  with AutomaticKeepAliveClientMixin{
         ),
         body: SingleChildScrollView(
           child: Column(
-            children: [
+            children: const [
               HeadCardWidget(),
             ],
           ),

@@ -22,5 +22,8 @@
   },
   "playRecordPage": {
     "title": "Playback Record"
+  },
+  "DailySongPage": {
+    "title": "Daily song"
   }
 }

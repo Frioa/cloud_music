@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 24 (12.0 per locale)
+ * Strings: 26 (13.0 per locale)
  *
- * Built on 2022-03-07 at 11:48 UTC
+ * Built on 2022-03-08 at 13:49 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -374,6 +374,7 @@ class _TranslationsEn {
 	late final _TranslationsLoginPageEn loginPage = _TranslationsLoginPageEn._(_root);
 	late final _TranslationsMyPageEn myPage = _TranslationsMyPageEn._(_root);
 	late final _TranslationsPlayRecordPageEn playRecordPage = _TranslationsPlayRecordPageEn._(_root);
+	late final _TranslationsDailySongPageEn DailySongPage = _TranslationsDailySongPageEn._(_root);
 }
 
 // Path: mainScreen
@@ -440,6 +441,17 @@ class _TranslationsPlayRecordPageEn {
 	String get title => 'Playback Record';
 }
 
+// Path: DailySongPage
+class _TranslationsDailySongPageEn {
+	_TranslationsDailySongPageEn._(this._root);
+
+	// ignore: unused_field
+	final _TranslationsEn _root;
+
+	// Translations
+	String get title => 'Daily song';
+}
+
 // Path: <root>
 class _TranslationsCn implements _TranslationsEn {
 
@@ -469,6 +481,7 @@ class _TranslationsCn implements _TranslationsEn {
 	@override late final _TranslationsLoginPageCn loginPage = _TranslationsLoginPageCn._(_root);
 	@override late final _TranslationsMyPageCn myPage = _TranslationsMyPageCn._(_root);
 	@override late final _TranslationsPlayRecordPageCn playRecordPage = _TranslationsPlayRecordPageCn._(_root);
+	@override late final _TranslationsDailySongPageCn DailySongPage = _TranslationsDailySongPageCn._(_root);
 }
 
 // Path: mainScreen
@@ -532,7 +545,18 @@ class _TranslationsPlayRecordPageCn implements _TranslationsPlayRecordPageEn {
 	@override final _TranslationsCn _root;
 
 	// Translations
-	@override String get title => 'Playback Record';
+	@override String get title => '播放记录';
+}
+
+// Path: DailySongPage
+class _TranslationsDailySongPageCn implements _TranslationsDailySongPageEn {
+	_TranslationsDailySongPageCn._(this._root);
+
+	// ignore: unused_field
+	@override final _TranslationsCn _root;
+
+	// Translations
+	@override String get title => '每日歌曲';
 }
 
 /// Flat map(s) containing all translations.
@@ -555,6 +579,7 @@ extension on _TranslationsEn {
 			'loginPage.btLogin': 'Login',
 			'myPage.loginBtn': 'Login In',
 			'playRecordPage.title': 'Playback Record',
+			'DailySongPage.title': 'Daily song',
 		};
 	}
 }
@@ -575,7 +600,8 @@ extension on _TranslationsCn {
 			'loginPage.hintCaptcha': '验证码',
 			'loginPage.btLogin': '登录',
 			'myPage.loginBtn': '立即登录>',
-			'playRecordPage.title': 'Playback Record',
+			'playRecordPage.title': '播放记录',
+			'DailySongPage.title': '每日歌曲',
 		};
 	}
 }

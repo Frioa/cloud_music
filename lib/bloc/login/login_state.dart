@@ -1,5 +1,4 @@
 import 'package:cloud_music/common/common.dart';
-import 'package:cloud_music/model/account/account.dart';
 
 part 'login_state.g.dart';
 

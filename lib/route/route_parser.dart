@@ -1,6 +1,4 @@
 import 'package:cloud_music/common/common.dart';
-import 'package:cloud_music/model/model.dart';
-import 'package:cloud_music/route/routes.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -14,24 +12,27 @@ class RouteParser extends RouteInformationParser<PageConfiguration> {
     logger.d('parseRouteInformation: uri: $uri');
 
     if (uri.pathSegments.isEmpty) {
-      return SynchronousFuture(Routes.homePageConfig);
+      return SynchronousFuture(homePage);
     }
     final path = '/' + uri.pathSegments[0];
 
-    switch (path) {
-      case Routes.homePath:
-        return SynchronousFuture(Routes.homePageConfig);
-      case Routes.loginPath:
-        return SynchronousFuture(Routes.loginPageConfig);
-      case Routes.dailySongPath:
-        return SynchronousFuture(Routes.dailysongConfig);
-    }
-    return SynchronousFuture(Routes.homePageConfig);
+    final config = pageFactor(path.toPages());
+    return SynchronousFuture(config);
   }
 
   @override
   RouteInformation? restoreRouteInformation(PageConfiguration configuration) {
     logger.d('restoreRouteInformation: $configuration');
     return RouteInformation(location: configuration.path);
+  }
+}
+
+extension on String {
+  Pages toPages() {
+    for (final page in Pages.values) {
+      if (endsWith(page.name)) return page;
+    }
+
+    return Pages.unknown;
   }
 }

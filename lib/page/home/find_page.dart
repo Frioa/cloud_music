@@ -22,13 +22,13 @@ class _FundPageState extends State<FindPage> {
           CupertinoButton(
             child: const Text('每日歌曲'),
             onPressed: () {
-              R.of(context).push(Routes.dailysongConfig);
+              R.of(context).push(Pages.dailySong);
             },
           ),
           CupertinoButton(
             child: const Text('播放记录'),
             onPressed: () {
-              R.of(context).push(Routes.playRecordConfig);
+              R.of(context).push(Pages.playRecord);
             },
           ),
         ],

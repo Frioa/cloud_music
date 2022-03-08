@@ -1,7 +1,5 @@
 import 'package:cloud_music/bloc/login/login.dart';
 import 'package:cloud_music/common/common.dart';
-import 'package:cloud_music/network/network.dart';
-import 'package:cloud_music/route/routes.dart';
 import 'package:cloud_music/widget/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -73,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
               },
             ),
             TextButton(
-              child: Text('用户状态'),
+              child: const Text('用户状态'),
               onPressed: () {
                 requestStatus();
               },

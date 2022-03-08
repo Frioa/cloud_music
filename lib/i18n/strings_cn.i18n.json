@@ -22,6 +22,9 @@
     "loginBtn": "立即登录>"
   },
   "playRecordPage": {
-    "title": "Playback Record"
+    "title": "播放记录"
+  },
+  "DailySongPage": {
+    "title": "每日歌曲"
   }
 }

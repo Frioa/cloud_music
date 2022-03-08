@@ -1,6 +1,5 @@
 import 'package:cloud_music/common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ScaffoldWidget extends StatelessWidget {
   final PreferredSizeWidget? appBar;

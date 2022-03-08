@@ -1,5 +1,4 @@
 import 'package:cloud_music/model/model.dart';
-import 'package:cloud_music/page/page.dart';
 import 'package:cloud_music/route/pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -11,7 +10,7 @@ import 'package:media/utils/logger.dart';
 class R extends RouterDelegate<PageConfiguration>
     with PopNavigatorRouterDelegateMixin<PageConfiguration>, ChangeNotifier {
   R() {
-    _addPage(Routes.homePageConfig);
+    _addPage(homePage);
   }
 
   final GlobalKey<NavigatorState> key = GlobalKey();
@@ -29,7 +28,7 @@ class R extends RouterDelegate<PageConfiguration>
 
   @override
   PageConfiguration? get currentConfiguration {
-    return _pages.isEmpty ? Routes.homePageConfig : _pages.last.arguments as PageConfiguration?;
+    return _pages.isEmpty ? homePage : _pages.last.arguments as PageConfiguration?;
   }
 
   /// Number of pages function
@@ -39,8 +38,8 @@ class R extends RouterDelegate<PageConfiguration>
 
   @override
   Future<void> setNewRoutePath(PageConfiguration configuration) {
-    final shouldAddPage = _pages.isEmpty ||
-        (_pages.last.arguments as PageConfiguration?)?.uiPage != configuration.uiPage;
+    final shouldAddPage =
+        _pages.isEmpty || (_pages.last.arguments as PageConfiguration?)?.path != configuration.path;
     logger.d('setNewRoutePath configuration $configuration shouldAddPage $shouldAddPage');
 
     if (shouldAddPage) {
@@ -79,14 +78,14 @@ class R extends RouterDelegate<PageConfiguration>
     setNewRoutePath(newRoute);
   }
 
-  void push(PageConfiguration newRoute) {
-    logger.d('push path: $newRoute');
-    _addPage(newRoute);
+  void push(Pages pages) {
+    logger.d('push path: ${pages.name}');
+    _addPage(pageFactor(pages));
   }
 
   void pushWidget(Widget child, PageConfiguration newRoute) {
     logger.d('pushWidget child: $child, newRoute: $newRoute');
-    _addPageData(child, newRoute);
+    _addPageData(newRoute);
   }
 
   void addAll(List<PageConfiguration> routes) {
@@ -106,33 +105,20 @@ class R extends RouterDelegate<PageConfiguration>
   }
 
   void _addPage(PageConfiguration pageConfig) {
-    final shouldAddPage = _pages.isEmpty ||
-        (_pages.last.arguments as PageConfiguration?)?.uiPage != pageConfig.uiPage;
+    final shouldAddPage =
+        _pages.isEmpty || (_pages.last.arguments as PageConfiguration?)?.path != pageConfig.path;
 
     logger.d('_addPage pageConfig: $pageConfig shouldAddPage: $shouldAddPage');
     if (shouldAddPage) {
-      switch (pageConfig.uiPage) {
-        case Pages.home:
-          _addPageData(pageConfig.widget!, Routes.homePageConfig);
-          break;
-        case Pages.login:
-          _addPageData(pageConfig.widget!, Routes.loginPageConfig);
-          break;
-        case Pages.dailySong:
-          _addPageData(pageConfig.widget!, Routes.dailysongConfig);
-          break;
-        case Pages.playRecord:
-          _addPageData(pageConfig.widget!, Routes.dailysongConfig);
-          break;
-      }
+      _addPageData(pageConfig);
       notifyListeners();
     }
   }
 
-  void _addPageData(Widget child, PageConfiguration pageConfig) {
+  void _addPageData(PageConfiguration pageConfig) {
     _pages.add(
       CupertinoPage(
-        child: child,
+        child: pageConfig.widget,
         key: ValueKey(pageConfig.key),
         name: pageConfig.path,
         arguments: pageConfig,

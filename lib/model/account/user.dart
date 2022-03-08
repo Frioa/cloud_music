@@ -1,5 +1,4 @@
 import 'package:cloud_music/common/common.dart';
-import 'package:cloud_music/model/model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';

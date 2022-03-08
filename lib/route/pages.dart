@@ -1,5 +1,4 @@
 import 'package:cloud_music/model/model.dart';
-import 'package:cloud_music/page/account/login_page.dart';
 import 'package:cloud_music/page/page.dart';
 
 /// Todo: Navigator 2.0
@@ -8,40 +7,48 @@ enum Pages {
   login,
   dailySong,
   playRecord,
+  unknown,
 }
 
-class Routes {
-  static const String homePath = '/';
-  static const String loginPath = '/login';
-  static const String dailySongPath = '/dailysong';
-  static const String playRecord = '/playRecord';
 
 
-  static final PageConfiguration homePageConfig = PageConfiguration(
-    key: homePath,
-    path: homePath,
-    uiPage: Pages.home,
-    widget: const HomePage(),
-  );
+extension on Pages {
+  String get path => '/$name';
+}
 
-  static final PageConfiguration loginPageConfig = PageConfiguration(
-    key: loginPath,
-    path: loginPath,
-    uiPage: Pages.login,
-    widget: const LoginPage(),
-  );
+PageConfiguration get homePage => pageFactor(Pages.home);
 
-  static final PageConfiguration dailysongConfig = PageConfiguration(
-    key: dailySongPath,
-    path: dailySongPath,
-    uiPage: Pages.dailySong,
-    widget: const DailySongPage(),
-  );
-
-  static final PageConfiguration playRecordConfig = PageConfiguration(
-    key: playRecord,
-    path: playRecord,
-    uiPage: Pages.playRecord,
-    widget: const PlayRecordPage(),
-  );
+PageConfiguration pageFactor(Pages pages) {
+  switch (pages) {
+    case Pages.unknown:
+      return PageConfiguration(
+        key: pages.path,
+        path: pages.path,
+        widget: const HomePage(),
+      );
+    case Pages.home:
+      return PageConfiguration(
+        key: pages.path,
+        path: pages.path,
+        widget: const HomePage(),
+      );
+    case Pages.login:
+      return PageConfiguration(
+        key: pages.path,
+        path: pages.path,
+        widget: const LoginPage(),
+      );
+    case Pages.dailySong:
+      return PageConfiguration(
+        key: pages.path,
+        path: pages.path,
+        widget: const DailySongPage(),
+      );
+    case Pages.playRecord:
+      return PageConfiguration(
+        key: pages.path,
+        path: pages.path,
+        widget: const PlayRecordPage(),
+      );
+  }
 }

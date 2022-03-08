@@ -1,8 +1,7 @@
-import 'package:cloud_music/model/model.dart';
-import 'package:cloud_music/network/network.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:media/media.dart';
+import 'package:cloud_music/common/common.dart';
 
 class DailySongPage extends StatefulWidget {
   const DailySongPage({Key? key}) : super(key: key);
@@ -48,12 +47,12 @@ class _DailySongPageState extends State<DailySongPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('每日歌曲')),
+      appBar: AppBar(title: Text(S.DailySongPage.title)),
       body: response == null
           ? const SizedBox()
           : Stack(
               children: [
-                SizedBox(width: 1, height: 1, child: const SurfaceViewWidget()),
+                const SizedBox(width: 1, height: 1, child: SurfaceViewWidget()),
                 ListView.builder(
                   itemCount: response!.dailySongs.length,
                   itemBuilder: itemBuilder,

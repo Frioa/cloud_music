@@ -83,7 +83,7 @@ class AL {
   final String? picUrl;
 
   // final dynamic tns;
-  final String? pic_str;
+  final String? pic_str;// ignore: non_constant_identifier_names
   final int? pic;
 
   AL({
@@ -91,7 +91,7 @@ class AL {
     this.name = '',
     this.picUrl,
     // this.tns,
-    this.pic_str,
+    this.pic_str,// ignore: non_constant_identifier_names
     this.pic,
   });
 
