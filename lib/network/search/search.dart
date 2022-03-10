@@ -18,6 +18,17 @@ abstract class SearchClient {
   @GET("/recommend/songs")
   Future<HttpResponse<DailySongResponse>> recommendSongs();
 
+  /// 获取每日推荐歌单
+  /// 说明 : 调用此接口 , 可获得每日推荐歌单 ( 需要登录 )
+  ///
+  ///  接口地址 : /recommend/resource
+  ///
+  ///  调用例子 : /recommend/resource
+  ///
+  ///  返回数据如下图 : 每日推荐歌单
+  @GET("/recommend/resource")
+  Future<RecommendSheetResponse> recommendResource();
+
   ///
   /// 获取客户端歌曲下载 url
   ///

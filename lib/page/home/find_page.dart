@@ -1,5 +1,6 @@
+import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/router/routes.dart';
-import 'package:cloud_music/widget/app/app.dart';
+import 'package:cloud_music/widget/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,13 @@ class FindPage extends StatefulWidget {
 }
 
 class _FundPageState extends State<FindPage> {
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    context.read<RecommendBloc>().add(RequestRecommendSheetEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return ScaffoldWidget(
@@ -31,6 +39,7 @@ class _FundPageState extends State<FindPage> {
               R.of(context).push(Pages.playRecord);
             },
           ),
+          const RecommendSheetWidget(),
         ],
       ),
     );
