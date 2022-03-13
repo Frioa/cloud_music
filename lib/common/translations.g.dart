@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 26 (13.0 per locale)
+ * Strings: 28 (14.0 per locale)
  *
- * Built on 2022-03-08 at 13:49 UTC
+ * Built on 2022-03-13 at 12:41 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -38,7 +38,7 @@ _TranslationsEn get S => _S;
 /// Method B: Advanced
 ///
 /// All widgets using this method will trigger a rebuild when locale changes.
-/// Use this if you have e.g. a settings page where the user can select the locale during runtime.
+/// Use this if you have e.g. a settings pages where the user can select the locale during runtime.
 ///
 /// Step 1:
 /// wrap your App with
@@ -375,6 +375,7 @@ class _TranslationsEn {
 	late final _TranslationsMyPageEn myPage = _TranslationsMyPageEn._(_root);
 	late final _TranslationsPlayRecordPageEn playRecordPage = _TranslationsPlayRecordPageEn._(_root);
 	late final _TranslationsDailySongPageEn DailySongPage = _TranslationsDailySongPageEn._(_root);
+	late final _TranslationsSongListPageEn SongListPage = _TranslationsSongListPageEn._(_root);
 }
 
 // Path: mainScreen
@@ -452,6 +453,17 @@ class _TranslationsDailySongPageEn {
 	String get title => 'Daily song';
 }
 
+// Path: SongListPage
+class _TranslationsSongListPageEn {
+	_TranslationsSongListPageEn._(this._root);
+
+	// ignore: unused_field
+	final _TranslationsEn _root;
+
+	// Translations
+	String get title => '歌单';
+}
+
 // Path: <root>
 class _TranslationsCn implements _TranslationsEn {
 
@@ -482,6 +494,7 @@ class _TranslationsCn implements _TranslationsEn {
 	@override late final _TranslationsMyPageCn myPage = _TranslationsMyPageCn._(_root);
 	@override late final _TranslationsPlayRecordPageCn playRecordPage = _TranslationsPlayRecordPageCn._(_root);
 	@override late final _TranslationsDailySongPageCn DailySongPage = _TranslationsDailySongPageCn._(_root);
+	@override late final _TranslationsSongListPageCn SongListPage = _TranslationsSongListPageCn._(_root);
 }
 
 // Path: mainScreen
@@ -559,6 +572,17 @@ class _TranslationsDailySongPageCn implements _TranslationsDailySongPageEn {
 	@override String get title => '每日歌曲';
 }
 
+// Path: SongListPage
+class _TranslationsSongListPageCn implements _TranslationsSongListPageEn {
+	_TranslationsSongListPageCn._(this._root);
+
+	// ignore: unused_field
+	@override final _TranslationsCn _root;
+
+	// Translations
+	@override String get title => '歌单';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -580,6 +604,7 @@ extension on _TranslationsEn {
 			'myPage.loginBtn': 'Login In',
 			'playRecordPage.title': 'Playback Record',
 			'DailySongPage.title': 'Daily song',
+			'SongListPage.title': '歌单',
 		};
 	}
 }
@@ -602,6 +627,7 @@ extension on _TranslationsCn {
 			'myPage.loginBtn': '立即登录>',
 			'playRecordPage.title': '播放记录',
 			'DailySongPage.title': '每日歌曲',
+			'SongListPage.title': '歌单',
 		};
 	}
 }

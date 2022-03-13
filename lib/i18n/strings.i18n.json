@@ -25,5 +25,8 @@
   },
   "DailySongPage": {
     "title": "Daily song"
+  },
+  "SongListPage": {
+    "title": "歌单"
   }
 }

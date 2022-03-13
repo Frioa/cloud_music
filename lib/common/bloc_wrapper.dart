@@ -32,6 +32,7 @@ class _BlocWrapperState extends State<BlocWrapper> {
         BlocProvider<LoginBloc>(create: (_) => LoginBloc()),
         BlocProvider<UserBloc>(create: (_) => UserBloc()),
         BlocProvider<RecommendBloc>(create: (_) => RecommendBloc()),
+        BlocProvider<PlaylistBloc>(create: (_) => PlaylistBloc()),
       ],
       child: TranslationProvider(child: widget.child),
     );

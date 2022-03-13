@@ -27,8 +27,8 @@ class R extends RouterDelegate<PageConfiguration>
   GlobalKey<NavigatorState> get navigatorKey => key;
 
   @override
-  PageConfiguration? get currentConfiguration {
-    return _pages.isEmpty ? homePage : _pages.last.arguments as PageConfiguration?;
+  PageConfiguration get currentConfiguration {
+    return _pages.isEmpty ? homePage : _pages.last.arguments as PageConfiguration;
   }
 
   /// Number of pages function
@@ -78,9 +78,9 @@ class R extends RouterDelegate<PageConfiguration>
     setNewRoutePath(newRoute);
   }
 
-  void push(Pages pages) {
+  void push(Pages pages, {Map<String, Object> parameter = const {}}) {
     logger.d('push path: ${pages.name}');
-    _addPage(pageFactor(pages));
+    _addPage(pageFactor(pages, parameter: parameter));
   }
 
   void pushWidget(Widget child, PageConfiguration newRoute) {

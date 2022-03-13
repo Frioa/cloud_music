@@ -1,5 +1,5 @@
 import 'package:cloud_music/model/model.dart';
-import 'package:cloud_music/page/page.dart';
+import 'package:cloud_music/pages/page.dart';
 import 'package:flutter/material.dart';
 
 enum Pages {
@@ -7,7 +7,7 @@ enum Pages {
   login,
   dailySong,
   playRecord,
-  songList,
+  playlistDetail,
   unknown,
 }
 
@@ -38,8 +38,8 @@ PageConfiguration pageFactor(Pages pages, {Map<String, Object> parameter = const
     case Pages.playRecord:
       widget = const PlayRecordPage();
       break;
-    case Pages.songList:
-      widget = const SongListPage();
+    case Pages.playlistDetail:
+      widget = const PlayerListDetailPage();
       break;
   }
 

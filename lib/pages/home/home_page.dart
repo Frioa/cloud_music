@@ -1,4 +1,4 @@
-import 'package:cloud_music/page/home/home.dart';
+import 'package:cloud_music/pages/home/home.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
 import 'package:cloud_music/widget/widgets.dart';
 import 'package:flutter/material.dart';

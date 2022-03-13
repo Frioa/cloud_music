@@ -1,5 +1,4 @@
 import 'package:cloud_music/bloc/bloc.dart';
-import 'package:cloud_music/bloc/recommend/recommend_state.dart';
 import 'package:cloud_music/common/common.dart';
 
 class RecommendBloc extends Bloc<BaseRecommendEvent, RecommendState> {

@@ -48,4 +48,12 @@ extension ThemeExtension on ThemeData {
   TextStyle get tsNavigator {
     return TextStyle(color: black1, fontSize: 17.2.sp);
   }
+
+  TextStyle get tsTitle {
+    return TextStyle(color: black1, fontSize: 15.sp);
+  }
+
+  TextStyle get tsDesc {
+    return TextStyle(color: black1, fontSize: 12.sp);
+  }
 }

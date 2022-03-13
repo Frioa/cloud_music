@@ -23,7 +23,7 @@ class RecommendSheetWidget extends StatelessWidget {
           return Expanded(
             child: InkWell(
               onTap: () {
-                R.of(context).push(Pages.playRecord, );
+                R.of(context).push(Pages.playlistDetail, parameter: {PageKey.songListId: recommend.id});
               },
               child: Container(
                 padding: EdgeInsets.all(6.w),
