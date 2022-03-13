@@ -1,16 +1,15 @@
 import 'package:cloud_music/model/model.dart';
 import 'package:cloud_music/page/page.dart';
+import 'package:flutter/material.dart';
 
-/// Todo: Navigator 2.0
 enum Pages {
   home,
   login,
   dailySong,
   playRecord,
+  songList,
   unknown,
 }
-
-
 
 extension on Pages {
   String get path => '/$name';
@@ -18,37 +17,36 @@ extension on Pages {
 
 PageConfiguration get homePage => pageFactor(Pages.home);
 
-PageConfiguration pageFactor(Pages pages) {
+PageConfiguration pageFactor(Pages pages, {Map<String, Object> parameter = const {}}) {
+  final key = pages.path;
+  final path = pages.path;
+  final Widget widget;
+
   switch (pages) {
     case Pages.unknown:
-      return PageConfiguration(
-        key: pages.path,
-        path: pages.path,
-        widget: const HomePage(),
-      );
+      widget = const HomePage();
+      break;
     case Pages.home:
-      return PageConfiguration(
-        key: pages.path,
-        path: pages.path,
-        widget: const HomePage(),
-      );
+      widget = const HomePage();
+      break;
     case Pages.login:
-      return PageConfiguration(
-        key: pages.path,
-        path: pages.path,
-        widget: const LoginPage(),
-      );
+      widget = const LoginPage();
+      break;
     case Pages.dailySong:
-      return PageConfiguration(
-        key: pages.path,
-        path: pages.path,
-        widget: const DailySongPage(),
-      );
+      widget = const DailySongPage();
+      break;
     case Pages.playRecord:
-      return PageConfiguration(
-        key: pages.path,
-        path: pages.path,
-        widget: const PlayRecordPage(),
-      );
+      widget = const PlayRecordPage();
+      break;
+    case Pages.songList:
+      widget = const SongListPage();
+      break;
   }
+
+  return PageConfiguration(
+    key: key,
+    path: path,
+    widget: widget,
+    parameter: parameter,
+  );
 }

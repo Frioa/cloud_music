@@ -1,4 +1,5 @@
 import 'package:cloud_music/bloc/bloc.dart';
+import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/extionsions.dart';
 import 'package:cloud_music/widget/app/app.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,7 @@ class RecommendSheetWidget extends StatelessWidget {
           return Expanded(
             child: InkWell(
               onTap: () {
-                // TODO: go to page
+                R.of(context).push(Pages.playRecord, );
               },
               child: Container(
                 padding: EdgeInsets.all(6.w),

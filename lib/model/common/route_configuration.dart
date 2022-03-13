@@ -5,11 +5,13 @@ class PageConfiguration {
   final String key;
   final String path;
   final Widget widget;
+  final Map<String, Object> parameter;
 
   PageConfiguration({
     required this.key,
     required this.path,
     required this.widget,
+    this.parameter = const {},
   });
 
   @override
