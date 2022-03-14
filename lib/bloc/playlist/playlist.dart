@@ -13,3 +13,16 @@ class RequestPlaylistDetailEvent extends BasePlayListEvent {
     return 'RequestPlaylistDetailEvent{id: $id}';
   }
 }
+
+class RequestTrackAllEvent extends BasePlayListEvent {
+  final int id;
+  final int? limit;
+  final int? offset;
+
+  RequestTrackAllEvent(this.id, {this.limit, this.offset});
+
+  @override
+  String toString() {
+    return 'RequestTrackAllEvent{id: $id, limit: $limit, offset: $offset}';
+  }
+}

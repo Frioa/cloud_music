@@ -1,4 +1,8 @@
 {
+  "common": {
+    "tenThousand": "万"
+  },
+
   "mainScreen": {
     "title": "An English Title",
     "counter": {
@@ -26,7 +30,8 @@
   "DailySongPage": {
     "title": "Daily song"
   },
-  "SongListPage": {
-    "title": "歌单"
+  "PlaylistDetailPage": {
+    "title": "歌单",
+    "playAll": "播放全部"
   }
 }

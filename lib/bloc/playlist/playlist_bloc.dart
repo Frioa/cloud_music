@@ -11,6 +11,11 @@ class PlaylistBloc extends Bloc<BasePlayListEvent, PlaylistState> {
         emit.call(state.copyWith(playlistDetailResponse: ViewModel.response(value)));
         return;
       }
+
+      if (event is RequestTrackAllEvent) {
+        final value = await PlaylistClient(dio).trackAll(event.id);
+        emit.call(state.copyWith(trackAllResponse: ViewModel.response(value)));
+      }
     });
   }
 }

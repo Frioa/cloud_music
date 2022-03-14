@@ -10,6 +10,8 @@ abstract class _$PlaylistStateCWProxy {
   PlaylistState playlistDetailResponse(
       ViewModel<PlayDetailResponse> playlistDetailResponse);
 
+  PlaylistState trackAllResponse(ViewModel<TrackAllResponse> trackAllResponse);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PlaylistState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -18,6 +20,7 @@ abstract class _$PlaylistStateCWProxy {
   /// ````
   PlaylistState call({
     ViewModel<PlayDetailResponse>? playlistDetailResponse,
+    ViewModel<TrackAllResponse>? trackAllResponse,
   });
 }
 
@@ -33,6 +36,11 @@ class _$PlaylistStateCWProxyImpl implements _$PlaylistStateCWProxy {
       this(playlistDetailResponse: playlistDetailResponse);
 
   @override
+  PlaylistState trackAllResponse(
+          ViewModel<TrackAllResponse> trackAllResponse) =>
+      this(trackAllResponse: trackAllResponse);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `PlaylistState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -42,6 +50,7 @@ class _$PlaylistStateCWProxyImpl implements _$PlaylistStateCWProxy {
   /// ````
   PlaylistState call({
     Object? playlistDetailResponse = const $CopyWithPlaceholder(),
+    Object? trackAllResponse = const $CopyWithPlaceholder(),
   }) {
     return PlaylistState(
       playlistDetailResponse:
@@ -50,6 +59,11 @@ class _$PlaylistStateCWProxyImpl implements _$PlaylistStateCWProxy {
               ? _value.playlistDetailResponse
               // ignore: cast_nullable_to_non_nullable
               : playlistDetailResponse as ViewModel<PlayDetailResponse>,
+      trackAllResponse: trackAllResponse == const $CopyWithPlaceholder() ||
+              trackAllResponse == null
+          ? _value.trackAllResponse
+          // ignore: cast_nullable_to_non_nullable
+          : trackAllResponse as ViewModel<TrackAllResponse>,
     );
   }
 }

@@ -16,6 +16,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  auto_size_text: ^3.0.0
+  collection: ^1.15.0
   copy_with_extension: ^4.0.0
   equatable: ^2.0.3
   ffi: ^1.1.2

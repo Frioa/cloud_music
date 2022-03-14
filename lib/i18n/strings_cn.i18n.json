@@ -1,4 +1,7 @@
 {
+  "common": {
+    "tenThousand": "万"
+  },
   "mainScreen": {
     "title": "Ein deutscher Titel",
     "counter": {
@@ -27,7 +30,8 @@
   "DailySongPage": {
     "title": "每日歌曲"
   },
-  "SongListPage": {
-    "title": "歌单"
+  "PlaylistDetailPage": {
+    "title": "歌单",
+    "playAll": "播放全部"
   }
 }

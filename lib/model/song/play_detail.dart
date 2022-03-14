@@ -10,7 +10,6 @@ class PlayDetailResponse extends BaseHttpResponse {
 
   PlayDetailResponse({int code = 404, this.playlist, this.urls}) : super(code);
 
-
   factory PlayDetailResponse.fromJson(Map<String, dynamic> json) {
     return _$PlayDetailResponseFromJson(json);
   }
@@ -55,6 +54,8 @@ class PlayerList {
   final String? englishTitle;
   final PlayerListCreator? creator;
   final List<PlayerListTrack>? tracks;
+  final int shareCount;
+  final int commentCount;
 
   PlayerList(
     this.id,
@@ -86,6 +87,8 @@ class PlayerList {
     this.englishTitle,
     this.creator,
     this.tracks,
+    this.shareCount,
+    this.commentCount,
   );
 
   factory PlayerList.fromJson(Map<String, dynamic> json) {
@@ -151,14 +154,30 @@ class PlayerListTrack {
   final int id;
   final int? pst;
   final int? t;
-  final List<Artist>? ar;
+  final List<Artist> ar;
   final int pop;
-  final AL al;
+  final AL? al;
 
-  PlayerListTrack(this.name, this.id, this.pst, this.t, this.ar, this.pop, this.al);
+  PlayerListTrack({this.name = '', this.id = -1, this.pst, this.t, this.ar = const [], this.pop = 0, this.al});
 
   factory PlayerListTrack.fromJson(Map<String, dynamic> json) {
     return _$PlayerListTrackFromJson(json);
+  }
+
+  String get singerAlbumDesc {
+    String singer = ar.isEmpty ? '': ar[0].name;
+    if (ar.length > 1) {
+      singer = '${ar[0].name}/${ar[1].name}';
+    }
+
+
+
+   return singer + ' - ' + (al?.name ?? '');
+  }
+
+  @override
+  String toString() {
+    return 'PlayerListTrack{name: $name, id: $id, pst: $pst, t: $t, ar: $ar, pop: $pop, al: $al}';
   }
 }
 
@@ -172,5 +191,18 @@ class Al {
 
   factory Al.fromJson(Map<String, dynamic> json) {
     return _$AlFromJson(json);
+  }
+}
+
+@JsonSerializable(createToJson: false)
+class TrackAllResponse extends BaseHttpResponse {
+  final List<PlayerListTrack> songs;
+
+  // privileges
+
+  TrackAllResponse({int code = 404, this.songs = const []}) : super(code);
+
+  factory TrackAllResponse.fromJson(Map<String, dynamic> json) {
+    return _$TrackAllResponseFromJson(json);
   }
 }

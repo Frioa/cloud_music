@@ -49,6 +49,8 @@ PlayerList _$PlayerListFromJson(Map<String, dynamic> json) => PlayerList(
       (json['tracks'] as List<dynamic>?)
           ?.map((e) => PlayerListTrack.fromJson(e as Map<String, dynamic>))
           .toList(),
+      json['shareCount'] as int,
+      json['commentCount'] as int,
     );
 
 PlayerListCreator _$PlayerListCreatorFromJson(Map<String, dynamic> json) =>
@@ -77,19 +79,31 @@ PlayerListCreator _$PlayerListCreatorFromJson(Map<String, dynamic> json) =>
 
 PlayerListTrack _$PlayerListTrackFromJson(Map<String, dynamic> json) =>
     PlayerListTrack(
-      json['name'] as String,
-      json['id'] as int,
-      json['pst'] as int?,
-      json['t'] as int?,
-      (json['ar'] as List<dynamic>?)
-          ?.map((e) => Artist.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      json['pop'] as int,
-      AL.fromJson(json['al'] as Map<String, dynamic>),
+      name: json['name'] as String? ?? '',
+      id: json['id'] as int? ?? -1,
+      pst: json['pst'] as int?,
+      t: json['t'] as int?,
+      ar: (json['ar'] as List<dynamic>?)
+              ?.map((e) => Artist.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      pop: json['pop'] as int? ?? 0,
+      al: json['al'] == null
+          ? null
+          : AL.fromJson(json['al'] as Map<String, dynamic>),
     );
 
 Al _$AlFromJson(Map<String, dynamic> json) => Al(
       json['id'] as String?,
       json['name'] as String?,
       json['picUrl'] as String?,
+    );
+
+TrackAllResponse _$TrackAllResponseFromJson(Map<String, dynamic> json) =>
+    TrackAllResponse(
+      code: json['code'] as int? ?? 404,
+      songs: (json['songs'] as List<dynamic>?)
+              ?.map((e) => PlayerListTrack.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
