@@ -52,6 +52,8 @@ class RecommendSheetWidget extends StatelessWidget {
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _item(0),
                     _item(1),
@@ -59,6 +61,8 @@ class RecommendSheetWidget extends StatelessWidget {
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _item(3),
                     _item(4),

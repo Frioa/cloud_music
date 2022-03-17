@@ -1,10 +1,9 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/extionsions.dart';
 import 'package:cloud_music/widget/app/app.dart';
+import 'package:cloud_music/widget/common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:collection/collection.dart';
 
 class PlayerListDetailPage extends StatefulWidget {
   const PlayerListDetailPage({Key? key}) : super(key: key);
@@ -134,109 +133,6 @@ class _PlayerListDetailPageState extends State<PlayerListDetailPage> {
     );
   }
 
-  Widget _buildSheet() {
-    if (!trackAllVM.hasData) return const SizedBox();
-
-    Widget _buildItem(PlayerListTrack track, int index) {
-      return Container(
-        padding: EdgeInsets.all(0.02.sw),
-        height: 0.075.sh,
-        child: Row(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              width: 0.06.sw,
-              child: AutoSizeText(
-                "${(index + 1)}",
-                style: Theme.of(context).tsNavigator,
-                maxLines: 1,
-                minFontSize: 1,
-                maxFontSize: 15.sp,
-              ),
-            ),
-            SizedBox(width: 0.02.sw),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    track.name,
-                    style: Theme.of(context).tsTitle.copyWith(color: Colors.white),
-                  ),
-                  Text(
-                    track.singerAlbumDesc,
-                    style: Theme.of(context).tsDesc,
-                  ),
-                ],
-              ),
-            ),
-            Icon(
-              Icons.more_vert,
-              size: 20.sm,
-            )
-          ],
-        ),
-      );
-    }
-
-    Widget _buildHeader() {
-      return Container(
-        margin: EdgeInsets.all(0.02.sw),
-        height: 0.03.sh,
-        child: Row(
-          children: [
-            Container(
-              alignment: Alignment.center,
-              width: 0.06.sw,
-              child: Icon(
-                Icons.play_circle_filled,
-                color: Theme.of(context).primaryColor,
-                size: 24.sm,
-              ),
-            ),
-            SizedBox(width: 0.02.sw),
-            Expanded(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    S.PlaylistDetailPage.playAll,
-                    style: Theme.of(context).tsNavigator.copyWith(color: Colors.white),
-                  ),
-                  SizedBox(width: 0.02.sw),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 1.5.sm),
-                    child: Text(
-                      '(${playlist.trackCount})',
-                      style: Theme.of(context).tsDesc,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Icon(
-              Icons.arrow_circle_right,
-              size: 20.sm,
-            )
-          ],
-        ),
-      );
-    }
-
-    Widget _buildSongList() {
-      final list = [
-        _buildHeader(),
-        SizedBox(height: 0.02.sw),
-        ...trackAll.songs.mapIndexed((i, e) => _buildItem(e, i)).toList(),
-      ];
-
-      return Column(children: list);
-    }
-
-    return _buildSongList();
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PlaylistBloc, PlaylistState>(
@@ -256,7 +152,11 @@ class _PlayerListDetailPageState extends State<PlayerListDetailPage> {
                   children: [
                     _buildTop(),
                     _buildCollection(),
-                    _buildSheet(),
+                    if (trackAllVM.hasData)
+                      SongListWidget(
+                        songs: trackAll.songs,
+                        trackCount: playlist.trackCount,
+                      ),
                   ],
                 ),
               )

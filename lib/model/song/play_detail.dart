@@ -158,21 +158,20 @@ class PlayerListTrack {
   final int pop;
   final AL? al;
 
-  PlayerListTrack({this.name = '', this.id = -1, this.pst, this.t, this.ar = const [], this.pop = 0, this.al});
+  PlayerListTrack(
+      {this.name = '', this.id = -1, this.pst, this.t, this.ar = const [], this.pop = 0, this.al});
 
   factory PlayerListTrack.fromJson(Map<String, dynamic> json) {
     return _$PlayerListTrackFromJson(json);
   }
 
   String get singerAlbumDesc {
-    String singer = ar.isEmpty ? '': ar[0].name;
+    String singer = ar.isEmpty ? '' : ar[0].name;
     if (ar.length > 1) {
       singer = '${ar[0].name}/${ar[1].name}';
     }
 
-
-
-   return singer + ' - ' + (al?.name ?? '');
+    return singer + ' - ' + (al?.name ?? '');
   }
 
   @override
@@ -196,7 +195,7 @@ class Al {
 
 @JsonSerializable(createToJson: false)
 class TrackAllResponse extends BaseHttpResponse {
-  final List<PlayerListTrack> songs;
+  final List<Song> songs;
 
   // privileges
 

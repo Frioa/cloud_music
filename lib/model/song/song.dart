@@ -15,7 +15,7 @@ enum EncodeType {
 @JsonSerializable(createToJson: false)
 class SongUrlResponse {
   final int? code;
-  final List<Song>? data;
+  final List<SongDetail>? data;
 
   SongUrlResponse({this.code, this.data});
 
@@ -30,7 +30,7 @@ class SongUrlResponse {
 }
 
 @JsonSerializable(createToJson: false)
-class Song {
+class SongDetail {
   final int? id;
   final String? url;
   final int? br;
@@ -56,7 +56,7 @@ class Song {
 // final dynamic freeTimeTrialPrivilege;
   final int? urlSource;
 
-  Song({
+  SongDetail({
     this.id,
     this.url,
     this.br,
@@ -75,12 +75,12 @@ class Song {
     this.urlSource,
   });
 
-  factory Song.fromJson(Map<String, dynamic> json) {
-    return _$SongFromJson(json);
+  factory SongDetail.fromJson(Map<String, dynamic> json) {
+    return _$SongDetailFromJson(json);
   }
 
   @override
   String toString() {
-    return 'Song{id: $id, url: $url, br: $br, size: $size, md5: $md5, expi: $expi, type: $type, gain: $gain, fee: $fee, payed: $payed, flag: $flag, canExtend: $canExtend, level: $level, encodeType: $encodeType, urlSource: $urlSource}';
+    return 'SongDetail{id: $id, url: $url, br: $br, size: $size, md5: $md5, expi: $expi, type: $type, gain: $gain, fee: $fee, payed: $payed, flag: $flag, canExtend: $canExtend, level: $level, encodeType: $encodeType, urlSource: $urlSource}';
   }
 }

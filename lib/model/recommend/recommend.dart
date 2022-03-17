@@ -5,7 +5,7 @@ part 'recommend.g.dart';
 
 @JsonSerializable(createToJson: false)
 class DailySongResponse {
-  final List<DailySong> dailySongs;
+  final List<Song> dailySongs;
   final List<RecommendReason> recommendReasons;
 
   DailySongResponse({this.dailySongs = const [], this.recommendReasons = const []});
@@ -21,12 +21,12 @@ class DailySongResponse {
 }
 
 @JsonSerializable(createToJson: false)
-class DailySong {
+class Song {
   final String name;
   final int id;
   final int? pst;
   final int? t;
-  final List<Artist>? art;
+  final List<Artist> ar;
 
   // final List<dynamic> alia;
   final int? pop;
@@ -44,12 +44,12 @@ class DailySong {
   final int? copyright;
   final String? reason;
 
-  DailySong({
+  Song({
     this.name = '',
     this.id = 0,
     this.pst,
     this.t,
-    this.art,
+    this.ar = const [],
     this.pop,
     this.rt,
     this.fee,
@@ -64,15 +64,24 @@ class DailySong {
     this.reason,
   });
 
-  factory DailySong.fromJson(
+  factory Song.fromJson(
     Map<String, dynamic> json,
   ) {
-    return _$DailySongFromJson(json);
+    return _$SongFromJson(json);
+  }
+
+  String get singerAlbumDesc {
+    String singer = ar.isEmpty ? '' : ar[0].name;
+    if (ar.length > 1) {
+      singer = '${ar[0].name}/${ar[1].name}';
+    }
+
+    return singer + ' - ' + (al?.name ?? '');
   }
 
   @override
   String toString() {
-    return 'DailySong{name: $name, id: $id, pst: $pst, t: $t, art: $art, pop: $pop, rt: $rt, fee: $fee, v: $v, cf: $cf, al: $al, dt: $dt, rtUrl: $rtUrl, ftype: $ftype, djId: $djId, copyright: $copyright, reason: $reason}';
+    return 'Song{name: $name, id: $id, pst: $pst, t: $t, ar: $ar, pop: $pop, rt: $rt, fee: $fee, v: $v, cf: $cf, al: $al, dt: $dt, rtUrl: $rtUrl, ftype: $ftype, djId: $djId, copyright: $copyright, reason: $reason}';
   }
 }
 
@@ -83,7 +92,7 @@ class AL {
   final String? picUrl;
 
   // final dynamic tns;
-  final String? pic_str;// ignore: non_constant_identifier_names
+  final String? pic_str; // ignore: non_constant_identifier_names
   final int? pic;
 
   AL({
@@ -91,7 +100,7 @@ class AL {
     this.name = '',
     this.picUrl,
     // this.tns,
-    this.pic_str,// ignore: non_constant_identifier_names
+    this.pic_str, // ignore: non_constant_identifier_names
     this.pic,
   });
 

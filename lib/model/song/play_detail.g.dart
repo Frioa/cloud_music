@@ -103,7 +103,7 @@ TrackAllResponse _$TrackAllResponseFromJson(Map<String, dynamic> json) =>
     TrackAllResponse(
       code: json['code'] as int? ?? 404,
       songs: (json['songs'] as List<dynamic>?)
-              ?.map((e) => PlayerListTrack.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => Song.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
     );

@@ -9,7 +9,7 @@ part of 'recommend.dart';
 DailySongResponse _$DailySongResponseFromJson(Map<String, dynamic> json) =>
     DailySongResponse(
       dailySongs: (json['dailySongs'] as List<dynamic>?)
-              ?.map((e) => DailySong.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => Song.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       recommendReasons: (json['recommendReasons'] as List<dynamic>?)
@@ -18,14 +18,15 @@ DailySongResponse _$DailySongResponseFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-DailySong _$DailySongFromJson(Map<String, dynamic> json) => DailySong(
+Song _$SongFromJson(Map<String, dynamic> json) => Song(
       name: json['name'] as String? ?? '',
       id: json['id'] as int? ?? 0,
       pst: json['pst'] as int?,
       t: json['t'] as int?,
-      art: (json['art'] as List<dynamic>?)
-          ?.map((e) => Artist.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      ar: (json['ar'] as List<dynamic>?)
+              ?.map((e) => Artist.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       pop: json['pop'] as int?,
       rt: json['rt'] as String?,
       fee: json['fee'] as int?,

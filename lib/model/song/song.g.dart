@@ -10,11 +10,11 @@ SongUrlResponse _$SongUrlResponseFromJson(Map<String, dynamic> json) =>
     SongUrlResponse(
       code: json['code'] as int?,
       data: (json['data'] as List<dynamic>?)
-          ?.map((e) => Song.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => SongDetail.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Song _$SongFromJson(Map<String, dynamic> json) => Song(
+SongDetail _$SongDetailFromJson(Map<String, dynamic> json) => SongDetail(
       id: json['id'] as int?,
       url: json['url'] as String?,
       br: json['br'] as int?,
