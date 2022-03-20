@@ -52,8 +52,8 @@ class BreakpadPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "crash" -> {
                 Thread {
                     initBreakPad()
-                    BreakpadInit.crash()
                     handler.post {
+                        BreakpadInit.crash()
                         result.success(null)
                     }
                 }.start()
