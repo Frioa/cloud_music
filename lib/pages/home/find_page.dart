@@ -1,3 +1,4 @@
+import 'package:breakpad/breakpad.dart';
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/router/routes.dart';
 import 'package:cloud_music/widget/widgets.dart';
@@ -37,6 +38,13 @@ class _FundPageState extends State<FindPage> {
             child: const Text('播放记录'),
             onPressed: () {
               R.of(context).push(Pages.playRecord);
+            },
+          ),
+          CupertinoButton(
+            child: const Text('crash'),
+            onPressed: () async {
+              await Breakpad.initBreakPad();
+              await Breakpad.crash();
             },
           ),
           const RecommendSheetWidget(),
