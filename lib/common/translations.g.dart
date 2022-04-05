@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 32 (16.0 per locale)
+ * Strings: 30 (15.0 per locale)
  *
- * Built on 2022-03-14 at 15:52 UTC
+ * Built on 2022-04-05 at 06:10 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -371,7 +371,7 @@ class _TranslationsEn {
 	// Translations
 	late final _TranslationsCommonEn common = _TranslationsCommonEn._(_root);
 	late final _TranslationsMainScreenEn mainScreen = _TranslationsMainScreenEn._(_root);
-	late final _TranslationsLocalesEn locales = _TranslationsLocalesEn._(_root);
+	late final _TranslationsHomePageEn HomePage = _TranslationsHomePageEn._(_root);
 	late final _TranslationsLoginPageEn loginPage = _TranslationsLoginPageEn._(_root);
 	late final _TranslationsMyPageEn myPage = _TranslationsMyPageEn._(_root);
 	late final _TranslationsPlayRecordPageEn playRecordPage = _TranslationsPlayRecordPageEn._(_root);
@@ -406,16 +406,15 @@ class _TranslationsMainScreenEn {
 	String get tapMe => 'Tap me';
 }
 
-// Path: locales
-class _TranslationsLocalesEn {
-	_TranslationsLocalesEn._(this._root);
+// Path: HomePage
+class _TranslationsHomePageEn {
+	_TranslationsHomePageEn._(this._root);
 
 	// ignore: unused_field
 	final _TranslationsEn _root;
 
 	// Translations
-	String get en => 'English';
-	String get de => 'German';
+	String get recommendSongList => '推荐歌单';
 }
 
 // Path: loginPage
@@ -503,7 +502,7 @@ class _TranslationsCn implements _TranslationsEn {
 	// Translations
 	@override late final _TranslationsCommonCn common = _TranslationsCommonCn._(_root);
 	@override late final _TranslationsMainScreenCn mainScreen = _TranslationsMainScreenCn._(_root);
-	@override late final _TranslationsLocalesCn locales = _TranslationsLocalesCn._(_root);
+	@override late final _TranslationsHomePageCn HomePage = _TranslationsHomePageCn._(_root);
 	@override late final _TranslationsLoginPageCn loginPage = _TranslationsLoginPageCn._(_root);
 	@override late final _TranslationsMyPageCn myPage = _TranslationsMyPageCn._(_root);
 	@override late final _TranslationsPlayRecordPageCn playRecordPage = _TranslationsPlayRecordPageCn._(_root);
@@ -538,16 +537,15 @@ class _TranslationsMainScreenCn implements _TranslationsMainScreenEn {
 	@override String get tapMe => 'Drück mich';
 }
 
-// Path: locales
-class _TranslationsLocalesCn implements _TranslationsLocalesEn {
-	_TranslationsLocalesCn._(this._root);
+// Path: HomePage
+class _TranslationsHomePageCn implements _TranslationsHomePageEn {
+	_TranslationsHomePageCn._(this._root);
 
 	// ignore: unused_field
 	@override final _TranslationsCn _root;
 
 	// Translations
-	@override String get en => 'Englisch';
-	@override String get de => 'Deutsch';
+	@override String get recommendSongList => '推荐歌单';
 }
 
 // Path: loginPage
@@ -622,8 +620,7 @@ extension on _TranslationsEn {
 				other: 'You pressed $count times.',
 			),
 			'mainScreen.tapMe': 'Tap me',
-			'locales.en': 'English',
-			'locales.de': 'German',
+			'HomePage.recommendSongList': '推荐歌单',
 			'loginPage.title': 'Login Page',
 			'loginPage.hintPhone': 'Phone',
 			'loginPage.hintCaptcha': 'Captcha',
@@ -647,8 +644,7 @@ extension on _TranslationsCn {
 				other: 'Du hast $count mal gedrückt.',
 			),
 			'mainScreen.tapMe': 'Drück mich',
-			'locales.en': 'Englisch',
-			'locales.de': 'Deutsch',
+			'HomePage.recommendSongList': '推荐歌单',
 			'loginPage.title': '登录页',
 			'loginPage.hintPhone': '手机号',
 			'loginPage.hintCaptcha': '验证码',

@@ -9,6 +9,11 @@ extension ThemeExtension on ThemeData {
     return isLight ? const Color(0xff333333) : const Color(0xffadaeb3);
   }
 
+  Color get descTextColor {
+    return isLight ? const Color(0xff828282) : const Color(0xff828282);
+  }
+
+
   Color get primaryLinkColor {
     return isLight ? const Color(0xff477aac) : const Color(0xff2b6e90);
   }
@@ -53,7 +58,15 @@ extension ThemeExtension on ThemeData {
     return TextStyle(color: black1, fontSize: 15.sp);
   }
 
+  TextStyle get tsTitleBold {
+    return TextStyle(color: primaryTextColor, fontSize: 23.sp, fontWeight: FontWeight.w800);
+  }
+
+  TextStyle get tsTitleBold2 {
+    return tsTitleBold.copyWith(fontSize: 14.sp, fontWeight: FontWeight.w700);
+  }
+
   TextStyle get tsDesc {
-    return TextStyle(color: black1, fontSize: 12.sp);
+    return TextStyle(color: descTextColor, fontSize: 12.sp);
   }
 }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cloud_music/common/common.dart';
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   initDio();
@@ -28,6 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocWrapper(
       child: ScreenUtilInit(
+        designSize: const Size(375, 812),
         builder: () {
           return BlocBuilder<AppBloc, AppState>(
             builder: (_, state) {

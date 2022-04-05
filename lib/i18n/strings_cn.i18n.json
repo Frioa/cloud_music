@@ -10,11 +10,9 @@
     },
     "tapMe": "Drück mich"
   },
-  "locales": {
-    "en": "Englisch",
-    "de": "Deutsch"
+  "HomePage": {
+    "recommendSongList": "推荐歌单"
   },
-
   "loginPage": {
     "title": "登录页",
     "hintPhone": "手机号",

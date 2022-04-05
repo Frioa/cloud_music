@@ -11,9 +11,8 @@
     },
     "tapMe": "Tap me"
   },
-  "locales": {
-    "en": "English",
-    "de": "German"
+  "HomePage": {
+    "recommendSongList": "推荐歌单"
   },
   "loginPage": {
     "title": "Login Page",

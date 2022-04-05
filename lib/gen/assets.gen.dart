@@ -10,8 +10,15 @@ import 'package:flutter/widgets.dart';
 class Assets {
   Assets._();
 
+  static const AssetGenImage icBtnPlay =
+      AssetGenImage('assets/ic_btn_play.png');
   static const AssetGenImage icDefaultAvatar =
       AssetGenImage('assets/ic_default_avatar.jpg');
+  static const AssetGenImage icDefaultSongSheet =
+      AssetGenImage('assets/ic_default_song_sheet.png');
+  static const AssetGenImage icPotinRight =
+      AssetGenImage('assets/ic_potin_right.jpg');
+  static const String icSearchLight = 'assets/ic_search_light.svg';
 }
 
 class AssetGenImage extends AssetImage {

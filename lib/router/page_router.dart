@@ -1,8 +1,6 @@
-import 'package:cloud_music/model/model.dart';
-import 'package:cloud_music/router/pages.dart';
+import 'package:cloud_music/common/common.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:media/utils/logger.dart';
 
 ///
 /// TODO:1. onGenerateRoute，等接口的作用。

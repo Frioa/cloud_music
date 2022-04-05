@@ -27,7 +27,7 @@ PageConfiguration pageFactor(Pages pages, {Map<String, Object> parameter = const
       widget = const HomePage();
       break;
     case Pages.home:
-      widget = const HomePage();
+      widget = const NewHomePage();
       break;
     case Pages.login:
       widget = const LoginPage();
