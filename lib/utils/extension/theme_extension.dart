@@ -67,6 +67,10 @@ extension ThemeExtension on ThemeData {
   }
 
   TextStyle get tsDesc {
-    return TextStyle(color: descTextColor, fontSize: 12.sp);
+    return TextStyle(color: descTextColor, fontSize: 13.sp);
+  }
+
+  TextStyle get tsDescBold {
+    return tsDesc.copyWith(fontWeight: FontWeight.w600);
   }
 }

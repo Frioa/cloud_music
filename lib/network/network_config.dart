@@ -10,8 +10,8 @@ late Dio _dio = Dio();
 
 Dio get dio => _dio;
 
-void initDio() {
-  getTemporaryDirectory().then((dir) async {
+Future<void> initDio() async {
+  await getTemporaryDirectory().then((dir) async {
     logger.d('init dio.');
     _dio = Dio()
       ..interceptors.addAll([

@@ -22,12 +22,12 @@ class _HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget> {
         topRight: Radius.circular(26.w),
       ),
       child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 16.w, sigmaY: 16.w),
+        filter: ImageFilter.blur(sigmaX: 12.w, sigmaY: 12.w),
         child: Container(
           width: 1.sw,
           height: HomeBottomPlayerWidget.height,
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.76),
+            color: Colors.black.withOpacity(0.2),
             gradient: LinearGradient(
               colors: [
                 Colors.white.withOpacity(0.5),

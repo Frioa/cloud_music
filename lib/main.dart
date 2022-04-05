@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cloud_music/common/common.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  initDio();
+  await initDio();
   LocaleSettings.useDeviceLocale(); // initialize with the right locale
   LocaleSettings.setLocale(AppLocale.cn);
 

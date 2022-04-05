@@ -1,3 +1,5 @@
+import 'package:cloud_music/bloc/login/login.dart';
+import 'package:cloud_music/bloc/recommend/recommend.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
 import 'package:cloud_music/widget/app/image_widget.dart';
@@ -13,51 +15,72 @@ class NewHomePage extends StatefulWidget {
 }
 
 class _NewHomePageState extends State<NewHomePage> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    context.read<LoginBloc>().add(const LoginStateAction(action: LoginAction.requestLoginStatus));
+    context.read<RecommendBloc>().add(RequestRecommendSheetEvent());
+  }
+
   Widget _buildHeaderText() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(left: 20.w),
-            child: Text(
-              'Find the best music for you',
-              style: Theme.of(context).tsTitleBold.copyWith(fontSize: 28.sp),
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        // final profile = state.nestLoginStatusResponse?.profile;
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: 20.w),
+                child: Text(
+                  'Find the best music for you',
+                  style: Theme.of(context).tsTitleBold.copyWith(fontSize: 28.sp),
+                ),
+              ),
             ),
-          ),
-        ),
-        ImageWidget(Assets.icPotinRight.path),
-      ],
+            Assets.icPotinRight.image( width: 125.w, height: 58.w)
+            // ImageWidget(Assets.icPotinRight.path, width: 125.w, height: 58.w),
+          ],
+        );
+      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Scaffold(
-          appBar: AppBarWidget.build(
-            left: Assets.icDefaultAvatar.path,
-            right: Assets.icSearchLight,
-          ),
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 29.w),
-                _buildHeaderText(),
-                const TopArtistsWidget(),
-                const HomeSongList(),
-                const HomeSongList(),
-                SizedBox(height: HomeBottomPlayerWidget.height)
-              ],
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        final profile = state.nestLoginStatusResponse?.profile;
+        return Stack(
+          children: [
+            Scaffold(
+              appBar: AppBarWidget.build(
+                leading: profile?.avatarUrl ?? Assets.icDefaultAvatar.path,
+                action: Assets.icSearchLight,
+                onLeadingTap: () {
+                  R.of(context).push(Pages.login);
+                },
+              ),
+              body: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 29.w),
+                    _buildHeaderText(),
+                    const TopArtistsWidget(),
+                    const HomeSongList(),
+                    const HomeSongList(),
+                    SizedBox(height: HomeBottomPlayerWidget.height + 26.w)
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          child: HomeBottomPlayerWidget(),
-        )
-      ],
+            const Positioned(
+              bottom: 0,
+              child: HomeBottomPlayerWidget(),
+            )
+          ],
+        );
+      },
     );
   }
 }

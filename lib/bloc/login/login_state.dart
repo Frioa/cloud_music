@@ -6,6 +6,7 @@ enum LoginAction {
   login,
   loginStatus,
   userDetail,
+  requestLoginStatus,
 }
 
 @CopyWith()
