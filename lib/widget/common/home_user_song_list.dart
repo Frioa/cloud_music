@@ -1,31 +1,39 @@
 import 'dart:ui';
 
 import 'package:cloud_music/bloc/bloc.dart';
+import 'package:cloud_music/bloc/login/login.dart';
+import 'package:cloud_music/bloc/user/user.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/extionsions.dart';
 import 'package:cloud_music/widget/app/image_widget.dart';
 import 'package:flutter/material.dart';
 
-class HomeSongList extends StatefulWidget {
-  const HomeSongList({Key? key}) : super(key: key);
+class HomeUserSongList extends StatefulWidget {
+  final int? uid;
+
+  const HomeUserSongList({Key? key, required this.uid}) : super(key: key);
 
   @override
-  State<HomeSongList> createState() => _HomeSongListState();
+  State<HomeUserSongList> createState() => _HomeUserSongListState();
 }
 
-class _HomeSongListState extends State<HomeSongList> {
+class _HomeUserSongListState extends State<HomeUserSongList> {
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    requestRecommendSheet();
+  void didUpdateWidget(covariant HomeUserSongList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.uid != widget.uid) {
+      requestUserSheet();
+    }
   }
 
-  void requestRecommendSheet() {
-    context.read<RecommendBloc>().add(RequestRecommendSheetEvent());
+  void requestUserSheet() {
+    if (widget.uid == null) return;
+
+    context.read<UserNewBloc>().add(RequestUserSheetEvent(widget.uid!));
   }
 
-  Widget _buildCard(ViewModel<RecommendSheetResponse> vm, int index) {
-    final recommend = vm.response?.recommend[index];
+  Widget _buildCard(ViewModel<UserSheetResponse> vm, int index) {
+    final sheet = vm.response?.playlist[index];
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(24.w),
@@ -35,13 +43,12 @@ class _HomeSongListState extends State<HomeSongList> {
           SizedBox(
             height: 145.w,
             width: 145.w,
-            // padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 14.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 InkWell(
                   child: ImageWidget(
-                    !vm.hasData ? Assets.icDefaultSongSheet.path : recommend!.picUrl,
+                    !vm.hasData ? Assets.icDefaultSongSheet.path : sheet!.coverImgUrl,
                     size: 145.w,
                   ),
                   onTap: () {
@@ -49,7 +56,7 @@ class _HomeSongListState extends State<HomeSongList> {
 
                     R.of(context).push(
                       Pages.playlistDetail,
-                      parameter: {PageKey.songListId: recommend!.id},
+                      parameter: {PageKey.songListId: sheet!.id},
                     );
                   },
                 ),
@@ -78,7 +85,7 @@ class _HomeSongListState extends State<HomeSongList> {
                           child: Padding(
                             padding: EdgeInsets.all(10.w),
                             child: Text(
-                              recommend?.name ?? '',
+                              sheet!.name,
                               style: Theme.of(context).tsDescBold.copyWith(color: Colors.white),
                             ),
                           ),
@@ -96,7 +103,7 @@ class _HomeSongListState extends State<HomeSongList> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RecommendBloc, RecommendState>(
+    return BlocBuilder<UserNewBloc, UserNewState>(
       builder: (context, state) {
         return Padding(
           padding: EdgeInsets.only(left: 0.w, right: 0.w, top: 33.w),
@@ -104,29 +111,28 @@ class _HomeSongListState extends State<HomeSongList> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               GestureDetector(
+                onLongPress: () {
+                  requestUserSheet();
+                },
                 child: Padding(
                   padding: EdgeInsets.only(left: 20.w, bottom: 19.w),
                   child: Text(
-                    S.HomePage.recommendSongList,
+                    S.HomePage.userSheet,
                     style: Theme.of(context).tsTitleBold,
                   ),
                 ),
-                onLongPress: () {
-                  requestRecommendSheet();
-                },
               ),
               SizedBox(
                 height: 145.w,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: state.recommendSheetResponse.hasData
-                      ? state.recommendSheetResponse.response!.recommend.length
-                      : 3,
+                  itemCount:
+                      state.userSheetVm.hasData ? state.userSheetVm.response!.playlist.length : 6,
                   itemBuilder: (context, index) {
                     return Row(
                       children: [
                         SizedBox(width: 20.w),
-                        _buildCard(state.recommendSheetResponse, index),
+                        _buildCard(state.userSheetVm, index),
                       ],
                     );
                   },

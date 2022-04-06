@@ -12,7 +12,8 @@
     "tapMe": "Tap me"
   },
   "HomePage": {
-    "recommendSongList": "推荐歌单"
+    "recommendSongList": "推荐歌单",
+    "userSheet": "用戶歌单"
   },
   "loginPage": {
     "title": "Login Page",

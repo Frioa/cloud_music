@@ -41,4 +41,21 @@ abstract class NestUserClient {
     @Query("uid") int uid, {
     @Query("type") int type = 0,
   });
+
+  /// 获取用户歌单
+  /// 说明 : 登录后调用此接口 , 传入用户 id, 可以获取用户歌单
+  ///
+  ///  必选参数 : uid : 用户 id
+  ///
+  ///  可选参数 :
+  ///
+  ///   limit : 返回数量 , 默认为 30
+  ///
+  ///   offset : 偏移数量，用于分页 , 如 :( 页数 -1)*30, 其中 30 为 limit 的值 , 默认为 0
+  ///
+  ///  接口地址 : /user/playlist
+  ///
+  ///  调用例子 : /user/playlist?uid=32953014
+  @GET("/user/playlist")
+  Future<UserSheetResponse> playlist(@Query("uid") int uid);
 }

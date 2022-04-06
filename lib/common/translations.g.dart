@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 30 (15.0 per locale)
+ * Strings: 32 (16.0 per locale)
  *
- * Built on 2022-04-05 at 06:10 UTC
+ * Built on 2022-04-06 at 13:36 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -415,6 +415,7 @@ class _TranslationsHomePageEn {
 
 	// Translations
 	String get recommendSongList => '推荐歌单';
+	String get userSheet => '用戶歌单';
 }
 
 // Path: loginPage
@@ -546,6 +547,7 @@ class _TranslationsHomePageCn implements _TranslationsHomePageEn {
 
 	// Translations
 	@override String get recommendSongList => '推荐歌单';
+	@override String get userSheet => '用戶歌单';
 }
 
 // Path: loginPage
@@ -621,6 +623,7 @@ extension on _TranslationsEn {
 			),
 			'mainScreen.tapMe': 'Tap me',
 			'HomePage.recommendSongList': '推荐歌单',
+			'HomePage.userSheet': '用戶歌单',
 			'loginPage.title': 'Login Page',
 			'loginPage.hintPhone': 'Phone',
 			'loginPage.hintCaptcha': 'Captcha',
@@ -645,6 +648,7 @@ extension on _TranslationsCn {
 			),
 			'mainScreen.tapMe': 'Drück mich',
 			'HomePage.recommendSongList': '推荐歌单',
+			'HomePage.userSheet': '用戶歌单',
 			'loginPage.title': '登录页',
 			'loginPage.hintPhone': '手机号',
 			'loginPage.hintCaptcha': '验证码',

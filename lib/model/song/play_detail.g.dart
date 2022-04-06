@@ -36,7 +36,7 @@ PlayerList _$PlayerListFromJson(Map<String, dynamic> json) => PlayerList(
       json['subscribedCount'] as int,
       json['cloudTrackCount'] as int?,
       json['ordered'] as bool?,
-      json['description'] as String,
+      json['description'] as String?,
       (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
       json['updateFrequency'] as String?,
       json['backgroundCoverId'] as int?,

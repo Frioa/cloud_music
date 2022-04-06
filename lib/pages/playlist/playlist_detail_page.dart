@@ -76,7 +76,7 @@ class _PlayerListDetailPageState extends State<PlayerListDetailPage> {
                 ),
                 const Expanded(child: SizedBox()),
                 Text(
-                  playlist.description,
+                  playlist.description ?? 'null',
                   style: Theme.of(context).tsDesc,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

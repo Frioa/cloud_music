@@ -1,3 +1,4 @@
+import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/common/common.dart';
 
 part 'user_state.g.dart';
@@ -43,4 +44,38 @@ class UserStateAction extends UserState {
           nestUserAccountResponse: nestUserAccountResponse,
           nestUserDetailResponse: nestUserDetailResponse,
         );
+}
+
+abstract class BaseUserStateEvent {}
+
+class UserSheetEvent extends BaseUserStateEvent {
+  final UserSheetResponse response;
+
+  UserSheetEvent(this.response);
+}
+
+class RequestUserSheetEvent extends BaseUserStateEvent {
+  final int userId;
+
+  RequestUserSheetEvent(this.userId);
+}
+
+@CopyWith()
+class UserNewState extends Equatable {
+  final ViewModel<UserSheetResponse> userSheetVm;
+
+  const UserNewState({
+    required this.userSheetVm,
+  });
+
+  factory UserNewState.initial() {
+    return UserNewState(
+      userSheetVm: ViewModel.initial(),
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+        userSheetVm,
+      ];
 }

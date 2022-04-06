@@ -32,6 +32,7 @@ class RecommendSheet {
   final int type;
   final String name;
   final String copywriter;
+  final String coverImgUrl;
   final String picUrl;
   final int playcount;
   final int createTime;
@@ -45,6 +46,7 @@ class RecommendSheet {
     this.type = 0,
     this.name = '',
     this.copywriter = '',
+    this.coverImgUrl = '',
     this.picUrl = '',
     this.playcount = 0,
     this.createTime = 0,
@@ -130,4 +132,24 @@ class Creator {
   String toString() {
     return 'Creator{backgroundImgIdStr: $backgroundImgIdStr, remarkName: $remarkName, mutual: $mutual, detailDescription: $detailDescription, defaultAvatar: $defaultAvatar, expertTags: $expertTags, djStatus: $djStatus, followed: $followed, backgroundUrl: $backgroundUrl, avatarImgId: $avatarImgId, backgroundImgId: $backgroundImgId, avatarImgIdStr: $avatarImgIdStr, userId: $userId, accountStatus: $accountStatus, vipType: $vipType, province: $province, gender: $gender, avatarUrl: $avatarUrl, authStatus: $authStatus, userType: $userType, nickname: $nickname, birthday: $birthday, city: $city, description: $description, signature: $signature, authority: $authority}';
   }
+}
+
+
+
+///
+/// 用户歌单
+///
+@JsonSerializable(createToJson: false)
+class UserSheetResponse extends BaseHttpResponse {
+  final List<RecommendSheet> playlist;
+
+  UserSheetResponse({
+    int code = 404,
+    this.playlist = const [],
+  }):super(code);
+
+  factory UserSheetResponse.fromJson(Map<String, dynamic> json) {
+    return _$UserSheetResponseFromJson(json);
+  }
+
 }

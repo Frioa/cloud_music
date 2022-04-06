@@ -31,6 +31,7 @@ class _BlocWrapperState extends State<BlocWrapper> {
         BlocProvider<AppBloc>(create: (_) => AppBloc()),
         BlocProvider<LoginBloc>(create: (_) => LoginBloc()),
         BlocProvider<UserBloc>(create: (_) => UserBloc()),
+        BlocProvider<UserNewBloc>(create: (_) => UserNewBloc()),
         BlocProvider<RecommendBloc>(create: (_) => RecommendBloc()),
         BlocProvider<PlaylistBloc>(create: (_) => PlaylistBloc()),
       ],

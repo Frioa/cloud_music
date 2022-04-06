@@ -150,3 +150,53 @@ extension $UserStateActionCopyWith on UserStateAction {
   /// Returns a callable class that can be used as follows: `instanceOfclass UserStateAction extends UserState.name.copyWith(...)` or like so:`instanceOfclass UserStateAction extends UserState.name.copyWith.fieldName(...)`.
   _$UserStateActionCWProxy get copyWith => _$UserStateActionCWProxyImpl(this);
 }
+
+abstract class _$UserNewStateCWProxy {
+  UserNewState userSheetVm(ViewModel<UserSheetResponse> userSheetVm);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `UserNewState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// UserNewState(...).copyWith(id: 12, name: "My name")
+  /// ````
+  UserNewState call({
+    ViewModel<UserSheetResponse>? userSheetVm,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfUserNewState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfUserNewState.copyWith.fieldName(...)`
+class _$UserNewStateCWProxyImpl implements _$UserNewStateCWProxy {
+  final UserNewState _value;
+
+  const _$UserNewStateCWProxyImpl(this._value);
+
+  @override
+  UserNewState userSheetVm(ViewModel<UserSheetResponse> userSheetVm) =>
+      this(userSheetVm: userSheetVm);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `UserNewState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// UserNewState(...).copyWith(id: 12, name: "My name")
+  /// ````
+  UserNewState call({
+    Object? userSheetVm = const $CopyWithPlaceholder(),
+  }) {
+    return UserNewState(
+      userSheetVm:
+          userSheetVm == const $CopyWithPlaceholder() || userSheetVm == null
+              ? _value.userSheetVm
+              // ignore: cast_nullable_to_non_nullable
+              : userSheetVm as ViewModel<UserSheetResponse>,
+    );
+  }
+}
+
+extension $UserNewStateCopyWith on UserNewState {
+  /// Returns a callable class that can be used as follows: `instanceOfclass UserNewState extends Equatable.name.copyWith(...)` or like so:`instanceOfclass UserNewState extends Equatable.name.copyWith.fieldName(...)`.
+  _$UserNewStateCWProxy get copyWith => _$UserNewStateCWProxyImpl(this);
+}

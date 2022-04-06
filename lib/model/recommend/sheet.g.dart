@@ -24,6 +24,7 @@ RecommendSheet _$RecommendSheetFromJson(Map<String, dynamic> json) =>
       type: json['type'] as int? ?? 0,
       name: json['name'] as String? ?? '',
       copywriter: json['copywriter'] as String? ?? '',
+      coverImgUrl: json['coverImgUrl'] as String? ?? '',
       picUrl: json['picUrl'] as String? ?? '',
       playcount: json['playcount'] as int? ?? 0,
       createTime: json['createTime'] as int? ?? 0,
@@ -65,4 +66,13 @@ Creator _$CreatorFromJson(Map<String, dynamic> json) => Creator(
       description: json['description'] as String? ?? '',
       signature: json['signature'] as String? ?? '',
       authority: json['authority'] as int? ?? 0,
+    );
+
+UserSheetResponse _$UserSheetResponseFromJson(Map<String, dynamic> json) =>
+    UserSheetResponse(
+      code: json['code'] as int? ?? 404,
+      playlist: (json['playlist'] as List<dynamic>?)
+              ?.map((e) => RecommendSheet.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );

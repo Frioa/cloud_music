@@ -19,7 +19,6 @@ class _NewHomePageState extends State<NewHomePage> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     context.read<LoginBloc>().add(const LoginStateAction(action: LoginAction.requestLoginStatus));
-    context.read<RecommendBloc>().add(RequestRecommendSheetEvent());
   }
 
   Widget _buildHeaderText() {
@@ -68,7 +67,7 @@ class _NewHomePageState extends State<NewHomePage> {
                     _buildHeaderText(),
                     const TopArtistsWidget(),
                     const HomeSongList(),
-                    const HomeSongList(),
+                    HomeUserSongList(uid: profile?.userId),
                     SizedBox(height: HomeBottomPlayerWidget.height + 26.w)
                   ],
                 ),

@@ -45,7 +45,7 @@ class PlayerList {
 
   final int? cloudTrackCount;
   final bool? ordered;
-  final String description;
+  final String? description;
   final List<String> tags;
   final String? updateFrequency;
   final int? backgroundCoverId;
