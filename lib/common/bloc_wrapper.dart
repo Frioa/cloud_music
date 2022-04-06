@@ -1,5 +1,6 @@
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/bloc/login/login.dart';
+import 'package:cloud_music/bloc/top/top.dart';
 import 'package:cloud_music/bloc/user/user.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/common/common.dart';
@@ -34,6 +35,7 @@ class _BlocWrapperState extends State<BlocWrapper> {
         BlocProvider<UserNewBloc>(create: (_) => UserNewBloc()),
         BlocProvider<RecommendBloc>(create: (_) => RecommendBloc()),
         BlocProvider<PlaylistBloc>(create: (_) => PlaylistBloc()),
+        BlocProvider<TopBloc>(create: (_) => TopBloc()),
       ],
       child: TranslationProvider(child: widget.child),
     );

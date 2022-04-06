@@ -6,7 +6,6 @@ import 'package:cloud_music/model/recommend/sheet.dart';
 abstract class BaseRecommendEvent {}
 
 class RequestRecommendSheetEvent extends BaseRecommendEvent {
-
 }
 
 class RecommendSheetEvent extends BaseRecommendEvent {

@@ -1,7 +1,6 @@
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/bloc/user/user.dart';
 import 'package:cloud_music/network/account/user_client.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../network/network_config.dart';
 

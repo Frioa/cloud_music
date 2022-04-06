@@ -1,8 +1,6 @@
 import 'package:cloud_music/bloc/login/login.dart';
-import 'package:cloud_music/bloc/recommend/recommend.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
-import 'package:cloud_music/widget/app/image_widget.dart';
 import 'package:cloud_music/widget/common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

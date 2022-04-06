@@ -46,9 +46,6 @@ class SongListWidget extends StatelessWidget {
         child: AutoSizeText(
           "${(index + 1)}",
           style: Theme.of(context).tsNavigator,
-          maxLines: 1,
-          minFontSize: 1,
-          maxFontSize: 15.sp,
         ),
       );
     }
