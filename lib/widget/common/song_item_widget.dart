@@ -2,13 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
 import 'package:cloud_music/widget/app/app.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:media/media.dart';
 
 class SongListWidget extends StatelessWidget {
   final List<Song> songs;
+  final Widget headerWidget;
   final int? trackCount;
   final bool showIcon;
 
@@ -17,6 +17,7 @@ class SongListWidget extends StatelessWidget {
     this.songs = const [],
     this.trackCount,
     this.showIcon = false,
+    this.headerWidget = const SizedBox(),
   }) : super(key: key);
 
   void request(String id) {
@@ -33,19 +34,21 @@ class SongListWidget extends StatelessWidget {
     Widget _buildImage(String url) {
       return ImageWidget(
         url,
-        size: 0.05.sh,
-        cacheHeight: 0.05.sh.toInt(),
-        cacheWidth: 0.05.sh.toInt(),
+        size: 32.w,
+        cacheHeight: 32.w.toInt(),
+        cacheWidth: 32.w.toInt(),
       );
     }
 
     Widget _buildNum(int index) {
       return Container(
         alignment: Alignment.center,
-        width: 0.06.sw,
+        // padding: ,
+        width: 24.w,
         child: AutoSizeText(
           "${(index + 1)}",
           style: Theme.of(context).tsNavigator,
+          maxLines: 1,
         ),
       );
     }
@@ -58,12 +61,12 @@ class SongListWidget extends StatelessWidget {
           request(track.id.toString());
         },
         child: Container(
-          padding: EdgeInsets.all(0.02.sw),
-          height: 0.075.sh,
+          padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 15.w, bottom: 15.w),
+          height: 68.w,
           child: Row(
             children: [
               _showIcon ? _buildImage(track.al!.picUrl!) : _buildNum(index),
-              SizedBox(width: 0.02.sw),
+              SizedBox(width: 12.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,11 +74,12 @@ class SongListWidget extends StatelessWidget {
                   children: [
                     Text(
                       track.name,
-                      style: Theme.of(context).tsTitle.copyWith(color: Colors.white),
+                      style: Theme.of(context).tsDescBold,
                     ),
+                    SizedBox(height: 4.w),
                     Text(
                       track.singerAlbumDesc,
-                      style: Theme.of(context).tsDesc,
+                      style: Theme.of(context).hint2,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
@@ -94,44 +98,29 @@ class SongListWidget extends StatelessWidget {
 
     Widget _buildHeader(int? trackCount) {
       return Container(
-        margin: EdgeInsets.all(0.02.sw),
-        height: 0.03.sh,
+        margin: EdgeInsets.symmetric(horizontal: 26.w, vertical: 15.w),
         child: Row(
           children: [
-            Container(
-              alignment: Alignment.center,
-              width: 0.06.sw,
-              child: Icon(
-                Icons.play_circle_filled,
-                color: Theme.of(context).primaryColor,
-                size: 24.sm,
-              ),
-            ),
-            SizedBox(width: 0.02.sw),
             Expanded(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
                     S.PlaylistDetailPage.playAll,
-                    style: Theme.of(context).tsNavigator.copyWith(color: Colors.white),
+                    style: Theme.of(context).hint2,
                   ),
                   SizedBox(width: 0.02.sw),
-                  if (trackCount != null)
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 1.5.sm),
-                      child: Text(
-                        '($trackCount)',
-                        style: Theme.of(context).tsDesc,
-                      ),
-                    ),
                 ],
               ),
             ),
-            Icon(
-              Icons.arrow_circle_right,
-              size: 20.sm,
-            )
+            if (trackCount != null)
+              Padding(
+                padding: EdgeInsets.only(bottom: 1.5.sm),
+                child: Text(
+                  S.PlaylistDetailPage.songNum(count: trackCount),
+                  style: Theme.of(context).hint2,
+                ),
+              ),
           ],
         ),
       );
@@ -139,12 +128,27 @@ class SongListWidget extends StatelessWidget {
 
     Widget _buildSongList() {
       final list = [
-        _buildHeader(trackCount),
-        SizedBox(height: 0.02.sw),
-        ...songs.mapIndexed((i, e) => _buildItem(e, i)).toList(),
+        Expanded(
+          child: ListView.builder(
+            itemCount: songs.length,
+            itemBuilder: (BuildContext context, int index) {
+              if (index == 0) {
+                return Column(
+                  children: [
+                    headerWidget,
+                    _buildHeader(trackCount),
+                    _buildItem(songs[index], index),
+                  ],
+                );
+              }
+
+              return _buildItem(songs[index], index);
+            },
+          ),
+        ),
       ];
 
-      return Column(children: list);
+      return Expanded(child: Column(children: list));
     }
 
     return _buildSongList();

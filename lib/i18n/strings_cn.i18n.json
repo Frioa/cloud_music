@@ -31,6 +31,7 @@
   },
   "PlaylistDetailPage": {
     "title": "歌单",
-    "playAll": "播放全部"
+    "playAll": "播放全部",
+    "songNum": "$count 首"
   }
 }

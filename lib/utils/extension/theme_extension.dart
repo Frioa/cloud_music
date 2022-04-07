@@ -13,6 +13,9 @@ extension ThemeExtension on ThemeData {
     return isLight ? const Color(0xff828282) : const Color(0xff828282);
   }
 
+  Color get hintTextColor {
+    return isLight ? Colors.black.withOpacity(0.4) : Colors.white.withOpacity(0.4);
+  }
 
   Color get primaryLinkColor {
     return isLight ? const Color(0xff477aac) : const Color(0xff2b6e90);
@@ -67,10 +70,29 @@ extension ThemeExtension on ThemeData {
   }
 
   TextStyle get tsDesc {
+    return TextStyle(color: primaryTextColor, fontSize: 13.sp);
+  }
+
+  TextStyle get tsDesc2 {
     return TextStyle(color: descTextColor, fontSize: 13.sp);
   }
 
   TextStyle get tsDescBold {
-    return tsDesc.copyWith(fontWeight: FontWeight.w600);
+    return tsDesc2.copyWith(color: primaryTextColor, fontWeight: FontWeight.w600);
   }
+
+  TextStyle get tsDesc2Bold {
+    return tsDesc2.copyWith(fontWeight: FontWeight.w600);
+  }
+
+  TextStyle get hint2 {
+    return TextStyle(color: hintTextColor, fontSize: 11.sp);
+  }
+
+  Radius get radius10 => Radius.circular(10.w);
+
+  Radius get radius20 => Radius.circular(20.w);
+
+  Radius get radius40 => Radius.circular(40.w);
+
 }

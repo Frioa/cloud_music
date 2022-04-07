@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 32 (16.0 per locale)
+ * Strings: 34 (17.0 per locale)
  *
- * Built on 2022-04-06 at 13:36 UTC
+ * Built on 2022-04-07 at 14:07 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -475,6 +475,7 @@ class _TranslationsPlaylistDetailPageEn {
 	// Translations
 	String get title => '歌单';
 	String get playAll => '播放全部';
+	String songNum({required Object count}) => '$count songs';
 }
 
 // Path: <root>
@@ -607,6 +608,7 @@ class _TranslationsPlaylistDetailPageCn implements _TranslationsPlaylistDetailPa
 	// Translations
 	@override String get title => '歌单';
 	@override String get playAll => '播放全部';
+	@override String songNum({required Object count}) => '$count 首';
 }
 
 /// Flat map(s) containing all translations.
@@ -633,6 +635,7 @@ extension on _TranslationsEn {
 			'DailySongPage.title': 'Daily song',
 			'PlaylistDetailPage.title': '歌单',
 			'PlaylistDetailPage.playAll': '播放全部',
+			'PlaylistDetailPage.songNum': ({required Object count}) => '$count songs',
 		};
 	}
 }
@@ -658,6 +661,7 @@ extension on _TranslationsCn {
 			'DailySongPage.title': '每日歌曲',
 			'PlaylistDetailPage.title': '歌单',
 			'PlaylistDetailPage.playAll': '播放全部',
+			'PlaylistDetailPage.songNum': ({required Object count}) => '$count 首',
 		};
 	}
 }

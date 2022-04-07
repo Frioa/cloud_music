@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/extionsions.dart';
@@ -37,51 +38,92 @@ class _PlayerListDetailPageState extends State<PlayerListDetailPage> {
   Widget _buildTop() {
     final response = detailVM.response!;
     final playlist = response.playlist!;
-    return Container(
-      height: 0.18.sh,
-      padding: EdgeInsets.all(0.042.sw),
-      child: Row(
+    return SizedBox(
+      height: 375.w,
+      width: 375.w,
+      child: Stack(
         children: [
-          ImageWidget(
-            playlist.coverImgUrl,
-            size: 0.3.sw,
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Theme.of(context).radius40,
+              bottomRight: Theme.of(context).radius40,
+            ),
+            child: SizedBox(
+              width: 375.w,
+              height: 375.w,
+              child: ImageWidget(playlist.coverImgUrl),
+            ),
           ),
-          SizedBox(width: 0.03.sw),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  playlist.name,
-                  style: Theme.of(context).tsTitle.copyWith(color: Colors.white),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 0.04.sw),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      ImageWidget(
-                        playlist.creator!.avatarUrl,
-                        size: 0.065.sw,
-                      ),
-                      SizedBox(width: 0.02.sw),
-                      Text(
-                        playlist.creator!.nickname,
-                        style: Theme.of(context).tsDesc,
-                      ),
-                      SizedBox(width: 0.02.sw),
-                      Icon(Icons.add, size: 0.065.sw),
-                    ],
+          Container(
+            width: 375.w,
+            height: 375.w,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.transparent,
+                  Theme.of(context).isLight
+                      ? Colors.white.withOpacity(0.33)
+                      : Colors.black.withOpacity(0.33),
+                  Theme.of(context).isLight
+                      ? Colors.white.withOpacity(0.95)
+                      : Colors.black.withOpacity(0.95),
+                ],
+              ),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Theme.of(context).radius40,
+                bottomRight: Theme.of(context).radius40,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: 0,
+            child: Container(
+              width: 375.w,
+              padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.w),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AutoSizeText(
+                          playlist.name,
+                          style: Theme.of(context).tsDescBold.copyWith(fontSize: 20.sp),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        SizedBox(height: 6.w),
+                        if (playlist.description != null) ...[
+                          Text(
+                            playlist.description!,
+                            style: Theme.of(context).tsDesc2,
+                            maxLines: 2,
+                            // overflow: TextOverflow.ellipsis,
+                          ),
+                          SizedBox(height: 6.w),
+                        ],
+                        Row(
+                          children: [
+                            ClipOval(
+                              child: ImageWidget(
+                                playlist.creator!.avatarUrl,
+                                size: 22.w,
+                              ),
+                            ),
+                            SizedBox(width: 13.w),
+                            Text(
+                              playlist.creator!.nickname,
+                              style: Theme.of(context).tsDesc2,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const Expanded(child: SizedBox()),
-                Text(
-                  playlist.description ?? 'null',
-                  style: Theme.of(context).tsDesc,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ],
@@ -142,22 +184,31 @@ class _PlayerListDetailPageState extends State<PlayerListDetailPage> {
         if (!detailVM.hasData) return const SizedBox();
 
         return Scaffold(
-          appBar: AppBar(title: Text(S.PlaylistDetailPage.title)),
           body: Stack(
             children: [
-              SingleChildScrollView(
+              SizedBox(
+                height: 1.sh,
                 child: Column(
                   children: [
-                    _buildTop(),
-                    _buildCollection(),
                     if (trackAllVM.hasData)
                       SongListWidget(
+                        headerWidget: Column(
+                          children: [
+                            _buildTop(),
+                            // _buildCollection(),
+                          ],
+                        ),
                         songs: trackAll.songs,
                         trackCount: playlist.trackCount,
                       ),
                   ],
                 ),
-              )
+              ),
+              // TODO: 自定义 AppBar
+              // AppBar(
+              //   title: Text(S.PlaylistDetailPage.title),
+              //   backgroundColor: Colors.transparent,
+              // ),
             ],
           ),
         );

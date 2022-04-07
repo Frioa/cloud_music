@@ -1,4 +1,4 @@
-import 'package:cloud_music/bloc/login/login.dart';
+import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/widget/widgets.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +38,10 @@ class _LoginPageState extends State<LoginPage> {
       );
 
       context.read<LoginBloc>().add(action);
+      context.read<LoginBloc>().add(const LoginStateAction(action: LoginAction.requestLoginStatus));
+      context.read<TopBloc>().add(RequestTopArtistsEvent());
+      context.read<RecommendBloc>().add(RequestRecommendSheetEvent());
+
       R.of(context).pop();
     });
   }

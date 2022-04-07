@@ -48,6 +48,7 @@ class _NewHomePageState extends State<NewHomePage> {
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
         final profile = state.nestLoginStatusResponse?.profile;
+
         return Stack(
           children: [
             Scaffold(

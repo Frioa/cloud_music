@@ -1,5 +1,4 @@
 import 'package:cloud_music/bloc/bloc.dart';
-import 'package:cloud_music/bloc/top/top.dart';
 import 'package:cloud_music/common/common.dart';
 
 class TopBloc extends Bloc<BaseTopEvent, TopState> {

@@ -28,7 +28,7 @@ class _HomeSongListState extends State<HomeSongList> {
     final recommend = vm.response?.recommend[index];
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(24.w),
+      borderRadius: BorderRadius.all(Theme.of(context).radius10),
       child: Stack(
         alignment: Alignment.bottomCenter,
         children: [
@@ -61,8 +61,8 @@ class _HomeSongListState extends State<HomeSongList> {
               bottom: 0,
               child: ClipRRect(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(26.w),
-                  topRight: Radius.circular(26.w),
+                  topLeft: Theme.of(context).radius10,
+                  topRight: Theme.of(context).radius10,
                 ),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 8.w, sigmaY: 8.w),
@@ -79,7 +79,7 @@ class _HomeSongListState extends State<HomeSongList> {
                             padding: EdgeInsets.all(10.w),
                             child: Text(
                               recommend?.name ?? '',
-                              style: Theme.of(context).tsDescBold.copyWith(color: Colors.white),
+                              style: Theme.of(context).tsDesc2Bold.copyWith(color: Colors.white),
                             ),
                           ),
                         ),

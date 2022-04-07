@@ -56,7 +56,7 @@ class _TopArtistsState extends State<TopArtistsWidget> {
                 ),
               ),
               SizedBox(width: 2.w),
-              Text('Some Feeling', style: Theme.of(context).tsDesc),
+              Text('Some Feeling', style: Theme.of(context).tsDesc2),
             ],
           ),
         ],

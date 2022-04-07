@@ -1,5 +1,6 @@
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cloud_music/common/common.dart';
 
@@ -13,6 +14,9 @@ void main() async {
     () => runApp(MyApp()),
     blocObserver: AppBlocObserver(),
   );
+  /// 状态栏的全透明沉浸
+  SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+  SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
 
 class MyApp extends StatelessWidget {
