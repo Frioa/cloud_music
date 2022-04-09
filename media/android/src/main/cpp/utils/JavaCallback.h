@@ -18,6 +18,8 @@ public:
         jmid_error = env->GetMethodID(jclazz, "onError", "(I)V");
         jmid_prepare = env->GetMethodID(jclazz, "onPrepare", "(D)V");
         jmid_progress = env->GetMethodID(jclazz, "onProgress", "(I)V");
+        jmid_audioProgress = env->GetMethodID(jclazz, "onAudioProgress", "(D)V");
+        jmid_complete = env->GetMethodID(jclazz, "onComplete", "()V");
     };
 
     ~JavaCallback() {
@@ -65,6 +67,32 @@ public:
         }
     }
 
+    void onAudioProgress(double value, bool isMainThread = true) {
+        if (isMainThread) {
+            env->CallVoidMethod(jobj, jmid_audioProgress, value);
+        } else {
+            JNIEnv *jniEnv;
+            if (vm->AttachCurrentThread(&jniEnv, 0) != JNI_OK) {
+                return;
+            }
+            jniEnv->CallVoidMethod(jobj, jmid_audioProgress, value);
+            vm->DetachCurrentThread();
+        }
+    }
+
+    void onComplete(bool isMainThread = true) {
+        if (isMainThread) {
+            env->CallVoidMethod(jobj, jmid_complete);
+        } else {
+            JNIEnv *jniEnv;
+            if (vm->AttachCurrentThread(&jniEnv, 0) != JNI_OK) {
+                return;
+            }
+            jniEnv->CallVoidMethod(jobj, jmid_complete);
+            vm->DetachCurrentThread();
+        }
+    }
+
 public:
     JavaVM *vm;
     JNIEnv *env;
@@ -73,6 +101,8 @@ public:
     jmethodID jmid_error;
     jmethodID jmid_prepare;
     jmethodID jmid_progress;
+    jmethodID jmid_audioProgress;
+    jmethodID jmid_complete;
 };
 
 

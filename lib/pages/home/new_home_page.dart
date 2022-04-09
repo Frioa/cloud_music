@@ -12,11 +12,31 @@ class NewHomePage extends StatefulWidget {
   State<NewHomePage> createState() => _NewHomePageState();
 }
 
-class _NewHomePageState extends State<NewHomePage> {
+class _NewHomePageState extends State<NewHomePage> with RouteAware {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    PlayerOverlay.showPlayer(context);
+    routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
     context.read<LoginBloc>().add(const LoginStateAction(action: LoginAction.requestLoginStatus));
+  }
+
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this);
+    super.dispose();
+  }
+
+  @override
+  void didPopNext() {
+    super.didPopNext();
+    PlayerOverlay.showPlayer(context);
   }
 
   Widget _buildHeaderText() {
@@ -35,7 +55,7 @@ class _NewHomePageState extends State<NewHomePage> {
                 ),
               ),
             ),
-            Assets.icPotinRight.image( width: 125.w, height: 58.w)
+            Assets.icPotinRight.image(width: 125.w, height: 58.w)
             // ImageWidget(Assets.icPotinRight.path, width: 125.w, height: 58.w),
           ],
         );
@@ -72,13 +92,11 @@ class _NewHomePageState extends State<NewHomePage> {
                 ),
               ),
             ),
-            const Positioned(
-              bottom: 0,
-              child: HomeBottomPlayerWidget(),
-            )
           ],
         );
       },
     );
   }
+
+
 }

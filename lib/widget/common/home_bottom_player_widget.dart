@@ -4,6 +4,8 @@ import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/extionsions.dart';
 import 'package:cloud_music/widget/app/app.dart';
 import 'package:flutter/material.dart';
+import 'package:media/media.dart';
+import 'package:media/model/player_value.dart';
 
 class HomeBottomPlayerWidget extends StatefulWidget {
   const HomeBottomPlayerWidget({Key? key}) : super(key: key);
@@ -15,6 +17,29 @@ class HomeBottomPlayerWidget extends StatefulWidget {
 }
 
 class _HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget> {
+  bool isPlaying = false;
+
+  AudioPlayerController get controller => AudioPlayerController.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(valueChanged);
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(valueChanged);
+    super.dispose();
+  }
+
+  void valueChanged() {
+    if (isPlaying != controller.value.isPlaying) {
+      isPlaying = controller.value.isPlaying;
+      setState(() {});
+    }
+  }
+
   Widget _buildBackground() {
     return ClipRRect(
       borderRadius: BorderRadius.only(
@@ -44,30 +69,52 @@ class _HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget> {
 
   Widget _buildPlayer() {
     return Material(
-      child: Container(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        height: 100.w,
-        width: 1.sw,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              icon: Icon(Icons.skip_previous, size: 27.w),
-              onPressed: () {
-
-              },
+      child: Column(
+        children: [
+          ValueListenableBuilder<PlayerValue>(
+            valueListenable: AudioPlayerController.instance,
+            builder: (context, value, child) {
+              return SizedBox(
+                width: 1.sw,
+                child: LinearProgressIndicator(
+                  minHeight: 3.w,
+                  value: controller.progress,
+                  backgroundColor: Colors.transparent,
+                  color: Theme.of(context).primaryColor,
+                ),
+              );
+            },
+          ),
+          Container(
+            color: Theme.of(context).scaffoldBackgroundColor,
+            height: 100.w,
+            width: 1.sw,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.skip_previous, size: 27.w),
+                  onPressed: () {},
+                ),
+                SizedBox(width: 60.w),
+                InkWell(
+                  onTap: () {
+                    controller.pauseOrPlay();
+                  },
+                  child: ImageWidget(
+                    isPlaying ? Assets.icBtnPause.path : Assets.icBtnPlay.path,
+                    size: 27.w,
+                  ),
+                ),
+                SizedBox(width: 60.w),
+                IconButton(
+                  icon: Icon(Icons.skip_next, size: 27.w),
+                  onPressed: () {},
+                ),
+              ],
             ),
-            SizedBox(width: 60.w),
-            ImageWidget(Assets.icBtnPlay.path, size: 27.w),
-            SizedBox(width: 60.w),
-            IconButton(
-              icon: Icon(Icons.skip_next, size: 27.w),
-              onPressed: () {
-
-              },
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

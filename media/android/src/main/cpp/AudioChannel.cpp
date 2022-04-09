@@ -24,10 +24,11 @@ AudioChannel::AudioChannel(int channelId, Callback *callback, AVCodecContext *av
 AudioChannel::~AudioChannel() {
     free(buffer);
     buffer = nullptr;
+    callback = nullptr;
 }
 
 void *audioPlay_t(void *args) {
-    AudioChannel *audioChannel = static_cast<AudioChannel *>(args);
+    auto *audioChannel = static_cast<AudioChannel *>(args);
     audioChannel->_play();
 
     return nullptr;
@@ -123,6 +124,15 @@ int AudioChannel::_getData() {
         // 播放这段声音的时间
         clock = frame->pts * av_q2d(time_base);
 
+        // 回调播放进度
+        if (lastUploadClock < 0.0 || clock - lastUploadClock > 0.33) {
+            LOGI("AudioChannel: clock:%f  lastUploadClock:%f", clock, lastUploadClock);
+            lastUploadClock = clock;
+            if (callback != nullptr) {
+                callback->onAudioProgress(lastUploadClock, false);
+            }
+        }
+
         releaseAvFrame(frame);
         break;
     }
@@ -216,7 +226,6 @@ void AudioChannel::_play() {
 void AudioChannel::stop() {
     LOGI("AudioChannel::stop");
     isPlaying = false;
-    callback = nullptr;
     setEnable(false);
     pthread_join(audioDecodeTask, nullptr);
     pthread_join(audioPlayTask, nullptr);

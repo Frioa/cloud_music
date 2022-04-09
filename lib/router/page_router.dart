@@ -5,6 +5,9 @@ import 'package:flutter/foundation.dart';
 ///
 /// TODO:1. onGenerateRoute，等接口的作用。
 ///
+///
+final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
+
 class R extends RouterDelegate<PageConfiguration>
     with PopNavigatorRouterDelegateMixin<PageConfiguration>, ChangeNotifier {
   R() {
@@ -152,6 +155,7 @@ class R extends RouterDelegate<PageConfiguration>
       key: navigatorKey,
       pages: List.unmodifiable(_pages),
       onPopPage: _onPopPage,
+      observers: [routeObserver],
     );
   }
 }

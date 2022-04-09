@@ -31,6 +31,7 @@ dependencies:
   path_provider: ^2.0.8
   flutter_svg: ^1.0.3
   #  permission_handler: ^8.3.0
+  video_player: ^2.3.0
 
   media:
     path: media
@@ -52,7 +53,7 @@ dev_dependencies:
   flutter_lints: ^1.0.4
   json_serializable: ^6.1.1
   flutter_gen_runner: ^4.1.5
-
+  lint: ^1.8.2
 
 flutter:
   assets:

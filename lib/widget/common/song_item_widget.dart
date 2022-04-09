@@ -21,12 +21,9 @@ class SongListWidget extends StatelessWidget {
   }) : super(key: key);
 
   void request(String id) {
+
     SearchClient(dio).songUrl(id).then((value) async {
-      PlayerJni.instance.prepare = () {
-        PlayerJni.instance.start();
-      };
-      await PlayerJni.instance.init();
-      await PlayerJni.instance.setDataSource(value.data![0].url!);
+      AudioPlayerController.instance.play(value.data![0].url!);
     });
   }
 
@@ -72,9 +69,10 @@ class SongListWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    AutoSizeText(
                       track.name,
                       style: Theme.of(context).tsDescBold,
+                      maxLines: 1,
                     ),
                     SizedBox(height: 4.w),
                     Text(

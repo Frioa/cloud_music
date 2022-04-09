@@ -6,9 +6,10 @@
 
 const bool enableJava = true;
 
-Callback::Callback(OnPrepare prepare, OnProgress progress, OnError error) {
+Callback::Callback(OnPrepare prepare, OnProgress progress , OnError error) {
     this->_onPrepare = prepare;
     this->_onProgress = progress;
+//    this->_onAudioProgress = audioProgress;
     this->_onError = error;
 }
 
@@ -37,6 +38,22 @@ void Callback::onError(int code, bool isMainThread) {
     }
     _onError(code);
 }
+
+void Callback::onAudioProgress(double duration, bool isMainThread) {
+    if (enableJava) {
+        return _javaCallback->onAudioProgress(duration, isMainThread);
+    }
+//    _onAudioProgress();
+}
+
+void Callback::onComplete(bool isMainThread) {
+    if (enableJava) {
+        return _javaCallback->onComplete(isMainThread);
+    }
+//    _onPrepare();
+}
+
+
 
 
 

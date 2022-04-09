@@ -1,11 +1,8 @@
 import 'package:cloud_music/bloc/login/login.dart';
-import 'package:cloud_music/common/translations.g.dart';
-import 'package:cloud_music/model/account/user.dart';
+import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/network/account/user_client.dart';
-import 'package:cloud_music/network/network.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:media/media.dart';
 
 class PlayRecordPage extends StatefulWidget {
@@ -36,6 +33,12 @@ class _PlayRecordPageState extends State<PlayRecordPage> {
 
   void request(String id) {
     SearchClient(dio).songUrl(id).then((value) async {
+      String? url = value.data?[0].url;
+      if (url == null) {
+        logger.d("url is null...");
+        return;
+      }
+
       PlayerJni.instance.prepare = () {
         PlayerJni.instance.start();
       };

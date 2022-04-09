@@ -10,7 +10,7 @@ class ThemeCubit extends Cubit<ThemeData> {
   ThemeCubit() : super(lightTheme);
 
   static late final lightTheme = ThemeData(
-    primaryColor: const Color(0xFFCE3D3A),
+    primaryColor: const Color(0xFF9570FF),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       foregroundColor: Colors.white,
     ),

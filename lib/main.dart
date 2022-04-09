@@ -14,8 +14,10 @@ void main() async {
     () => runApp(MyApp()),
     blocObserver: AppBlocObserver(),
   );
+
   /// 状态栏的全透明沉浸
-  SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+  SystemUiOverlayStyle systemUiOverlayStyle =
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent);
   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
 

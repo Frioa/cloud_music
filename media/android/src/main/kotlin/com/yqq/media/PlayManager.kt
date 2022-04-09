@@ -91,7 +91,19 @@ class PlayManager constructor(val channel: MethodChannel) {
 
     private fun onProgress(value: Int) {
         handler.post {
-            channel.invokeMethod("onProgress", "value" to value)
+            channel.invokeMethod("onProgress", mapOf("value" to value))
+        }
+    }
+
+    private fun onAudioProgress(value: Double) {
+        handler.post {
+            channel.invokeMethod("onAudioProgress", mapOf("value" to value))
+        }
+    }
+
+    private fun onComplete() {
+        handler.post {
+            channel.invokeMethod("onComplete", mapOf("null" to null))
         }
     }
 

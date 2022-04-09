@@ -44,14 +44,19 @@ public:
 
     void onProgress(int value, bool isMainThread = true);
 
+    void onAudioProgress(double duration, bool isMainThread = true);
+
     void onError(int code, bool isMainThread = true);
+
+    void onComplete(bool isMainThread = true);
 
     JavaCallback *_javaCallback = 0;
 private:
 
-    ///
+    ///TODO: Dart callback
     OnPrepare _onPrepare;
     OnProgress _onProgress;
+//    OnProgress _onAudioProgress;
     OnError _onError;
 };
 

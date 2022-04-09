@@ -62,7 +62,7 @@ private:
 
     bool isPlaying = false;
 
-    bool isSeek = false;
+    bool isSeek = true;
     pthread_mutex_t seekMutex;
 
     pthread_t startTask = 0;

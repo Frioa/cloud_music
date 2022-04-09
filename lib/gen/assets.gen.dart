@@ -10,6 +10,8 @@ import 'package:flutter/widgets.dart';
 class Assets {
   Assets._();
 
+  static const AssetGenImage icBtnPause =
+      AssetGenImage('assets/ic_btn_pause.png');
   static const AssetGenImage icBtnPlay =
       AssetGenImage('assets/ic_btn_play.png');
   static const AssetGenImage icDefaultAvatar =

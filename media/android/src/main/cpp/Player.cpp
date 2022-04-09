@@ -215,6 +215,7 @@ void Player::_start() {
 
                 if (videoChannelEmpty && audioChannelEmpty) {
                     LOGE("播放完毕");
+                    callback->onComplete(false);
                     break;
                 }
             } else {
@@ -234,13 +235,8 @@ void Player::seek(double time) {
     LOGI("Player::seek1 %lf %ld", time, duration);
 
     if (time >= duration) return;
-    LOGI("Player::seek1");
-
     if (!audioChannel && !videoChannel) return;
-    LOGI("Player::seek2");
-
     if (!avFormatContext) return;
-    LOGI("Player::seek3");
 
     isSeek = true;
     pthread_mutex_lock(&seekMutex);

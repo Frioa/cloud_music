@@ -27,6 +27,7 @@ VideoChannel::VideoChannel(int channelId, Callback *callback, AVCodecContext *av
 
 VideoChannel::~VideoChannel() {
     pthread_mutex_destroy(&surfaceMutex);
+    callback = nullptr;
 }
 
 
@@ -231,7 +232,6 @@ void VideoChannel::onDraw(uint8_t **data, int *linesize, int width, int height) 
 void VideoChannel::stop() {
     LOGE("VideoChannel::stop ");
     isPlaying = false;
-    callback = nullptr;
     setEnable(false);
 
     pthread_join(videoDecodeTask, nullptr);

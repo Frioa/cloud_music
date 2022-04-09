@@ -72,6 +72,7 @@ public:
 
     bool isPlaying = false;
     double clock = 0;
+    double lastUploadClock = -1;
 };
 
 #endif //MEDIA_BASECHANNEL_H
