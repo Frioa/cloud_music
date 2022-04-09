@@ -28,67 +28,37 @@ public:
     }
 
     void onError(int code, bool isMainThread = true) {
-        if (isMainThread) {
-            env->CallVoidMethod(jobj, jmid_error, code);
-        } else {
-            // 得到当前线程的 env
-            JNIEnv *jniEnv;
-            if (vm->AttachCurrentThread(&jniEnv, 0) != JNI_OK) {
-                return;
-            }
-            jniEnv->CallVoidMethod(jobj, jmid_error, code);
-            vm->DetachCurrentThread();
-        }
+        _callback(isMainThread, jmid_error, code);
     }
 
-    void onPrepare(double duration,bool isMainThread = true) {
-        if (isMainThread) {
-            env->CallVoidMethod(jobj, jmid_prepare, duration);
-        } else {
-            JNIEnv *jniEnv;
-            if (vm->AttachCurrentThread(&jniEnv, 0) != JNI_OK) {
-                return;
-            }
-            jniEnv->CallVoidMethod(jobj, jmid_prepare, duration);
-            vm->DetachCurrentThread();
-        }
+    void onPrepare(double duration, bool isMainThread = true) {
+        _callback(isMainThread, jmid_prepare, duration);
     }
 
     void onProgress(int value, bool isMainThread = true) {
-        if (isMainThread) {
-            env->CallVoidMethod(jobj, jmid_progress, value);
-        } else {
-            JNIEnv *jniEnv;
-            if (vm->AttachCurrentThread(&jniEnv, 0) != JNI_OK) {
-                return;
-            }
-            jniEnv->CallVoidMethod(jobj, jmid_progress, value);
-            vm->DetachCurrentThread();
-        }
+        _callback(isMainThread, jmid_progress, value);
     }
 
     void onAudioProgress(double value, bool isMainThread = true) {
-        if (isMainThread) {
-            env->CallVoidMethod(jobj, jmid_audioProgress, value);
-        } else {
-            JNIEnv *jniEnv;
-            if (vm->AttachCurrentThread(&jniEnv, 0) != JNI_OK) {
-                return;
-            }
-            jniEnv->CallVoidMethod(jobj, jmid_audioProgress, value);
-            vm->DetachCurrentThread();
-        }
+        _callback(isMainThread, jmid_audioProgress, value);
     }
 
     void onComplete(bool isMainThread = true) {
+        _callback(isMainThread, jmid_complete);
+    }
+
+    void _callback(bool isMainThread = true, jmethodID methodID = nullptr, ...) {
+        va_list args;
+        va_start(args, methodID);
+
         if (isMainThread) {
-            env->CallVoidMethod(jobj, jmid_complete);
+            env->CallVoidMethodV(jobj, methodID, args);
         } else {
             JNIEnv *jniEnv;
             if (vm->AttachCurrentThread(&jniEnv, 0) != JNI_OK) {
                 return;
             }
-            jniEnv->CallVoidMethod(jobj, jmid_complete);
+            jniEnv->CallVoidMethodV(jobj, methodID, args);
             vm->DetachCurrentThread();
         }
     }

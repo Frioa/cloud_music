@@ -5,6 +5,9 @@ import 'home_bottom_player_widget.dart';
 
 class PlayerOverlay {
   static bool isDispose = true;
+
+  static final GlobalKey _key = GlobalKey();
+
   static final OverlayEntry overlayEntry = OverlayEntry(
     builder: (context) {
       return const HomeBottomPlayerWidget();
@@ -19,7 +22,7 @@ class PlayerOverlay {
 
     final overlayEntry = OverlayEntry(
       builder: (context) {
-        return const Positioned(bottom: 0, child: HomeBottomPlayerWidget());
+        return Positioned(bottom: 0, child: HomeBottomPlayerWidget(key: _key));
       },
     );
 
