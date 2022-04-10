@@ -24,6 +24,10 @@ class ThemeCubit extends Cubit<ThemeData> {
       elevation: 0,
       toolbarHeight: 75.w,
     ),
+    inputDecorationTheme: const InputDecorationTheme(
+      fillColor: Color(0xffF0F0F0),
+      suffixIconColor: Color(0xFF9570FF),
+    ),
   );
 
   static late final darkTheme = ThemeData(
@@ -42,5 +46,4 @@ class ThemeCubit extends Cubit<ThemeData> {
       toolbarHeight: 75.w,
     ),
   );
-
 }

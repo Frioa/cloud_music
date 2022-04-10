@@ -18,7 +18,6 @@ class R extends RouterDelegate<PageConfiguration>
   final List<Page> _pages = [];
 
   static R of(BuildContext context) {
-    logger.d('PageRouter.of(context)');
     final delegate = Router.of(context).routerDelegate as RouterDelegate<Object>;
     assert(delegate is R, 'Delegate type mismatch!');
     return delegate as R;

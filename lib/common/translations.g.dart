@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 34 (17.0 per locale)
+ * Strings: 36 (18.0 per locale)
  *
- * Built on 2022-04-09 at 08:41 UTC
+ * Built on 2022-04-10 at 06:43 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -429,6 +429,7 @@ class _TranslationsLoginPageEn {
 	String get title => 'Login Page';
 	String get hintPhone => 'Phone';
 	String get hintCaptcha => 'Captcha';
+	String get register => 'Register';
 	String get btLogin => 'Login';
 }
 
@@ -562,6 +563,7 @@ class _TranslationsLoginPageCn implements _TranslationsLoginPageEn {
 	@override String get title => '登录页';
 	@override String get hintPhone => '手机号';
 	@override String get hintCaptcha => '验证码';
+	@override String get register => '注册';
 	@override String get btLogin => '登录';
 }
 
@@ -629,6 +631,7 @@ extension on _TranslationsEn {
 			'loginPage.title': 'Login Page',
 			'loginPage.hintPhone': 'Phone',
 			'loginPage.hintCaptcha': 'Captcha',
+			'loginPage.register': 'Register',
 			'loginPage.btLogin': 'Login',
 			'myPage.loginBtn': 'Login In',
 			'playRecordPage.title': 'Playback Record',
@@ -655,6 +658,7 @@ extension on _TranslationsCn {
 			'loginPage.title': '登录页',
 			'loginPage.hintPhone': '手机号',
 			'loginPage.hintCaptcha': '验证码',
+			'loginPage.register': '注册',
 			'loginPage.btLogin': '登录',
 			'myPage.loginBtn': '立即登录>',
 			'playRecordPage.title': '播放记录',

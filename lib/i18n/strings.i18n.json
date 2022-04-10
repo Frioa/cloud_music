@@ -19,6 +19,7 @@
     "title": "Login Page",
     "hintPhone": "Phone",
     "hintCaptcha": "Captcha",
+    "register": "Register",
     "btLogin": "Login"
   },
   "myPage": {

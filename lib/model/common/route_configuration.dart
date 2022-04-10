@@ -5,12 +5,14 @@ class PageConfiguration {
   final String key;
   final String path;
   final Widget widget;
+  final bool showPlayerOverlay;
   final Map<String, Object> parameter;
 
   PageConfiguration({
     required this.key,
     required this.path,
     required this.widget,
+    required this.showPlayerOverlay,
     this.parameter = const {},
   });
 

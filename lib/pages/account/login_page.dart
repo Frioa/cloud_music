@@ -1,7 +1,11 @@
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/common/common.dart';
+import 'package:cloud_music/utils/extension/theme_extension.dart';
+import 'package:cloud_music/utils/utils.dart';
 import 'package:cloud_music/widget/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -10,24 +14,54 @@ class LoginPage extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  late final TextEditingController phoneController = TextEditingController()..text = 'xxxxx';
+class _LoginPageState extends BasePageState<LoginPage> {
+  final FocusNode phoneFocus = FocusNode();
+  final FocusNode captchaFocus = FocusNode();
+  late final TextEditingController phoneController = TextEditingController();
   late final TextEditingController captchaController = TextEditingController();
   late final nestLoginClient = NestLoginClient(dio);
+
+  @override
+  void initState() {
+    super.initState();
+    phoneFocus.addListener(() {
+      setState(() {});
+    });
+    readCache();
+  }
+
+  @override
+  void dispose() {
+    phoneFocus.dispose();
+    captchaFocus.dispose();
+    super.dispose();
+  }
+
+  void readCache() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
+      final sp = await SharedPreferences.getInstance();
+      final cachePhone = sp.getString(SpKey.phone);
+      if (cachePhone != null) phoneController.text = cachePhone;
+    });
+  }
 
   void requestCaptcha() {
     nestLoginClient.sentCaptcha(phoneController.text).then((response) {});
   }
 
   void requestLogin() {
-    nestLoginClient
-        .cellPhone(phoneController.text, '', captcha: captchaController.text)
-        .then((response) {
-      final action = LoginStateAction(nestLoginResponse: response, action: LoginAction.login);
-      context.read<LoginBloc>().add(action);
-      requestStatus();
-      R.of(context).pop();
-    });
+    final phone = phoneController.text;
+
+    nestLoginClient.cellPhone(phone, '', captcha: captchaController.text).then(
+      (response) async {
+        final action = LoginStateAction(nestLoginResponse: response, action: LoginAction.login);
+        context.read<LoginBloc>().add(action);
+        final sp = await SharedPreferences.getInstance();
+        sp.setString(SpKey.phone, phone);
+        requestStatus();
+        R.of(context).pop();
+      },
+    );
   }
 
   void requestStatus() {
@@ -46,40 +80,114 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  Widget _buildInput() {
+    return Column(
+      children: [
+        InputWidget(
+          controller: phoneController,
+          hintText: S.loginPage.hintPhone,
+          focusNode: phoneFocus,
+          suffixIcon: IconButton(
+            icon: const Icon(Icons.send),
+            onPressed: phoneFocus.hasFocus
+                ? () {
+                    requestCaptcha();
+                  }
+                : null,
+          ),
+        ),
+        SizedBox(height: 22.w),
+        InputWidget(
+          focusNode: captchaFocus,
+          controller: captchaController,
+          hintText: S.loginPage.hintCaptcha,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildButton() {
+    return Row(
+      children: [
+        // TODO: register
+        // Expanded(
+        //   child: Center(
+        //     child: Text(
+        //       S.loginPage.register,
+        //       style: Theme.of(context).tsDesc.copyWith(
+        //             fontSize: 20.w,
+        //             color: Theme.of(context).primaryColor.withOpacity(0.5),
+        //           ),
+        //     ),
+        //   ),
+        // ),
+        Expanded(
+          child: InkWell(
+            onTap: () {
+              requestLogin();
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.w),
+              child: Container(
+                height: 41.w,
+                alignment: Alignment.center,
+                color: Theme.of(context).primaryColor,
+                child: Text(
+                  S.loginPage.btLogin,
+                  style: Theme.of(context).tsDesc.copyWith(
+                        fontSize: 20.w,
+                        color: Colors.white,
+                      ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(S.loginPage.title)),
-      body: Center(
+      /// TODO: Appbar
+      // appBar: AppBar(
+      //   title: Text(
+      //     S.loginPage.title,
+      //     style: Theme.of(context).tsDesc,
+      //   ),
+      // ),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 30.w),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            InputWidget(
-              controller: phoneController,
-              hintText: S.loginPage.hintPhone,
-              suffixIcon: IconButton(
-                icon: const Icon(Icons.send),
-                onPressed: () {
-                  requestCaptcha();
-                },
-              ),
+            SizedBox(
+              height: MediaQuery.of(context).viewInsets.bottom > 0 ? 239.w - 50.w : 239.w,
             ),
-            InputWidget(
-              controller: captchaController,
-              hintText: S.loginPage.hintCaptcha,
+            Text(
+              S.loginPage.btLogin,
+              style: Theme.of(context).tsDescBold.copyWith(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 40.w,
+                  ),
             ),
-            TextButton(
-              child: Text(S.loginPage.btLogin),
-              onPressed: () {
-                requestLogin();
-              },
-            ),
-            TextButton(
-              child: const Text('用户状态'),
-              onPressed: () {
-                requestStatus();
-              },
-            ),
+            SizedBox(height: 19.w),
+            _buildInput(),
+            // TextButton(
+            //   child: Text(S.loginPage.btLogin),
+            //   onPressed: () {
+            //     requestLogin();
+            //   },
+            // ),
+            SizedBox(height: 22.w),
+            _buildButton(),
+            // TextButton(
+            //   child: const Text('用户状态'),
+            //   onPressed: () {
+            //     requestStatus();
+            //   },
+            // ),
           ],
         ),
       ),

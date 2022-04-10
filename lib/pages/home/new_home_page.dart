@@ -12,7 +12,7 @@ class NewHomePage extends StatefulWidget {
   State<NewHomePage> createState() => _NewHomePageState();
 }
 
-class _NewHomePageState extends State<NewHomePage> with RouteAware {
+class _NewHomePageState extends BasePageState<NewHomePage> {
 
   @override
   void initState() {
@@ -22,22 +22,9 @@ class _NewHomePageState extends State<NewHomePage> with RouteAware {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    PlayerOverlay.showPlayer(context);
-    routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
     context.read<LoginBloc>().add(const LoginStateAction(action: LoginAction.requestLoginStatus));
   }
 
-  @override
-  void dispose() {
-    routeObserver.unsubscribe(this);
-    super.dispose();
-  }
-
-  @override
-  void didPopNext() {
-    super.didPopNext();
-    PlayerOverlay.showPlayer(context);
-  }
 
   Widget _buildHeaderText() {
     return BlocBuilder<LoginBloc, LoginState>(

@@ -10,13 +10,13 @@ import 'package:media/model/player_value.dart';
 class HomeBottomPlayerWidget extends StatefulWidget {
   const HomeBottomPlayerWidget({Key? key}) : super(key: key);
 
-  static double get height => 100.w;
+  static double get height => 103.w;
 
   @override
-  State<HomeBottomPlayerWidget> createState() => _HomeBottomPlayerWidgetState();
+  State<HomeBottomPlayerWidget> createState() => HomeBottomPlayerWidgetState();
 }
 
-class _HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
+class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
     with TickerProviderStateMixin {
   bool isPlaying = false;
 
@@ -25,7 +25,7 @@ class _HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
     duration: const Duration(milliseconds: 600),
   );
 
-  late final Animation animation = Tween<double>(begin: 1.0, end: 2.0).animate(playerControl);
+  late final Animation animation = Tween<double>(begin: -1.0, end: 0.0).animate(playerControl);
 
   AudioPlayerController get controller => AudioPlayerController.instance;
 
@@ -46,13 +46,25 @@ class _HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
       isPlaying = controller.value.isPlaying;
 
       // 开始播放视频
-      if (isPlaying) {
-        playerControl.forward(from: playerControl.value);
-      } else {
-        playerControl.reverse(from: playerControl.value);
-      }
+      // if (isPlaying) {
+      //   playerControl.forward(from: playerControl.value);
+      // } else {
+      //   playerControl.reverse(from: playerControl.value);
+      // }
       setState(() {});
     }
+  }
+
+  void show() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      playerControl.forward(from: playerControl.value);
+    });
+  }
+
+  void hide() {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      playerControl.reverse(from: playerControl.value);
+    });
   }
 
   Widget _buildBackground() {
@@ -141,15 +153,21 @@ class _HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 1.sw,
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          _buildBackground(),
-          Positioned(bottom: 0, child: _buildPlayer()),
-        ],
-      ),
+    return AnimatedBuilder(
+      animation: animation,
+      builder: (BuildContext context, Widget? child) {
+        return SizedBox(
+          width: 1.sw,
+          height: HomeBottomPlayerWidget.height,
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              // _buildBackground(),
+              Positioned(bottom: HomeBottomPlayerWidget.height * animation.value, child: _buildPlayer()),
+            ],
+          ),
+        );
+      },
     );
   }
 }

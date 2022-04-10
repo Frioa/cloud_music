@@ -4,41 +4,30 @@ import 'package:flutter/cupertino.dart';
 import 'home_bottom_player_widget.dart';
 
 class PlayerOverlay {
-  static bool isDispose = true;
+  static bool init = false;
 
-  static final GlobalKey _key = GlobalKey();
+  static final GlobalKey _key = GlobalKey<HomeBottomPlayerWidgetState>();
 
   static final OverlayEntry overlayEntry = OverlayEntry(
     builder: (context) {
-      return const HomeBottomPlayerWidget();
+      return HomeBottomPlayerWidget(key: _key);
     },
   );
 
   static showPlayer(BuildContext context) {
-    if (!isDispose) {
-      logger.d("PlayerOverlay is show");
+    logger.d("PlayerOverlay: showPlayer $init");
+    if (!init) {
+      init = true;
+      WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+        Overlay.of(context)!.insert(overlayEntry);
+      });
       return;
     }
 
-    final overlayEntry = OverlayEntry(
-      builder: (context) {
-        return Positioned(bottom: 0, child: HomeBottomPlayerWidget(key: _key));
-      },
-    );
-
-    isDispose = false;
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      Overlay.of(context)!.insert(overlayEntry);
-    });
+    (_key.currentState as HomeBottomPlayerWidgetState).show();
   }
 
   static dispose(BuildContext context) {
-    if (isDispose) {
-      logger.d("PlayerOverlay is dispose");
-      return;
-    }
-
-    isDispose = true;
-    overlayEntry.remove();
+    (_key.currentState as HomeBottomPlayerWidgetState).hide();
   }
 }

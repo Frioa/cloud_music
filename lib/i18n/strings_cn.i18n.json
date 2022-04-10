@@ -18,6 +18,7 @@
     "title": "登录页",
     "hintPhone": "手机号",
     "hintCaptcha": "验证码",
+    "register": "注册",
     "btLogin": "登录"
   },
   "myPage": {

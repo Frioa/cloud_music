@@ -55,14 +55,15 @@ class AudioPlayerController extends ValueNotifier<PlayerValue> {
   }
 
   Future<void> play(String url, {Duration start = Duration.zero}) async {
-    value = value.copyWith(isPlaying: false, isInitialized: false, position: start, url: url);
+    value = value.copyWith(isPlaying: false, position: start, url: url);
     await _setDataSource(url);
   }
 
   Future<void> pauseOrPlay() async {
-    // if (value.position == value.duration) {
-    //   await seekTo(const Duration());
-    // }
+    if (value.isInitialized == false) {
+      logger.d("AudioPlayerController not isInitialized");
+      return;
+    }
     if (value.isPlaying) {
       await _stop();
     } else {
