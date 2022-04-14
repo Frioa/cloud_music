@@ -20,6 +20,10 @@ class PlayerOverlay {
       init = true;
       WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
         Overlay.of(context)!.insert(overlayEntry);
+
+        WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+          (_key.currentState as HomeBottomPlayerWidgetState).show();
+        });
       });
       return;
     }

@@ -16,8 +16,8 @@ void main() async {
   );
 
   /// 状态栏的全透明沉浸
-  SystemUiOverlayStyle systemUiOverlayStyle =
-      const SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+  SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.light);
   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
 }
 

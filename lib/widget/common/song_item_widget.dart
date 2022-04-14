@@ -1,10 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
+import 'package:cloud_music/utils/player_utils.dart';
 import 'package:cloud_music/widget/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:media/media.dart';
 
 class SongListWidget extends StatelessWidget {
   final List<Song> songs;
@@ -20,12 +20,6 @@ class SongListWidget extends StatelessWidget {
     this.headerWidget = const SizedBox(),
   }) : super(key: key);
 
-  void request(String id) {
-
-    SearchClient(dio).songUrl(id).then((value) async {
-      AudioPlayerController.instance.play(value.data![0].url!);
-    });
-  }
 
   Widget buildSheet(BuildContext context, List<Song> songs) {
     Widget _buildImage(String url) {
@@ -55,7 +49,7 @@ class SongListWidget extends StatelessWidget {
 
       return InkWell(
         onTap: () {
-          request(track.id.toString());
+          PlayerManager.play(context, track);
         },
         child: Container(
           padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 15.w, bottom: 15.w),

@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_music/bloc/player/player.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/extionsions.dart';
 import 'package:cloud_music/widget/app/app.dart';
@@ -10,7 +12,7 @@ import 'package:media/model/player_value.dart';
 class HomeBottomPlayerWidget extends StatefulWidget {
   const HomeBottomPlayerWidget({Key? key}) : super(key: key);
 
-  static double get height => 103.w;
+  static double get height => 203.w;
 
   @override
   State<HomeBottomPlayerWidget> createState() => HomeBottomPlayerWidgetState();
@@ -25,32 +27,41 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
     duration: const Duration(milliseconds: 600),
   );
 
+  late final AnimationController songDetailControl = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 600),
+  );
+
   late final Animation animation = Tween<double>(begin: -1.0, end: 0.0).animate(playerControl);
+  late final Animation sdAnimation = Tween<double>(begin: 0.3, end: 1.0).animate(songDetailControl);
 
   AudioPlayerController get controller => AudioPlayerController.instance;
 
   @override
   void initState() {
     super.initState();
-    controller.addListener(valueChanged);
+    controller.addListener(_valueChanged);
   }
 
   @override
   void dispose() {
-    controller.removeListener(valueChanged);
+    songDetailControl.dispose();
+    controller.dispose();
+    controller.removeListener(_valueChanged);
     super.dispose();
   }
 
-  void valueChanged() {
+  void _valueChanged() {
     if (isPlaying != controller.value.isPlaying) {
       isPlaying = controller.value.isPlaying;
+      if (isPlaying) {
+        songDetailControl.forward(from: songDetailControl.value);
+        setState(() {});
+      } else {
+        songDetailControl.reverse(from: songDetailControl.value);
+        setState(() {});
+      }
 
-      // 开始播放视频
-      // if (isPlaying) {
-      //   playerControl.forward(from: playerControl.value);
-      // } else {
-      //   playerControl.reverse(from: playerControl.value);
-      // }
       setState(() {});
     }
   }
@@ -69,25 +80,57 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
 
   Widget _buildBackground() {
     return AnimatedBuilder(
+      animation: sdAnimation,
       builder: (BuildContext context, Widget? child) {
-        return ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(26.w),
-            topRight: Radius.circular(26.w),
-          ),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 12.w, sigmaY: 12.w),
-            child: Container(
-              width: 1.sw,
-              height: HomeBottomPlayerWidget.height * animation.value,
-              decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.2),
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.white.withOpacity(0.5),
-                    Colors.white.withOpacity(0.6539),
-                    Colors.white.withOpacity(0.3639),
-                    Colors.white.withOpacity(0.5),
+        final song = context.read<PlayerBloc>().state.playingSong;
+        return Material(
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(26.w),
+              topRight: Radius.circular(26.w),
+            ),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 12.w, sigmaY: 12.w),
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.w),
+                width: 1.sw,
+                height: 184.w * sdAnimation.value,
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.2),
+                  gradient: LinearGradient(
+                    colors: [
+                      Colors.white.withOpacity(0.5),
+                      Colors.white.withOpacity(0.6539),
+                      Colors.white.withOpacity(0.3639),
+                      Colors.white.withOpacity(0.5),
+                    ],
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.w),
+                      child: ImageWidget(
+                        context.read<PlayerBloc>().state.playingSong?.al?.picUrl ??
+                            Assets.icDefaultAvatar.path,
+                        size: 46.w,
+                      ),
+                    ),
+                    SizedBox(width: 14.w),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AutoSizeText(
+                          song?.name ?? '',
+                          style: Theme.of(context).tsTitleBold2.copyWith(fontSize: 16.w),
+                        ),
+                        AutoSizeText(
+                          song?.singerAlbumDesc ?? '',
+                          style: Theme.of(context).hint2,
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -95,7 +138,6 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
           ),
         );
       },
-      animation: animation,
     );
   }
 
@@ -162,8 +204,11 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
-              // _buildBackground(),
-              Positioned(bottom: HomeBottomPlayerWidget.height * animation.value, child: _buildPlayer()),
+              _buildBackground(),
+              Positioned(
+                bottom: HomeBottomPlayerWidget.height * animation.value,
+                child: _buildPlayer(),
+              ),
             ],
           ),
         );
