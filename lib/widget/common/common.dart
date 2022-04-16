@@ -5,4 +5,5 @@ export 'home_song_list.dart';
 export 'home_user_song_list.dart';
 export 'home_bottom_player_widget.dart';
 export 'player_overlay.dart';
+export 'player_widget.dart';
 export 'link_widget.dart';

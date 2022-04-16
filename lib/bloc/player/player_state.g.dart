@@ -7,6 +7,10 @@ part of 'player_state.dart';
 // **************************************************************************
 
 abstract class _$PlayerStateCWProxy {
+  PlayerState duration(Duration duration);
+
+  PlayerState isPlaying(bool isPlaying);
+
   PlayerState playingSong(Song? playingSong);
 
   PlayerState songDetail(SongDetail? songDetail);
@@ -18,6 +22,8 @@ abstract class _$PlayerStateCWProxy {
   /// PlayerState(...).copyWith(id: 12, name: "My name")
   /// ````
   PlayerState call({
+    Duration? duration,
+    bool? isPlaying,
     Song? playingSong,
     SongDetail? songDetail,
   });
@@ -28,6 +34,12 @@ class _$PlayerStateCWProxyImpl implements _$PlayerStateCWProxy {
   final PlayerState _value;
 
   const _$PlayerStateCWProxyImpl(this._value);
+
+  @override
+  PlayerState duration(Duration duration) => this(duration: duration);
+
+  @override
+  PlayerState isPlaying(bool isPlaying) => this(isPlaying: isPlaying);
 
   @override
   PlayerState playingSong(Song? playingSong) => this(playingSong: playingSong);
@@ -45,10 +57,20 @@ class _$PlayerStateCWProxyImpl implements _$PlayerStateCWProxy {
   /// PlayerState(...).copyWith(id: 12, name: "My name")
   /// ````
   PlayerState call({
+    Object? duration = const $CopyWithPlaceholder(),
+    Object? isPlaying = const $CopyWithPlaceholder(),
     Object? playingSong = const $CopyWithPlaceholder(),
     Object? songDetail = const $CopyWithPlaceholder(),
   }) {
     return PlayerState(
+      duration: duration == const $CopyWithPlaceholder() || duration == null
+          ? _value.duration
+          // ignore: cast_nullable_to_non_nullable
+          : duration as Duration,
+      isPlaying: isPlaying == const $CopyWithPlaceholder() || isPlaying == null
+          ? _value.isPlaying
+          // ignore: cast_nullable_to_non_nullable
+          : isPlaying as bool,
       playingSong: playingSong == const $CopyWithPlaceholder()
           ? _value.playingSong
           // ignore: cast_nullable_to_non_nullable
@@ -76,6 +98,8 @@ extension $PlayerStateCopyWith on PlayerState {
     bool songDetail = false,
   }) {
     return PlayerState(
+      duration: duration,
+      isPlaying: isPlaying,
       playingSong: playingSong == true ? null : this.playingSong,
       songDetail: songDetail == true ? null : this.songDetail,
     );

@@ -27,25 +27,30 @@ class AppBarWidget {
   static build({
     String? leading,
     String? action,
+    Widget? title,
     GestureTapCallback? onLeadingTap,
     GestureTapCallback? onRightTap,
   }) {
+    final imageSize = 43.w;
+    final padding = 20.w;
+
     return AppBar(
       leadingWidth: 69.w,
+      title: Center(child: title),
       leading: leading != null
           ? InkWell(
               onTap: onLeadingTap,
               child: Row(
                 children: [
-                  SizedBox(width: 20.w),
+                  SizedBox(width: padding),
                   Container(
                     alignment: Alignment.center,
-                    child: ClipOval(child: ImageWidget(leading, size: 49.w)),
+                    child: ClipOval(child: ImageWidget(leading, size: imageSize)),
                   ),
                 ],
               ),
             )
-          : null,
+          : SizedBox(width: padding + imageSize),
       actions: [
         action != null
             ? InkWell(
@@ -54,13 +59,13 @@ class AppBarWidget {
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      child: ClipOval(child: ImageWidget(action, size: 49.w)),
+                      child: ClipOval(child: ImageWidget(action, size: imageSize)),
                     ),
-                    SizedBox(width: 20.w),
+                    SizedBox(width: padding),
                   ],
                 ),
               )
-            : const SizedBox()
+            : SizedBox(width: padding + imageSize)
       ],
     );
   }

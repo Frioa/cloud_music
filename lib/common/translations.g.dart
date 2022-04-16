@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 36 (18.0 per locale)
+ * Strings: 38 (19.0 per locale)
  *
- * Built on 2022-04-10 at 06:43 UTC
+ * Built on 2022-04-16 at 14:53 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -377,6 +377,7 @@ class _TranslationsEn {
 	late final _TranslationsPlayRecordPageEn playRecordPage = _TranslationsPlayRecordPageEn._(_root);
 	late final _TranslationsDailySongPageEn DailySongPage = _TranslationsDailySongPageEn._(_root);
 	late final _TranslationsPlaylistDetailPageEn PlaylistDetailPage = _TranslationsPlaylistDetailPageEn._(_root);
+	late final _TranslationsPlayingPageEn playingPage = _TranslationsPlayingPageEn._(_root);
 }
 
 // Path: common
@@ -479,6 +480,17 @@ class _TranslationsPlaylistDetailPageEn {
 	String songNum({required Object count}) => '$count songs';
 }
 
+// Path: playingPage
+class _TranslationsPlayingPageEn {
+	_TranslationsPlayingPageEn._(this._root);
+
+	// ignore: unused_field
+	final _TranslationsEn _root;
+
+	// Translations
+	String get title => 'Now Playing';
+}
+
 // Path: <root>
 class _TranslationsCn implements _TranslationsEn {
 
@@ -511,6 +523,7 @@ class _TranslationsCn implements _TranslationsEn {
 	@override late final _TranslationsPlayRecordPageCn playRecordPage = _TranslationsPlayRecordPageCn._(_root);
 	@override late final _TranslationsDailySongPageCn DailySongPage = _TranslationsDailySongPageCn._(_root);
 	@override late final _TranslationsPlaylistDetailPageCn PlaylistDetailPage = _TranslationsPlaylistDetailPageCn._(_root);
+	@override late final _TranslationsPlayingPageCn playingPage = _TranslationsPlayingPageCn._(_root);
 }
 
 // Path: common
@@ -613,6 +626,17 @@ class _TranslationsPlaylistDetailPageCn implements _TranslationsPlaylistDetailPa
 	@override String songNum({required Object count}) => '$count 首';
 }
 
+// Path: playingPage
+class _TranslationsPlayingPageCn implements _TranslationsPlayingPageEn {
+	_TranslationsPlayingPageCn._(this._root);
+
+	// ignore: unused_field
+	@override final _TranslationsCn _root;
+
+	// Translations
+	@override String get title => '播放中';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -639,6 +663,7 @@ extension on _TranslationsEn {
 			'PlaylistDetailPage.title': '歌单',
 			'PlaylistDetailPage.playAll': '播放全部',
 			'PlaylistDetailPage.songNum': ({required Object count}) => '$count songs',
+			'playingPage.title': 'Now Playing',
 		};
 	}
 }
@@ -666,6 +691,7 @@ extension on _TranslationsCn {
 			'PlaylistDetailPage.title': '歌单',
 			'PlaylistDetailPage.playAll': '播放全部',
 			'PlaylistDetailPage.songNum': ({required Object count}) => '$count 首',
+			'playingPage.title': '播放中',
 		};
 	}
 }

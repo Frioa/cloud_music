@@ -12,6 +12,14 @@ class PlayerBloc extends Bloc<BasePlayerEvent, PlayerState> {
       if (event is UpdateSongDetail) {
         emit.call(state.copyWith.songDetail(event.songDetail));
       }
+
+      if (event is UpdatePlayer) {
+        emit.call(state.copyWith.isPlaying(event.isPlaying));
+      }
+
+      if (event is UpdateDuration) {
+        emit.call(state.copyWith.duration(event.duration));
+      }
     });
   }
 }

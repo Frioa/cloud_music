@@ -8,6 +8,7 @@ enum Pages {
   dailySong,
   playRecord,
   playlistDetail,
+  playingPage,
   unknown,
 }
 
@@ -47,6 +48,10 @@ PageConfiguration pageFactor(Pages pages, {Map<String, Object> parameter = const
     case Pages.playlistDetail:
       showPlayer = true;
       widget = const PlayerListDetailPage();
+      break;
+    case Pages.playingPage:
+      showPlayer = false;
+      widget = const PlayingPage();
       break;
   }
 

@@ -15,16 +15,6 @@ class BlocWrapper extends StatefulWidget {
 
 class _BlocWrapperState extends State<BlocWrapper> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
@@ -37,7 +27,13 @@ class _BlocWrapperState extends State<BlocWrapper> {
         BlocProvider<TopBloc>(create: (_) => TopBloc()),
         BlocProvider<PlayerBloc>(create: (_) => PlayerBloc()),
       ],
-      child: TranslationProvider(child: widget.child),
+      child: TranslationProvider(
+        child: Builder(
+          builder: (context) {
+            return PlayersStateWrap(child: widget.child);
+          },
+        ),
+      ),
     );
   }
 }

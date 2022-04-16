@@ -16,7 +16,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  styled_widget: ^0.4.0+3
   auto_size_text: ^3.0.0
+  banner_carousel: ^1.2.1
   collection: ^1.15.0
   copy_with_extension: ^4.0.0
   equatable: ^2.0.3
@@ -26,6 +28,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   json_annotation: ^4.4.0
   dio: ^4.0.4
+  date_format: ^2.0.6
   shared_preferences: ^2.0.12
   dio_cookie_manager: ^2.0.0  #latest version
   path_provider: ^2.0.8
@@ -42,6 +45,8 @@ dependencies:
 
   logger: ^1.1.0
   retrofit: ^3.0.1
+  freezed_annotation: ^1.1.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
@@ -54,6 +59,7 @@ dev_dependencies:
   json_serializable: ^6.1.1
   flutter_gen_runner: ^4.1.5
   lint: ^1.8.2
+  freezed:
 
 flutter:
   assets:

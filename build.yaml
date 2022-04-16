@@ -15,3 +15,5 @@ targets:
           output_directory: lib/common
           output_file_name: translations.g.dart
           translate_var: S
+      freezed:
+        options:

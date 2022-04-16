@@ -36,6 +36,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.0.0"
+  banner_carousel:
+    dependency: "direct main"
+    description:
+      name: banner_carousel
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.2.1"
   bloc:
     dependency: transitive
     description:
@@ -239,6 +246,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.0"
+  dartz:
+    dependency: "direct main"
+    description:
+      name: dartz
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.10.1"
   dio:
     dependency: "direct main"
     description:
@@ -357,6 +371,20 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  freezed:
+    dependency: "direct dev"
+    description:
+      name: freezed
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.1"
+  freezed_annotation:
+    dependency: "direct main"
+    description:
+      name: freezed_annotation
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.1.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -782,6 +810,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.0"
+  styled_widget:
+    dependency: "direct main"
+    description:
+      name: styled_widget
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.4.0+3"
   term_glyph:
     dependency: transitive
     description:

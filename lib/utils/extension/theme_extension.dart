@@ -53,6 +53,13 @@ extension ThemeExtension on ThemeData {
     return isLight ? Colors.black.withOpacity(0.05) : Colors.white.withOpacity(0.03);
   }
 
+  TextStyle get tsAppBar {
+    return TextStyle(
+      color: isLight ? const Color(0xff333333) : const Color(0xffE5E5E5),
+      fontSize: 25.sp,
+    );
+  }
+
   TextStyle get tsNavigator {
     return TextStyle(color: black1, fontSize: 17.2.sp);
   }
@@ -94,5 +101,4 @@ extension ThemeExtension on ThemeData {
   Radius get radius20 => Radius.circular(20.w);
 
   Radius get radius40 => Radius.circular(40.w);
-
 }

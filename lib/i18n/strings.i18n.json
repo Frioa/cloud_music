@@ -35,5 +35,8 @@
     "title": "歌单",
     "playAll": "播放全部",
     "songNum": "$count songs"
+  },
+  "playingPage": {
+    "title": "Now Playing"
   }
 }
