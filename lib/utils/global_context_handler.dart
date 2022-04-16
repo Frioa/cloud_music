@@ -22,7 +22,7 @@ class GlobalContextHandler {
     final listen = _eventStreamController.stream.listen((BaseGlobalContextEvent event) async {
       logger.d("GlobalContextHandler: ${event.toString()}");
       if (event is SongDetailGlobalEvent) {
-        context.read<PlayerBloc>().add(UpdateSongDetail(songDetail: event.songDetail));
+        context.read<PlayerBloc>().add(PlayerEvent.songDetail(event.songDetail));
       }
     });
     return listen;

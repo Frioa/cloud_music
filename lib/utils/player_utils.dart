@@ -8,7 +8,7 @@ class PlayerManager {
   static AudioPlayerController get _controller => AudioPlayerController.instance;
 
   static void play(BuildContext context, Song song) {
-    context.read<PlayerBloc>().add(UpdatePlayerSong(song: song));
+    context.read<PlayerBloc>().add(PlayerEvent.song(song));
     _request(context, song.id.toString());
   }
 

@@ -42,11 +42,11 @@ class _PlayersStateWrapState extends State<PlayersStateWrap> {
   void _valueChanged() {
     if (isPlaying != controller.value.isPlaying) {
       isPlaying = controller.value.isPlaying;
-      context.read<PlayerBloc>().add(UpdatePlayer(isPlaying));
+      context.read<PlayerBloc>().add(PlayerEvent.isPlaying(isPlaying));
     }
     if (duration != controller.value.duration) {
       duration = controller.value.duration;
-      context.read<PlayerBloc>().add(UpdateDuration(duration));
+      context.read<PlayerBloc>().add(PlayerEvent.duration(duration));
     }
   }
 
