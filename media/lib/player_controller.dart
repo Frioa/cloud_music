@@ -47,7 +47,7 @@ class AudioPlayerController extends ValueNotifier<PlayerValue> {
           return;
         case "onComplete":
           logger.d("onComplete code");
-          value = value.copyWith(isPlaying: false, duration: Duration.zero);
+          value = value.copyWith(isPlaying: false, duration: Duration.zero, position: Duration.zero);
           return;
       }
       return;

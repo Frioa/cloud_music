@@ -41,6 +41,12 @@ class _$PlayerEventTearOff {
       duration,
     );
   }
+
+  _lyric lyric(int id) {
+    return _lyric(
+      id,
+    );
+  }
 }
 
 /// @nodoc
@@ -54,6 +60,7 @@ mixin _$PlayerEvent {
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
+    required TResult Function(int id) lyric,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +69,7 @@ mixin _$PlayerEvent {
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +78,7 @@ mixin _$PlayerEvent {
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -79,6 +88,7 @@ mixin _$PlayerEvent {
     required TResult Function(_songDetail value) songDetail,
     required TResult Function(_isPlaying value) isPlaying,
     required TResult Function(_duration value) duration,
+    required TResult Function(_lyric value) lyric,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,6 +97,7 @@ mixin _$PlayerEvent {
     TResult Function(_songDetail value)? songDetail,
     TResult Function(_isPlaying value)? isPlaying,
     TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -95,6 +106,7 @@ mixin _$PlayerEvent {
     TResult Function(_songDetail value)? songDetail,
     TResult Function(_isPlaying value)? isPlaying,
     TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -182,6 +194,7 @@ class _$_song implements _song {
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
+    required TResult Function(int id) lyric,
   }) {
     return song(this.song);
   }
@@ -193,6 +206,7 @@ class _$_song implements _song {
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
   }) {
     return song?.call(this.song);
   }
@@ -204,6 +218,7 @@ class _$_song implements _song {
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
     required TResult orElse(),
   }) {
     if (song != null) {
@@ -219,6 +234,7 @@ class _$_song implements _song {
     required TResult Function(_songDetail value) songDetail,
     required TResult Function(_isPlaying value) isPlaying,
     required TResult Function(_duration value) duration,
+    required TResult Function(_lyric value) lyric,
   }) {
     return song(this);
   }
@@ -230,6 +246,7 @@ class _$_song implements _song {
     TResult Function(_songDetail value)? songDetail,
     TResult Function(_isPlaying value)? isPlaying,
     TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
   }) {
     return song?.call(this);
   }
@@ -241,6 +258,7 @@ class _$_song implements _song {
     TResult Function(_songDetail value)? songDetail,
     TResult Function(_isPlaying value)? isPlaying,
     TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
     required TResult orElse(),
   }) {
     if (song != null) {
@@ -327,6 +345,7 @@ class _$_songDetail implements _songDetail {
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
+    required TResult Function(int id) lyric,
   }) {
     return songDetail(this.songDetail);
   }
@@ -338,6 +357,7 @@ class _$_songDetail implements _songDetail {
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
   }) {
     return songDetail?.call(this.songDetail);
   }
@@ -349,6 +369,7 @@ class _$_songDetail implements _songDetail {
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
     required TResult orElse(),
   }) {
     if (songDetail != null) {
@@ -364,6 +385,7 @@ class _$_songDetail implements _songDetail {
     required TResult Function(_songDetail value) songDetail,
     required TResult Function(_isPlaying value) isPlaying,
     required TResult Function(_duration value) duration,
+    required TResult Function(_lyric value) lyric,
   }) {
     return songDetail(this);
   }
@@ -375,6 +397,7 @@ class _$_songDetail implements _songDetail {
     TResult Function(_songDetail value)? songDetail,
     TResult Function(_isPlaying value)? isPlaying,
     TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
   }) {
     return songDetail?.call(this);
   }
@@ -386,6 +409,7 @@ class _$_songDetail implements _songDetail {
     TResult Function(_songDetail value)? songDetail,
     TResult Function(_isPlaying value)? isPlaying,
     TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
     required TResult orElse(),
   }) {
     if (songDetail != null) {
@@ -471,6 +495,7 @@ class _$_isPlaying implements _isPlaying {
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
+    required TResult Function(int id) lyric,
   }) {
     return isPlaying(this.isPlaying);
   }
@@ -482,6 +507,7 @@ class _$_isPlaying implements _isPlaying {
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
   }) {
     return isPlaying?.call(this.isPlaying);
   }
@@ -493,6 +519,7 @@ class _$_isPlaying implements _isPlaying {
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
     required TResult orElse(),
   }) {
     if (isPlaying != null) {
@@ -508,6 +535,7 @@ class _$_isPlaying implements _isPlaying {
     required TResult Function(_songDetail value) songDetail,
     required TResult Function(_isPlaying value) isPlaying,
     required TResult Function(_duration value) duration,
+    required TResult Function(_lyric value) lyric,
   }) {
     return isPlaying(this);
   }
@@ -519,6 +547,7 @@ class _$_isPlaying implements _isPlaying {
     TResult Function(_songDetail value)? songDetail,
     TResult Function(_isPlaying value)? isPlaying,
     TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
   }) {
     return isPlaying?.call(this);
   }
@@ -530,6 +559,7 @@ class _$_isPlaying implements _isPlaying {
     TResult Function(_songDetail value)? songDetail,
     TResult Function(_isPlaying value)? isPlaying,
     TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
     required TResult orElse(),
   }) {
     if (isPlaying != null) {
@@ -614,6 +644,7 @@ class _$_duration implements _duration {
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
+    required TResult Function(int id) lyric,
   }) {
     return duration(this.duration);
   }
@@ -625,6 +656,7 @@ class _$_duration implements _duration {
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
   }) {
     return duration?.call(this.duration);
   }
@@ -636,6 +668,7 @@ class _$_duration implements _duration {
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
     required TResult orElse(),
   }) {
     if (duration != null) {
@@ -651,6 +684,7 @@ class _$_duration implements _duration {
     required TResult Function(_songDetail value) songDetail,
     required TResult Function(_isPlaying value) isPlaying,
     required TResult Function(_duration value) duration,
+    required TResult Function(_lyric value) lyric,
   }) {
     return duration(this);
   }
@@ -662,6 +696,7 @@ class _$_duration implements _duration {
     TResult Function(_songDetail value)? songDetail,
     TResult Function(_isPlaying value)? isPlaying,
     TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
   }) {
     return duration?.call(this);
   }
@@ -673,6 +708,7 @@ class _$_duration implements _duration {
     TResult Function(_songDetail value)? songDetail,
     TResult Function(_isPlaying value)? isPlaying,
     TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
     required TResult orElse(),
   }) {
     if (duration != null) {
@@ -692,6 +728,154 @@ abstract class _duration implements PlayerEvent {
 }
 
 /// @nodoc
+abstract class _$lyricCopyWith<$Res> {
+  factory _$lyricCopyWith(_lyric value, $Res Function(_lyric) then) =
+      __$lyricCopyWithImpl<$Res>;
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$lyricCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$lyricCopyWith<$Res> {
+  __$lyricCopyWithImpl(_lyric _value, $Res Function(_lyric) _then)
+      : super(_value, (v) => _then(v as _lyric));
+
+  @override
+  _lyric get _value => super._value as _lyric;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+  }) {
+    return _then(_lyric(
+      id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_lyric implements _lyric {
+  const _$_lyric(this.id);
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'PlayerEvent.lyric(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _lyric &&
+            const DeepCollectionEquality().equals(other.id, id));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+
+  @JsonKey(ignore: true)
+  @override
+  _$lyricCopyWith<_lyric> get copyWith =>
+      __$lyricCopyWithImpl<_lyric>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Song song) song,
+    required TResult Function(SongDetail songDetail) songDetail,
+    required TResult Function(bool isPlaying) isPlaying,
+    required TResult Function(Duration duration) duration,
+    required TResult Function(int id) lyric,
+  }) {
+    return lyric(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Song song)? song,
+    TResult Function(SongDetail songDetail)? songDetail,
+    TResult Function(bool isPlaying)? isPlaying,
+    TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
+  }) {
+    return lyric?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Song song)? song,
+    TResult Function(SongDetail songDetail)? songDetail,
+    TResult Function(bool isPlaying)? isPlaying,
+    TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
+    required TResult orElse(),
+  }) {
+    if (lyric != null) {
+      return lyric(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_song value) song,
+    required TResult Function(_songDetail value) songDetail,
+    required TResult Function(_isPlaying value) isPlaying,
+    required TResult Function(_duration value) duration,
+    required TResult Function(_lyric value) lyric,
+  }) {
+    return lyric(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_song value)? song,
+    TResult Function(_songDetail value)? songDetail,
+    TResult Function(_isPlaying value)? isPlaying,
+    TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
+  }) {
+    return lyric?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_song value)? song,
+    TResult Function(_songDetail value)? songDetail,
+    TResult Function(_isPlaying value)? isPlaying,
+    TResult Function(_duration value)? duration,
+    TResult Function(_lyric value)? lyric,
+    required TResult orElse(),
+  }) {
+    if (lyric != null) {
+      return lyric(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _lyric implements PlayerEvent {
+  const factory _lyric(int id) = _$_lyric;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$lyricCopyWith<_lyric> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$PlayerStateTearOff {
   const _$PlayerStateTearOff();
 
@@ -699,12 +883,16 @@ class _$PlayerStateTearOff {
       {Song? playingSong,
       SongDetail? songDetail,
       required bool isPlaying,
-      required Duration duration}) {
+      required Duration duration,
+      required ViewModel<LyricResponse> lyricVM,
+      required List<Lyric> lyricList}) {
     return _PlayerState(
       playingSong: playingSong,
       songDetail: songDetail,
       isPlaying: isPlaying,
       duration: duration,
+      lyricVM: lyricVM,
+      lyricList: lyricList,
     );
   }
 }
@@ -718,6 +906,8 @@ mixin _$PlayerState {
   SongDetail? get songDetail => throw _privateConstructorUsedError;
   bool get isPlaying => throw _privateConstructorUsedError;
   Duration get duration => throw _privateConstructorUsedError;
+  ViewModel<LyricResponse> get lyricVM => throw _privateConstructorUsedError;
+  List<Lyric> get lyricList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlayerStateCopyWith<PlayerState> get copyWith =>
@@ -733,7 +923,9 @@ abstract class $PlayerStateCopyWith<$Res> {
       {Song? playingSong,
       SongDetail? songDetail,
       bool isPlaying,
-      Duration duration});
+      Duration duration,
+      ViewModel<LyricResponse> lyricVM,
+      List<Lyric> lyricList});
 }
 
 /// @nodoc
@@ -750,6 +942,8 @@ class _$PlayerStateCopyWithImpl<$Res> implements $PlayerStateCopyWith<$Res> {
     Object? songDetail = freezed,
     Object? isPlaying = freezed,
     Object? duration = freezed,
+    Object? lyricVM = freezed,
+    Object? lyricList = freezed,
   }) {
     return _then(_value.copyWith(
       playingSong: playingSong == freezed
@@ -768,6 +962,14 @@ class _$PlayerStateCopyWithImpl<$Res> implements $PlayerStateCopyWith<$Res> {
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      lyricVM: lyricVM == freezed
+          ? _value.lyricVM
+          : lyricVM // ignore: cast_nullable_to_non_nullable
+              as ViewModel<LyricResponse>,
+      lyricList: lyricList == freezed
+          ? _value.lyricList
+          : lyricList // ignore: cast_nullable_to_non_nullable
+              as List<Lyric>,
     ));
   }
 }
@@ -783,7 +985,9 @@ abstract class _$PlayerStateCopyWith<$Res>
       {Song? playingSong,
       SongDetail? songDetail,
       bool isPlaying,
-      Duration duration});
+      Duration duration,
+      ViewModel<LyricResponse> lyricVM,
+      List<Lyric> lyricList});
 }
 
 /// @nodoc
@@ -802,6 +1006,8 @@ class __$PlayerStateCopyWithImpl<$Res> extends _$PlayerStateCopyWithImpl<$Res>
     Object? songDetail = freezed,
     Object? isPlaying = freezed,
     Object? duration = freezed,
+    Object? lyricVM = freezed,
+    Object? lyricList = freezed,
   }) {
     return _then(_PlayerState(
       playingSong: playingSong == freezed
@@ -820,6 +1026,14 @@ class __$PlayerStateCopyWithImpl<$Res> extends _$PlayerStateCopyWithImpl<$Res>
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      lyricVM: lyricVM == freezed
+          ? _value.lyricVM
+          : lyricVM // ignore: cast_nullable_to_non_nullable
+              as ViewModel<LyricResponse>,
+      lyricList: lyricList == freezed
+          ? _value.lyricList
+          : lyricList // ignore: cast_nullable_to_non_nullable
+              as List<Lyric>,
     ));
   }
 }
@@ -831,7 +1045,9 @@ class _$_PlayerState implements _PlayerState {
       {this.playingSong,
       this.songDetail,
       required this.isPlaying,
-      required this.duration});
+      required this.duration,
+      required this.lyricVM,
+      required this.lyricList});
 
   @override
   final Song? playingSong;
@@ -841,10 +1057,14 @@ class _$_PlayerState implements _PlayerState {
   final bool isPlaying;
   @override
   final Duration duration;
+  @override
+  final ViewModel<LyricResponse> lyricVM;
+  @override
+  final List<Lyric> lyricList;
 
   @override
   String toString() {
-    return 'PlayerState(playingSong: $playingSong, songDetail: $songDetail, isPlaying: $isPlaying, duration: $duration)';
+    return 'PlayerState(playingSong: $playingSong, songDetail: $songDetail, isPlaying: $isPlaying, duration: $duration, lyricVM: $lyricVM, lyricList: $lyricList)';
   }
 
   @override
@@ -857,7 +1077,9 @@ class _$_PlayerState implements _PlayerState {
             const DeepCollectionEquality()
                 .equals(other.songDetail, songDetail) &&
             const DeepCollectionEquality().equals(other.isPlaying, isPlaying) &&
-            const DeepCollectionEquality().equals(other.duration, duration));
+            const DeepCollectionEquality().equals(other.duration, duration) &&
+            const DeepCollectionEquality().equals(other.lyricVM, lyricVM) &&
+            const DeepCollectionEquality().equals(other.lyricList, lyricList));
   }
 
   @override
@@ -866,7 +1088,9 @@ class _$_PlayerState implements _PlayerState {
       const DeepCollectionEquality().hash(playingSong),
       const DeepCollectionEquality().hash(songDetail),
       const DeepCollectionEquality().hash(isPlaying),
-      const DeepCollectionEquality().hash(duration));
+      const DeepCollectionEquality().hash(duration),
+      const DeepCollectionEquality().hash(lyricVM),
+      const DeepCollectionEquality().hash(lyricList));
 
   @JsonKey(ignore: true)
   @override
@@ -879,7 +1103,9 @@ abstract class _PlayerState implements PlayerState {
       {Song? playingSong,
       SongDetail? songDetail,
       required bool isPlaying,
-      required Duration duration}) = _$_PlayerState;
+      required Duration duration,
+      required ViewModel<LyricResponse> lyricVM,
+      required List<Lyric> lyricList}) = _$_PlayerState;
 
   @override
   Song? get playingSong;
@@ -889,6 +1115,10 @@ abstract class _PlayerState implements PlayerState {
   bool get isPlaying;
   @override
   Duration get duration;
+  @override
+  ViewModel<LyricResponse> get lyricVM;
+  @override
+  List<Lyric> get lyricList;
   @override
   @JsonKey(ignore: true)
   _$PlayerStateCopyWith<_PlayerState> get copyWith =>

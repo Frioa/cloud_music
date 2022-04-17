@@ -7,3 +7,4 @@ export 'home_bottom_player_widget.dart';
 export 'player_overlay.dart';
 export 'player_widget.dart';
 export 'link_widget.dart';
+export 'lyric_widget.dart';

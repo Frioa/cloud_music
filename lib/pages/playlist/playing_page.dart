@@ -17,21 +17,33 @@ class PlayingPage extends StatefulWidget {
 }
 
 class _PlayingPageState extends BasePageState<PlayingPage> {
-  Widget _banner(BuildContext context, int index) {
+  bool showLyric = false;
+
+  Widget _banner(BuildContext context, int index, Song? song) {
     final image = context.watch<PlayerBloc>().state.avatar;
 
     // Theme
     return Container(
       alignment: Alignment.center,
-      child: ClipRRect(
-        child: ClipRRect(
-          borderRadius: BorderRadius.all(Theme.of(context).radius20),
-          child: ImageWidget(
-            image,
-            size: 260.w,
-            fit: BoxFit.fill,
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.all(Theme.of(context).radius20),
+            child: ImageWidget(
+              image,
+              size: 260.w,
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
+          SizedBox(height: 48.w),
+          AutoSizeText(song?.name ?? '', style: Theme.of(context).tsTitleBold, maxLines: 1),
+          SizedBox(height: 7.w),
+          AutoSizeText(
+            song?.singerAlbumDesc ?? '',
+            style: Theme.of(context).hint2,
+            maxLines: 1,
+          ),
+        ],
       ),
     );
   }
@@ -54,6 +66,46 @@ class _PlayingPageState extends BasePageState<PlayingPage> {
     );
   }
 
+  Widget _buildLyric() {
+    if (!showLyric) return const SizedBox();
+
+    return const LyricWidget();
+  }
+
+  Widget _buildBody(Song? song) {
+    return InkWell(
+      onTap: () => setState(() => showLyric = !showLyric),
+      child: Stack(
+        children: [
+          BannerCarousel.fullScreen(
+            initialPage: 1,
+            height: 999.w,
+            animation: false,
+            customizedIndicators: const IndicatorModel(width: 0, height: 0, spaceBetween: 0),
+            customizedBanners: [
+              _banner(context, 0, song),
+              _banner(context, 1, song),
+              _banner(context, 2, song),
+            ],
+          ),
+          _buildLyric(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPlayer() {
+    return RepaintBoundary(
+      child: Column(
+        children: [
+          SizedBox(height: 56.w),
+          _buildIndicator(),
+          const PlayerWidget(),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final playerState = context.watch<PlayerBloc>().state;
@@ -67,28 +119,11 @@ class _PlayingPageState extends BasePageState<PlayingPage> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 33.w),
+        padding: EdgeInsets.symmetric(horizontal: 33.w, vertical: 30.w),
         child: Column(
           children: [
-            SizedBox(height: 30.w),
-            BannerCarousel.fullScreen(
-              initialPage: 1,
-              height: 260.w,
-              animation: false,
-              customizedIndicators: const IndicatorModel(width: 0, height: 0, spaceBetween: 0),
-              customizedBanners: [
-                _banner(context, 0),
-                _banner(context, 1),
-                _banner(context, 2),
-              ],
-            ),
-            SizedBox(height: 48.w),
-            AutoSizeText(song?.name ?? '', style: Theme.of(context).tsTitleBold, maxLines: 1),
-            SizedBox(height: 7.w),
-            AutoSizeText(song?.name ?? '', style: Theme.of(context).hint2, maxLines: 1),
-            SizedBox(height: 56.w),
-            _buildIndicator(),
-            const PlayerWidget(),
+            Expanded(child: _buildBody(song)),
+            _buildPlayer(),
           ],
         ),
       ),

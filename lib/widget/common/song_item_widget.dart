@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_music/bloc/player/player.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
 import 'package:cloud_music/utils/player_utils.dart';
@@ -19,7 +20,6 @@ class SongListWidget extends StatelessWidget {
     this.showIcon = false,
     this.headerWidget = const SizedBox(),
   }) : super(key: key);
-
 
   Widget buildSheet(BuildContext context, List<Song> songs) {
     Widget _buildImage(String url) {
@@ -49,7 +49,7 @@ class SongListWidget extends StatelessWidget {
 
       return InkWell(
         onTap: () {
-          PlayerManager.play(context, track);
+          context.read<PlayerBloc>().add(PlayerEvent.song(track));
         },
         child: Container(
           padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 15.w, bottom: 15.w),
