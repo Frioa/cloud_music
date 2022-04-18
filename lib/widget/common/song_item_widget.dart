@@ -67,7 +67,7 @@ class SongListWidget extends StatelessWidget {
                       style: Theme.of(context).tsDescBold,
                       maxLines: 1,
                     ),
-                    SizedBox(height: 4.w),
+                    const Expanded(child: SizedBox()),
                     Text(
                       track.singerAlbumDesc,
                       style: Theme.of(context).hint2,
