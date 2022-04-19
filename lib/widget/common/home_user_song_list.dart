@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/bloc/user/user.dart';
 import 'package:cloud_music/common/common.dart';
@@ -76,20 +77,12 @@ class _HomeUserSongListState extends State<HomeUserSongList> {
                     alignment: Alignment.center,
                     width: 133.w,
                     height: 53.w,
+                    padding: EdgeInsets.all(10.w),
                     color: Colors.black.withOpacity(0.2),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.all(10.w),
-                            child: Text(
-                              sheet!.name,
-                              style: Theme.of(context).tsDesc2Bold.copyWith(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ],
+                    child: AutoSizeText(
+                      sheet!.name,
+                      style: Theme.of(context).tsDesc2Bold.copyWith(color: Colors.white),
+                      maxLines: 2,
                     ),
                   ),
                 ),

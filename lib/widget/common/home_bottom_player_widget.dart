@@ -34,7 +34,7 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
   );
 
   late final Animation pAnimation = Tween<double>(begin: -1.0, end: 0.0).animate(playerControl);
-  late final Animation sdAnimation = Tween<double>(begin: 0.3, end: 1.0).animate(songDetailControl);
+  late final Animation sdAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(songDetailControl);
 
   AudioPlayerController get controller => AudioPlayerController.instance;
 
@@ -114,6 +114,7 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
                             AutoSizeText(
                               song?.name ?? '',
                               style: Theme.of(context).tsTitleBold2.copyWith(fontSize: 16.w),
+                              maxLines: 1,
                             ),
                             AutoSizeText(
                               song?.singerAlbumDesc ?? '',
