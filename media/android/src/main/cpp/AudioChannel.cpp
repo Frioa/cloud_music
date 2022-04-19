@@ -48,9 +48,10 @@ void AudioChannel::play() {
     setEnable(true);
 
     // 创建转换器
+    // 音频重采样，输出 双声道+16bit采样位+44100采样率
     swrContext = swr_alloc_set_opts(nullptr,// 自动创建转换器
-                                    AV_CH_LAYOUT_STEREO, // 双声道
-                                    AV_SAMPLE_FMT_S16, // 十六位
+                                    AV_CH_LAYOUT_STEREO, // 立体声，双声道
+                                    AV_SAMPLE_FMT_S16, // 采样位：十六位
                                     44100, // 采样率
                                     avCodecContext->channel_layout, // 输入的声道数
                                     avCodecContext->sample_fmt,
@@ -59,7 +60,12 @@ void AudioChannel::play() {
                                     nullptr
 
     );
+    // TODO: 异常处理
+    // if (!swr_ctx) {}
+
+    // TODO: swr_init(swrContext) < 0
     swr_init(swrContext);
+
 
     // 解码
     pthread_create(&audioDecodeTask, nullptr, audioDecode_t, this);
@@ -115,6 +121,7 @@ int AudioChannel::_getData() {
         if (!isPlaying) break;
         if (!ret) continue;
 
+        // 将重采样的结果从 frame->data 放入 buffer 中。
         int nb = swr_convert(swrContext, &buffer, bufferSize,
                              (const uint8_t **) frame->data,
                              frame->nb_samples// 一个声道的有效字节数

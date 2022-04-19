@@ -107,18 +107,21 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
                         ),
                       ),
                       SizedBox(width: 14.w),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AutoSizeText(
-                            song?.name ?? '',
-                            style: Theme.of(context).tsTitleBold2.copyWith(fontSize: 16.w),
-                          ),
-                          AutoSizeText(
-                            song?.singerAlbumDesc ?? '',
-                            style: Theme.of(context).hint2,
-                          ),
-                        ],
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AutoSizeText(
+                              song?.name ?? '',
+                              style: Theme.of(context).tsTitleBold2.copyWith(fontSize: 16.w),
+                            ),
+                            AutoSizeText(
+                              song?.singerAlbumDesc ?? '',
+                              style: Theme.of(context).hint2,
+                              maxLines: 1,
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

@@ -51,7 +51,7 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
   void scroller() {
     final diff = index + 1 < lyricList.length
         ? (lyricList[index + 1].time - lyricList[index].time)
-        : const Duration(milliseconds: 200);
+        : const Duration(milliseconds: 800);
 
     controller.animateTo(
       lyricList[index].height,
@@ -108,6 +108,7 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
     if (lyric.content.isEmpty) return const SizedBox();
 
     return SizedBox(
+      key: ValueKey('${lyric.hashCode}${indexNotifier.value == index}'),
       height: Lyric.itemHeight,
       child: AutoSizeText(
         lyric.content,

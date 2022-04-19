@@ -77,16 +77,19 @@ class _PlayingPageState extends BasePageState<PlayingPage> {
       onTap: () => setState(() => showLyric = !showLyric),
       child: Stack(
         children: [
-          BannerCarousel.fullScreen(
-            initialPage: 1,
-            height: 999.w,
-            animation: false,
-            customizedIndicators: const IndicatorModel(width: 0, height: 0, spaceBetween: 0),
-            customizedBanners: [
-              _banner(context, 0, song),
-              _banner(context, 1, song),
-              _banner(context, 2, song),
-            ],
+          Padding(
+            padding: EdgeInsets.only(top: 10.w),
+            child: BannerCarousel.fullScreen(
+              initialPage: 1,
+              height: 999.w,
+              animation: false,
+              customizedIndicators: const IndicatorModel(width: 0, height: 0, spaceBetween: 0),
+              customizedBanners: [
+                _banner(context, 0, song),
+                _banner(context, 1, song),
+                _banner(context, 2, song),
+              ],
+            ),
           ),
           _buildLyric(),
         ],
@@ -119,7 +122,7 @@ class _PlayingPageState extends BasePageState<PlayingPage> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 33.w, vertical: 30.w),
+        padding: EdgeInsets.symmetric(horizontal: 33.w, vertical: 10.w),
         child: Column(
           children: [
             Expanded(child: _buildBody(song)),
