@@ -181,7 +181,7 @@ class _PlayerListDetailPageState extends State<PlayerListDetailPage> {
         detailVM = state.playlistDetailResponse;
         trackAllVM = state.trackAllResponse;
 
-        if (!detailVM.hasData) return const SizedBox();
+        if (!detailVM.hasData || id == null) return const SizedBox();
 
         return Scaffold(
           body: Stack(
@@ -192,15 +192,16 @@ class _PlayerListDetailPageState extends State<PlayerListDetailPage> {
                   children: [
                     if (trackAllVM.hasData)
                       SongListWidget(
+                        songListId: id!,
                         headerWidget: Column(
                           children: [
                             _buildTop(),
+
                             /// TODO: 收藏、分享、留言
                             // _buildCollection(),
                           ],
                         ),
                         songs: trackAll.songs,
-                        trackCount: playlist.trackCount,
                       ),
                   ],
                 ),

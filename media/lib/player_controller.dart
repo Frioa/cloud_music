@@ -7,13 +7,10 @@ import 'package:media/utils/logger.dart';
 late final AudioPlayerController _instance = AudioPlayerController._();
 
 const MethodChannel _methodChannel = MethodChannel('media');
+String _tag = 'PlayerController';
 
 class AudioPlayerController extends ValueNotifier<PlayerValue> {
-  static String tag = 'PlayerController';
-
   static AudioPlayerController get instance => _instance;
-
-  String url = '';
 
   double get progress {
     if (value.duration.inMilliseconds == 0) return 0.0;
@@ -47,7 +44,12 @@ class AudioPlayerController extends ValueNotifier<PlayerValue> {
           return;
         case "onComplete":
           logger.d("onComplete code");
-          value = value.copyWith(isPlaying: false, duration: Duration.zero, position: Duration.zero);
+          value = value.copyWith(
+            isPlaying: false,
+            complete: true,
+            duration: Duration.zero,
+            position: Duration.zero,
+          );
           return;
       }
       return;
@@ -55,7 +57,7 @@ class AudioPlayerController extends ValueNotifier<PlayerValue> {
   }
 
   Future<void> play(String url, {Duration start = Duration.zero}) async {
-    value = value.copyWith(isPlaying: false, position: start, url: url);
+    value = value.copyWith(isPlaying: false, position: start, url: url, complete: false);
     await _setDataSource(url);
   }
 
@@ -73,12 +75,12 @@ class AudioPlayerController extends ValueNotifier<PlayerValue> {
   }
 
   Future<void> _init() async {
-    logger.d("$tag init");
+    logger.d("$_tag init");
     await _methodChannel.invokeMethod('init');
   }
 
   Future<void> _setDataSource(String path) async {
-    logger.d("$tag setDataSource");
+    logger.d("$_tag setDataSource");
     await _init();
     await _methodChannel.invokeMethod('setDataSource', {"path": path});
   }

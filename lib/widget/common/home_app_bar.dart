@@ -36,7 +36,7 @@ class AppBarWidget {
 
     return AppBar(
       leadingWidth: 69.w,
-      title: Center(child: title),
+      title: SizedBox(height: 63.w, child: Center(child: title)),
       leading: leading != null
           ? InkWell(
               onTap: onLeadingTap,

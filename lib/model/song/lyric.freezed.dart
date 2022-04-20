@@ -12,42 +12,11 @@ part of 'lyric.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LyricResponse _$LyricResponseFromJson(Map<String, dynamic> json) {
   return _LyricResponse.fromJson(json);
 }
-
-/// @nodoc
-class _$LyricResponseTearOff {
-  const _$LyricResponseTearOff();
-
-  _LyricResponse call(
-      {bool? sgc,
-      bool? sfy,
-      bool? qfy,
-      required int code,
-      required Lrc lrc,
-      @JsonKey(name: 'klyric') required Lrc kLyric,
-      @JsonKey(name: 'tlyric') required Lrc tLyric}) {
-    return _LyricResponse(
-      sgc: sgc,
-      sfy: sfy,
-      qfy: qfy,
-      code: code,
-      lrc: lrc,
-      kLyric: kLyric,
-      tLyric: tLyric,
-    );
-  }
-
-  LyricResponse fromJson(Map<String, Object?> json) {
-    return LyricResponse.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LyricResponse = _$LyricResponseTearOff();
 
 /// @nodoc
 mixin _$LyricResponse {
@@ -283,6 +252,7 @@ class _$_LyricResponse implements _LyricResponse {
             const DeepCollectionEquality().equals(other.tLyric, tLyric));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -307,33 +277,33 @@ class _$_LyricResponse implements _LyricResponse {
 
 abstract class _LyricResponse implements LyricResponse {
   const factory _LyricResponse(
-      {bool? sgc,
-      bool? sfy,
-      bool? qfy,
-      required int code,
-      required Lrc lrc,
-      @JsonKey(name: 'klyric') required Lrc kLyric,
-      @JsonKey(name: 'tlyric') required Lrc tLyric}) = _$_LyricResponse;
+      {final bool? sgc,
+      final bool? sfy,
+      final bool? qfy,
+      required final int code,
+      required final Lrc lrc,
+      @JsonKey(name: 'klyric') required final Lrc kLyric,
+      @JsonKey(name: 'tlyric') required final Lrc tLyric}) = _$_LyricResponse;
 
   factory _LyricResponse.fromJson(Map<String, dynamic> json) =
       _$_LyricResponse.fromJson;
 
   @override
-  bool? get sgc;
+  bool? get sgc => throw _privateConstructorUsedError;
   @override
-  bool? get sfy;
+  bool? get sfy => throw _privateConstructorUsedError;
   @override
-  bool? get qfy;
+  bool? get qfy => throw _privateConstructorUsedError;
   @override
-  int get code;
+  int get code => throw _privateConstructorUsedError;
   @override
-  Lrc get lrc;
+  Lrc get lrc => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'klyric')
-  Lrc get kLyric;
+  Lrc get kLyric => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'tlyric')
-  Lrc get tLyric;
+  Lrc get tLyric => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$LyricResponseCopyWith<_LyricResponse> get copyWith =>
@@ -343,25 +313,6 @@ abstract class _LyricResponse implements LyricResponse {
 Lrc _$LrcFromJson(Map<String, dynamic> json) {
   return _Lrc.fromJson(json);
 }
-
-/// @nodoc
-class _$LrcTearOff {
-  const _$LrcTearOff();
-
-  _Lrc call({required int version, required String lyric}) {
-    return _Lrc(
-      version: version,
-      lyric: lyric,
-    );
-  }
-
-  Lrc fromJson(Map<String, Object?> json) {
-    return Lrc.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Lrc = _$LrcTearOff();
 
 /// @nodoc
 mixin _$Lrc {
@@ -467,6 +418,7 @@ class _$_Lrc implements _Lrc {
             const DeepCollectionEquality().equals(other.lyric, lyric));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -485,37 +437,19 @@ class _$_Lrc implements _Lrc {
 }
 
 abstract class _Lrc implements Lrc {
-  const factory _Lrc({required int version, required String lyric}) = _$_Lrc;
+  const factory _Lrc(
+      {required final int version, required final String lyric}) = _$_Lrc;
 
   factory _Lrc.fromJson(Map<String, dynamic> json) = _$_Lrc.fromJson;
 
   @override
-  int get version;
+  int get version => throw _privateConstructorUsedError;
   @override
-  String get lyric;
+  String get lyric => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$LrcCopyWith<_Lrc> get copyWith => throw _privateConstructorUsedError;
 }
-
-/// @nodoc
-class _$LyricTearOff {
-  const _$LyricTearOff();
-
-  _Lyric call(
-      {required Duration time,
-      required String content,
-      required double height}) {
-    return _Lyric(
-      time: time,
-      content: content,
-      height: height,
-    );
-  }
-}
-
-/// @nodoc
-const $Lyric = _$LyricTearOff();
 
 /// @nodoc
 mixin _$Lyric {
@@ -648,16 +582,16 @@ class _$_Lyric implements _Lyric {
 
 abstract class _Lyric implements Lyric {
   const factory _Lyric(
-      {required Duration time,
-      required String content,
-      required double height}) = _$_Lyric;
+      {required final Duration time,
+      required final String content,
+      required final double height}) = _$_Lyric;
 
   @override
-  Duration get time;
+  Duration get time => throw _privateConstructorUsedError;
   @override
-  String get content;
+  String get content => throw _privateConstructorUsedError;
   @override
-  double get height;
+  double get height => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$LyricCopyWith<_Lyric> get copyWith => throw _privateConstructorUsedError;

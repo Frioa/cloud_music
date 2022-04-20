@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -6,6 +8,8 @@ import 'package:media/player_controller.dart';
 part 'player_bloc.freezed.dart';
 
 class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
+  final Random random = Random();
+
   PlayerBloc() : super(PlayerState.initial()) {
     on<PlayerEvent>((event, emit) async {
       logger.d('PlayerBloc event:$event');
@@ -14,6 +18,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
         songDetail: (value) async => emit(state.copyWith(songDetail: value.songDetail)),
         isPlaying: (value) async => emit(state.copyWith(isPlaying: value.isPlaying)),
         duration: (value) async => emit(state.copyWith(duration: value.duration)),
+        songList: (value) async => emit(state.copyWith(songList: value.list)),
         lyric: (value) async {
           emit(state.copyWith(lyricVM: ViewModel.requesting()));
           await PlaylistClient(dio).lyric(value.id).then((value) {
@@ -22,12 +27,45 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
             emit(state.copyWith(lyricVM: ViewModel.error(null)));
           });
         },
+        nextSong: (value) async => nextPlay(emit),
+        preSong: (value) async => preSong(emit),
       );
     });
   }
 
-  Future<void> requestSong(_song value, Emitter<PlayerState> emit) async {
-    emit(state.copyWith(playingSong: value.song, lyricVM: ViewModel.requesting()));
+  void addPlayRecord(Song song, Emitter<PlayerState> emit) {
+    final List<Song> list = List.from(state.playRecord);
+    list.add(song);
+    if (state.playRecord.length > 3) {
+      state.playRecord.removeAt(0);
+    }
+
+    emit(state.copyWith(playRecord: list));
+    print('addPlayRecord ${state.playRecord}');
+  }
+
+  // TODO: 未测试
+  void preSong(Emitter<PlayerState> emit) {
+    if (state.playRecord.isNotEmpty) {
+      final List<Song> list = List.from(state.playRecord);
+
+      final song = list.removeLast();
+      final _song = PlayerEvent.song(song, state.songList) as _$playSong;
+      requestSong(_song, emit);
+      emit(state.copyWith(playRecord: list));
+    } else {
+      nextPlay(emit);
+    }
+  }
+
+  Future<void> requestSong(_$playSong value, Emitter<PlayerState> emit) async {
+    addPlayRecord(value.song, emit);
+    emit(state.copyWith(
+      playingSong: value.song,
+      lyricVM: ViewModel.requesting(),
+      songList: value.songList,
+    ));
+
     await SearchClient(dio).songUrl(value.song.id.toString()).then((value) async {
       final detail = value.data![0];
       await AudioPlayerController.instance.play(detail.url!);
@@ -57,7 +95,6 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
         final seconds = int.tryParse(time[0]) ?? 0;
         final mills = int.tryParse(time[1]) ?? 0;
 
-
         lyricList.add(
           Lyric(
             time: Duration(minutes: minutes, seconds: seconds, milliseconds: mills),
@@ -73,19 +110,56 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
       return value;
     });
   }
+
+  void nextPlay(Emitter<PlayerState> emit) {
+    logger.d('$runtimeType: nextPlay');
+
+    late int index;
+    final songList = state.songList;
+
+    switch (state.loopType) {
+      case LoopType.random:
+        index = random.nextInt(songList.length);
+        break;
+      case LoopType.singLoop:
+        index = songList.indexWhere((e) => e.id == state.playingSong?.id);
+        break;
+      case LoopType.listLoop:
+        index = (songList.indexWhere((e) => e.id == state.playingSong?.id) + 1) % songList.length;
+        break;
+    }
+
+    final song = PlayerEvent.song(songList[index], songList) as _$playSong;
+    requestSong(song, emit);
+  }
 }
 
 @freezed
 class PlayerEvent with _$PlayerEvent {
-  const factory PlayerEvent.song(Song song) = _song;
+  const factory PlayerEvent.song(Song song, List<Song> songList) = _$playSong;
 
-  const factory PlayerEvent.songDetail(SongDetail songDetail) = _songDetail;
+  const factory PlayerEvent.songDetail(SongDetail songDetail) = _$songDetail;
 
-  const factory PlayerEvent.isPlaying(bool isPlaying) = _isPlaying;
+  const factory PlayerEvent.isPlaying(bool isPlaying) = _$isPlaying;
 
-  const factory PlayerEvent.duration(Duration duration) = _duration;
+  const factory PlayerEvent.duration(Duration duration) = _$duration;
 
   const factory PlayerEvent.lyric(int id) = _lyric;
+
+  const factory PlayerEvent.songList(List<Song> list) = _$songList;
+
+  const factory PlayerEvent.nextSong() = _$nextSong;
+
+  const factory PlayerEvent.preSong() = _$preSong;
+}
+
+enum LoopType {
+  // 随机播放
+  random,
+  // 列表播放
+  listLoop,
+  // 单曲循环
+  singLoop,
 }
 
 @freezed
@@ -97,6 +171,9 @@ class PlayerState with _$PlayerState {
     required Duration duration,
     required ViewModel<LyricResponse> lyricVM,
     required List<Lyric> lyricList,
+    required List<Song> songList,
+    required LoopType loopType,
+    required List<Song> playRecord,
   }) = _PlayerState;
 
   factory PlayerState.initial() => PlayerState(
@@ -104,6 +181,9 @@ class PlayerState with _$PlayerState {
         duration: Duration.zero,
         lyricVM: ViewModel.initial(),
         lyricList: const [],
+        songList: const [],
+        loopType: LoopType.listLoop,
+        playRecord: List.from(<Song>[]),
       );
 }
 

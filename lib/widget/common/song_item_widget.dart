@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SongListWidget extends StatelessWidget {
+  final int songListId;
   final List<Song> songs;
   final Widget headerWidget;
-  final int? trackCount;
   final bool showIcon;
 
   const SongListWidget({
     Key? key,
+    required this.songListId,
     this.songs = const [],
-    this.trackCount,
     this.showIcon = false,
     this.headerWidget = const SizedBox(),
   }) : super(key: key);
@@ -30,7 +30,15 @@ class SongListWidget extends StatelessWidget {
       );
     }
 
-    Widget _buildNum(int index) {
+    Widget _buildNum(int index, bool showPlaying) {
+      if (showPlaying) {
+        return Icon(
+          Icons.music_note_outlined,
+          size: 18.w,
+          color: Theme.of(context).primaryColor,
+        );
+      }
+
       return Container(
         alignment: Alignment.center,
         // padding: ,
@@ -46,16 +54,18 @@ class SongListWidget extends StatelessWidget {
     Widget _buildItem(Song track, int index) {
       final _showIcon = showIcon && (track.al?.picUrl != null);
 
+      final playing = context.watch<PlayerBloc>().state.playingSong?.id == track.id;
+
       return InkWell(
         onTap: () {
-          context.read<PlayerBloc>().add(PlayerEvent.song(track));
+          context.read<PlayerBloc>().add(PlayerEvent.song(track, songs));
         },
         child: Container(
           padding: EdgeInsets.only(left: 18.w, right: 18.w, top: 15.w, bottom: 15.w),
           height: 68.w,
           child: Row(
             children: [
-              _showIcon ? _buildImage(track.al!.picUrl!) : _buildNum(index),
+              _showIcon ? _buildImage(track.al!.picUrl!) : _buildNum(index, playing),
               SizedBox(width: 12.w),
               Expanded(
                 child: Column(
@@ -64,7 +74,11 @@ class SongListWidget extends StatelessWidget {
                   children: [
                     AutoSizeText(
                       track.name,
-                      style: Theme.of(context).tsDescBold,
+                      style: playing
+                          ? Theme.of(context)
+                              .tsDescBold
+                              .copyWith(color: Theme.of(context).primaryColor)
+                          : Theme.of(context).tsDescBold,
                       maxLines: 1,
                     ),
                     const Expanded(child: SizedBox()),
@@ -127,7 +141,7 @@ class SongListWidget extends StatelessWidget {
                 return Column(
                   children: [
                     headerWidget,
-                    _buildHeader(trackCount),
+                    _buildHeader(songs.length),
                     _buildItem(songs[index], index),
                   ],
                 );

@@ -5,3 +5,4 @@ export 'recommend/recommend.dart';
 export 'playlist/playlist.dart';
 export 'top/top.dart';
 export 'login/login.dart';
+export 'player/player.dart';

@@ -1,3 +1,4 @@
+
 class PlayerValue {
   /// The total duration of the video.
   ///
@@ -10,8 +11,7 @@ class PlayerValue {
   /// True if the video is playing. False if it's paused.
   final bool isPlaying;
 
-  /// True if the video is looping.
-  final bool isLooping;
+  final bool complete;
 
   /// True if the video is currently buffering.
   final bool isBuffering;
@@ -26,11 +26,11 @@ class PlayerValue {
     this.position = Duration.zero,
     this.isInitialized = false,
     this.isPlaying = false,
-    this.isLooping = false,
     this.isBuffering = false,
     this.volume = 1.0,
     this.playbackSpeed = 1.0,
     this.url = '',
+    this.complete = false,
   });
 
   /// The current volume of the playback.
@@ -47,18 +47,18 @@ class PlayerValue {
     Duration? captionOffset,
     bool? isInitialized,
     bool? isPlaying,
-    bool? isLooping,
     bool? isBuffering,
+    bool? complete,
     double? volume,
     double? playbackSpeed,
     String? url,
   }) {
     return PlayerValue(
+      complete: complete ?? this.complete,
       duration: duration ?? this.duration,
       position: position ?? this.position,
       isInitialized: isInitialized ?? this.isInitialized,
       isPlaying: isPlaying ?? this.isPlaying,
-      isLooping: isLooping ?? this.isLooping,
       isBuffering: isBuffering ?? this.isBuffering,
       volume: volume ?? this.volume,
       playbackSpeed: playbackSpeed ?? this.playbackSpeed,

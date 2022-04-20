@@ -36,13 +36,6 @@ class _PlayingPageState extends BasePageState<PlayingPage> {
             ),
           ),
           SizedBox(height: 48.w),
-          AutoSizeText(song?.name ?? '', style: Theme.of(context).tsTitleBold, maxLines: 1),
-          SizedBox(height: 7.w),
-          AutoSizeText(
-            song?.singerAlbumDesc ?? '',
-            style: Theme.of(context).hint2,
-            maxLines: 1,
-          ),
         ],
       ),
     );
@@ -102,7 +95,6 @@ class _PlayingPageState extends BasePageState<PlayingPage> {
       child: Column(
         children: [
           SizedBox(height: 56.w),
-          _buildIndicator(),
           const PlayerWidget(),
         ],
       ),
@@ -116,13 +108,21 @@ class _PlayingPageState extends BasePageState<PlayingPage> {
 
     return Scaffold(
       appBar: AppBarWidget.build(
-        title: Text(
-          S.playingPage.title,
-          style: Theme.of(context).tsAppBar,
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AutoSizeText(song?.name ?? '', style: Theme.of(context).tsTitleBold, maxLines: 1),
+            SizedBox(height: 7.w),
+            AutoSizeText(
+              song?.singerAlbumDesc ?? '',
+              style: Theme.of(context).hint2,
+              maxLines: 1,
+            ),
+          ],
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 33.w, vertical: 10.w),
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.w),
         child: Column(
           children: [
             Expanded(child: _buildBody(song)),

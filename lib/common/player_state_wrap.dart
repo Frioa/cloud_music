@@ -1,8 +1,9 @@
+import 'dart:math';
+
+import 'package:cloud_music/bloc/player/player_bloc.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:media/player_controller.dart';
-
-import '../bloc/player/player.dart';
 
 class PlayersStateWrap extends StatefulWidget {
   final Widget child;
@@ -19,6 +20,10 @@ class _PlayersStateWrapState extends State<PlayersStateWrap> {
   bool isPlaying = false;
 
   Duration duration = Duration.zero;
+
+  late bool complete = controller.value.complete;
+
+  final Random random = Random();
 
   @override
   void initState() {
@@ -47,6 +52,13 @@ class _PlayersStateWrapState extends State<PlayersStateWrap> {
     if (duration != controller.value.duration) {
       duration = controller.value.duration;
       context.read<PlayerBloc>().add(PlayerEvent.duration(duration));
+    }
+
+    if (complete != controller.value.complete) {
+      complete = controller.value.complete;
+      if (complete) {
+        context.read<PlayerBloc>().add(const PlayerEvent.nextSong());
+      }
     }
   }
 

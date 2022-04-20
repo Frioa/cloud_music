@@ -44,7 +44,7 @@ dependencies:
 
   logger: ^1.1.0
   retrofit: ^3.0.1
-  freezed_annotation: ^1.1.0
+  freezed_annotation: ^2.0.0
   dartz: ^0.10.1
 
 dev_dependencies:
@@ -58,7 +58,7 @@ dev_dependencies:
   json_serializable: ^6.1.1
   flutter_gen_runner: ^4.1.5
   lint: ^1.8.2
-  freezed:
+  freezed: ^2.0.0
 
 flutter:
   assets:

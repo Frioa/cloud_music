@@ -12,101 +12,81 @@ part of 'player_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$PlayerEventTearOff {
-  const _$PlayerEventTearOff();
-
-  _song song(Song song) {
-    return _song(
-      song,
-    );
-  }
-
-  _songDetail songDetail(SongDetail songDetail) {
-    return _songDetail(
-      songDetail,
-    );
-  }
-
-  _isPlaying isPlaying(bool isPlaying) {
-    return _isPlaying(
-      isPlaying,
-    );
-  }
-
-  _duration duration(Duration duration) {
-    return _duration(
-      duration,
-    );
-  }
-
-  _lyric lyric(int id) {
-    return _lyric(
-      id,
-    );
-  }
-}
-
-/// @nodoc
-const $PlayerEvent = _$PlayerEventTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$PlayerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Song song) song,
+    required TResult Function(Song song, List<Song> songList) song,
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
     required TResult Function(int id) lyric,
+    required TResult Function(List<Song> list) songList,
+    required TResult Function() nextSong,
+    required TResult Function() preSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_song value) song,
-    required TResult Function(_songDetail value) songDetail,
-    required TResult Function(_isPlaying value) isPlaying,
-    required TResult Function(_duration value) duration,
+    required TResult Function(_$playSong value) song,
+    required TResult Function(_$songDetail value) songDetail,
+    required TResult Function(_$isPlaying value) isPlaying,
+    required TResult Function(_$duration value) duration,
     required TResult Function(_lyric value) lyric,
+    required TResult Function(_$songList value) songList,
+    required TResult Function(_$nextSong value) nextSong,
+    required TResult Function(_$preSong value) preSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,100 +109,125 @@ class _$PlayerEventCopyWithImpl<$Res> implements $PlayerEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$songCopyWith<$Res> {
-  factory _$songCopyWith(_song value, $Res Function(_song) then) =
-      __$songCopyWithImpl<$Res>;
-  $Res call({Song song});
+abstract class _$$playSongCopyWith<$Res> {
+  factory _$$playSongCopyWith(
+          _$playSong value, $Res Function(_$playSong) then) =
+      __$$playSongCopyWithImpl<$Res>;
+  $Res call({Song song, List<Song> songList});
 }
 
 /// @nodoc
-class __$songCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$songCopyWith<$Res> {
-  __$songCopyWithImpl(_song _value, $Res Function(_song) _then)
-      : super(_value, (v) => _then(v as _song));
+class __$$playSongCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$playSongCopyWith<$Res> {
+  __$$playSongCopyWithImpl(_$playSong _value, $Res Function(_$playSong) _then)
+      : super(_value, (v) => _then(v as _$playSong));
 
   @override
-  _song get _value => super._value as _song;
+  _$playSong get _value => super._value as _$playSong;
 
   @override
   $Res call({
     Object? song = freezed,
+    Object? songList = freezed,
   }) {
-    return _then(_song(
+    return _then(_$playSong(
       song == freezed
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as Song,
+      songList == freezed
+          ? _value.songList
+          : songList // ignore: cast_nullable_to_non_nullable
+              as List<Song>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_song implements _song {
-  const _$_song(this.song);
+class _$_$playSong implements _$playSong {
+  const _$_$playSong(this.song, final List<Song> songList)
+      : _songList = songList;
 
   @override
   final Song song;
+  final List<Song> _songList;
+  @override
+  List<Song> get songList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_songList);
+  }
 
   @override
   String toString() {
-    return 'PlayerEvent.song(song: $song)';
+    return 'PlayerEvent.song(song: $song, songList: $songList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _song &&
-            const DeepCollectionEquality().equals(other.song, song));
+            other is _$playSong &&
+            const DeepCollectionEquality().equals(other.song, song) &&
+            const DeepCollectionEquality().equals(other.songList, songList));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(song));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(song),
+      const DeepCollectionEquality().hash(songList));
 
   @JsonKey(ignore: true)
   @override
-  _$songCopyWith<_song> get copyWith =>
-      __$songCopyWithImpl<_song>(this, _$identity);
+  _$$playSongCopyWith<_$playSong> get copyWith =>
+      __$$playSongCopyWithImpl<_$playSong>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Song song) song,
+    required TResult Function(Song song, List<Song> songList) song,
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
     required TResult Function(int id) lyric,
+    required TResult Function(List<Song> list) songList,
+    required TResult Function() nextSong,
+    required TResult Function() preSong,
   }) {
-    return song(this.song);
+    return song(this.song, this.songList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
   }) {
-    return song?.call(this.song);
+    return song?.call(this.song, this.songList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
     required TResult orElse(),
   }) {
     if (song != null) {
-      return song(this.song);
+      return song(this.song, this.songList);
     }
     return orElse();
   }
@@ -230,11 +235,14 @@ class _$_song implements _song {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_song value) song,
-    required TResult Function(_songDetail value) songDetail,
-    required TResult Function(_isPlaying value) isPlaying,
-    required TResult Function(_duration value) duration,
+    required TResult Function(_$playSong value) song,
+    required TResult Function(_$songDetail value) songDetail,
+    required TResult Function(_$isPlaying value) isPlaying,
+    required TResult Function(_$duration value) duration,
     required TResult Function(_lyric value) lyric,
+    required TResult Function(_$songList value) songList,
+    required TResult Function(_$nextSong value) nextSong,
+    required TResult Function(_$preSong value) preSong,
   }) {
     return song(this);
   }
@@ -242,11 +250,14 @@ class _$_song implements _song {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
   }) {
     return song?.call(this);
   }
@@ -254,11 +265,14 @@ class _$_song implements _song {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
     required TResult orElse(),
   }) {
     if (song != null) {
@@ -268,37 +282,40 @@ class _$_song implements _song {
   }
 }
 
-abstract class _song implements PlayerEvent {
-  const factory _song(Song song) = _$_song;
+abstract class _$playSong implements PlayerEvent {
+  const factory _$playSong(final Song song, final List<Song> songList) =
+      _$_$playSong;
 
-  Song get song;
+  Song get song => throw _privateConstructorUsedError;
+  List<Song> get songList => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$songCopyWith<_song> get copyWith => throw _privateConstructorUsedError;
+  _$$playSongCopyWith<_$playSong> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$songDetailCopyWith<$Res> {
-  factory _$songDetailCopyWith(
-          _songDetail value, $Res Function(_songDetail) then) =
-      __$songDetailCopyWithImpl<$Res>;
+abstract class _$$songDetailCopyWith<$Res> {
+  factory _$$songDetailCopyWith(
+          _$songDetail value, $Res Function(_$songDetail) then) =
+      __$$songDetailCopyWithImpl<$Res>;
   $Res call({SongDetail songDetail});
 }
 
 /// @nodoc
-class __$songDetailCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$songDetailCopyWith<$Res> {
-  __$songDetailCopyWithImpl(
-      _songDetail _value, $Res Function(_songDetail) _then)
-      : super(_value, (v) => _then(v as _songDetail));
+class __$$songDetailCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$songDetailCopyWith<$Res> {
+  __$$songDetailCopyWithImpl(
+      _$songDetail _value, $Res Function(_$songDetail) _then)
+      : super(_value, (v) => _then(v as _$songDetail));
 
   @override
-  _songDetail get _value => super._value as _songDetail;
+  _$songDetail get _value => super._value as _$songDetail;
 
   @override
   $Res call({
     Object? songDetail = freezed,
   }) {
-    return _then(_songDetail(
+    return _then(_$songDetail(
       songDetail == freezed
           ? _value.songDetail
           : songDetail // ignore: cast_nullable_to_non_nullable
@@ -309,8 +326,8 @@ class __$songDetailCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_songDetail implements _songDetail {
-  const _$_songDetail(this.songDetail);
+class _$_$songDetail implements _$songDetail {
+  const _$_$songDetail(this.songDetail);
 
   @override
   final SongDetail songDetail;
@@ -324,7 +341,7 @@ class _$_songDetail implements _songDetail {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _songDetail &&
+            other is _$songDetail &&
             const DeepCollectionEquality()
                 .equals(other.songDetail, songDetail));
   }
@@ -335,17 +352,20 @@ class _$_songDetail implements _songDetail {
 
   @JsonKey(ignore: true)
   @override
-  _$songDetailCopyWith<_songDetail> get copyWith =>
-      __$songDetailCopyWithImpl<_songDetail>(this, _$identity);
+  _$$songDetailCopyWith<_$songDetail> get copyWith =>
+      __$$songDetailCopyWithImpl<_$songDetail>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Song song) song,
+    required TResult Function(Song song, List<Song> songList) song,
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
     required TResult Function(int id) lyric,
+    required TResult Function(List<Song> list) songList,
+    required TResult Function() nextSong,
+    required TResult Function() preSong,
   }) {
     return songDetail(this.songDetail);
   }
@@ -353,11 +373,14 @@ class _$_songDetail implements _songDetail {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
   }) {
     return songDetail?.call(this.songDetail);
   }
@@ -365,11 +388,14 @@ class _$_songDetail implements _songDetail {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
     required TResult orElse(),
   }) {
     if (songDetail != null) {
@@ -381,11 +407,14 @@ class _$_songDetail implements _songDetail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_song value) song,
-    required TResult Function(_songDetail value) songDetail,
-    required TResult Function(_isPlaying value) isPlaying,
-    required TResult Function(_duration value) duration,
+    required TResult Function(_$playSong value) song,
+    required TResult Function(_$songDetail value) songDetail,
+    required TResult Function(_$isPlaying value) isPlaying,
+    required TResult Function(_$duration value) duration,
     required TResult Function(_lyric value) lyric,
+    required TResult Function(_$songList value) songList,
+    required TResult Function(_$nextSong value) nextSong,
+    required TResult Function(_$preSong value) preSong,
   }) {
     return songDetail(this);
   }
@@ -393,11 +422,14 @@ class _$_songDetail implements _songDetail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
   }) {
     return songDetail?.call(this);
   }
@@ -405,11 +437,14 @@ class _$_songDetail implements _songDetail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
     required TResult orElse(),
   }) {
     if (songDetail != null) {
@@ -419,37 +454,38 @@ class _$_songDetail implements _songDetail {
   }
 }
 
-abstract class _songDetail implements PlayerEvent {
-  const factory _songDetail(SongDetail songDetail) = _$_songDetail;
+abstract class _$songDetail implements PlayerEvent {
+  const factory _$songDetail(final SongDetail songDetail) = _$_$songDetail;
 
-  SongDetail get songDetail;
+  SongDetail get songDetail => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$songDetailCopyWith<_songDetail> get copyWith =>
+  _$$songDetailCopyWith<_$songDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$isPlayingCopyWith<$Res> {
-  factory _$isPlayingCopyWith(
-          _isPlaying value, $Res Function(_isPlaying) then) =
-      __$isPlayingCopyWithImpl<$Res>;
+abstract class _$$isPlayingCopyWith<$Res> {
+  factory _$$isPlayingCopyWith(
+          _$isPlaying value, $Res Function(_$isPlaying) then) =
+      __$$isPlayingCopyWithImpl<$Res>;
   $Res call({bool isPlaying});
 }
 
 /// @nodoc
-class __$isPlayingCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$isPlayingCopyWith<$Res> {
-  __$isPlayingCopyWithImpl(_isPlaying _value, $Res Function(_isPlaying) _then)
-      : super(_value, (v) => _then(v as _isPlaying));
+class __$$isPlayingCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$isPlayingCopyWith<$Res> {
+  __$$isPlayingCopyWithImpl(
+      _$isPlaying _value, $Res Function(_$isPlaying) _then)
+      : super(_value, (v) => _then(v as _$isPlaying));
 
   @override
-  _isPlaying get _value => super._value as _isPlaying;
+  _$isPlaying get _value => super._value as _$isPlaying;
 
   @override
   $Res call({
     Object? isPlaying = freezed,
   }) {
-    return _then(_isPlaying(
+    return _then(_$isPlaying(
       isPlaying == freezed
           ? _value.isPlaying
           : isPlaying // ignore: cast_nullable_to_non_nullable
@@ -460,8 +496,8 @@ class __$isPlayingCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_isPlaying implements _isPlaying {
-  const _$_isPlaying(this.isPlaying);
+class _$_$isPlaying implements _$isPlaying {
+  const _$_$isPlaying(this.isPlaying);
 
   @override
   final bool isPlaying;
@@ -475,7 +511,7 @@ class _$_isPlaying implements _isPlaying {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _isPlaying &&
+            other is _$isPlaying &&
             const DeepCollectionEquality().equals(other.isPlaying, isPlaying));
   }
 
@@ -485,17 +521,20 @@ class _$_isPlaying implements _isPlaying {
 
   @JsonKey(ignore: true)
   @override
-  _$isPlayingCopyWith<_isPlaying> get copyWith =>
-      __$isPlayingCopyWithImpl<_isPlaying>(this, _$identity);
+  _$$isPlayingCopyWith<_$isPlaying> get copyWith =>
+      __$$isPlayingCopyWithImpl<_$isPlaying>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Song song) song,
+    required TResult Function(Song song, List<Song> songList) song,
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
     required TResult Function(int id) lyric,
+    required TResult Function(List<Song> list) songList,
+    required TResult Function() nextSong,
+    required TResult Function() preSong,
   }) {
     return isPlaying(this.isPlaying);
   }
@@ -503,11 +542,14 @@ class _$_isPlaying implements _isPlaying {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
   }) {
     return isPlaying?.call(this.isPlaying);
   }
@@ -515,11 +557,14 @@ class _$_isPlaying implements _isPlaying {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
     required TResult orElse(),
   }) {
     if (isPlaying != null) {
@@ -531,11 +576,14 @@ class _$_isPlaying implements _isPlaying {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_song value) song,
-    required TResult Function(_songDetail value) songDetail,
-    required TResult Function(_isPlaying value) isPlaying,
-    required TResult Function(_duration value) duration,
+    required TResult Function(_$playSong value) song,
+    required TResult Function(_$songDetail value) songDetail,
+    required TResult Function(_$isPlaying value) isPlaying,
+    required TResult Function(_$duration value) duration,
     required TResult Function(_lyric value) lyric,
+    required TResult Function(_$songList value) songList,
+    required TResult Function(_$nextSong value) nextSong,
+    required TResult Function(_$preSong value) preSong,
   }) {
     return isPlaying(this);
   }
@@ -543,11 +591,14 @@ class _$_isPlaying implements _isPlaying {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
   }) {
     return isPlaying?.call(this);
   }
@@ -555,11 +606,14 @@ class _$_isPlaying implements _isPlaying {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
     required TResult orElse(),
   }) {
     if (isPlaying != null) {
@@ -569,36 +623,37 @@ class _$_isPlaying implements _isPlaying {
   }
 }
 
-abstract class _isPlaying implements PlayerEvent {
-  const factory _isPlaying(bool isPlaying) = _$_isPlaying;
+abstract class _$isPlaying implements PlayerEvent {
+  const factory _$isPlaying(final bool isPlaying) = _$_$isPlaying;
 
-  bool get isPlaying;
+  bool get isPlaying => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$isPlayingCopyWith<_isPlaying> get copyWith =>
+  _$$isPlayingCopyWith<_$isPlaying> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$durationCopyWith<$Res> {
-  factory _$durationCopyWith(_duration value, $Res Function(_duration) then) =
-      __$durationCopyWithImpl<$Res>;
+abstract class _$$durationCopyWith<$Res> {
+  factory _$$durationCopyWith(
+          _$duration value, $Res Function(_$duration) then) =
+      __$$durationCopyWithImpl<$Res>;
   $Res call({Duration duration});
 }
 
 /// @nodoc
-class __$durationCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$durationCopyWith<$Res> {
-  __$durationCopyWithImpl(_duration _value, $Res Function(_duration) _then)
-      : super(_value, (v) => _then(v as _duration));
+class __$$durationCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$durationCopyWith<$Res> {
+  __$$durationCopyWithImpl(_$duration _value, $Res Function(_$duration) _then)
+      : super(_value, (v) => _then(v as _$duration));
 
   @override
-  _duration get _value => super._value as _duration;
+  _$duration get _value => super._value as _$duration;
 
   @override
   $Res call({
     Object? duration = freezed,
   }) {
-    return _then(_duration(
+    return _then(_$duration(
       duration == freezed
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -609,8 +664,8 @@ class __$durationCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_duration implements _duration {
-  const _$_duration(this.duration);
+class _$_$duration implements _$duration {
+  const _$_$duration(this.duration);
 
   @override
   final Duration duration;
@@ -624,7 +679,7 @@ class _$_duration implements _duration {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _duration &&
+            other is _$duration &&
             const DeepCollectionEquality().equals(other.duration, duration));
   }
 
@@ -634,17 +689,20 @@ class _$_duration implements _duration {
 
   @JsonKey(ignore: true)
   @override
-  _$durationCopyWith<_duration> get copyWith =>
-      __$durationCopyWithImpl<_duration>(this, _$identity);
+  _$$durationCopyWith<_$duration> get copyWith =>
+      __$$durationCopyWithImpl<_$duration>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Song song) song,
+    required TResult Function(Song song, List<Song> songList) song,
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
     required TResult Function(int id) lyric,
+    required TResult Function(List<Song> list) songList,
+    required TResult Function() nextSong,
+    required TResult Function() preSong,
   }) {
     return duration(this.duration);
   }
@@ -652,11 +710,14 @@ class _$_duration implements _duration {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
   }) {
     return duration?.call(this.duration);
   }
@@ -664,11 +725,14 @@ class _$_duration implements _duration {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
     required TResult orElse(),
   }) {
     if (duration != null) {
@@ -680,11 +744,14 @@ class _$_duration implements _duration {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_song value) song,
-    required TResult Function(_songDetail value) songDetail,
-    required TResult Function(_isPlaying value) isPlaying,
-    required TResult Function(_duration value) duration,
+    required TResult Function(_$playSong value) song,
+    required TResult Function(_$songDetail value) songDetail,
+    required TResult Function(_$isPlaying value) isPlaying,
+    required TResult Function(_$duration value) duration,
     required TResult Function(_lyric value) lyric,
+    required TResult Function(_$songList value) songList,
+    required TResult Function(_$nextSong value) nextSong,
+    required TResult Function(_$preSong value) preSong,
   }) {
     return duration(this);
   }
@@ -692,11 +759,14 @@ class _$_duration implements _duration {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
   }) {
     return duration?.call(this);
   }
@@ -704,11 +774,14 @@ class _$_duration implements _duration {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
     required TResult orElse(),
   }) {
     if (duration != null) {
@@ -718,12 +791,12 @@ class _$_duration implements _duration {
   }
 }
 
-abstract class _duration implements PlayerEvent {
-  const factory _duration(Duration duration) = _$_duration;
+abstract class _$duration implements PlayerEvent {
+  const factory _$duration(final Duration duration) = _$_$duration;
 
-  Duration get duration;
+  Duration get duration => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$durationCopyWith<_duration> get copyWith =>
+  _$$durationCopyWith<_$duration> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -789,11 +862,14 @@ class _$_lyric implements _lyric {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(Song song) song,
+    required TResult Function(Song song, List<Song> songList) song,
     required TResult Function(SongDetail songDetail) songDetail,
     required TResult Function(bool isPlaying) isPlaying,
     required TResult Function(Duration duration) duration,
     required TResult Function(int id) lyric,
+    required TResult Function(List<Song> list) songList,
+    required TResult Function() nextSong,
+    required TResult Function() preSong,
   }) {
     return lyric(id);
   }
@@ -801,11 +877,14 @@ class _$_lyric implements _lyric {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
   }) {
     return lyric?.call(id);
   }
@@ -813,11 +892,14 @@ class _$_lyric implements _lyric {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(Song song)? song,
+    TResult Function(Song song, List<Song> songList)? song,
     TResult Function(SongDetail songDetail)? songDetail,
     TResult Function(bool isPlaying)? isPlaying,
     TResult Function(Duration duration)? duration,
     TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
     required TResult orElse(),
   }) {
     if (lyric != null) {
@@ -829,11 +911,14 @@ class _$_lyric implements _lyric {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_song value) song,
-    required TResult Function(_songDetail value) songDetail,
-    required TResult Function(_isPlaying value) isPlaying,
-    required TResult Function(_duration value) duration,
+    required TResult Function(_$playSong value) song,
+    required TResult Function(_$songDetail value) songDetail,
+    required TResult Function(_$isPlaying value) isPlaying,
+    required TResult Function(_$duration value) duration,
     required TResult Function(_lyric value) lyric,
+    required TResult Function(_$songList value) songList,
+    required TResult Function(_$nextSong value) nextSong,
+    required TResult Function(_$preSong value) preSong,
   }) {
     return lyric(this);
   }
@@ -841,11 +926,14 @@ class _$_lyric implements _lyric {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
   }) {
     return lyric?.call(this);
   }
@@ -853,11 +941,14 @@ class _$_lyric implements _lyric {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_song value)? song,
-    TResult Function(_songDetail value)? songDetail,
-    TResult Function(_isPlaying value)? isPlaying,
-    TResult Function(_duration value)? duration,
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
     TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
     required TResult orElse(),
   }) {
     if (lyric != null) {
@@ -868,37 +959,461 @@ class _$_lyric implements _lyric {
 }
 
 abstract class _lyric implements PlayerEvent {
-  const factory _lyric(int id) = _$_lyric;
+  const factory _lyric(final int id) = _$_lyric;
 
-  int get id;
+  int get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$lyricCopyWith<_lyric> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$PlayerStateTearOff {
-  const _$PlayerStateTearOff();
+abstract class _$$songListCopyWith<$Res> {
+  factory _$$songListCopyWith(
+          _$songList value, $Res Function(_$songList) then) =
+      __$$songListCopyWithImpl<$Res>;
+  $Res call({List<Song> list});
+}
 
-  _PlayerState call(
-      {Song? playingSong,
-      SongDetail? songDetail,
-      required bool isPlaying,
-      required Duration duration,
-      required ViewModel<LyricResponse> lyricVM,
-      required List<Lyric> lyricList}) {
-    return _PlayerState(
-      playingSong: playingSong,
-      songDetail: songDetail,
-      isPlaying: isPlaying,
-      duration: duration,
-      lyricVM: lyricVM,
-      lyricList: lyricList,
-    );
+/// @nodoc
+class __$$songListCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$songListCopyWith<$Res> {
+  __$$songListCopyWithImpl(_$songList _value, $Res Function(_$songList) _then)
+      : super(_value, (v) => _then(v as _$songList));
+
+  @override
+  _$songList get _value => super._value as _$songList;
+
+  @override
+  $Res call({
+    Object? list = freezed,
+  }) {
+    return _then(_$songList(
+      list == freezed
+          ? _value.list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<Song>,
+    ));
   }
 }
 
 /// @nodoc
-const $PlayerState = _$PlayerStateTearOff();
+
+class _$_$songList implements _$songList {
+  const _$_$songList(final List<Song> list) : _list = list;
+
+  final List<Song> _list;
+  @override
+  List<Song> get list {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_list);
+  }
+
+  @override
+  String toString() {
+    return 'PlayerEvent.songList(list: $list)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$songList &&
+            const DeepCollectionEquality().equals(other.list, list));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(list));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$songListCopyWith<_$songList> get copyWith =>
+      __$$songListCopyWithImpl<_$songList>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Song song, List<Song> songList) song,
+    required TResult Function(SongDetail songDetail) songDetail,
+    required TResult Function(bool isPlaying) isPlaying,
+    required TResult Function(Duration duration) duration,
+    required TResult Function(int id) lyric,
+    required TResult Function(List<Song> list) songList,
+    required TResult Function() nextSong,
+    required TResult Function() preSong,
+  }) {
+    return songList(list);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Song song, List<Song> songList)? song,
+    TResult Function(SongDetail songDetail)? songDetail,
+    TResult Function(bool isPlaying)? isPlaying,
+    TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
+  }) {
+    return songList?.call(list);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Song song, List<Song> songList)? song,
+    TResult Function(SongDetail songDetail)? songDetail,
+    TResult Function(bool isPlaying)? isPlaying,
+    TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
+    required TResult orElse(),
+  }) {
+    if (songList != null) {
+      return songList(list);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_$playSong value) song,
+    required TResult Function(_$songDetail value) songDetail,
+    required TResult Function(_$isPlaying value) isPlaying,
+    required TResult Function(_$duration value) duration,
+    required TResult Function(_lyric value) lyric,
+    required TResult Function(_$songList value) songList,
+    required TResult Function(_$nextSong value) nextSong,
+    required TResult Function(_$preSong value) preSong,
+  }) {
+    return songList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
+    TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
+  }) {
+    return songList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
+    TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
+    required TResult orElse(),
+  }) {
+    if (songList != null) {
+      return songList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _$songList implements PlayerEvent {
+  const factory _$songList(final List<Song> list) = _$_$songList;
+
+  List<Song> get list => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$songListCopyWith<_$songList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$nextSongCopyWith<$Res> {
+  factory _$$nextSongCopyWith(
+          _$nextSong value, $Res Function(_$nextSong) then) =
+      __$$nextSongCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$nextSongCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$nextSongCopyWith<$Res> {
+  __$$nextSongCopyWithImpl(_$nextSong _value, $Res Function(_$nextSong) _then)
+      : super(_value, (v) => _then(v as _$nextSong));
+
+  @override
+  _$nextSong get _value => super._value as _$nextSong;
+}
+
+/// @nodoc
+
+class _$_$nextSong implements _$nextSong {
+  const _$_$nextSong();
+
+  @override
+  String toString() {
+    return 'PlayerEvent.nextSong()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$nextSong);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Song song, List<Song> songList) song,
+    required TResult Function(SongDetail songDetail) songDetail,
+    required TResult Function(bool isPlaying) isPlaying,
+    required TResult Function(Duration duration) duration,
+    required TResult Function(int id) lyric,
+    required TResult Function(List<Song> list) songList,
+    required TResult Function() nextSong,
+    required TResult Function() preSong,
+  }) {
+    return nextSong();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Song song, List<Song> songList)? song,
+    TResult Function(SongDetail songDetail)? songDetail,
+    TResult Function(bool isPlaying)? isPlaying,
+    TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
+  }) {
+    return nextSong?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Song song, List<Song> songList)? song,
+    TResult Function(SongDetail songDetail)? songDetail,
+    TResult Function(bool isPlaying)? isPlaying,
+    TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
+    required TResult orElse(),
+  }) {
+    if (nextSong != null) {
+      return nextSong();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_$playSong value) song,
+    required TResult Function(_$songDetail value) songDetail,
+    required TResult Function(_$isPlaying value) isPlaying,
+    required TResult Function(_$duration value) duration,
+    required TResult Function(_lyric value) lyric,
+    required TResult Function(_$songList value) songList,
+    required TResult Function(_$nextSong value) nextSong,
+    required TResult Function(_$preSong value) preSong,
+  }) {
+    return nextSong(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
+    TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
+  }) {
+    return nextSong?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
+    TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
+    required TResult orElse(),
+  }) {
+    if (nextSong != null) {
+      return nextSong(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _$nextSong implements PlayerEvent {
+  const factory _$nextSong() = _$_$nextSong;
+}
+
+/// @nodoc
+abstract class _$$preSongCopyWith<$Res> {
+  factory _$$preSongCopyWith(_$preSong value, $Res Function(_$preSong) then) =
+      __$$preSongCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$preSongCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$preSongCopyWith<$Res> {
+  __$$preSongCopyWithImpl(_$preSong _value, $Res Function(_$preSong) _then)
+      : super(_value, (v) => _then(v as _$preSong));
+
+  @override
+  _$preSong get _value => super._value as _$preSong;
+}
+
+/// @nodoc
+
+class _$_$preSong implements _$preSong {
+  const _$_$preSong();
+
+  @override
+  String toString() {
+    return 'PlayerEvent.preSong()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$preSong);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(Song song, List<Song> songList) song,
+    required TResult Function(SongDetail songDetail) songDetail,
+    required TResult Function(bool isPlaying) isPlaying,
+    required TResult Function(Duration duration) duration,
+    required TResult Function(int id) lyric,
+    required TResult Function(List<Song> list) songList,
+    required TResult Function() nextSong,
+    required TResult Function() preSong,
+  }) {
+    return preSong();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(Song song, List<Song> songList)? song,
+    TResult Function(SongDetail songDetail)? songDetail,
+    TResult Function(bool isPlaying)? isPlaying,
+    TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
+  }) {
+    return preSong?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Song song, List<Song> songList)? song,
+    TResult Function(SongDetail songDetail)? songDetail,
+    TResult Function(bool isPlaying)? isPlaying,
+    TResult Function(Duration duration)? duration,
+    TResult Function(int id)? lyric,
+    TResult Function(List<Song> list)? songList,
+    TResult Function()? nextSong,
+    TResult Function()? preSong,
+    required TResult orElse(),
+  }) {
+    if (preSong != null) {
+      return preSong();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_$playSong value) song,
+    required TResult Function(_$songDetail value) songDetail,
+    required TResult Function(_$isPlaying value) isPlaying,
+    required TResult Function(_$duration value) duration,
+    required TResult Function(_lyric value) lyric,
+    required TResult Function(_$songList value) songList,
+    required TResult Function(_$nextSong value) nextSong,
+    required TResult Function(_$preSong value) preSong,
+  }) {
+    return preSong(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
+    TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
+  }) {
+    return preSong?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_$playSong value)? song,
+    TResult Function(_$songDetail value)? songDetail,
+    TResult Function(_$isPlaying value)? isPlaying,
+    TResult Function(_$duration value)? duration,
+    TResult Function(_lyric value)? lyric,
+    TResult Function(_$songList value)? songList,
+    TResult Function(_$nextSong value)? nextSong,
+    TResult Function(_$preSong value)? preSong,
+    required TResult orElse(),
+  }) {
+    if (preSong != null) {
+      return preSong(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _$preSong implements PlayerEvent {
+  const factory _$preSong() = _$_$preSong;
+}
 
 /// @nodoc
 mixin _$PlayerState {
@@ -908,6 +1423,9 @@ mixin _$PlayerState {
   Duration get duration => throw _privateConstructorUsedError;
   ViewModel<LyricResponse> get lyricVM => throw _privateConstructorUsedError;
   List<Lyric> get lyricList => throw _privateConstructorUsedError;
+  List<Song> get songList => throw _privateConstructorUsedError;
+  LoopType get loopType => throw _privateConstructorUsedError;
+  List<Song> get playRecord => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlayerStateCopyWith<PlayerState> get copyWith =>
@@ -925,7 +1443,10 @@ abstract class $PlayerStateCopyWith<$Res> {
       bool isPlaying,
       Duration duration,
       ViewModel<LyricResponse> lyricVM,
-      List<Lyric> lyricList});
+      List<Lyric> lyricList,
+      List<Song> songList,
+      LoopType loopType,
+      List<Song> playRecord});
 }
 
 /// @nodoc
@@ -944,6 +1465,9 @@ class _$PlayerStateCopyWithImpl<$Res> implements $PlayerStateCopyWith<$Res> {
     Object? duration = freezed,
     Object? lyricVM = freezed,
     Object? lyricList = freezed,
+    Object? songList = freezed,
+    Object? loopType = freezed,
+    Object? playRecord = freezed,
   }) {
     return _then(_value.copyWith(
       playingSong: playingSong == freezed
@@ -970,6 +1494,18 @@ class _$PlayerStateCopyWithImpl<$Res> implements $PlayerStateCopyWith<$Res> {
           ? _value.lyricList
           : lyricList // ignore: cast_nullable_to_non_nullable
               as List<Lyric>,
+      songList: songList == freezed
+          ? _value.songList
+          : songList // ignore: cast_nullable_to_non_nullable
+              as List<Song>,
+      loopType: loopType == freezed
+          ? _value.loopType
+          : loopType // ignore: cast_nullable_to_non_nullable
+              as LoopType,
+      playRecord: playRecord == freezed
+          ? _value.playRecord
+          : playRecord // ignore: cast_nullable_to_non_nullable
+              as List<Song>,
     ));
   }
 }
@@ -987,7 +1523,10 @@ abstract class _$PlayerStateCopyWith<$Res>
       bool isPlaying,
       Duration duration,
       ViewModel<LyricResponse> lyricVM,
-      List<Lyric> lyricList});
+      List<Lyric> lyricList,
+      List<Song> songList,
+      LoopType loopType,
+      List<Song> playRecord});
 }
 
 /// @nodoc
@@ -1008,6 +1547,9 @@ class __$PlayerStateCopyWithImpl<$Res> extends _$PlayerStateCopyWithImpl<$Res>
     Object? duration = freezed,
     Object? lyricVM = freezed,
     Object? lyricList = freezed,
+    Object? songList = freezed,
+    Object? loopType = freezed,
+    Object? playRecord = freezed,
   }) {
     return _then(_PlayerState(
       playingSong: playingSong == freezed
@@ -1034,6 +1576,18 @@ class __$PlayerStateCopyWithImpl<$Res> extends _$PlayerStateCopyWithImpl<$Res>
           ? _value.lyricList
           : lyricList // ignore: cast_nullable_to_non_nullable
               as List<Lyric>,
+      songList: songList == freezed
+          ? _value.songList
+          : songList // ignore: cast_nullable_to_non_nullable
+              as List<Song>,
+      loopType: loopType == freezed
+          ? _value.loopType
+          : loopType // ignore: cast_nullable_to_non_nullable
+              as LoopType,
+      playRecord: playRecord == freezed
+          ? _value.playRecord
+          : playRecord // ignore: cast_nullable_to_non_nullable
+              as List<Song>,
     ));
   }
 }
@@ -1047,7 +1601,13 @@ class _$_PlayerState implements _PlayerState {
       required this.isPlaying,
       required this.duration,
       required this.lyricVM,
-      required this.lyricList});
+      required final List<Lyric> lyricList,
+      required final List<Song> songList,
+      required this.loopType,
+      required final List<Song> playRecord})
+      : _lyricList = lyricList,
+        _songList = songList,
+        _playRecord = playRecord;
 
   @override
   final Song? playingSong;
@@ -1059,12 +1619,32 @@ class _$_PlayerState implements _PlayerState {
   final Duration duration;
   @override
   final ViewModel<LyricResponse> lyricVM;
+  final List<Lyric> _lyricList;
   @override
-  final List<Lyric> lyricList;
+  List<Lyric> get lyricList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lyricList);
+  }
+
+  final List<Song> _songList;
+  @override
+  List<Song> get songList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_songList);
+  }
+
+  @override
+  final LoopType loopType;
+  final List<Song> _playRecord;
+  @override
+  List<Song> get playRecord {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_playRecord);
+  }
 
   @override
   String toString() {
-    return 'PlayerState(playingSong: $playingSong, songDetail: $songDetail, isPlaying: $isPlaying, duration: $duration, lyricVM: $lyricVM, lyricList: $lyricList)';
+    return 'PlayerState(playingSong: $playingSong, songDetail: $songDetail, isPlaying: $isPlaying, duration: $duration, lyricVM: $lyricVM, lyricList: $lyricList, songList: $songList, loopType: $loopType, playRecord: $playRecord)';
   }
 
   @override
@@ -1079,7 +1659,11 @@ class _$_PlayerState implements _PlayerState {
             const DeepCollectionEquality().equals(other.isPlaying, isPlaying) &&
             const DeepCollectionEquality().equals(other.duration, duration) &&
             const DeepCollectionEquality().equals(other.lyricVM, lyricVM) &&
-            const DeepCollectionEquality().equals(other.lyricList, lyricList));
+            const DeepCollectionEquality().equals(other.lyricList, lyricList) &&
+            const DeepCollectionEquality().equals(other.songList, songList) &&
+            const DeepCollectionEquality().equals(other.loopType, loopType) &&
+            const DeepCollectionEquality()
+                .equals(other.playRecord, playRecord));
   }
 
   @override
@@ -1090,7 +1674,10 @@ class _$_PlayerState implements _PlayerState {
       const DeepCollectionEquality().hash(isPlaying),
       const DeepCollectionEquality().hash(duration),
       const DeepCollectionEquality().hash(lyricVM),
-      const DeepCollectionEquality().hash(lyricList));
+      const DeepCollectionEquality().hash(lyricList),
+      const DeepCollectionEquality().hash(songList),
+      const DeepCollectionEquality().hash(loopType),
+      const DeepCollectionEquality().hash(playRecord));
 
   @JsonKey(ignore: true)
   @override
@@ -1100,25 +1687,34 @@ class _$_PlayerState implements _PlayerState {
 
 abstract class _PlayerState implements PlayerState {
   const factory _PlayerState(
-      {Song? playingSong,
-      SongDetail? songDetail,
-      required bool isPlaying,
-      required Duration duration,
-      required ViewModel<LyricResponse> lyricVM,
-      required List<Lyric> lyricList}) = _$_PlayerState;
+      {final Song? playingSong,
+      final SongDetail? songDetail,
+      required final bool isPlaying,
+      required final Duration duration,
+      required final ViewModel<LyricResponse> lyricVM,
+      required final List<Lyric> lyricList,
+      required final List<Song> songList,
+      required final LoopType loopType,
+      required final List<Song> playRecord}) = _$_PlayerState;
 
   @override
-  Song? get playingSong;
+  Song? get playingSong => throw _privateConstructorUsedError;
   @override
-  SongDetail? get songDetail;
+  SongDetail? get songDetail => throw _privateConstructorUsedError;
   @override
-  bool get isPlaying;
+  bool get isPlaying => throw _privateConstructorUsedError;
   @override
-  Duration get duration;
+  Duration get duration => throw _privateConstructorUsedError;
   @override
-  ViewModel<LyricResponse> get lyricVM;
+  ViewModel<LyricResponse> get lyricVM => throw _privateConstructorUsedError;
   @override
-  List<Lyric> get lyricList;
+  List<Lyric> get lyricList => throw _privateConstructorUsedError;
+  @override
+  List<Song> get songList => throw _privateConstructorUsedError;
+  @override
+  LoopType get loopType => throw _privateConstructorUsedError;
+  @override
+  List<Song> get playRecord => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PlayerStateCopyWith<_PlayerState> get copyWith =>

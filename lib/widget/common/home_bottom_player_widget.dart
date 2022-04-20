@@ -136,27 +136,7 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
   }
 
   Widget _buildPlayer() {
-    return Material(
-      child: Column(
-        children: [
-          ValueListenableBuilder<PlayerValue>(
-            valueListenable: AudioPlayerController.instance,
-            builder: (context, value, child) {
-              return SizedBox(
-                width: 1.sw,
-                child: LinearProgressIndicator(
-                  minHeight: 3.w,
-                  value: controller.progress,
-                  backgroundColor: Colors.transparent,
-                  color: Theme.of(context).primaryColor,
-                ),
-              );
-            },
-          ),
-          const PlayerWidget(),
-        ],
-      ),
-    );
+    return const PlayerWidget();
   }
 
   @override

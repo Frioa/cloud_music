@@ -85,6 +85,7 @@ void AudioChannel::decode() {
         releaseAvPacket(packet);
         if (ret < 0) break;
 
+        // AVFrame 是未编码的数据
         AVFrame *frame = av_frame_alloc();
         ret = avcodec_receive_frame(avCodecContext, frame);
 
