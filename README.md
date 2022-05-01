@@ -1,33 +1,38 @@
-# cloud_music
+<h1 align="center" style="border-bottom: none">
+    <b>
+        <p>cloud_music</p><br>
+    </b>
+    ⭐️  仿网易云音乐  ⭐️ <br>
+</h1>
 
-A new Flutter project.
 
-build runner：flutter packages pub run build_runner build --delete-conflicting-outputs
+A Universal copy app of [NeteaseMusic](https://music.163.com/#/download)
+
+## Android Preview
+
+|     ![home](https://github.com/Frioa/cloud_music/blob/master/doc/home.png)    |   ![lyric](https://github.com/Frioa/cloud_music/blob/master/doc/lyric.png)  | ![song_item](https://github.com/Frioa/cloud_music/blob/master/doc/song_item.png) | ![song_list](https://github.com/Frioa/cloud_music/blob/master/doc/song_list.png) |
+|:------------------------------------------------:|:---------------------------------------------------------------------------:|:-------------------------------------------------------------:|:-------------------------------------------------------------------:|
+
+## How to start (如何开始)
+
+1. clone project to local
+   
+```bash
+   git clone git@github.com:Frioa/cloud_music.git
+ ```
+
+2. install [Flutter](https://flutter.io/docs/get-started/install)
 
 
-## Getting Started
+3. build & run
+   
+ ```bash
+ flutter run apk
+ ```
+   
+ ## Dependency backend
+   
+  netease api service:
+  [**NeteaseCloudMusicApi**](https://github.com/ziming1/NeteaseCloudMusicApi)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
-## minidump_stackwalk 工具使用：
-/Applications/Android\ Studio.app/Contents/plugins/android-ndk/resources/lldb/bin/minidump_stackwalk f6808d74-e3f8-4ff7-74aeb392-fb882724.dmp > crash.txt
-
-1. 注意 crash.txt 中的 CPU 类型，使用对应的工具进行 符号解析，可以使用 ndk 中提供的`addr2line`来根据地址进行一个符号反解的过程,该工具在
-   `$NDK_HOME/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64/bin/arm-linux-androideabi-addr2line`
-
-注意：此处要注意一下平台，如果是 arm64位的 so，解析是需要使用 `aarch64-linux-android-4.9`下的工具链
-```
-arm-linux-androideabi-addr2line -f -C -e sample/build/intermediates/transforms/mergeJniLibs/debug/0/lib/armeabi-v7a/libcrash-lib.so 0x77e                           
-//输出结果如下
-Crash()
-
-```
