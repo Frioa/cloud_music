@@ -91,10 +91,20 @@ class SongListWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(
-                Icons.more_vert,
-                size: 20.sm,
-              )
+              if (track.hasMV)
+                InkWell(
+                  onTap: () {
+                    R.of(context).push(Pages.mv, parameter: {PageKey.mvId: track.mv});
+                  },
+                  child: SizedBox(
+                    width: 36.w,
+                    height: 36.w,
+                    child: Icon(
+                      Icons.video_call,
+                      size: 24.w,
+                    ),
+                  ),
+                )
             ],
           ),
         ),

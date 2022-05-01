@@ -41,6 +41,7 @@ Song _$SongFromJson(Map<String, dynamic> json) => Song(
       djId: json['djId'] as int?,
       copyright: json['copyright'] as int?,
       reason: json['reason'] as String?,
+      mv: json['mv'] as int? ?? 0,
     );
 
 AL _$ALFromJson(Map<String, dynamic> json) => AL(

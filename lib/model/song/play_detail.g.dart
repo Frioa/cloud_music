@@ -91,6 +91,7 @@ PlayerListTrack _$PlayerListTrackFromJson(Map<String, dynamic> json) =>
       al: json['al'] == null
           ? null
           : AL.fromJson(json['al'] as Map<String, dynamic>),
+      mv: json['mv'] as int? ?? -1,
     );
 
 Al _$AlFromJson(Map<String, dynamic> json) => Al(

@@ -37,7 +37,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
     final List<Song> list = List.from(state.playRecord);
     list.add(song);
     if (state.playRecord.length > 3) {
-      state.playRecord.removeAt(0);
+      list.removeAt(0);
     }
 
     emit(state.copyWith(playRecord: list));

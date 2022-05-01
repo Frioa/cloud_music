@@ -43,6 +43,7 @@ class Song {
   final int? djId;
   final int? copyright;
   final String? reason;
+  final int mv;
 
   Song({
     this.name = '',
@@ -62,6 +63,7 @@ class Song {
     this.djId,
     this.copyright,
     this.reason,
+    this.mv = 0,
   });
 
   factory Song.fromJson(
@@ -78,6 +80,8 @@ class Song {
 
     return singer + ' - ' + (al?.name ?? '');
   }
+
+  bool get hasMV => mv != 0;
 
   @override
   String toString() {

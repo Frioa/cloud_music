@@ -157,9 +157,18 @@ class PlayerListTrack {
   final List<Artist> ar;
   final int pop;
   final AL? al;
+  final int mv;
 
-  PlayerListTrack(
-      {this.name = '', this.id = -1, this.pst, this.t, this.ar = const [], this.pop = 0, this.al});
+  PlayerListTrack({
+    this.name = '',
+    this.id = -1,
+    this.pst,
+    this.t,
+    this.ar = const [],
+    this.pop = 0,
+    this.al,
+    this.mv = -1,
+  });
 
   factory PlayerListTrack.fromJson(Map<String, dynamic> json) {
     return _$PlayerListTrackFromJson(json);
@@ -174,9 +183,11 @@ class PlayerListTrack {
     return singer + ' - ' + (al?.name ?? '');
   }
 
+  bool get hasMv => mv != -1;
+
   @override
   String toString() {
-    return 'PlayerListTrack{name: $name, id: $id, pst: $pst, t: $t, ar: $ar, pop: $pop, al: $al}';
+    return 'PlayerListTrack{name: $name, id: $id, pst: $pst, t: $t, ar: $ar, pop: $pop, al: $al, mv: $mv}';
   }
 }
 

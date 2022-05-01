@@ -22,7 +22,7 @@ SongDetail _$SongDetailFromJson(Map<String, dynamic> json) => SongDetail(
       md5: json['md5'] as String?,
       expi: json['expi'] as int?,
       type: $enumDecodeNullable(_$MediaTypeEnumMap, json['type']),
-      gain: json['gain'] as int?,
+      gain: (json['gain'] as num?)?.toDouble(),
       fee: json['fee'] as int?,
       payed: json['payed'] as int?,
       flag: json['flag'] as int?,

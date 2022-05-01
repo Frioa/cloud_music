@@ -9,6 +9,7 @@ enum Pages {
   playRecord,
   playlistDetail,
   playingPage,
+  mv,
   unknown,
 }
 
@@ -52,6 +53,10 @@ PageConfiguration pageFactor(Pages pages, {Map<String, Object> parameter = const
     case Pages.playingPage:
       showPlayer = false;
       widget = const PlayingPage();
+      break;
+    case Pages.mv:
+      showPlayer = false;
+      widget = const MVPage();
       break;
   }
 

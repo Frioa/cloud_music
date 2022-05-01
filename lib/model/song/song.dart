@@ -38,7 +38,7 @@ class SongDetail {
   final String? md5;
   final int? expi;
   final MediaType? type;
-  final int? gain;
+  final double? gain;
   final int? fee;
 
   // final dynamic uf;
