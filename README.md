@@ -37,6 +37,6 @@ A Universal copy app of [NeteaseMusic](https://music.163.com/#/download)
   
   ## Other
   - [架构设计](https://github.com/Frioa/cloud_music/wiki/Cloud_music-%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84)
-  - [播放器设计](https://github.com/Frioa/cloud_music/wiki/%E6%92%AD%E6%94%BE%E5%99%A8%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1)
+  - [播放器设计](https://github.com/Frioa/cloud_music/wiki/%E6%92%AD%E6%94%BE%E5%99%A8ULM%E5%9B%BE)
 
 
