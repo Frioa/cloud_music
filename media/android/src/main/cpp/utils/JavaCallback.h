@@ -16,7 +16,7 @@ public:
         jclass jclazz = env->GetObjectClass(jobj);
 
         jmid_error = env->GetMethodID(jclazz, "onError", "(I)V");
-        jmid_prepare = env->GetMethodID(jclazz, "onPrepare", "(D)V");
+        jmid_prepare = env->GetMethodID(jclazz, "onPrepare", "(DDZ)V");
         jmid_progress = env->GetMethodID(jclazz, "onProgress", "(I)V");
         jmid_audioProgress = env->GetMethodID(jclazz, "onAudioProgress", "(D)V");
         jmid_complete = env->GetMethodID(jclazz, "onComplete", "()V");
@@ -24,15 +24,15 @@ public:
 
     ~JavaCallback() {
         env->DeleteGlobalRef(jobj);
-        jobj = 0;
+        jobj = nullptr;
     }
 
     void onError(int code, bool isMainThread = true) {
         _callback(isMainThread, jmid_error, code);
     }
 
-    void onPrepare(double duration, bool isMainThread = true) {
-        _callback(isMainThread, jmid_prepare, duration);
+    void onPrepare(double duration, double aspect, bool isVideo, bool isMainThread = true) {
+        _callback(isMainThread, jmid_prepare, duration, aspect, isVideo);
     }
 
     void onProgress(int value, bool isMainThread = true) {

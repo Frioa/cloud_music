@@ -80,12 +80,12 @@ class PlayManager constructor(val channel: MethodChannel) {
         }
     }
 
-    private fun onPrepare(duration: Double) {
+    private fun onPrepare(duration: Double, aspect: Double, isVideo: Boolean) {
         if (surface != null) {
             setSurface(nativeHandler, surface!!)
         }
         handler.post {
-            channel.invokeMethod("onPrepare", mapOf("duration" to duration))
+            channel.invokeMethod("onPrepare", mapOf("duration" to duration, "aspect" to aspect, "isVideo" to isVideo))
         }
     }
 

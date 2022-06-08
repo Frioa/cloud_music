@@ -50,14 +50,14 @@ public:
     static void releaseAvFrame(AVFrame *&frame) {
         if (frame) {
             av_frame_free(&frame);
-            frame = 0;
+            frame = nullptr;
         }
     }
 
     static void releaseAvPacket(AVPacket *&packet) {
         if (packet) {
             av_packet_free(&packet);
-            packet = 0;
+            packet = nullptr;
         }
     }
 

@@ -18,18 +18,18 @@ class _SearchClient implements SearchClient {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<DailySongResponse>> recommendSongs() async {
+  Future<DataWrapResponse<DailySongResponse>> recommendSongs() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<HttpResponse<DailySongResponse>>(
+        _setStreamType<DataWrapResponse<DailySongResponse>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/recommend/songs',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = HttpResponse<DailySongResponse>.fromJson(
+    final value = DataWrapResponse<DailySongResponse>.fromJson(
       _result.data!,
       (json) => DailySongResponse.fromJson(json as Map<String, dynamic>),
     );

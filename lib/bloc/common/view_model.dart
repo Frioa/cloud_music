@@ -3,7 +3,7 @@ import 'package:cloud_music/common/common.dart';
 class ViewModel<T extends BaseHttpResponse> extends Equatable {
   final bool isCache;
   final bool requesting;
-  final HttpResponse? errorResponse;
+  final DataWrapResponse? errorResponse;
   final T? response;
 
   const ViewModel({
@@ -41,7 +41,7 @@ class ViewModel<T extends BaseHttpResponse> extends Equatable {
   factory ViewModel.response(T? response) => ViewModel(response: response);
 
   factory ViewModel.error(
-    HttpResponse? errorResponse, {
+    DataWrapResponse? errorResponse, {
     bool isCache = false,
     T? response,
   }) {

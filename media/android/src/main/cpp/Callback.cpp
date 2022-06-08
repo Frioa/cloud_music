@@ -18,9 +18,9 @@ Callback::~Callback() {
     _javaCallback = nullptr;
 }
 
-void Callback::onPrepare(double duration, bool isMainThread) {
+void Callback::onPrepare(double duration, double aspect, bool isVideo, bool isMainThread) {
     if (enableJava) {
-        return _javaCallback->onPrepare(duration, isMainThread);
+        return _javaCallback->onPrepare(duration, aspect, isVideo, isMainThread);
     }
     _onPrepare();
 }

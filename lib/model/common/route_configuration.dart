@@ -6,7 +6,7 @@ class PageConfiguration {
   final String path;
   final Widget widget;
   final bool showPlayerOverlay;
-  final Map<String, Object> parameter;
+  final Map<String, dynamic> parameter;
 
   PageConfiguration({
     required this.key,

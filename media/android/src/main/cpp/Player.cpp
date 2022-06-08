@@ -54,6 +54,8 @@ void Player::_prepare() {
      */
     /// 传入指针的指针，为了改变这个指针所指向的地址
     avFormatContext = avformat_alloc_context();
+    double aspect = 1.7;
+    bool isVideo = false;
     // 参数 3 输入文件的封装格式。 avi / flv null 表示自动检测格式
     // 参数 4 map 集合配置信息，如打开网络文件
     int ret = avformat_open_input(&avFormatContext, path, nullptr, nullptr);
@@ -123,9 +125,11 @@ void Player::_prepare() {
                 }
 
                 LOGE("_prepare 当前处理的是处理视频流  i=%d fps=%d den=%d", i, fps, avStream->time_base.den);
-                LOGE("_prepare 宽高 width=%d height=%d", codecContext->width, codecContext->height);
                 videoChannel = new VideoChannel(i, callback, codecContext, avStream->time_base,
                                                 fps);
+                videoChannel->aspect = codecContext->width * 1.0 / codecContext->height * 1.0;
+                aspect = videoChannel->aspect;
+                isVideo = true;
                 break;
             default:
                 break;
@@ -140,7 +144,7 @@ void Player::_prepare() {
         return;
     }
 
-    callback->onPrepare(duration, false);
+    callback->onPrepare(duration, aspect, isVideo, false);
 }
 
 void *start_t(void *arg) {
@@ -232,7 +236,7 @@ void Player::_start() {
 
 
 void Player::seek(double time) {
-    LOGI("Player::seek1 %lf %ld", time, duration);
+    LOGI("Player::seek %lf %ld", time, duration);
 
     if (time >= duration) return;
     if (!audioChannel && !videoChannel) return;
@@ -250,6 +254,7 @@ void Player::seek(double time) {
     }
     if (videoChannel) {
         videoChannel->stopWork();
+        LOGI("Player::seek videoChannel->stopWork();");
         videoChannel->clear();
         videoChannel->play();
     }

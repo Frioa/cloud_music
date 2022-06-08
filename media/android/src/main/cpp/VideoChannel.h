@@ -45,6 +45,7 @@ private:
 
     ANativeWindow *window = 0;
 public:
+    double aspect = 0.0;
     AudioChannel *audioChannel = 0;
 
     void onDraw(uint8_t **data, int *linesize, int width, int height);

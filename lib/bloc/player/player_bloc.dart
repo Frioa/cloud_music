@@ -11,26 +11,28 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
   final Random random = Random();
 
   PlayerBloc() : super(PlayerState.initial()) {
-    on<PlayerEvent>((event, emit) async {
-      logger.d('PlayerBloc event:$event');
-      await event.map(
-        song: (value) async => await requestSong(value, emit),
-        songDetail: (value) async => emit(state.copyWith(songDetail: value.songDetail)),
-        isPlaying: (value) async => emit(state.copyWith(isPlaying: value.isPlaying)),
-        duration: (value) async => emit(state.copyWith(duration: value.duration)),
-        songList: (value) async => emit(state.copyWith(songList: value.list)),
-        lyric: (value) async {
-          emit(state.copyWith(lyricVM: ViewModel.requesting()));
-          await PlaylistClient(dio).lyric(value.id).then((value) {
-            emit(state.copyWith(lyricVM: ViewModel.response(value)));
-          }).catchError((v) {
-            emit(state.copyWith(lyricVM: ViewModel.error(null)));
-          });
-        },
-        nextSong: (value) async => nextPlay(emit),
-        preSong: (value) async => preSong(emit),
-      );
-    });
+    on<PlayerEvent>(
+      (event, emit) async {
+        logger.d('PlayerBloc event:$event');
+        await event.map(
+          song: (value) async => await requestSong(value, emit),
+          songDetail: (value) async => emit(state.copyWith(songDetail: value.songDetail)),
+          isPlaying: (value) async => emit(state.copyWith(isPlaying: value.isPlaying)),
+          duration: (value) async => emit(state.copyWith(duration: value.duration)),
+          songList: (value) async => emit(state.copyWith(songList: value.list)),
+          lyric: (value) async {
+            emit(state.copyWith(lyricVM: ViewModel.requesting()));
+            await PlaylistClient(dio).lyric(value.id).then((value) {
+              emit(state.copyWith(lyricVM: ViewModel.response(value)));
+            }).catchError((v) {
+              emit(state.copyWith(lyricVM: ViewModel.error(null)));
+            });
+          },
+          nextSong: (value) async => nextPlay(emit),
+          preSong: (value) async => preSong(emit),
+        );
+      },
+    );
   }
 
   void addPlayRecord(Song song, Emitter<PlayerState> emit) {
@@ -41,7 +43,6 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
     }
 
     emit(state.copyWith(playRecord: list));
-    print('addPlayRecord ${state.playRecord}');
   }
 
   // TODO: 未测试

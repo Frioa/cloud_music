@@ -16,7 +16,7 @@ abstract class SearchClient {
   /// 说明 : 调用此接口 , 可获得每日推荐歌曲 ( 需要登录 )
   ///
   @GET("/recommend/songs")
-  Future<HttpResponse<DailySongResponse>> recommendSongs();
+  Future<DataWrapResponse<DailySongResponse>> recommendSongs();
 
   /// 获取每日推荐歌单
   /// 说明 : 调用此接口 , 可获得每日推荐歌单 ( 需要登录 )

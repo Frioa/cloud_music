@@ -56,7 +56,7 @@ class _PlayersStateWrapState extends State<PlayersStateWrap> {
 
     if (complete != controller.value.complete) {
       complete = controller.value.complete;
-      if (complete) {
+      if (complete && !controller.value.isVideo) {
         context.read<PlayerBloc>().add(const PlayerEvent.nextSong());
       }
     }

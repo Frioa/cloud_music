@@ -17,6 +17,7 @@ class RecommendSheetResponse extends BaseHttpResponse {
   }):super(code);
 
   factory RecommendSheetResponse.fromJson(Map<String, dynamic> json) {
+
     return _$RecommendSheetResponseFromJson(json);
   }
 

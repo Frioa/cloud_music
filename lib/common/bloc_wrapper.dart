@@ -26,6 +26,7 @@ class _BlocWrapperState extends State<BlocWrapper> {
         BlocProvider<PlaylistBloc>(create: (_) => PlaylistBloc()),
         BlocProvider<TopBloc>(create: (_) => TopBloc()),
         BlocProvider<PlayerBloc>(create: (_) => PlayerBloc()),
+        BlocProvider<MVBloc>(create: (_) => MVBloc()),
       ],
       child: TranslationProvider(
         child: Builder(

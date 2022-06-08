@@ -10,15 +10,13 @@ void main() async {
   LocaleSettings.useDeviceLocale(); // initialize with the right locale
   LocaleSettings.setLocale(AppLocale.cn);
 
-  BlocOverrides.runZoned(
-    () => runApp(MyApp()),
-    blocObserver: AppBlocObserver(),
-  );
+  BlocOverrides.runZoned(() => runApp(MyApp()), blocObserver: AppBlocObserver());
 
   /// 状态栏的全透明沉浸
   SystemUiOverlayStyle systemUiOverlayStyle = const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.light);
   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
 
 class MyApp extends StatelessWidget {

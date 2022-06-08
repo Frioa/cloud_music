@@ -6,3 +6,4 @@ export 'playlist/playlist.dart';
 export 'top/top.dart';
 export 'login/login.dart';
 export 'player/player.dart';
+export 'mv/mv.dart';

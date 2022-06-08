@@ -31,6 +31,10 @@ class R extends RouterDelegate<PageConfiguration>
     return _pages.isEmpty ? homePage : _pages.last.arguments as PageConfiguration;
   }
 
+  T? getParameter<T>(String key) {
+    return currentConfiguration.parameter[key];
+  }
+
   /// Number of pages function
   int get numPages => _pages.length;
 

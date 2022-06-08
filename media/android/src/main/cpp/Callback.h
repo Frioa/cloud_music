@@ -40,7 +40,7 @@ public:
 
     ~Callback();
 
-    void onPrepare(double duration, bool isMainThread = true);
+    void onPrepare(double duration, double aspect, bool isVideo, bool isMainThread = true);
 
     void onProgress(int value, bool isMainThread = true);
 

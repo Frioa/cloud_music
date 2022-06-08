@@ -63,7 +63,7 @@ abstract class NestLoginClient {
   ///
   /// 1. 二维码 key 生成接口
   @GET("/login/qr/key")
-  Future<HttpResponse<NestQrKeyResponse>> getQrKey({
+  Future<DataWrapResponse<NestQrKeyResponse>> getQrKey({
     @Query("timestamp") int? timestamp,
   });
 
@@ -73,7 +73,7 @@ abstract class NestLoginClient {
   /// 可选参数: qrimg 传入后会额外返回二维码图片 base64 编码
   ///
   @GET("/login/qr/create")
-  Future<HttpResponse<NestQrCreateResponse>> getQrCreate(
+  Future<DataWrapResponse<NestQrCreateResponse>> getQrCreate(
     @Query("key") String key, {
     @Query("qrimg") bool qrimg = true,
     @Query("timestamp") int? timestamp,
@@ -125,7 +125,7 @@ abstract class NestLoginClient {
   // 说明 : 调用此接口,可获取登录状态
   //
   @GET("/login/status")
-  Future<HttpResponse<NestLoginStatusResponse>> loginStatus();
+  Future<DataWrapResponse<NestLoginStatusResponse>> loginStatus();
 
   ///
   /// 刷新登录

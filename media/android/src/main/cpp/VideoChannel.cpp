@@ -45,11 +45,11 @@ void *videoPlay_t(void *arg) {
 
 void VideoChannel::play() {
     isPlaying = true;
-//    // 开启队列的工作
+    // 开启队列的工作
     setEnable(true);
     // 解码
     pthread_create(&videoDecodeTask, nullptr, videoDecode_t, this);
-//     播放
+    // 播放
     pthread_create(&videoPlayTask, nullptr, videoPlay_t, this);
 }
 
@@ -130,7 +130,7 @@ void VideoChannel::_play() {
 
 
 void VideoChannel::decode() {
-    AVPacket *packet;
+    AVPacket *packet = nullptr;
     while (isPlaying) {
         // 阻塞
         // 1. 能够取到数据
@@ -148,7 +148,7 @@ void VideoChannel::decode() {
         releaseAvPacket(packet);
 
         if (ret < 0) {
-            LOGE("向解码器发送解码数据发生错误.");
+            LOGE("向解码器发送解码数据发生错误 %d.", ret);
             break;
         }
 
@@ -244,13 +244,12 @@ void VideoChannel::stop() {
 }
 
 void VideoChannel::stopWork() {
-    LOGE("VideoChannel::stop ");
+    LOGE("VideoChannel::stopWork ");
     isPlaying = false;
-    callback = nullptr;
     setEnable(false);
 
     pthread_join(videoDecodeTask, nullptr);
     pthread_join(videoPlayTask, nullptr);
 
-    LOGE("VideoChannel::stop end.");
+    LOGE("VideoChannel::stopWork end.");
 }

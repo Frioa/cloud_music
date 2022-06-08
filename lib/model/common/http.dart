@@ -19,20 +19,20 @@ class BaseHttpResponse {
 }
 
 @JsonSerializable(genericArgumentFactories: true, createToJson: false)
-class HttpResponse<T> extends BaseHttpResponse {
+class DataWrapResponse<T> extends BaseHttpResponse {
   final T data;
 
-  HttpResponse({int code = 404, required this.data}) : super(code);
+  DataWrapResponse({int code = 404, required this.data}) : super(code);
 
-  factory HttpResponse.fromJson(
+  factory DataWrapResponse.fromJson(
     Map<String, dynamic> json,
     T Function(Object? json) fromJsonT,
   ) {
-    return _$HttpResponseFromJson(json, fromJsonT);
+    return _$DataWrapResponseFromJson(json, fromJsonT);
   }
 
   @override
   String toString() {
-    return 'HttpResponse{code: $code, data: $data}';
+    return 'DataWrapResponse{code: $code, data: $data}';
   }
 }

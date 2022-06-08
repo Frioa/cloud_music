@@ -25,11 +25,20 @@ class AudioPlayerController extends ValueNotifier<PlayerValue> {
 
       switch (method) {
         case "onPrepare":
-          logger.d("onPrepare duration = ${arg['duration']}");
-          final d = ((arg['duration'] as double) * 1000).toInt().toSecDuration;
+          logger.d("onPrepare arg = $arg");
+          final duration = ((arg['duration'] as double) * 1000).toInt().toSecDuration;
+          final aspect = (arg['aspect'] as double?) ?? 0.0;
+          final isVideo = (arg['isVideo'] as bool?) ?? false;
+
           await _start();
           await seek();
-          value = value.copyWith(duration: d, isPlaying: true, isInitialized: true);
+          value = value.copyWith(
+            duration: duration,
+            isPlaying: true,
+            isInitialized: true,
+            aspect: aspect,
+            isVideo: isVideo,
+          );
           return;
         case "onProgress":
           logger.d("onPrepare value ${arg['value']}");

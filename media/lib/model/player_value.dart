@@ -1,4 +1,3 @@
-
 class PlayerValue {
   /// The total duration of the video.
   ///
@@ -21,6 +20,10 @@ class PlayerValue {
 
   final String url;
 
+  final double aspect;
+
+  final bool isVideo;
+
   PlayerValue({
     required this.duration,
     this.position = Duration.zero,
@@ -31,6 +34,8 @@ class PlayerValue {
     this.playbackSpeed = 1.0,
     this.url = '',
     this.complete = false,
+    this.aspect = 1.7,
+    this.isVideo = false,
   });
 
   /// The current volume of the playback.
@@ -52,6 +57,8 @@ class PlayerValue {
     double? volume,
     double? playbackSpeed,
     String? url,
+    double? aspect,
+    bool? isVideo,
   }) {
     return PlayerValue(
       complete: complete ?? this.complete,
@@ -63,6 +70,8 @@ class PlayerValue {
       volume: volume ?? this.volume,
       playbackSpeed: playbackSpeed ?? this.playbackSpeed,
       url: url ?? this.url,
+      aspect: aspect ?? this.aspect,
+      isVideo: isVideo ?? this.isVideo,
     );
   }
 }
