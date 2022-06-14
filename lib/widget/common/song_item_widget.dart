@@ -94,7 +94,7 @@ class SongListWidget extends StatelessWidget {
               if (track.hasMV)
                 InkWell(
                   onTap: () {
-                    R.of(context).push(Pages.mv, parameter: {PageKey.mvId: track.mv});
+                    R.of(context).push(Pages.mv, parameter: {PageKey.mvSong: track});
                   },
                   child: SizedBox(
                     width: 36.w,

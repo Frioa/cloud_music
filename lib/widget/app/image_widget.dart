@@ -25,6 +25,7 @@ class ImageWidget extends StatefulWidget {
   final Curve? opacityCurve;
   final bool isSemanticsButton;
   final bool? isSemanticsEnabled;
+  final bool clipOval;
 
   /// https://github.com/flutter/flutter/issues/51775
   final bool playGifFromStart;
@@ -58,6 +59,7 @@ class ImageWidget extends StatefulWidget {
     this.opacityCurve,
     this.isSemanticsButton = false,
     this.isSemanticsEnabled,
+    this.clipOval = false,
     this.playGifFromStart = false,
     this.playGifSpeedily = false,
     this.package,
@@ -212,8 +214,8 @@ class _ImageWidgetState extends State<ImageWidget> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     if (widget.url.isEmpty) return const SizedBox();
-
-    return isSvgPicture ? _buildSvgPicture() : _buildImage();
+    final image = isSvgPicture ? _buildSvgPicture() : _buildImage();
+    return widget.clipOval ? ClipOval(child: image) : image;
   }
 }
 

@@ -43,13 +43,13 @@ class _PlayingPageState extends BasePageState<PlayingPage> {
 
   Widget _buildIndicator() {
     return ValueListenableBuilder<PlayerValue>(
-      valueListenable: AudioPlayerController.instance,
+      valueListenable: PlayerController.instance,
       builder: (context, value, child) {
         return SizedBox(
           width: 1.sw,
           child: LinearProgressIndicator(
             minHeight: 3.w,
-            value: AudioPlayerController.instance.progress,
+            value: PlayerController.instance.progress,
             backgroundColor:
                 Theme.of(context).isLight ? const Color(0xffF2F2F2) : Colors.black.withOpacity(0.4),
             color: Theme.of(context).primaryColor,

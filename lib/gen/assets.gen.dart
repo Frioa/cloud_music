@@ -18,6 +18,11 @@ class Assets {
       AssetGenImage('assets/ic_default_avatar.jpg');
   static const AssetGenImage icDefaultSongSheet =
       AssetGenImage('assets/ic_default_song_sheet.png');
+  static const String icMvCollection = 'assets/ic_mv_collection.svg';
+  static const String icMvComment = 'assets/ic_mv_comment.svg';
+  static const AssetGenImage icMvForwarding =
+      AssetGenImage('assets/ic_mv_forwarding.png');
+  static const String icMvPraise = 'assets/ic_mv_praise.svg';
   static const AssetGenImage icPotinRight =
       AssetGenImage('assets/ic_potin_right.jpg');
   static const String icSearchLight = 'assets/ic_search_light.svg';

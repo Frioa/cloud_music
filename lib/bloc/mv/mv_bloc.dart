@@ -2,7 +2,6 @@ import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:media/media.dart';
 
 part 'mv_bloc.freezed.dart';
 

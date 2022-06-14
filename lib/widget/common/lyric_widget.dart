@@ -24,13 +24,13 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
 
   @override
   void initState() {
-    AudioPlayerController.instance.addListener(onLyricsPosition);
+    PlayerController.instance.addListener(onLyricsPosition);
     super.initState();
   }
 
   @override
   void dispose() {
-    AudioPlayerController.instance.removeListener(onLyricsPosition);
+    PlayerController.instance.removeListener(onLyricsPosition);
     controller.dispose();
     super.dispose();
   }
@@ -63,7 +63,7 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
   void onLyricsPosition() {
     if (!mounted) return;
 
-    final position = AudioPlayerController.instance.value.position;
+    final position = PlayerController.instance.value.position;
     final oldValue = index;
     indexNotifier.value = findLyricIndex(position);
 

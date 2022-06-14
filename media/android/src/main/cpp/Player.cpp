@@ -13,7 +13,7 @@ extern "C" {
 
 Player::Player(Callback *callback) {
     this->callback = callback;
-    pthread_mutex_init(&seekMutex, 0);
+    pthread_mutex_init(&seekMutex, nullptr);
     avformat_network_init();
 }
 
@@ -87,8 +87,8 @@ void Player::_prepare() {
         AVCodecParameters *param = avStream->codecpar;
         // 解码信息
         const AVCodec *dec = avcodec_find_decoder(param->codec_id);
-        if (!dec) {
-            LOGE("_prepare 查找解码器失败 ");
+        if (dec == nullptr) {
+            LOGE("_prepare 查找解码器失败 dec:%d", dec);
             callback->onError(FFMPEG_OPEN_DECODER_FAIL, false);
             return;
         }
@@ -105,7 +105,7 @@ void Player::_prepare() {
         // 打开解码器
         ret = avcodec_open2(codecContext, dec, nullptr);
         if (ret != 0) {
-            LOGE("_prepare 打开解码器失败 ");
+            LOGE("_prepare 打开解码器失败 ret:%d", ret);
             callback->onError(FFMPEG_OPEN_DECODER_FAIL, false);
             return;
         }
@@ -254,7 +254,6 @@ void Player::seek(double time) {
     }
     if (videoChannel) {
         videoChannel->stopWork();
-        LOGI("Player::seek videoChannel->stopWork();");
         videoChannel->clear();
         videoChannel->play();
     }

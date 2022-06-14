@@ -69,7 +69,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
 
     await SearchClient(dio).songUrl(value.song.id.toString()).then((value) async {
       final detail = value.data![0];
-      await AudioPlayerController.instance.play(detail.url!);
+      await PlayerController.instance.play(detail.url!);
       emit(state.copyWith(songDetail: detail));
       return value;
     });

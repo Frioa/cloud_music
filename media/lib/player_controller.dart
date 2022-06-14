@@ -4,13 +4,13 @@ import 'package:media/model/player_value.dart';
 import 'package:media/utils/extensions.dart';
 import 'package:media/utils/logger.dart';
 
-late final AudioPlayerController _instance = AudioPlayerController._();
+late final PlayerController _instance = PlayerController._();
 
 const MethodChannel _methodChannel = MethodChannel('media');
 String _tag = 'PlayerController';
 
-class AudioPlayerController extends ValueNotifier<PlayerValue> {
-  static AudioPlayerController get instance => _instance;
+class PlayerController extends ValueNotifier<PlayerValue> {
+  static PlayerController get instance => _instance;
 
   double get progress {
     if (value.duration.inMilliseconds == 0) return 0.0;
@@ -18,7 +18,7 @@ class AudioPlayerController extends ValueNotifier<PlayerValue> {
     return value.position.inMilliseconds / value.duration.inMilliseconds;
   }
 
-  AudioPlayerController._() : super(PlayerValue(duration: Duration.zero)) {
+  PlayerController._() : super(PlayerValue(duration: Duration.zero)) {
     _methodChannel.setMethodCallHandler((call) async {
       final method = call.method;
       final arg = call.arguments as Map;
@@ -66,7 +66,13 @@ class AudioPlayerController extends ValueNotifier<PlayerValue> {
   }
 
   Future<void> play(String url, {Duration start = Duration.zero}) async {
-    value = value.copyWith(isPlaying: false, position: start, url: url, complete: false);
+    value = value.copyWith(
+      isPlaying: false,
+      position: start,
+      url: url,
+      complete: false,
+      isInitialized: false,
+    );
     await _setDataSource(url);
   }
 

@@ -8,4 +8,6 @@ export 'base_page_state.dart';
 class PageKey {
   static String songListId = 'songListId';
   static String mvId = 'mvId';
+  static String mvSong = 'mvSong';
+
 }

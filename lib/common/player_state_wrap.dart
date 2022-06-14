@@ -15,7 +15,7 @@ class PlayersStateWrap extends StatefulWidget {
 }
 
 class _PlayersStateWrapState extends State<PlayersStateWrap> {
-  AudioPlayerController get controller => AudioPlayerController.instance;
+  PlayerController get controller => PlayerController.instance;
 
   bool isPlaying = false;
 

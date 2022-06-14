@@ -8,7 +8,6 @@ import 'package:cloud_music/widget/app/app.dart';
 import 'package:cloud_music/widget/common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:media/media.dart';
-import 'package:media/model/player_value.dart';
 
 class HomeBottomPlayerWidget extends StatefulWidget {
   const HomeBottomPlayerWidget({Key? key}) : super(key: key);
@@ -36,7 +35,7 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
   late final Animation pAnimation = Tween<double>(begin: -1.0, end: 0.0).animate(playerControl);
   late final Animation sdAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(songDetailControl);
 
-  AudioPlayerController get controller => AudioPlayerController.instance;
+  PlayerController get controller => PlayerController.instance;
 
   @override
   void initState() {
