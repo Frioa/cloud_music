@@ -1,10 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_music/bloc/player/player.dart';
 import 'package:cloud_music/common/common.dart';
-import 'package:cloud_music/utils/extension/theme_extension.dart';
+import 'package:cloud_music/utils/extension/extionsions.dart';
 import 'package:cloud_music/widget/app/app.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SongListWidget extends StatelessWidget {
   final int songListId;
@@ -75,16 +74,14 @@ class SongListWidget extends StatelessWidget {
                     AutoSizeText(
                       track.name,
                       style: playing
-                          ? Theme.of(context)
-                              .tsDescBold
-                              .copyWith(color: Theme.of(context).primaryColor)
+                          ? L(context).tsDescBold.copyWith(color: L(context).primaryColor)
                           : Theme.of(context).tsDescBold,
                       maxLines: 1,
                     ),
                     const Expanded(child: SizedBox()),
                     Text(
                       track.singerAlbumDesc,
-                      style: Theme.of(context).hint2,
+                      style: L(context).hint2,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
@@ -133,7 +130,7 @@ class SongListWidget extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 1.5.sm),
                 child: Text(
                   S.PlaylistDetailPage.songNum(count: trackCount),
-                  style: Theme.of(context).hint2,
+                  style: L(context).hint2,
                 ),
               ),
           ],

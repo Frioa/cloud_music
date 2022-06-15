@@ -131,10 +131,10 @@ class _LoginPageState extends BasePageState<LoginPage> {
               child: Container(
                 height: 41.w,
                 alignment: Alignment.center,
-                color: Theme.of(context).primaryColor,
+                color: L.primaryColor,
                 child: Text(
                   S.loginPage.btLogin,
-                  style: Theme.of(context).tsDesc.copyWith(
+                  style: L.tsDesc.copyWith(
                         fontSize: 20.w,
                         color: Colors.white,
                       ),

@@ -115,8 +115,8 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
         maxLines: 2,
         textAlign: TextAlign.center,
         style: indexNotifier.value == index
-            ? Theme.of(context).tsDesc.copyWith(fontSize: 16.sp)
-            : Theme.of(context).tsDesc2,
+            ? L.tsDesc.copyWith(fontSize: 16.sp)
+            : L.tsDesc2,
       ),
     );
   }
@@ -128,7 +128,7 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
           valueListenable: indexNotifier,
           builder: (context, value, child) {
             return Container(
-              color: Theme.of(context).scaffoldBackgroundColor,
+              color: L.scaffoldBackgroundColor,
               width: 1.sw,
               alignment: Alignment.center,
               child: Stack(
