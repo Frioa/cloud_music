@@ -38,5 +38,10 @@
   },
   "playingPage": {
     "title": "Now Playing"
+  },
+  "mvPage": {
+    "collection": "Collection",
+    "commentIntro": "People who like to comment are lovely"
+
   }
 }

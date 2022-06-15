@@ -31,6 +31,10 @@ class DataWrapResponse<T> extends BaseHttpResponse {
     return _$DataWrapResponseFromJson(json, fromJsonT);
   }
 
+  DataWrapResponse<T> copyWith({T? data}) {
+    return DataWrapResponse<T>(data: data ?? this.data);
+  }
+
   @override
   String toString() {
     return 'DataWrapResponse{code: $code, data: $data}';

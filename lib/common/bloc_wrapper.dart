@@ -3,16 +3,11 @@ import 'package:cloud_music/bloc/user/user.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_music/common/common.dart';
 
-class BlocWrapper extends StatefulWidget {
+class BlocWrapper extends StatelessWidget {
   final Widget child;
 
-  const BlocWrapper({required this.child, Key? key}) : super(key: key);
+  const BlocWrapper({Key? key, required this.child}) : super(key: key);
 
-  @override
-  _BlocWrapperState createState() => _BlocWrapperState();
-}
-
-class _BlocWrapperState extends State<BlocWrapper> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -26,11 +21,12 @@ class _BlocWrapperState extends State<BlocWrapper> {
         BlocProvider<TopBloc>(create: (_) => TopBloc()),
         BlocProvider<PlayerBloc>(create: (_) => PlayerBloc()),
         BlocProvider<MVBloc>(create: (_) => MVBloc()),
+        BlocProvider<ArtistBloc>(create: (_) => ArtistBloc()),
       ],
       child: TranslationProvider(
         child: Builder(
           builder: (context) {
-            return PlayersStateWrap(child: widget.child);
+            return PlayersStateWrap(child: child);
           },
         ),
       ),

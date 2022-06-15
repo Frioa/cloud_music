@@ -22,6 +22,7 @@ class Assets {
   static const String icMvComment = 'assets/ic_mv_comment.svg';
   static const AssetGenImage icMvForwarding =
       AssetGenImage('assets/ic_mv_forwarding.png');
+  static const String icMvNote = 'assets/ic_mv_note.svg';
   static const String icMvPraise = 'assets/ic_mv_praise.svg';
   static const AssetGenImage icPotinRight =
       AssetGenImage('assets/ic_potin_right.jpg');

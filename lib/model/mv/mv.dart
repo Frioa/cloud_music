@@ -1,3 +1,5 @@
+export 'mv_detail.dart';
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'mv.g.dart';

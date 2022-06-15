@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cloud_music/bloc/top/top.dart';
+import 'package:cloud_music/bloc/artist/artist.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
 import 'package:cloud_music/widget/app/app.dart';

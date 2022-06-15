@@ -1,4 +1,4 @@
-import 'package:cloud_music/common/common.dart';
+import 'package:cloud_music/utils/extension/extionsions.dart';
 import 'package:flutter/material.dart';
 
 class ScaffoldWidget extends StatelessWidget {
@@ -20,7 +20,7 @@ class ScaffoldWidget extends StatelessWidget {
     return Scaffold(
       appBar: appBar,
       body: Padding(
-        padding: padding ?? L.pagePadding,
+        padding: padding ?? EdgeInsets.symmetric(horizontal: 12.w),
         child: body,
       ),
       bottomNavigationBar: bottomNavigationBar,

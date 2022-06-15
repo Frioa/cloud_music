@@ -2,9 +2,8 @@ import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/extionsions.dart';
 import 'package:cloud_music/widget/app/app.dart';
-import 'package:cloud_music/widget/common/player_progress_widget.dart';
+import 'package:cloud_music/widget/common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:marquee/marquee.dart';
 import 'package:media/media.dart';
 
 class MVPage extends StatefulWidget {
@@ -20,10 +19,15 @@ class _MVPageState extends BasePageState<MVPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    song = R.of(context).getParameter<Song>(PageKey.mvSong);
 
-    if (song != null) {
+    if (song == null) {
+      song = R.of(context).getParameter<Song>(PageKey.mvSong);
       context.read<MVBloc>().add(MVEvent.requestMVURL(song!.mv, onSuccess: onMvUrlSuccess));
+      context.read<MVBloc>().add(MVEvent.requestDetail(song!.mv));
+
+      if (song!.ar.isNotEmpty) {
+        context.read<ArtistBloc>().add(ArtistEvent.requestArtistsDetail(song!.ar[0].id));
+      }
     }
     logger.d("mv id: ${song?.mv}");
   }
@@ -50,6 +54,7 @@ class _MVPageState extends BasePageState<MVPage> {
     if (song == null) return const SizedBox();
 
     Widget _buildMvTitle() {
+      final image = context.watch<ArtistBloc>().state.artistDetailVM.response?.data.artist.cover;
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,20 +62,17 @@ class _MVPageState extends BasePageState<MVPage> {
           Row(
             children: [
               ImageWidget(
-                song!.al!.picUrl!,
-                size: 35.w,
-                cacheHeight: 35.w.toInt(),
-                cacheWidth: 35.w.toInt(),
+                image ?? Assets.icDefaultAvatar.path,
+                size: 36.w,
                 clipOval: true,
+                fadeIn: true,
+                fit: BoxFit.fitHeight,
               ),
               SizedBox(width: 8.w),
-              Text(
-                song!.ar[0].name,
-                style: Theme.of(context).tsTitleDark,
-              ),
+              Text(song!.ar[0].name, style: L.tsTitleDark),
             ],
           ),
-          SizedBox(height: 10.w),
+          SizedBox(height: 12.w),
           Row(
             children: [
               ClipRRect(
@@ -80,48 +82,66 @@ class _MVPageState extends BasePageState<MVPage> {
                   color: Colors.white.withOpacity(0.2),
                   width: 26.w,
                   height: 16.w,
-                  child: Text(
-                    'MV',
-                    style: Theme.of(context).tsDescDark2,
-                  ),
+                  child: Text('MV', style: L.tsDescDark2),
                 ),
               ),
               SizedBox(width: 8.w),
-              Text(
-                song!.name,
-                style: Theme.of(context).tsDescDark,
-              ),
+              Text(song!.name, style: L.tsDescDark),
             ],
           ),
           SizedBox(height: 10.w),
-          SizedBox(
-            width: 140.w,
-            child: Row(
-              children: [
-                Marquee(
+          Row(
+            children: [
+              ImageWidget(
+                Assets.icMvNote,
+                width: 15.w,
+                height: 20.w,
+                color: L.white2,
+              ),
+              SizedBox(
+                height: 20.w,
+                width: 140.w,
+                child: MarqueeWidget(
                   text: song!.singerAlbumDesc + "  " + song!.singerAlbumDesc,
-                  style: Theme.of(context).tsDescDark,
+                  style: L.tsDescDark,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ],
       );
     }
 
     Widget _buildIcons() {
+      final data = context.watch<MVBloc>().state.mvDetailVM?.response?.data;
+      Widget _buildIcon(String url, String? msg) {
+        if (msg == null) return const SizedBox();
+
+        return Column(
+          children: [
+            SizedBox(height: 8.w),
+            ImageWidget(url, size: 28.w, color: L.white),
+            SizedBox(height: 8.w),
+            Text(msg, style: L.tsDescDark),
+            SizedBox(height: 8.w),
+          ],
+        );
+      }
+
       return Column(
         children: [
-          Row(
-            children: [
-              ImageWidget(
-                song!.al!.picUrl!,
-                size: 35.w,
-                cacheHeight: 35.w.toInt(),
-                cacheWidth: 35.w.toInt(),
-                clipOval: true,
-              )
-            ],
+          _buildIcon(Assets.icMvPraise, data?.likedCount.tenThousandDesc),
+          _buildIcon(Assets.icMvComment, data?.commentCount.tenThousandDesc),
+          _buildIcon(Assets.icMvForwarding.path, data?.shareCount.tenThousandDesc),
+          _buildIcon(Assets.icMvCollection, S.mvPage.collection),
+          SizedBox(height: 12.w),
+          RotationWidget(
+            speedMilliseconds: 10000,
+            child: ImageWidget(
+              song!.al!.picUrl!,
+              size: 35.w,
+              clipOval: true,
+            ),
           ),
         ],
       );
@@ -132,6 +152,7 @@ class _MVPageState extends BasePageState<MVPage> {
       padding: EdgeInsets.only(left: 16.w, right: 16.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           _buildMvTitle(),
           _buildIcons(),
@@ -144,20 +165,20 @@ class _MVPageState extends BasePageState<MVPage> {
     return Column(
       children: [
         _buildMvInfo(),
-        PlayerProgressWidget(
-          controller: PlayerController.instance,
-          backgroundColor: Colors.transparent,
-          progressColor: Colors.white38,
+        SizedBox(
+          height: 16.w,
+          child: PlayerProgressWidget(
+            controller: PlayerController.instance,
+            backgroundColor: Colors.transparent,
+            progressColor: Colors.white38,
+          ),
         ),
         SizedBox(height: 12.w),
         Container(
           height: 45.w,
           width: 1.sw,
           padding: EdgeInsets.only(left: 16.w),
-          child: Text(
-            "爱评论的人都是可爱的",
-            style: Theme.of(context).tsDesc2,
-          ),
+          child: Text(S.mvPage.commentIntro, style: L.tsDescDark2),
         ),
       ],
     );

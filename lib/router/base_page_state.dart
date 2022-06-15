@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 abstract class BasePageState<T extends StatefulWidget> extends State<T> with RouteAware {
   PageConfiguration get currentConfiguration => R.of(context).currentConfiguration;
 
+  ThemeData get L => Theme.of(context);
+
   @override
   void initState() {
     super.initState();

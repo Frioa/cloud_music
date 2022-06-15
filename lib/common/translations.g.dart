@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 38 (19.0 per locale)
+ * Strings: 42 (21.0 per locale)
  *
- * Built on 2022-06-13 at 07:30 UTC
+ * Built on 2022-06-15 at 09:48 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -378,6 +378,7 @@ class _TranslationsEn {
 	late final _TranslationsDailySongPageEn DailySongPage = _TranslationsDailySongPageEn._(_root);
 	late final _TranslationsPlaylistDetailPageEn PlaylistDetailPage = _TranslationsPlaylistDetailPageEn._(_root);
 	late final _TranslationsPlayingPageEn playingPage = _TranslationsPlayingPageEn._(_root);
+	late final _TranslationsMvPageEn mvPage = _TranslationsMvPageEn._(_root);
 }
 
 // Path: common
@@ -491,6 +492,18 @@ class _TranslationsPlayingPageEn {
 	String get title => 'Now Playing';
 }
 
+// Path: mvPage
+class _TranslationsMvPageEn {
+	_TranslationsMvPageEn._(this._root);
+
+	// ignore: unused_field
+	final _TranslationsEn _root;
+
+	// Translations
+	String get collection => 'Collection';
+	String get commentIntro => 'People who like to comment are lovely';
+}
+
 // Path: <root>
 class _TranslationsCn implements _TranslationsEn {
 
@@ -524,6 +537,7 @@ class _TranslationsCn implements _TranslationsEn {
 	@override late final _TranslationsDailySongPageCn DailySongPage = _TranslationsDailySongPageCn._(_root);
 	@override late final _TranslationsPlaylistDetailPageCn PlaylistDetailPage = _TranslationsPlaylistDetailPageCn._(_root);
 	@override late final _TranslationsPlayingPageCn playingPage = _TranslationsPlayingPageCn._(_root);
+	@override late final _TranslationsMvPageCn mvPage = _TranslationsMvPageCn._(_root);
 }
 
 // Path: common
@@ -637,6 +651,18 @@ class _TranslationsPlayingPageCn implements _TranslationsPlayingPageEn {
 	@override String get title => '播放中';
 }
 
+// Path: mvPage
+class _TranslationsMvPageCn implements _TranslationsMvPageEn {
+	_TranslationsMvPageCn._(this._root);
+
+	// ignore: unused_field
+	@override final _TranslationsCn _root;
+
+	// Translations
+	@override String get collection => '收藏';
+	@override String get commentIntro => '爱评论的人都是可爱的';
+}
+
 /// Flat map(s) containing all translations.
 /// Only for edge cases! For simple maps, use the map function of this library.
 
@@ -664,6 +690,8 @@ extension on _TranslationsEn {
 			'PlaylistDetailPage.playAll': '播放全部',
 			'PlaylistDetailPage.songNum': ({required Object count}) => '$count songs',
 			'playingPage.title': 'Now Playing',
+			'mvPage.collection': 'Collection',
+			'mvPage.commentIntro': 'People who like to comment are lovely',
 		};
 	}
 }
@@ -692,6 +720,8 @@ extension on _TranslationsCn {
 			'PlaylistDetailPage.playAll': '播放全部',
 			'PlaylistDetailPage.songNum': ({required Object count}) => '$count 首',
 			'playingPage.title': '播放中',
+			'mvPage.collection': '收藏',
+			'mvPage.commentIntro': '爱评论的人都是可爱的',
 		};
 	}
 }

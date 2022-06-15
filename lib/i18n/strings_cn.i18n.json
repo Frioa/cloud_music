@@ -37,5 +37,9 @@
   },
   "playingPage": {
     "title": "播放中"
+  },
+  "mvPage": {
+    "collection": "收藏",
+    "commentIntro": "爱评论的人都是可爱的"
   }
 }

@@ -9,3 +9,5 @@ export 'player_widget.dart';
 export 'link_widget.dart';
 export 'lyric_widget.dart';
 export 'player_progress_widget.dart';
+export 'marquee_widget.dart';
+export 'rotation_widget.dart';

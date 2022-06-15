@@ -19,38 +19,38 @@ mixin _$MVEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int id, VoidCallback onSuccess) requestMVURL,
-    required TResult Function() onSuccessMvUrl,
+    required TResult Function(int mvId) requestDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int id, VoidCallback onSuccess)? requestMVURL,
-    TResult Function()? onSuccessMvUrl,
+    TResult Function(int mvId)? requestDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id, VoidCallback onSuccess)? requestMVURL,
-    TResult Function()? onSuccessMvUrl,
+    TResult Function(int mvId)? requestDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_$MVURL value) requestMVURL,
-    required TResult Function(_$onSuccessMvUrl value) onSuccessMvUrl,
+    required TResult Function(_$requestDetail value) requestDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$onSuccessMvUrl value)? onSuccessMvUrl,
+    TResult Function(_$requestDetail value)? requestDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$onSuccessMvUrl value)? onSuccessMvUrl,
+    TResult Function(_$requestDetail value)? requestDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -143,7 +143,7 @@ class _$_$MVURL implements _$MVURL {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int id, VoidCallback onSuccess) requestMVURL,
-    required TResult Function() onSuccessMvUrl,
+    required TResult Function(int mvId) requestDetail,
   }) {
     return requestMVURL(id, onSuccess);
   }
@@ -152,7 +152,7 @@ class _$_$MVURL implements _$MVURL {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int id, VoidCallback onSuccess)? requestMVURL,
-    TResult Function()? onSuccessMvUrl,
+    TResult Function(int mvId)? requestDetail,
   }) {
     return requestMVURL?.call(id, onSuccess);
   }
@@ -161,7 +161,7 @@ class _$_$MVURL implements _$MVURL {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id, VoidCallback onSuccess)? requestMVURL,
-    TResult Function()? onSuccessMvUrl,
+    TResult Function(int mvId)? requestDetail,
     required TResult orElse(),
   }) {
     if (requestMVURL != null) {
@@ -174,7 +174,7 @@ class _$_$MVURL implements _$MVURL {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_$MVURL value) requestMVURL,
-    required TResult Function(_$onSuccessMvUrl value) onSuccessMvUrl,
+    required TResult Function(_$requestDetail value) requestDetail,
   }) {
     return requestMVURL(this);
   }
@@ -183,7 +183,7 @@ class _$_$MVURL implements _$MVURL {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$onSuccessMvUrl value)? onSuccessMvUrl,
+    TResult Function(_$requestDetail value)? requestDetail,
   }) {
     return requestMVURL?.call(this);
   }
@@ -192,7 +192,7 @@ class _$_$MVURL implements _$MVURL {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$onSuccessMvUrl value)? onSuccessMvUrl,
+    TResult Function(_$requestDetail value)? requestDetail,
     required TResult orElse(),
   }) {
     if (requestMVURL != null) {
@@ -213,69 +213,93 @@ abstract class _$MVURL implements MVEvent {
 }
 
 /// @nodoc
-abstract class _$$onSuccessMvUrlCopyWith<$Res> {
-  factory _$$onSuccessMvUrlCopyWith(
-          _$onSuccessMvUrl value, $Res Function(_$onSuccessMvUrl) then) =
-      __$$onSuccessMvUrlCopyWithImpl<$Res>;
+abstract class _$$requestDetailCopyWith<$Res> {
+  factory _$$requestDetailCopyWith(
+          _$requestDetail value, $Res Function(_$requestDetail) then) =
+      __$$requestDetailCopyWithImpl<$Res>;
+  $Res call({int mvId});
 }
 
 /// @nodoc
-class __$$onSuccessMvUrlCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
-    implements _$$onSuccessMvUrlCopyWith<$Res> {
-  __$$onSuccessMvUrlCopyWithImpl(
-      _$onSuccessMvUrl _value, $Res Function(_$onSuccessMvUrl) _then)
-      : super(_value, (v) => _then(v as _$onSuccessMvUrl));
+class __$$requestDetailCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
+    implements _$$requestDetailCopyWith<$Res> {
+  __$$requestDetailCopyWithImpl(
+      _$requestDetail _value, $Res Function(_$requestDetail) _then)
+      : super(_value, (v) => _then(v as _$requestDetail));
 
   @override
-  _$onSuccessMvUrl get _value => super._value as _$onSuccessMvUrl;
+  _$requestDetail get _value => super._value as _$requestDetail;
+
+  @override
+  $Res call({
+    Object? mvId = freezed,
+  }) {
+    return _then(_$requestDetail(
+      mvId == freezed
+          ? _value.mvId
+          : mvId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_$onSuccessMvUrl implements _$onSuccessMvUrl {
-  const _$_$onSuccessMvUrl();
+class _$_$requestDetail implements _$requestDetail {
+  const _$_$requestDetail(this.mvId);
+
+  @override
+  final int mvId;
 
   @override
   String toString() {
-    return 'MVEvent.onSuccessMvUrl()';
+    return 'MVEvent.requestDetail(mvId: $mvId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$onSuccessMvUrl);
+        (other.runtimeType == runtimeType &&
+            other is _$requestDetail &&
+            const DeepCollectionEquality().equals(other.mvId, mvId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(mvId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$requestDetailCopyWith<_$requestDetail> get copyWith =>
+      __$$requestDetailCopyWithImpl<_$requestDetail>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int id, VoidCallback onSuccess) requestMVURL,
-    required TResult Function() onSuccessMvUrl,
+    required TResult Function(int mvId) requestDetail,
   }) {
-    return onSuccessMvUrl();
+    return requestDetail(mvId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(int id, VoidCallback onSuccess)? requestMVURL,
-    TResult Function()? onSuccessMvUrl,
+    TResult Function(int mvId)? requestDetail,
   }) {
-    return onSuccessMvUrl?.call();
+    return requestDetail?.call(mvId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id, VoidCallback onSuccess)? requestMVURL,
-    TResult Function()? onSuccessMvUrl,
+    TResult Function(int mvId)? requestDetail,
     required TResult orElse(),
   }) {
-    if (onSuccessMvUrl != null) {
-      return onSuccessMvUrl();
+    if (requestDetail != null) {
+      return requestDetail(mvId);
     }
     return orElse();
   }
@@ -284,41 +308,48 @@ class _$_$onSuccessMvUrl implements _$onSuccessMvUrl {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_$MVURL value) requestMVURL,
-    required TResult Function(_$onSuccessMvUrl value) onSuccessMvUrl,
+    required TResult Function(_$requestDetail value) requestDetail,
   }) {
-    return onSuccessMvUrl(this);
+    return requestDetail(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$onSuccessMvUrl value)? onSuccessMvUrl,
+    TResult Function(_$requestDetail value)? requestDetail,
   }) {
-    return onSuccessMvUrl?.call(this);
+    return requestDetail?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$onSuccessMvUrl value)? onSuccessMvUrl,
+    TResult Function(_$requestDetail value)? requestDetail,
     required TResult orElse(),
   }) {
-    if (onSuccessMvUrl != null) {
-      return onSuccessMvUrl(this);
+    if (requestDetail != null) {
+      return requestDetail(this);
     }
     return orElse();
   }
 }
 
-abstract class _$onSuccessMvUrl implements MVEvent {
-  const factory _$onSuccessMvUrl() = _$_$onSuccessMvUrl;
+abstract class _$requestDetail implements MVEvent {
+  const factory _$requestDetail(final int mvId) = _$_$requestDetail;
+
+  int get mvId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$$requestDetailCopyWith<_$requestDetail> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$MVState {
   ViewModel<DataWrapResponse<MVURLResponse>>? get mvUrlVm =>
+      throw _privateConstructorUsedError;
+  ViewModel<DataWrapResponse<MvDetailResponse>>? get mvDetailVM =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -329,7 +360,9 @@ mixin _$MVState {
 abstract class $MVStateCopyWith<$Res> {
   factory $MVStateCopyWith(MVState value, $Res Function(MVState) then) =
       _$MVStateCopyWithImpl<$Res>;
-  $Res call({ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm});
+  $Res call(
+      {ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm,
+      ViewModel<DataWrapResponse<MvDetailResponse>>? mvDetailVM});
 }
 
 /// @nodoc
@@ -343,12 +376,17 @@ class _$MVStateCopyWithImpl<$Res> implements $MVStateCopyWith<$Res> {
   @override
   $Res call({
     Object? mvUrlVm = freezed,
+    Object? mvDetailVM = freezed,
   }) {
     return _then(_value.copyWith(
       mvUrlVm: mvUrlVm == freezed
           ? _value.mvUrlVm
           : mvUrlVm // ignore: cast_nullable_to_non_nullable
               as ViewModel<DataWrapResponse<MVURLResponse>>?,
+      mvDetailVM: mvDetailVM == freezed
+          ? _value.mvDetailVM
+          : mvDetailVM // ignore: cast_nullable_to_non_nullable
+              as ViewModel<DataWrapResponse<MvDetailResponse>>?,
     ));
   }
 }
@@ -358,7 +396,9 @@ abstract class _$MVStateCopyWith<$Res> implements $MVStateCopyWith<$Res> {
   factory _$MVStateCopyWith(_MVState value, $Res Function(_MVState) then) =
       __$MVStateCopyWithImpl<$Res>;
   @override
-  $Res call({ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm});
+  $Res call(
+      {ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm,
+      ViewModel<DataWrapResponse<MvDetailResponse>>? mvDetailVM});
 }
 
 /// @nodoc
@@ -373,12 +413,17 @@ class __$MVStateCopyWithImpl<$Res> extends _$MVStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? mvUrlVm = freezed,
+    Object? mvDetailVM = freezed,
   }) {
     return _then(_MVState(
       mvUrlVm: mvUrlVm == freezed
           ? _value.mvUrlVm
           : mvUrlVm // ignore: cast_nullable_to_non_nullable
               as ViewModel<DataWrapResponse<MVURLResponse>>?,
+      mvDetailVM: mvDetailVM == freezed
+          ? _value.mvDetailVM
+          : mvDetailVM // ignore: cast_nullable_to_non_nullable
+              as ViewModel<DataWrapResponse<MvDetailResponse>>?,
     ));
   }
 }
@@ -386,14 +431,16 @@ class __$MVStateCopyWithImpl<$Res> extends _$MVStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_MVState implements _MVState {
-  const _$_MVState({this.mvUrlVm});
+  const _$_MVState({this.mvUrlVm, this.mvDetailVM});
 
   @override
   final ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm;
+  @override
+  final ViewModel<DataWrapResponse<MvDetailResponse>>? mvDetailVM;
 
   @override
   String toString() {
-    return 'MVState(mvUrlVm: $mvUrlVm)';
+    return 'MVState(mvUrlVm: $mvUrlVm, mvDetailVM: $mvDetailVM)';
   }
 
   @override
@@ -401,12 +448,16 @@ class _$_MVState implements _MVState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _MVState &&
-            const DeepCollectionEquality().equals(other.mvUrlVm, mvUrlVm));
+            const DeepCollectionEquality().equals(other.mvUrlVm, mvUrlVm) &&
+            const DeepCollectionEquality()
+                .equals(other.mvDetailVM, mvDetailVM));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(mvUrlVm));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(mvUrlVm),
+      const DeepCollectionEquality().hash(mvDetailVM));
 
   @JsonKey(ignore: true)
   @override
@@ -416,10 +467,15 @@ class _$_MVState implements _MVState {
 
 abstract class _MVState implements MVState {
   const factory _MVState(
-      {final ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm}) = _$_MVState;
+          {final ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm,
+          final ViewModel<DataWrapResponse<MvDetailResponse>>? mvDetailVM}) =
+      _$_MVState;
 
   @override
   ViewModel<DataWrapResponse<MVURLResponse>>? get mvUrlVm =>
+      throw _privateConstructorUsedError;
+  @override
+  ViewModel<DataWrapResponse<MvDetailResponse>>? get mvDetailVM =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

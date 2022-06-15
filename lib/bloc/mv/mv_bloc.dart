@@ -8,18 +8,32 @@ part 'mv_bloc.freezed.dart';
 class MVBloc extends Bloc<MVEvent, MVState> {
   MVBloc() : super(MVState.initial()) {
     on<MVEvent>((event, emit) async {
-      // logger.d('PlayerBloc event:$event');
       await event.map(
         requestMVURL: (value) => requestMvUrl(value, emit),
-        onSuccessMvUrl: (_) {},
+        requestDetail: (value) => requestMvDetail(value, emit),
       );
     });
   }
 
   Future<void> requestMvUrl(_$MVURL value, Emitter<MVState> emit) async {
     final response = await MVClient(dio).mvUrl(value.id);
-    emit(state.copyWith(mvUrlVm: ViewModel.response(response)));
+    emit.call(state.copyWith(mvUrlVm: ViewModel.response(response)));
     value.onSuccess.call();
+  }
+
+  Future<void> requestMvDetail(_$requestDetail value, Emitter<MVState> emit) async {
+    await MVClient(dio).mvDetail(value.mvId).then((detail) async {
+      final info = await MVClient(dio).mvDetailInfo(value.mvId);
+      final newDetail = detail.copyWith(
+        data: detail.data.copyWith(likedCount: info.likedCount, liked: info.liked),
+      );
+
+      final newState = state.copyWith(mvDetailVM: ViewModel.response(newDetail));
+      emit.call(newState);
+    }).catchError((_) {
+      final newState = state.copyWith(mvDetailVM: ViewModel.error(_));
+      emit.call(newState);
+    });
   }
 }
 
@@ -27,16 +41,18 @@ class MVBloc extends Bloc<MVEvent, MVState> {
 class MVEvent with _$MVEvent {
   const factory MVEvent.requestMVURL(int id, {required VoidCallback onSuccess}) = _$MVURL;
 
-  const factory MVEvent.onSuccessMvUrl() = _$onSuccessMvUrl;
+  const factory MVEvent.requestDetail(int mvId) = _$requestDetail;
 }
 
 @freezed
 class MVState with _$MVState {
   const factory MVState({
     ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm,
+    ViewModel<DataWrapResponse<MvDetailResponse>>? mvDetailVM,
   }) = _MVState;
 
   factory MVState.initial() => MVState(
         mvUrlVm: ViewModel.initial(),
+        mvDetailVM: ViewModel.initial(),
       );
 }
