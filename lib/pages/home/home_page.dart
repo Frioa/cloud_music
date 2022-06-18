@@ -1,6 +1,10 @@
-import 'package:cloud_music/pages/home/home.dart';
+import 'dart:async';
+
+import 'package:cloud_music/bloc/login/login.dart';
+import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
-import 'package:cloud_music/widget/widgets.dart';
+import 'package:cloud_music/utils/global_context_handler.dart';
+import 'package:cloud_music/widget/common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,66 +15,85 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
-  late final pageController = PageController();
+class _HomePageState extends BasePageState<HomePage> {
+  late StreamSubscription<BaseGlobalContextEvent> _globalEventSubscription;
 
   @override
   void initState() {
     super.initState();
-    pageController.addListener(() {
-      final cur = pageController.page!.round();
 
-      if (cur != _selectedIndex) {
-        _selectedIndex = cur;
-        setState(() {});
-      }
-    });
+    _globalEventSubscription = GlobalContextHandler().handleEvent(context);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    context.read<LoginBloc>().add(const LoginStateAction(action: LoginAction.requestLoginStatus));
   }
 
   @override
   void dispose() {
-    pageController.dispose();
+    _globalEventSubscription.cancel();
     super.dispose();
   }
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    if (pageController.hasClients) {
-      pageController.animateToPage(
-        _selectedIndex,
-        duration: const Duration(milliseconds: 500),
-        curve: Curves.easeInOut,
-      );
-    }
+  Widget _buildHeaderText() {
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        // final profile = state.nestLoginStatusResponse?.profile;
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: 20.w),
+                child: Text(
+                  'Find the best music for you',
+                  style: Theme.of(context).tsTitleBold.copyWith(fontSize: 28.sp),
+                ),
+              ),
+            ),
+            Assets.icPotinRight.image(width: 125.w, height: 58.w)
+            // ImageWidget(Assets.icPotinRight.path, width: 125.w, height: 58.w),
+          ],
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldWidget(
-      padding: EdgeInsets.zero,
-      body: PageView(
-        controller: pageController,
-        children: const [
-          FindPage(),
-          MyPage(),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "首页"),
-          BottomNavigationBarItem(icon: Icon(Icons.people), label: "我的"),
-        ],
-        selectedItemColor: Theme.of(context).primaryColor,
-        unselectedItemColor: Theme.of(context).invalidBlack,
-        type: BottomNavigationBarType.fixed,
-        showUnselectedLabels: true,
-        onTap: _onItemTapped,
-        currentIndex: _selectedIndex,
-        selectedFontSize: 12.0.sp,
-      ),
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        final profile = state.nestLoginStatusResponse?.profile;
+
+        return Stack(
+          children: [
+            Scaffold(
+              appBar: AppBarWidget.build(
+                leading: profile?.avatarUrl ?? Assets.icDefaultAvatar.path,
+                action: Assets.icSearchLight,
+                onLeadingTap: () {
+                  if (state.isLogin) return;
+                  R.of(context).push(Pages.login);
+                },
+              ),
+              body: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 29.w),
+                    _buildHeaderText(),
+                    const TopArtistsWidget(),
+                    const HomeSongList(),
+                    HomeUserSongList(uid: profile?.userId),
+                    SizedBox(height: HomeBottomPlayerWidget.height + 26.w)
+                  ],
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

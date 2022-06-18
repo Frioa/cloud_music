@@ -32,7 +32,7 @@ PageConfiguration pageFactor(Pages pages, {Map<String, Object> parameter = const
       break;
     case Pages.home:
       showPlayer = true;
-      widget = const NewHomePage();
+      widget = const HomePage();
       break;
     case Pages.login:
       showPlayer = false;
