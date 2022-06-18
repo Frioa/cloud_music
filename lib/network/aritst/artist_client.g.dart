@@ -10,7 +10,7 @@ part of 'artist_client.dart';
 
 class _ArtistClient implements ArtistClient {
   _ArtistClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://flutter-cloud-music-api.vercel.app';
+    baseUrl ??= 'https://netease-cloud-music-api-mu-opal.vercel.app';
   }
 
   final Dio _dio;

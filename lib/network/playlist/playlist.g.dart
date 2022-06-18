@@ -10,7 +10,7 @@ part of 'playlist.dart';
 
 class _PlaylistClient implements PlaylistClient {
   _PlaylistClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://flutter-cloud-music-api.vercel.app';
+    baseUrl ??= 'https://netease-cloud-music-api-mu-opal.vercel.app';
   }
 
   final Dio _dio;

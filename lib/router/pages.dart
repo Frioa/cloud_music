@@ -1,5 +1,5 @@
 import 'package:cloud_music/model/model.dart';
-import 'package:cloud_music/pages/page.dart';
+import 'package:cloud_music/pages/pages.dart';
 import 'package:flutter/material.dart';
 
 enum Pages {

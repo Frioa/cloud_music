@@ -1,3 +1,4 @@
+
 import 'package:cloud_music/bloc/bloc.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/theme_extension.dart';
@@ -110,17 +111,24 @@ class _LoginPageState extends BasePageState<LoginPage> {
     return Row(
       children: [
         // TODO: register
-        // Expanded(
-        //   child: Center(
-        //     child: Text(
-        //       S.loginPage.register,
-        //       style: Theme.of(context).tsDesc.copyWith(
-        //             fontSize: 20.w,
-        //             color: Theme.of(context).primaryColor.withOpacity(0.5),
-        //           ),
-        //     ),
-        //   ),
-        // ),
+        Expanded(
+          child: InkWell(
+            onTap: () {
+              nestLoginClient.registerAnonimous().then((value) {
+                R.of(context).pop();
+              });
+            },
+            child: Center(
+              child: Text(
+                '游客登录',
+                style: Theme.of(context).tsDesc.copyWith(
+                      fontSize: 20.w,
+                      color: Theme.of(context).primaryColor.withOpacity(0.5),
+                    ),
+              ),
+            ),
+          ),
+        ),
         Expanded(
           child: InkWell(
             onTap: () {
@@ -152,10 +160,11 @@ class _LoginPageState extends BasePageState<LoginPage> {
     return Scaffold(
       /// TODO: Appbar
       // appBar: AppBar(
-      //   title: Text(
-      //     S.loginPage.title,
-      //     style: Theme.of(context).tsDesc,
-      //   ),
+      //   // title: Text(
+      //   //   S.loginPage.title,
+      //   //   style: Theme.of(context).tsDesc,
+      //   // ),
+      //   // leading: Text(('data')),
       // ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 30.w),

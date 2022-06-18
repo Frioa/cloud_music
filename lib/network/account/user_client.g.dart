@@ -10,7 +10,7 @@ part of 'user_client.dart';
 
 class _NestUserClient implements NestUserClient {
   _NestUserClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://flutter-cloud-music-api.vercel.app';
+    baseUrl ??= 'https://netease-cloud-music-api-mu-opal.vercel.app';
   }
 
   final Dio _dio;

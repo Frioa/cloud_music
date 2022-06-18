@@ -142,7 +142,8 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
   Widget build(BuildContext context) {
     return BlocListener<PlayerBloc, PlayerState>(
       listener: (context, state) {
-        if (state.isPlaying) {
+        if (controller.value.isVideo) return;
+        if (controller.value.isPlaying) {
           songDetailControl.forward(from: songDetailControl.value);
           setState(() {});
         } else {

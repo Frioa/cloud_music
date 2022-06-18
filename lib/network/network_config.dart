@@ -11,8 +11,8 @@ late Dio _dio = Dio();
 Dio get dio => _dio;
 
 Future<void> initDio() async {
-  await getTemporaryDirectory().then((dir) async {
-    logger.d('init dio.');
+  await getApplicationSupportDirectory().then((dir) async {
+    logger.d('init dio. dir=$dir');
     _dio = Dio()
       ..interceptors.addAll([
         HttpLoggerImp(),
@@ -21,5 +21,6 @@ Future<void> initDio() async {
           storage: FileStorage('${dir.path}/cookies'),
         )),
       ]);
+
   });
 }

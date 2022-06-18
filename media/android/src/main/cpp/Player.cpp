@@ -124,7 +124,8 @@ void Player::_prepare() {
                     fps = (int) av_q2d(av_guess_frame_rate(avFormatContext, avStream, 0));
                 }
 
-                LOGE("_prepare 当前处理的是处理视频流  i=%d fps=%d den=%d", i, fps, avStream->time_base.den);
+                LOGE("_prepare 当前处理的是处理视频流  i=%d fps=%d den=%d width=%d height=%d",
+                i, fps, avStream->time_base.den, codecContext->width, codecContext->height);
                 videoChannel = new VideoChannel(i, callback, codecContext, avStream->time_base,
                                                 fps);
                 videoChannel->aspect = codecContext->width * 1.0 / codecContext->height * 1.0;

@@ -10,7 +10,7 @@ part of 'login_client.dart';
 
 class _NestLoginClient implements NestLoginClient {
   _NestLoginClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://flutter-cloud-music-api.vercel.app';
+    baseUrl ??= 'https://netease-cloud-music-api-mu-opal.vercel.app';
   }
 
   final Dio _dio;
@@ -190,6 +190,22 @@ class _NestLoginClient implements NestLoginClient {
         _setStreamType<BaseHttpResponse>(
             Options(method: 'GET', headers: _headers, extra: _extra)
                 .compose(_dio.options, '/login/refresh',
+                    queryParameters: queryParameters, data: _data)
+                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BaseHttpResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BaseHttpResponse> registerAnonimous() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseHttpResponse>(
+            Options(method: 'GET', headers: _headers, extra: _extra)
+                .compose(_dio.options, '/register/anonimous',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = BaseHttpResponse.fromJson(_result.data!);

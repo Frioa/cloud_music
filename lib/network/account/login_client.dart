@@ -134,4 +134,14 @@ abstract class NestLoginClient {
   //
   @GET("/login/refresh")
   Future<BaseHttpResponse> refreshLogin();
+
+  // 游客登录
+  // 说明 : 直接调用此接口, 可获取游客cookie,如果遇到其他接口未登录状态报400状态码需要验证的错误,可使用此接口获取游客cookie避免报错
+  //
+  //  接口地址 : /register/anonimous
+  //
+  //   注意
+  //   调用登录接口的速度比调用其他接口慢 , 因为登录过程调用了加密算法
+  @GET("/register/anonimous")
+  Future<BaseHttpResponse> registerAnonimous();
 }

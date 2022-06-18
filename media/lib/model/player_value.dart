@@ -34,7 +34,7 @@ class PlayerValue {
     this.playbackSpeed = 1.0,
     this.url = '',
     this.complete = false,
-    this.aspect = 1.7,
+    this.aspect = 1.77,
     this.isVideo = false,
   });
 
@@ -49,7 +49,6 @@ class PlayerValue {
   PlayerValue copyWith({
     Duration? duration,
     Duration? position,
-    Duration? captionOffset,
     bool? isInitialized,
     bool? isPlaying,
     bool? isBuffering,

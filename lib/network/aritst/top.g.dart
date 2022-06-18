@@ -10,7 +10,7 @@ part of 'top.dart';
 
 class _TopClient implements TopClient {
   _TopClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://flutter-cloud-music-api.vercel.app';
+    baseUrl ??= 'https://netease-cloud-music-api-mu-opal.vercel.app';
   }
 
   final Dio _dio;

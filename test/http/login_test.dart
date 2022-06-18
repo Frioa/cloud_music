@@ -25,7 +25,7 @@ void main() async {
     });
 
     test('邮箱登录', () async {
-      const email = 'xxxxx@163.com';
+      const email = '916378508@163.com';
       await client.email(email, 'xxxxxx').then((value) async {
         logger.d('email $value');
       });

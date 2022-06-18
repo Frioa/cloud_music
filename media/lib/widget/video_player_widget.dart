@@ -21,7 +21,7 @@ class VideoPlayerWidget extends StatefulWidget {
   State<VideoPlayerWidget> createState() => _VideoPlayerWidgetState();
 }
 
-class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
+class _VideoPlayerWidgetState extends State<VideoPlayerWidget> with PlayerLifecycMixin {
   bool playing = false;
 
   Widget buildPauseButton() {
@@ -37,10 +37,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
             ? Container()
             : Container(
                 color: Colors.black26,
-                child: Image.asset(
-                  widget.pauseIconUrl,
-                  color: Colors.grey.withOpacity(0.5),
-                ),
+                child: Image.asset(widget.pauseIconUrl, color: Colors.grey.withOpacity(0.5)),
               ),
       ),
     );

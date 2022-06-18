@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:media/model/player_value.dart';
 import 'package:media/utils/extensions.dart';
 import 'package:media/utils/logger.dart';
+import 'package:media/widget/lifecyc_mixin.dart';
 
 late final PlayerController _instance = PlayerController._();
 
@@ -11,6 +12,9 @@ String _tag = 'PlayerController';
 
 class PlayerController extends ValueNotifier<PlayerValue> {
   static PlayerController get instance => _instance;
+  static bool lock = false;
+
+  final _lifecycListeners = <PlayerLifecycMixin>[];
 
   double get progress {
     if (value.duration.inMilliseconds == 0) return 0.0;
@@ -39,17 +43,25 @@ class PlayerController extends ValueNotifier<PlayerValue> {
             aspect: aspect,
             isVideo: isVideo,
           );
+          // ignore: avoid_function_literals_in_foreach_calls
+          _lifecycListeners.forEach((e) => e.onPrepare());
           return;
         case "onProgress":
           logger.d("onPrepare value ${arg['value']}");
+          // ignore: avoid_function_literals_in_foreach_calls
+          _lifecycListeners.forEach((e) => e.onProgress());
           return;
         case "onAudioProgress":
           logger.d("onAudioProgress value: ${arg['value']}");
           final d = ((arg['value'] as double) * 1000).toInt().toSecDuration;
           value = value.copyWith(position: d);
+          // ignore: avoid_function_literals_in_foreach_calls
+          _lifecycListeners.forEach((e) => e.onProgress());
           return;
         case "onError":
           logger.d("onPrepare code: ${arg['code']}");
+          // ignore: avoid_function_literals_in_foreach_calls
+          _lifecycListeners.forEach((e) => e.onError());
           return;
         case "onComplete":
           logger.d("onComplete code");
@@ -59,6 +71,8 @@ class PlayerController extends ValueNotifier<PlayerValue> {
             duration: Duration.zero,
             position: Duration.zero,
           );
+          // ignore: avoid_function_literals_in_foreach_calls
+          _lifecycListeners.forEach((e) => e.onComplete());
           return;
       }
       return;
@@ -66,6 +80,71 @@ class PlayerController extends ValueNotifier<PlayerValue> {
   }
 
   Future<void> play(String url, {Duration start = Duration.zero}) async {
+    if (!_checkLock()) return;
+
+    await _play(url, start: start);
+    _releaseLock();
+  }
+
+  Future<void> pauseOrPlay() async {
+    if (!_checkLock()) return;
+
+    if (value.isPlaying) {
+      await _stop();
+    } else {
+      await _play(value.url, start: value.position);
+    }
+    value = value.copyWith(isPlaying: !value.isPlaying);
+    _releaseLock();
+  }
+
+  Future<void> pause() async {
+    if (!_checkLock()) return;
+
+    if (value.isPlaying) {
+      await _stop();
+      value = value.copyWith(isPlaying: !value.isPlaying);
+    }
+    _releaseLock();
+  }
+
+  Future<void> continueplay() async {
+    if (!_checkLock()) return;
+
+    if (!value.isPlaying) {
+      await _play(value.url, start: value.position);
+    }
+    _releaseLock();
+  }
+
+  /// @time: 时间，单位"秒"
+  Future<void> seek() async {
+    if (!_checkLock()) return;
+
+    await _seek(value.position.inMilliseconds / 1000);
+    _releaseLock();
+  }
+
+  Future<void> stop() async {
+    if (!_checkLock()) return;
+
+    if (value.isPlaying) {
+      await _stop();
+      value = value.copyWith(
+        isPlaying: !value.isPlaying,
+        isInitialized: false,
+        duration: Duration.zero,
+      );
+    }
+    _releaseLock();
+  }
+
+  Future<void> _init() async {
+    logger.d("$_tag init");
+    await _methodChannel.invokeMethod('init');
+  }
+
+  Future<void> _play(String url, {Duration start = Duration.zero}) async {
     value = value.copyWith(
       isPlaying: false,
       position: start,
@@ -76,33 +155,10 @@ class PlayerController extends ValueNotifier<PlayerValue> {
     await _setDataSource(url);
   }
 
-  Future<void> pauseOrPlay() async {
-    if (value.isInitialized == false) {
-      logger.d("AudioPlayerController not isInitialized");
-      return;
-    }
-    if (value.isPlaying) {
-      await _stop();
-    } else {
-      await play(value.url, start: value.position);
-    }
-    value = value.copyWith(isPlaying: !value.isPlaying);
-  }
-
-  Future<void> _init() async {
-    logger.d("$_tag init");
-    await _methodChannel.invokeMethod('init');
-  }
-
   Future<void> _setDataSource(String path) async {
     logger.d("$_tag setDataSource");
     await _init();
     await _methodChannel.invokeMethod('setDataSource', {"path": path});
-  }
-
-  /// @time: 时间，单位"秒"
-  Future<void> seek() async {
-    await _seek(value.position.inMilliseconds / 1000);
   }
 
   /// @time: 时间，单位"秒"
@@ -119,5 +175,27 @@ class PlayerController extends ValueNotifier<PlayerValue> {
   Future<void> _stop() async {
     logger.d("stop");
     await _methodChannel.invokeMethod('stop');
+  }
+
+  void addLifecyclelistener(PlayerLifecycMixin lifecycleChanged) {
+    _lifecycListeners.add(lifecycleChanged);
+  }
+
+  void removeLifecyclelistener(PlayerLifecycMixin lifecycleChanged) {
+    _lifecycListeners.remove(lifecycleChanged);
+  }
+
+  bool _checkLock() {
+    if (lock) {
+      logger.d("lock...");
+      return false;
+    }
+
+    lock = true;
+    return true;
+  }
+
+  void _releaseLock() {
+    lock = false;
   }
 }

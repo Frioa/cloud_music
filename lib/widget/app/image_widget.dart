@@ -100,10 +100,15 @@ class _ImageWidgetState extends State<ImageWidget> with SingleTickerProviderStat
   ImageProvider? get imageProvider {
     if (isSvgPicture) return null;
     if (isNetworkImage) {
+      final _url = (width != null && height != null)
+          ? url +
+              '?param=${(width! * window.devicePixelRatio).floor()}y${(height! * window.devicePixelRatio).floor()}'
+          : url;
+
       return ResizeImage.resizeIfNeeded(
         widget.cacheWidth,
         widget.cacheHeight,
-        NetworkImage(url),
+        NetworkImage(_url),
       );
     }
     return ResizeImage.resizeIfNeeded(

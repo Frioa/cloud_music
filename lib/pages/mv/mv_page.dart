@@ -6,6 +6,8 @@ import 'package:cloud_music/widget/common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:media/media.dart';
 
+import 'mv_app_lifecycle_mixin.dart';
+
 class MVPage extends StatefulWidget {
   const MVPage({Key? key}) : super(key: key);
 
@@ -13,41 +15,28 @@ class MVPage extends StatefulWidget {
   State<MVPage> createState() => _MVPageState();
 }
 
-class _MVPageState extends BasePageState<MVPage> {
-  Song? song;
+class _MVPageState extends BasePageState<MVPage>
+    with WidgetsBindingObserver, MvActionMixin, PlayerLifecycMixin, MvAppLifecycleMixin {
+  double get footerHeight => 396.w;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    if (song == null) {
-      song = R.of(context).getParameter<Song>(PageKey.mvSong);
-      context.read<MVBloc>().add(MVEvent.requestMVURL(song!.mv, onSuccess: onMvUrlSuccess));
-      context.read<MVBloc>().add(MVEvent.requestDetail(song!.mv));
-
-      if (song!.ar.isNotEmpty) {
-        context.read<ArtistBloc>().add(ArtistEvent.requestArtistsDetail(song!.ar[0].id));
-      }
-    }
-    logger.d("mv id: ${song?.mv}");
-  }
-
-  void onMvUrlSuccess() {
-    if (!mounted) return;
-    final url = context.read<MVBloc>().state.mvUrlVm?.response?.data.url;
-    if (url == null) return;
-
-    PlayerController.instance.play(url);
+  void dispose() {
+    PlayerController.instance.stop();
+    super.dispose();
   }
 
   Widget _buildVideoPlayer() {
-    return Container(
-      margin: EdgeInsets.only(bottom: 100.w),
-      child: VideoPlayerWidget(
-        pauseIconUrl: Assets.icBtnPlay.path,
-        controller: PlayerController.instance,
-      ),
+    final isCenter = videoHeight >= (MediaQuery.of(context).size.height - footerHeight);
+    final videoWidget = VideoPlayerWidget(
+      pauseIconUrl: Assets.icBtnPlay.path,
+      controller: PlayerController.instance,
     );
+
+    if (isCenter) {
+      return Center(child: videoWidget);
+    }
+
+    return Positioned(bottom: footerHeight, child: videoWidget);
   }
 
   Widget _buildMvInfo() {
@@ -66,7 +55,7 @@ class _MVPageState extends BasePageState<MVPage> {
                 size: 36.w,
                 clipOval: true,
                 fadeIn: true,
-                fit: BoxFit.fitHeight,
+                // fit: BoxFit.fitWidth,
               ),
               SizedBox(width: 8.w),
               Text(song!.ar[0].name, style: L.tsTitleDark),
@@ -162,25 +151,30 @@ class _MVPageState extends BasePageState<MVPage> {
   }
 
   Widget _buildFooter() {
-    return Column(
-      children: [
-        _buildMvInfo(),
-        SizedBox(
-          height: 16.w,
-          child: PlayerProgressWidget(
-            controller: PlayerController.instance,
-            backgroundColor: Colors.transparent,
-            progressColor: Colors.white38,
+    return Container(
+      alignment: Alignment.bottomCenter,
+      height: footerHeight,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          _buildMvInfo(),
+          SizedBox(
+            height: 16.w,
+            child: PlayerProgressWidget(
+              controller: PlayerController.instance,
+              backgroundColor: Colors.transparent,
+              progressColor: Colors.white38,
+            ),
           ),
-        ),
-        SizedBox(height: 12.w),
-        Container(
-          height: 45.w,
-          width: 1.sw,
-          padding: EdgeInsets.only(left: 16.w),
-          child: Text(S.mvPage.commentIntro, style: L.tsDescDark2),
-        ),
-      ],
+          SizedBox(height: 12.w),
+          Container(
+            height: 45.w,
+            width: 1.sw,
+            padding: EdgeInsets.only(left: 16.w),
+            child: Text(S.mvPage.commentIntro, style: L.tsDescDark2),
+          ),
+        ],
+      ),
     );
   }
 
