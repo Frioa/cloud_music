@@ -1,5 +1,6 @@
 package com.yqq.media
 
+import android.util.Log
 import android.view.Surface
 import android.view.SurfaceHolder
 import androidx.annotation.NonNull
@@ -9,6 +10,8 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+
+private val TAG = "MediaPlugin"
 
 class MediaPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
@@ -23,11 +26,11 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     override fun onAttachedToEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-        println("onAttachedToEngine ")
         channel = MethodChannel(binding.binaryMessenger, "media")
         channel.setMethodCallHandler(this)
         val factory = MediaSurfaceViewFactory(object : SurfaceHolder.Callback {
             override fun surfaceCreated(holder: SurfaceHolder) {
+                Log.d(TAG, "surfaceCreated()")
                 setSurface(holder.surface)
             }
 
@@ -37,11 +40,13 @@ class MediaPlugin : FlutterPlugin, MethodCallHandler {
                 width: Int,
                 height: Int
             ) {
-                println("surfaceChanged ")
+                Log.d(TAG, "surfaceChanged()")
                 setSurface(holder.surface)
             }
 
             override fun surfaceDestroyed(holder: SurfaceHolder) {
+                Log.d(TAG, "surfaceDestroyed()")
+                playManager.surfaceDestroyed()
             }
         })
         playManager = PlayManager(channel)

@@ -7,7 +7,7 @@ mixin PlayerLifecycMixin<W extends StatefulWidget> on State<W> {
   double get videoHeight =>
       MediaQuery.of(context).size.width / PlayerController.instance.value.aspect;
 
-  bool get _forbidSetState => !mounted || !TickerMode.of(context);
+  bool get forbidSetState => !mounted || !TickerMode.of(context);
 
   @override
   void initState() {
@@ -22,22 +22,21 @@ mixin PlayerLifecycMixin<W extends StatefulWidget> on State<W> {
   }
 
   void onComplete() {
-    if (_forbidSetState) return;
-
+    if (forbidSetState) return;
     setState(() {});
   }
 
   void onError() {
-    if (_forbidSetState) return;
+    if (forbidSetState) return;
     setState(() {});
   }
 
   void onPrepare() {
-    if (_forbidSetState) return;
+    if (forbidSetState) return;
     setState(() {});
   }
 
   void onProgress() {
-    if (!_forbidSetState) return;
+    if (forbidSetState) return;
   }
 }

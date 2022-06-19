@@ -91,7 +91,7 @@ class _MVPageState extends BasePageState<MVPage>
                 height: 20.w,
                 width: 140.w,
                 child: MarqueeWidget(
-                  text: song!.singerAlbumDesc + "  " + song!.singerAlbumDesc,
+                  text: song!.singerAlbumDesc,
                   style: L.tsDescDark,
                 ),
               ),

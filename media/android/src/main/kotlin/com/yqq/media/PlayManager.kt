@@ -35,10 +35,19 @@ class PlayManager constructor(val channel: MethodChannel) {
     }
 
     fun setSurface(surface: Surface) {
-        if (nativeHandler == 0L) return
+        if (nativeHandler == 0L) {
+            this.surface = surface
+            Log.d(TAG, "nativeHandler is null")
+            return
+        }
+        Log.d(TAG, "setSurface")
 
         this.surface = surface
         setSurface(nativeHandler, surface)
+    }
+
+    fun surfaceDestroyed() {
+        this.surface = null
     }
 
     private fun prepare() {

@@ -23,6 +23,16 @@ class VideoPlayerWidget extends StatefulWidget {
 
 class _VideoPlayerWidgetState extends State<VideoPlayerWidget> with PlayerLifecycMixin {
   bool playing = false;
+  bool showLoading = true;
+
+  @override
+  void onProgress() {
+    if (forbidSetState) return;
+    if (showLoading == true) {
+      showLoading = false;
+      setState(() {});
+    }
+  }
 
   Widget buildPauseButton() {
     return InkWell(
@@ -45,6 +55,7 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> with PlayerLifecy
 
   @override
   Widget build(BuildContext context) {
+    print('objecvt -------- $showLoading');
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.width / PlayerController.instance.value.aspect,
@@ -55,6 +66,16 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> with PlayerLifecy
             width: widget.width,
             height: widget.height,
             child: const SurfaceViewWidget(),
+          ),
+          AnimatedOpacity(
+            duration: const Duration(seconds: 1),
+            opacity: showLoading ? 1.0 : 0.0,
+            curve: Curves.easeIn,
+            child: Container(
+              width: widget.width,
+              height: widget.height,
+              color: Colors.black,
+            ),
           ),
           buildPauseButton(),
           widget.progressWidget,
