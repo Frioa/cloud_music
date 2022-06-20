@@ -55,7 +55,6 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> with PlayerLifecy
 
   @override
   Widget build(BuildContext context) {
-    print('objecvt -------- $showLoading');
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.width / PlayerController.instance.value.aspect,

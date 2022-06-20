@@ -110,7 +110,6 @@ class _LoginPageState extends BasePageState<LoginPage> {
   Widget _buildButton() {
     return Row(
       children: [
-        // TODO: register
         Expanded(
           child: InkWell(
             onTap: () {
@@ -159,13 +158,13 @@ class _LoginPageState extends BasePageState<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       /// TODO: Appbar
-      // appBar: AppBar(
-      //   // title: Text(
-      //   //   S.loginPage.title,
-      //   //   style: Theme.of(context).tsDesc,
-      //   // ),
-      //   // leading: Text(('data')),
-      // ),
+      appBar: AppBar(
+        // title: Text(
+        //   S.loginPage.title,
+        //   style: Theme.of(context).tsDesc,
+        // ),
+        // leading: Text(('data')),
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 30.w),
         child: Column(

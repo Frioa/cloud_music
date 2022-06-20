@@ -1,7 +1,12 @@
+import 'package:cloud_music/bloc/common/view_model.dart';
 import 'package:cloud_music/bloc/login/login.dart';
+import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/network/account/login_client.dart';
 import 'package:cloud_music/network/network_config.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'login_bloc.freezed.dart';
 
 class LoginBloc extends Bloc<LoginStateAction, LoginState> {
   LoginBloc() : super(LoginState.initial()) {
@@ -27,4 +32,30 @@ class LoginBloc extends Bloc<LoginStateAction, LoginState> {
       }
     });
   }
+}
+
+class LoginNewBloc extends Bloc<LoginEvent, LoginState> {
+  LoginNewBloc() : super(LoginState.initial()) {
+    on<LoginEvent>((event, emit) async {
+      await event.map(loginStatus: (_$requestDetail value) {}, login: (_$MVURL value) {});
+    });
+  }
+}
+
+@freezed
+class LoginEvent with _$LoginEvent {
+  const factory LoginEvent.login() = _$MVURL;
+
+  const factory LoginEvent.loginStatus(int mvId) = _$requestDetail;
+}
+
+@freezed
+class LoginNewState with _$LoginNewState {
+  const factory LoginNewState({
+    ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm,
+  }) = _LoginNewState;
+
+  factory LoginNewState.initial() => LoginNewState(
+        mvUrlVm: ViewModel.initial(),
+      );
 }

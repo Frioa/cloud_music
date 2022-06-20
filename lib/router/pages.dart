@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 enum Pages {
   home,
   login,
+  newLogin,
   dailySong,
   playRecord,
   playlistDetail,
@@ -37,6 +38,10 @@ PageConfiguration pageFactor(Pages pages, {Map<String, Object> parameter = const
     case Pages.login:
       showPlayer = false;
       widget = const LoginPage();
+      break;
+    case Pages.newLogin:
+      showPlayer = false;
+      widget = const NewLoginPage();
       break;
     case Pages.dailySong:
       showPlayer = false;
