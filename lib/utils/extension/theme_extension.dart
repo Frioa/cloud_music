@@ -21,26 +21,6 @@ extension ThemeExtension on ThemeData {
     return isLight ? const Color(0xff477aac) : const Color(0xff2b6e90);
   }
 
-  /// 普通锻炼信息文字、用户名、icon 等
-  Color get black1 {
-    return isLight ? const Color(0xff666666) : const Color(0xff75777e);
-  }
-
-  /// 用于辅助次要的文字信息
-  Color get black2 {
-    return isLight ? const Color(0xff888888) : const Color(0xff6b6c74);
-  }
-
-  /// 用于辅助、次要的文字信息
-  Color get black3 {
-    return isLight ? const Color(0xff999999) : const Color(0xff5b5d63);
-  }
-
-  /// 用于辅助、次要的文字信息、icon
-  Color get black4 {
-    return isLight ? const Color(0xffb2b2b2) : const Color(0xff3e3f43);
-  }
-
   /// 用于辅助、次要的文字信息、icon
   Color get invalidBlack {
     return isLight
@@ -61,7 +41,7 @@ extension ThemeExtension on ThemeData {
   }
 
   TextStyle get tsNavigator {
-    return TextStyle(color: black1, fontSize: 17.2.sp);
+    return TextStyle(color: Colors.black.withOpacity(0.9), fontSize: 17.2.sp);
   }
 
   // TextStyle get tsTitle {
@@ -104,7 +84,6 @@ extension ThemeExtension on ThemeData {
 }
 
 extension ThemeExtensionPlus on ThemeData {
-
   double get a1 => 0.96;
 
   double get a60 => 0.6;
@@ -127,6 +106,10 @@ extension ThemeExtensionPlus on ThemeData {
 
   Color get blackAuto => isLight ? black : white;
 
+  Color get blackAuto2 => isLight ? black2 : white2;
+
+  Color get blackAuto3 => isLight ? black3 : white3;
+
   TextStyle get tsHeader => TextStyle(
         color: black,
         fontSize: 20.sp,
@@ -135,7 +118,7 @@ extension ThemeExtensionPlus on ThemeData {
 
   TextStyle get tsHeaderDark => tsHeader.copyWith(color: white);
 
-  TextStyle get tsTitleDefaultFont => TextStyle(color: black, fontSize: 16.w);
+  TextStyle get tsTitleDefaultFont => TextStyle(color: black, fontSize: 16.sp);
 
   TextStyle get tsTitle => tsTitleDefaultFont;
 
@@ -187,8 +170,6 @@ extension ThemeExtensionPlus on ThemeData {
   TextStyle get tsSubtitle3 => tsSubtitle.copyWith(color: black3);
 
   TextStyle get tsSubtitleDark3 => tsSubtitle.copyWith(color: white3);
-
-  TextStyle get tsSubtitle4 => tsSubtitle.copyWith(color: black4);
 
   TextStyle get tsSubtitleThin => tsSubtitle.copyWith(fontWeight: FontWeight.w300);
 
@@ -254,4 +235,6 @@ extension ThemeExtensionPlus on ThemeData {
   TextStyle get tsPromptDark3 => tsPrompt3.copyWith(color: white3);
 
   TextStyle get tsPromptAuto3 => isLight ? tsPrompt3 : tsPromptDark3;
+
+  double get pagePadding => 16.w;
 }

@@ -56,7 +56,6 @@ class NestLoginStatusResponse extends BaseHttpResponse {
   }
 }
 
-
 @JsonSerializable(createToJson: false)
 class NestAccount {
   final int? id;
@@ -336,14 +335,12 @@ class NestQrCheckResponse {
 }
 
 @JsonSerializable(createToJson: false)
-class VerifyNestCaptchaResponse {
-  final int code;
-
+class VerifyNestCaptchaResponse extends BaseHttpResponse {
   final bool data;
 
   final String message;
 
-  VerifyNestCaptchaResponse({this.code = 404, this.data = false, this.message = ''});
+  VerifyNestCaptchaResponse({int code = 404, this.data = false, this.message = ''}) : super(code);
 
   factory VerifyNestCaptchaResponse.fromJson(Map<String, dynamic> json) {
     return _$VerifyNestCaptchaResponseFromJson(json);

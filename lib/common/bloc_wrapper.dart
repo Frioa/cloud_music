@@ -14,6 +14,7 @@ class BlocWrapper extends StatelessWidget {
       providers: [
         BlocProvider<AppBloc>(create: (_) => AppBloc()),
         BlocProvider<LoginBloc>(create: (_) => LoginBloc()),
+        BlocProvider<LoginNewBloc>(create: (_) => LoginNewBloc()),
         BlocProvider<UserBloc>(create: (_) => UserBloc()),
         BlocProvider<UserNewBloc>(create: (_) => UserNewBloc()),
         BlocProvider<RecommendBloc>(create: (_) => RecommendBloc()),

@@ -158,7 +158,7 @@ class _PlayerListDetailPageState extends State<PlayerListDetailPage> {
         height: 0.053.sh,
         margin: EdgeInsets.symmetric(horizontal: 0.128.sw),
         decoration: BoxDecoration(
-          color: Theme.of(context).black1,
+          // color: Theme.of(context).black1,
           borderRadius: BorderRadius.all(Radius.circular(30.0.sm)),
         ),
         child: Row(

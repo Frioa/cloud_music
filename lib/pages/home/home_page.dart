@@ -23,14 +23,14 @@ class _HomePageState extends BasePageState<HomePage> {
     super.initState();
 
     _globalEventSubscription = GlobalContextHandler().handleEvent(context);
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      // context.read<LoginNewBloc>().add(const LoginEvent.loginStatus());
+    });
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      context.read<LoginBloc>().add(const LoginStateAction(action: LoginAction.requestLoginStatus));
-    });
   }
 
   @override
@@ -65,21 +65,23 @@ class _HomePageState extends BasePageState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
+    return BlocBuilder<LoginNewBloc, LoginNewState>(
       builder: (context, state) {
-        final profile = state.nestLoginStatusResponse?.profile;
+        final profile = state.nestPhoneLoginVm?.response?.profile;
 
         return Stack(
           children: [
             Scaffold(
               appBar: AppBarWidget.build(
-                leading: profile?.avatarUrl ?? Assets.icDefaultAvatar.path,
-                action: Assets.icSearchLight,
-                onLeadingTap: () {
-                  if (state.isLogin) return;
-                  R.of(context).push(Pages.login);
-                },
-              ),
+                  leftImageUrl: profile?.avatarUrl ?? Assets.icDefaultAvatar.path,
+                  rightImageUrl: Assets.icSearchLight,
+                  onLeadingTap: () {
+                    // if (state.isLogin) return;
+                    R.of(context).push(Pages.login);
+                  },
+                  onRightTap: () {
+                    R.of(context).push(Pages.newLogin);
+                  }),
               body: SingleChildScrollView(
                 child: Column(
                   children: [

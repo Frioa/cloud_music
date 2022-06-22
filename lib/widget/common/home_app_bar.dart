@@ -25,19 +25,20 @@ import 'package:flutter/material.dart';
 
 class AppBarWidget {
   static build({
-    String? leading,
-    String? action,
+    String? leftImageUrl,
+    String? rightImageUrl,
     Widget? title,
+    double? imageSize,
     GestureTapCallback? onLeadingTap,
     GestureTapCallback? onRightTap,
   }) {
-    final imageSize = 43.w;
-    final padding = 20.w;
+    final _imageSize = imageSize ?? 43.w;
+    final padding = 0.w;
 
     return AppBar(
       leadingWidth: 69.w,
       title: SizedBox(height: 63.w, child: Center(child: title)),
-      leading: leading != null
+      leading: leftImageUrl != null
           ? InkWell(
               onTap: onLeadingTap,
               child: Row(
@@ -45,27 +46,27 @@ class AppBarWidget {
                   SizedBox(width: padding),
                   Container(
                     alignment: Alignment.center,
-                    child: ClipOval(child: ImageWidget(leading, size: imageSize)),
+                    child: ClipOval(child: ImageWidget(leftImageUrl, size: _imageSize)),
                   ),
                 ],
               ),
             )
-          : SizedBox(width: padding + imageSize),
+          : SizedBox(width: padding + _imageSize),
       actions: [
-        action != null
+        rightImageUrl != null
             ? InkWell(
                 onTap: onRightTap,
                 child: Row(
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      child: ClipOval(child: ImageWidget(action, size: imageSize)),
+                      child: ClipOval(child: ImageWidget(rightImageUrl, size: _imageSize)),
                     ),
                     SizedBox(width: padding),
                   ],
                 ),
               )
-            : SizedBox(width: padding + imageSize)
+            : SizedBox(width: padding + _imageSize)
       ],
     );
   }

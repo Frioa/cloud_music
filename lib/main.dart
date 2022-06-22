@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cloud_music/common/common.dart';
+import 'package:oktoast/oktoast.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,12 +36,14 @@ class MyApp extends StatelessWidget {
         builder: () {
           return BlocBuilder<AppBloc, AppState>(
             builder: (_, state) {
-              return MaterialApp.router(
-                title: 'Cloud Music',
-                theme: state.theme,
-                routerDelegate: pageRouterDelegate,
-                routeInformationParser: parser,
-                backButtonDispatcher: backDispatcher,
+              return OKToast(
+                child: MaterialApp.router(
+                  title: 'Cloud Music',
+                  theme: state.theme,
+                  routerDelegate: pageRouterDelegate,
+                  routeInformationParser: parser,
+                  backButtonDispatcher: backDispatcher,
+                ),
               );
             },
           );

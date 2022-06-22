@@ -22,12 +22,17 @@ class ThemeCubit extends Cubit<ThemeData> {
     appBarTheme: AppBarTheme(
       backgroundColor: const Color(0xFFFFFFFF),
       elevation: 0,
-      toolbarHeight: 75.w,
+      toolbarHeight: 52.w,
+      centerTitle: true,
     ),
     inputDecorationTheme: const InputDecorationTheme(
       fillColor: Color(0xffF0F0F0),
       suffixIconColor: Color(0xFF9570FF),
     ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: Color(0xFF4d6ea8),
+    ),
+
   );
 
   static late final darkTheme = ThemeData(
@@ -43,7 +48,11 @@ class ThemeCubit extends Cubit<ThemeData> {
     appBarTheme: AppBarTheme(
       backgroundColor: const Color(0xFF111215),
       elevation: 0,
-      toolbarHeight: 75.w,
+      centerTitle: true,
+      toolbarHeight: 52.w,
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: Color(0xFF4d6ea8),
     ),
   );
 }

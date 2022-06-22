@@ -15,9 +15,17 @@ class TopArtistsWidget extends StatefulWidget {
 
 class _TopArtistsState extends State<TopArtistsWidget> {
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
+      context.read<TopBloc>().add(RequestTopArtistsEvent());
+    });
+  }
+
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    context.read<TopBloc>().add(RequestTopArtistsEvent());
   }
 
   Widget _buildCard(int index) {

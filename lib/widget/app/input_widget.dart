@@ -1,13 +1,19 @@
-import 'package:cloud_music/utils/extension/theme_extension.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cloud_music/utils/extension/extionsions.dart';
+import 'package:flutter/services.dart';
 
 class InputWidget extends StatefulWidget {
   final String? hintText;
   final TextEditingController? controller;
   final TextInputType? textInputType;
   final FocusNode? focusNode;
+  final Widget? prefix;
+  final Widget? prefixIcon;
+  final Widget? suffix;
   final Widget? suffixIcon;
+  final TextStyle? style;
+  final int? maxLength;
+  final List<TextInputFormatter>? inputFormatters;
 
   const InputWidget({
     Key? key,
@@ -15,7 +21,13 @@ class InputWidget extends StatefulWidget {
     this.controller,
     this.textInputType,
     this.focusNode,
+    this.prefix,
+    this.prefixIcon,
+    this.suffix,
     this.suffixIcon,
+    this.style,
+    this.maxLength,
+    this.inputFormatters,
   }) : super(key: key);
 
   @override
@@ -24,15 +36,13 @@ class InputWidget extends StatefulWidget {
 
 class _InputWidgetState extends State<InputWidget> {
   InputDecoration get decoration => InputDecoration(
-        fillColor: const Color(0xffF0F0F0),
+        fillColor: Colors.transparent,
         filled: true,
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Color(0xffF0F0F0)),
-          borderRadius: BorderRadius.all(Radius.circular(14.w)),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: L.blackAuto3, width: 1.w),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Theme.of(context).primaryColor),
-          borderRadius: BorderRadius.all(Radius.circular(14.w)),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: L.blackAuto3, width: 1.w),
         ),
         contentPadding: EdgeInsets.symmetric(horizontal: 14.w),
         hintText: widget.hintText,
@@ -40,6 +50,9 @@ class _InputWidgetState extends State<InputWidget> {
               fontSize: 20.w,
               color: Colors.black.withOpacity(0.25),
             ),
+        prefix: widget.prefix,
+        prefixIcon: widget.prefixIcon,
+        suffix: widget.suffix,
         suffixIcon: widget.suffixIcon,
         suffixIconColor: Theme.of(context).primaryColor,
       ).applyDefaults(Theme.of(context).inputDecorationTheme);
@@ -49,11 +62,16 @@ class _InputWidgetState extends State<InputWidget> {
     return SizedBox(
       height: 54.w,
       child: TextFormField(
+        maxLength: widget.maxLength,
         focusNode: widget.focusNode,
         decoration: decoration,
         controller: widget.controller,
         keyboardType: widget.textInputType,
-        cursorColor: Theme.of(context).primaryColor,
+        style: widget.style,
+        cursorHeight: 20.w,
+        cursorWidth: 2.w,
+        textAlignVertical: TextAlignVertical.center,
+        inputFormatters: widget.inputFormatters,
       ),
     );
   }

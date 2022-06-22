@@ -3,9 +3,9 @@
  * Generated file. Do not edit.
  *
  * Locales: 2
- * Strings: 42 (21.0 per locale)
+ * Strings: 52 (26.0 per locale)
  *
- * Built on 2022-06-18 at 08:23 UTC
+ * Built on 2022-06-27 at 08:03 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -117,40 +117,6 @@ class LocaleSettings {
 			.map((locale) => locale.flutterLocale)
 			.toList();
 	}
-
-	/// Sets plural resolvers.
-	/// See https://unicode-org.github.io/cldr-staging/charts/latest/supplemental/language_plural_rules.html
-	/// See https://github.com/Tienisto/flutter-fast-i18n/blob/master/lib/src/model/pluralization_resolvers.dart
-	/// Either specify [language], or [locale]. Locale has precedence.
-	/// Rendered Resolvers: ['en']
-	/// You must set these: ['cn']
-	static void setPluralResolver({String? language, AppLocale? locale, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver}) {
-		final List<AppLocale> locales;
-		if (locale != null) {
-			locales = [locale];
-		} else {
-			switch (language) {
-				case 'en':
-					locales = [AppLocale.en];
-					break;
-				case 'cn':
-					locales = [AppLocale.cn];
-					break;
-				default:
-					locales = [];
-			}
-		}
-		locales.forEach((curr) {
-			switch(curr) {
-				case AppLocale.en:
-					_translationsEn = _TranslationsEn.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
-					break;
-				case AppLocale.cn:
-					_translationsCn = _TranslationsCn.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
-					break;
-			}
-		});
-	}
 }
 
 /// Provides utility functions without any side effects.
@@ -207,10 +173,10 @@ extension AppLocaleExtensions on AppLocale {
 	/// Usage:
 	/// final t = AppLocale.en.build(); // build
 	/// String a = t.my.path; // access
-	_TranslationsEn build({PluralResolver? cardinalResolver, PluralResolver? ordinalResolver}) {
+	_TranslationsEn build() {
 		switch (this) {
-			case AppLocale.en: return _TranslationsEn.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
-			case AppLocale.cn: return _TranslationsCn.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+			case AppLocale.en: return _TranslationsEn.build();
+			case AppLocale.cn: return _TranslationsCn.build();
 		}
 	}
 
@@ -292,24 +258,7 @@ class _InheritedLocaleData extends InheritedWidget {
 	}
 }
 
-// pluralization resolvers
-
-typedef PluralResolver = String Function(num n, {String? zero, String? one, String? two, String? few, String? many, String? other});
-
-PluralResolver _missingPluralResolver(String language) {
-	throw 'Resolver for <lang = $language> not specified';
-}
-
-// prepared by fast_i18n
-
-String _pluralCardinalEn(num n, {String? zero, String? one, String? two, String? few, String? many, String? other}) {
-	if (n == 0) {
-		return zero ?? other!;
-	} else if (n == 1) {
-		return one ?? other!;
-	}
-	return other!;
-}
+// pluralization feature not used
 
 // helpers
 
@@ -350,9 +299,7 @@ class _TranslationsEn {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_TranslationsEn.build({PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
-		: _cardinalResolver = cardinalResolver,
-		  _ordinalResolver = ordinalResolver;
+	_TranslationsEn.build();
 
 	/// Access flat map
 	dynamic operator[](String key) => _flatMap[key];
@@ -361,16 +308,11 @@ class _TranslationsEn {
 	late final Map<String, dynamic> _flatMap = _buildFlatMap();
 
 	// ignore: unused_field
-	final PluralResolver? _cardinalResolver;
-	// ignore: unused_field
-	final PluralResolver? _ordinalResolver;
-
-	// ignore: unused_field
 	late final _TranslationsEn _root = this;
 
 	// Translations
+	String get next => 'Next';
 	late final _TranslationsCommonEn common = _TranslationsCommonEn._(_root);
-	late final _TranslationsMainScreenEn mainScreen = _TranslationsMainScreenEn._(_root);
 	late final _TranslationsHomePageEn HomePage = _TranslationsHomePageEn._(_root);
 	late final _TranslationsLoginPageEn loginPage = _TranslationsLoginPageEn._(_root);
 	late final _TranslationsMyPageEn myPage = _TranslationsMyPageEn._(_root);
@@ -390,22 +332,6 @@ class _TranslationsCommonEn {
 
 	// Translations
 	String get tenThousand => '万';
-}
-
-// Path: mainScreen
-class _TranslationsMainScreenEn {
-	_TranslationsMainScreenEn._(this._root);
-
-	// ignore: unused_field
-	final _TranslationsEn _root;
-
-	// Translations
-	String get title => 'An English Title';
-	String counter({required num count}) => (_root._cardinalResolver ?? _pluralCardinalEn)(count,
-		one: 'You pressed $count time.',
-		other: 'You pressed $count times.',
-	);
-	String get tapMe => 'Tap me';
 }
 
 // Path: HomePage
@@ -433,6 +359,14 @@ class _TranslationsLoginPageEn {
 	String get hintCaptcha => 'Captcha';
 	String get register => 'Register';
 	String get btLogin => 'Login';
+	String get phoneAppBar => '手机号登录';
+	String get phoneTitle => '登录体验更多精彩';
+	String get phoneDesc => '未注册手机号登录后将自动创建账号';
+	String get phoneHint => '输入手机号';
+	String get msgCAPTCHATitle => '输入验证码';
+	String msgCAPTCHADesc({required Object phone}) => '已发送至+86 ${phone}';
+	String btnRetrySec({required Object time}) => '重新发送 ${time}S';
+	String get btnRetry => '重新发送';
 }
 
 // Path: myPage
@@ -509,9 +443,7 @@ class _TranslationsCn implements _TranslationsEn {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_TranslationsCn.build({PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
-		: _cardinalResolver = cardinalResolver,
-		  _ordinalResolver = ordinalResolver;
+	_TranslationsCn.build();
 
 	/// Access flat map
 	@override dynamic operator[](String key) => _flatMap[key];
@@ -520,16 +452,11 @@ class _TranslationsCn implements _TranslationsEn {
 	late final Map<String, dynamic> _flatMap = _buildFlatMap();
 
 	// ignore: unused_field
-	final PluralResolver? _cardinalResolver;
-	// ignore: unused_field
-	final PluralResolver? _ordinalResolver;
-
-	// ignore: unused_field
 	@override late final _TranslationsCn _root = this;
 
 	// Translations
+	@override String get next => '下一步';
 	@override late final _TranslationsCommonCn common = _TranslationsCommonCn._(_root);
-	@override late final _TranslationsMainScreenCn mainScreen = _TranslationsMainScreenCn._(_root);
 	@override late final _TranslationsHomePageCn HomePage = _TranslationsHomePageCn._(_root);
 	@override late final _TranslationsLoginPageCn loginPage = _TranslationsLoginPageCn._(_root);
 	@override late final _TranslationsMyPageCn myPage = _TranslationsMyPageCn._(_root);
@@ -549,22 +476,6 @@ class _TranslationsCommonCn implements _TranslationsCommonEn {
 
 	// Translations
 	@override String get tenThousand => '万';
-}
-
-// Path: mainScreen
-class _TranslationsMainScreenCn implements _TranslationsMainScreenEn {
-	_TranslationsMainScreenCn._(this._root);
-
-	// ignore: unused_field
-	@override final _TranslationsCn _root;
-
-	// Translations
-	@override String get title => 'Ein deutscher Titel';
-	@override String counter({required num count}) => (_root._cardinalResolver ?? _missingPluralResolver('cn'))(count,
-		one: 'Du hast einmal gedrückt.',
-		other: 'Du hast $count mal gedrückt.',
-	);
-	@override String get tapMe => 'Drück mich';
 }
 
 // Path: HomePage
@@ -592,6 +503,14 @@ class _TranslationsLoginPageCn implements _TranslationsLoginPageEn {
 	@override String get hintCaptcha => '验证码';
 	@override String get register => '注册';
 	@override String get btLogin => '登录';
+	@override String get phoneAppBar => '手机号登录';
+	@override String get phoneTitle => '登录体验更多精彩';
+	@override String get phoneDesc => '未注册手机号登录后将自动创建账号';
+	@override String get phoneHint => '输入手机号';
+	@override String get msgCAPTCHATitle => '输入验证码';
+	@override String msgCAPTCHADesc({required Object phone}) => '已发送至+86 ${phone}';
+	@override String btnRetrySec({required Object time}) => '重新发送 ${time}S';
+	@override String get btnRetry => '重新发送';
 }
 
 // Path: myPage
@@ -669,13 +588,8 @@ class _TranslationsMvPageCn implements _TranslationsMvPageEn {
 extension on _TranslationsEn {
 	Map<String, dynamic> _buildFlatMap() {
 		return {
+			'next': 'Next',
 			'common.tenThousand': '万',
-			'mainScreen.title': 'An English Title',
-			'mainScreen.counter': ({required num count}) => (_root._cardinalResolver ?? _pluralCardinalEn)(count,
-				one: 'You pressed $count time.',
-				other: 'You pressed $count times.',
-			),
-			'mainScreen.tapMe': 'Tap me',
 			'HomePage.recommendSongList': '推荐歌单',
 			'HomePage.userSheet': '用戶歌单',
 			'loginPage.title': 'Login Page',
@@ -683,6 +597,14 @@ extension on _TranslationsEn {
 			'loginPage.hintCaptcha': 'Captcha',
 			'loginPage.register': 'Register',
 			'loginPage.btLogin': 'Login',
+			'loginPage.phoneAppBar': '手机号登录',
+			'loginPage.phoneTitle': '登录体验更多精彩',
+			'loginPage.phoneDesc': '未注册手机号登录后将自动创建账号',
+			'loginPage.phoneHint': '输入手机号',
+			'loginPage.msgCAPTCHATitle': '输入验证码',
+			'loginPage.msgCAPTCHADesc': ({required Object phone}) => '已发送至+86 ${phone}',
+			'loginPage.btnRetrySec': ({required Object time}) => '重新发送 ${time}S',
+			'loginPage.btnRetry': '重新发送',
 			'myPage.loginBtn': 'Login In',
 			'playRecordPage.title': 'Playback Record',
 			'DailySongPage.title': 'Daily song',
@@ -699,13 +621,8 @@ extension on _TranslationsEn {
 extension on _TranslationsCn {
 	Map<String, dynamic> _buildFlatMap() {
 		return {
+			'next': '下一步',
 			'common.tenThousand': '万',
-			'mainScreen.title': 'Ein deutscher Titel',
-			'mainScreen.counter': ({required num count}) => (_root._cardinalResolver ?? _missingPluralResolver('cn'))(count,
-				one: 'Du hast einmal gedrückt.',
-				other: 'Du hast $count mal gedrückt.',
-			),
-			'mainScreen.tapMe': 'Drück mich',
 			'HomePage.recommendSongList': '推荐歌单',
 			'HomePage.userSheet': '用戶歌单',
 			'loginPage.title': '登录页',
@@ -713,6 +630,14 @@ extension on _TranslationsCn {
 			'loginPage.hintCaptcha': '验证码',
 			'loginPage.register': '注册',
 			'loginPage.btLogin': '登录',
+			'loginPage.phoneAppBar': '手机号登录',
+			'loginPage.phoneTitle': '登录体验更多精彩',
+			'loginPage.phoneDesc': '未注册手机号登录后将自动创建账号',
+			'loginPage.phoneHint': '输入手机号',
+			'loginPage.msgCAPTCHATitle': '输入验证码',
+			'loginPage.msgCAPTCHADesc': ({required Object phone}) => '已发送至+86 ${phone}',
+			'loginPage.btnRetrySec': ({required Object time}) => '重新发送 ${time}S',
+			'loginPage.btnRetry': '重新发送',
 			'myPage.loginBtn': '立即登录>',
 			'playRecordPage.title': '播放记录',
 			'DailySongPage.title': '每日歌曲',

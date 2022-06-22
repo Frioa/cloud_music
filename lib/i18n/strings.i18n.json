@@ -1,15 +1,7 @@
 {
+  "next":"Next",
   "common": {
     "tenThousand": "万"
-  },
-
-  "mainScreen": {
-    "title": "An English Title",
-    "counter": {
-      "one": "You pressed $count time.",
-      "other": "You pressed $count times."
-    },
-    "tapMe": "Tap me"
   },
   "HomePage": {
     "recommendSongList": "推荐歌单",
@@ -20,7 +12,16 @@
     "hintPhone": "Phone",
     "hintCaptcha": "Captcha",
     "register": "Register",
-    "btLogin": "Login"
+    "btLogin": "Login",
+    "phoneAppBar": "手机号登录",
+    "phoneTitle": "登录体验更多精彩",
+    "phoneDesc": "未注册手机号登录后将自动创建账号",
+    "phoneHint": "输入手机号",
+    "msgCAPTCHATitle": "输入验证码",
+    "msgCAPTCHADesc": "已发送至+86 ${phone}",
+    "btnRetrySec": "重新发送 ${time}S",
+    "btnRetry": "重新发送"
+
   },
   "myPage": {
     "loginBtn": "Login In"
@@ -42,6 +43,5 @@
   "mvPage": {
     "collection": "Collection",
     "commentIntro": "People who like to comment are lovely"
-
   }
 }

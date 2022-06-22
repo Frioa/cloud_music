@@ -16,43 +16,70 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginEvent {
+  VoidCallback? get onSuccess => throw _privateConstructorUsedError;
+  VoidCallback? get onError => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() login,
-    required TResult Function(int mvId) loginStatus,
+    required TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)
+        sendCaptcha,
+    required TResult Function(String phone, String captcha,
+            VoidCallback? onSuccess, VoidCallback? onError)
+        cellphone,
+    required TResult Function(VoidCallback? onSuccess, VoidCallback? onError)
+        loginStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? login,
-    TResult Function(int mvId)? loginStatus,
+    TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)?
+        sendCaptcha,
+    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+            VoidCallback? onError)?
+        cellphone,
+    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+        loginStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? login,
-    TResult Function(int mvId)? loginStatus,
+    TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)?
+        sendCaptcha,
+    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+            VoidCallback? onError)?
+        cellphone,
+    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+        loginStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_$MVURL value) login,
-    required TResult Function(_$requestDetail value) loginStatus,
+    required TResult Function(_$sendCaptcha value) sendCaptcha,
+    required TResult Function(_$cellphone value) cellphone,
+    required TResult Function(_$loginStatus value) loginStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$MVURL value)? login,
-    TResult Function(_$requestDetail value)? loginStatus,
+    TResult Function(_$sendCaptcha value)? sendCaptcha,
+    TResult Function(_$cellphone value)? cellphone,
+    TResult Function(_$loginStatus value)? loginStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$MVURL value)? login,
-    TResult Function(_$requestDetail value)? loginStatus,
+    TResult Function(_$sendCaptcha value)? sendCaptcha,
+    TResult Function(_$cellphone value)? cellphone,
+    TResult Function(_$loginStatus value)? loginStatus,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $LoginEventCopyWith<LoginEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +88,7 @@ abstract class $LoginEventCopyWith<$Res> {
   factory $LoginEventCopyWith(
           LoginEvent value, $Res Function(LoginEvent) then) =
       _$LoginEventCopyWithImpl<$Res>;
+  $Res call({VoidCallback? onSuccess, VoidCallback? onError});
 }
 
 /// @nodoc
@@ -70,198 +98,150 @@ class _$LoginEventCopyWithImpl<$Res> implements $LoginEventCopyWith<$Res> {
   final LoginEvent _value;
   // ignore: unused_field
   final $Res Function(LoginEvent) _then;
-}
-
-/// @nodoc
-abstract class _$$MVURLCopyWith<$Res> {
-  factory _$$MVURLCopyWith(_$MVURL value, $Res Function(_$MVURL) then) =
-      __$$MVURLCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$MVURLCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements _$$MVURLCopyWith<$Res> {
-  __$$MVURLCopyWithImpl(_$MVURL _value, $Res Function(_$MVURL) _then)
-      : super(_value, (v) => _then(v as _$MVURL));
-
-  @override
-  _$MVURL get _value => super._value as _$MVURL;
-}
-
-/// @nodoc
-
-class _$_$MVURL implements _$MVURL {
-  const _$_$MVURL();
-
-  @override
-  String toString() {
-    return 'LoginEvent.login()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$MVURL);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() login,
-    required TResult Function(int mvId) loginStatus,
-  }) {
-    return login();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? login,
-    TResult Function(int mvId)? loginStatus,
-  }) {
-    return login?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? login,
-    TResult Function(int mvId)? loginStatus,
-    required TResult orElse(),
-  }) {
-    if (login != null) {
-      return login();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_$MVURL value) login,
-    required TResult Function(_$requestDetail value) loginStatus,
-  }) {
-    return login(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$MVURL value)? login,
-    TResult Function(_$requestDetail value)? loginStatus,
-  }) {
-    return login?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$MVURL value)? login,
-    TResult Function(_$requestDetail value)? loginStatus,
-    required TResult orElse(),
-  }) {
-    if (login != null) {
-      return login(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _$MVURL implements LoginEvent {
-  const factory _$MVURL() = _$_$MVURL;
-}
-
-/// @nodoc
-abstract class _$$requestDetailCopyWith<$Res> {
-  factory _$$requestDetailCopyWith(
-          _$requestDetail value, $Res Function(_$requestDetail) then) =
-      __$$requestDetailCopyWithImpl<$Res>;
-  $Res call({int mvId});
-}
-
-/// @nodoc
-class __$$requestDetailCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements _$$requestDetailCopyWith<$Res> {
-  __$$requestDetailCopyWithImpl(
-      _$requestDetail _value, $Res Function(_$requestDetail) _then)
-      : super(_value, (v) => _then(v as _$requestDetail));
-
-  @override
-  _$requestDetail get _value => super._value as _$requestDetail;
 
   @override
   $Res call({
-    Object? mvId = freezed,
+    Object? onSuccess = freezed,
+    Object? onError = freezed,
   }) {
-    return _then(_$requestDetail(
-      mvId == freezed
-          ? _value.mvId
-          : mvId // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_value.copyWith(
+      onSuccess: onSuccess == freezed
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
+      onError: onError == freezed
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$sendCaptchaCopyWith<$Res>
+    implements $LoginEventCopyWith<$Res> {
+  factory _$$sendCaptchaCopyWith(
+          _$sendCaptcha value, $Res Function(_$sendCaptcha) then) =
+      __$$sendCaptchaCopyWithImpl<$Res>;
+  @override
+  $Res call({String phone, VoidCallback? onSuccess, VoidCallback? onError});
+}
+
+/// @nodoc
+class __$$sendCaptchaCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$sendCaptchaCopyWith<$Res> {
+  __$$sendCaptchaCopyWithImpl(
+      _$sendCaptcha _value, $Res Function(_$sendCaptcha) _then)
+      : super(_value, (v) => _then(v as _$sendCaptcha));
+
+  @override
+  _$sendCaptcha get _value => super._value as _$sendCaptcha;
+
+  @override
+  $Res call({
+    Object? phone = freezed,
+    Object? onSuccess = freezed,
+    Object? onError = freezed,
+  }) {
+    return _then(_$sendCaptcha(
+      phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      onSuccess: onSuccess == freezed
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
+      onError: onError == freezed
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_$requestDetail implements _$requestDetail {
-  const _$_$requestDetail(this.mvId);
+class _$_$sendCaptcha implements _$sendCaptcha {
+  const _$_$sendCaptcha(this.phone, {this.onSuccess, this.onError});
 
   @override
-  final int mvId;
+  final String phone;
+  @override
+  final VoidCallback? onSuccess;
+  @override
+  final VoidCallback? onError;
 
   @override
   String toString() {
-    return 'LoginEvent.loginStatus(mvId: $mvId)';
+    return 'LoginEvent.sendCaptcha(phone: $phone, onSuccess: $onSuccess, onError: $onError)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$requestDetail &&
-            const DeepCollectionEquality().equals(other.mvId, mvId));
+            other is _$sendCaptcha &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess) &&
+            (identical(other.onError, onError) || other.onError == onError));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(mvId));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(phone), onSuccess, onError);
 
   @JsonKey(ignore: true)
   @override
-  _$$requestDetailCopyWith<_$requestDetail> get copyWith =>
-      __$$requestDetailCopyWithImpl<_$requestDetail>(this, _$identity);
+  _$$sendCaptchaCopyWith<_$sendCaptcha> get copyWith =>
+      __$$sendCaptchaCopyWithImpl<_$sendCaptcha>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() login,
-    required TResult Function(int mvId) loginStatus,
+    required TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)
+        sendCaptcha,
+    required TResult Function(String phone, String captcha,
+            VoidCallback? onSuccess, VoidCallback? onError)
+        cellphone,
+    required TResult Function(VoidCallback? onSuccess, VoidCallback? onError)
+        loginStatus,
   }) {
-    return loginStatus(mvId);
+    return sendCaptcha(phone, onSuccess, onError);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? login,
-    TResult Function(int mvId)? loginStatus,
+    TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)?
+        sendCaptcha,
+    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+            VoidCallback? onError)?
+        cellphone,
+    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+        loginStatus,
   }) {
-    return loginStatus?.call(mvId);
+    return sendCaptcha?.call(phone, onSuccess, onError);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? login,
-    TResult Function(int mvId)? loginStatus,
+    TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)?
+        sendCaptcha,
+    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+            VoidCallback? onError)?
+        cellphone,
+    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+        loginStatus,
     required TResult orElse(),
   }) {
-    if (loginStatus != null) {
-      return loginStatus(mvId);
+    if (sendCaptcha != null) {
+      return sendCaptcha(phone, onSuccess, onError);
     }
     return orElse();
   }
@@ -269,8 +249,376 @@ class _$_$requestDetail implements _$requestDetail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_$MVURL value) login,
-    required TResult Function(_$requestDetail value) loginStatus,
+    required TResult Function(_$sendCaptcha value) sendCaptcha,
+    required TResult Function(_$cellphone value) cellphone,
+    required TResult Function(_$loginStatus value) loginStatus,
+  }) {
+    return sendCaptcha(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_$sendCaptcha value)? sendCaptcha,
+    TResult Function(_$cellphone value)? cellphone,
+    TResult Function(_$loginStatus value)? loginStatus,
+  }) {
+    return sendCaptcha?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_$sendCaptcha value)? sendCaptcha,
+    TResult Function(_$cellphone value)? cellphone,
+    TResult Function(_$loginStatus value)? loginStatus,
+    required TResult orElse(),
+  }) {
+    if (sendCaptcha != null) {
+      return sendCaptcha(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _$sendCaptcha implements LoginEvent {
+  const factory _$sendCaptcha(final String phone,
+      {final VoidCallback? onSuccess,
+      final VoidCallback? onError}) = _$_$sendCaptcha;
+
+  String get phone => throw _privateConstructorUsedError;
+  @override
+  VoidCallback? get onSuccess => throw _privateConstructorUsedError;
+  @override
+  VoidCallback? get onError => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$sendCaptchaCopyWith<_$sendCaptcha> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$cellphoneCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
+  factory _$$cellphoneCopyWith(
+          _$cellphone value, $Res Function(_$cellphone) then) =
+      __$$cellphoneCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String phone,
+      String captcha,
+      VoidCallback? onSuccess,
+      VoidCallback? onError});
+}
+
+/// @nodoc
+class __$$cellphoneCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$cellphoneCopyWith<$Res> {
+  __$$cellphoneCopyWithImpl(
+      _$cellphone _value, $Res Function(_$cellphone) _then)
+      : super(_value, (v) => _then(v as _$cellphone));
+
+  @override
+  _$cellphone get _value => super._value as _$cellphone;
+
+  @override
+  $Res call({
+    Object? phone = freezed,
+    Object? captcha = freezed,
+    Object? onSuccess = freezed,
+    Object? onError = freezed,
+  }) {
+    return _then(_$cellphone(
+      phone == freezed
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      captcha == freezed
+          ? _value.captcha
+          : captcha // ignore: cast_nullable_to_non_nullable
+              as String,
+      onSuccess: onSuccess == freezed
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
+      onError: onError == freezed
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_$cellphone implements _$cellphone {
+  const _$_$cellphone(this.phone, this.captcha, {this.onSuccess, this.onError});
+
+  @override
+  final String phone;
+  @override
+  final String captcha;
+  @override
+  final VoidCallback? onSuccess;
+  @override
+  final VoidCallback? onError;
+
+  @override
+  String toString() {
+    return 'LoginEvent.cellphone(phone: $phone, captcha: $captcha, onSuccess: $onSuccess, onError: $onError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$cellphone &&
+            const DeepCollectionEquality().equals(other.phone, phone) &&
+            const DeepCollectionEquality().equals(other.captcha, captcha) &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess) &&
+            (identical(other.onError, onError) || other.onError == onError));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(captcha),
+      onSuccess,
+      onError);
+
+  @JsonKey(ignore: true)
+  @override
+  _$$cellphoneCopyWith<_$cellphone> get copyWith =>
+      __$$cellphoneCopyWithImpl<_$cellphone>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)
+        sendCaptcha,
+    required TResult Function(String phone, String captcha,
+            VoidCallback? onSuccess, VoidCallback? onError)
+        cellphone,
+    required TResult Function(VoidCallback? onSuccess, VoidCallback? onError)
+        loginStatus,
+  }) {
+    return cellphone(phone, captcha, onSuccess, onError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)?
+        sendCaptcha,
+    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+            VoidCallback? onError)?
+        cellphone,
+    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+        loginStatus,
+  }) {
+    return cellphone?.call(phone, captcha, onSuccess, onError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)?
+        sendCaptcha,
+    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+            VoidCallback? onError)?
+        cellphone,
+    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+        loginStatus,
+    required TResult orElse(),
+  }) {
+    if (cellphone != null) {
+      return cellphone(phone, captcha, onSuccess, onError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_$sendCaptcha value) sendCaptcha,
+    required TResult Function(_$cellphone value) cellphone,
+    required TResult Function(_$loginStatus value) loginStatus,
+  }) {
+    return cellphone(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_$sendCaptcha value)? sendCaptcha,
+    TResult Function(_$cellphone value)? cellphone,
+    TResult Function(_$loginStatus value)? loginStatus,
+  }) {
+    return cellphone?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_$sendCaptcha value)? sendCaptcha,
+    TResult Function(_$cellphone value)? cellphone,
+    TResult Function(_$loginStatus value)? loginStatus,
+    required TResult orElse(),
+  }) {
+    if (cellphone != null) {
+      return cellphone(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _$cellphone implements LoginEvent {
+  const factory _$cellphone(final String phone, final String captcha,
+      {final VoidCallback? onSuccess,
+      final VoidCallback? onError}) = _$_$cellphone;
+
+  String get phone => throw _privateConstructorUsedError;
+  String get captcha => throw _privateConstructorUsedError;
+  @override
+  VoidCallback? get onSuccess => throw _privateConstructorUsedError;
+  @override
+  VoidCallback? get onError => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$$cellphoneCopyWith<_$cellphone> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$loginStatusCopyWith<$Res>
+    implements $LoginEventCopyWith<$Res> {
+  factory _$$loginStatusCopyWith(
+          _$loginStatus value, $Res Function(_$loginStatus) then) =
+      __$$loginStatusCopyWithImpl<$Res>;
+  @override
+  $Res call({VoidCallback? onSuccess, VoidCallback? onError});
+}
+
+/// @nodoc
+class __$$loginStatusCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$loginStatusCopyWith<$Res> {
+  __$$loginStatusCopyWithImpl(
+      _$loginStatus _value, $Res Function(_$loginStatus) _then)
+      : super(_value, (v) => _then(v as _$loginStatus));
+
+  @override
+  _$loginStatus get _value => super._value as _$loginStatus;
+
+  @override
+  $Res call({
+    Object? onSuccess = freezed,
+    Object? onError = freezed,
+  }) {
+    return _then(_$loginStatus(
+      onSuccess: onSuccess == freezed
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
+      onError: onError == freezed
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as VoidCallback?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_$loginStatus implements _$loginStatus {
+  const _$_$loginStatus({this.onSuccess, this.onError});
+
+  @override
+  final VoidCallback? onSuccess;
+  @override
+  final VoidCallback? onError;
+
+  @override
+  String toString() {
+    return 'LoginEvent.loginStatus(onSuccess: $onSuccess, onError: $onError)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$loginStatus &&
+            (identical(other.onSuccess, onSuccess) ||
+                other.onSuccess == onSuccess) &&
+            (identical(other.onError, onError) || other.onError == onError));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, onSuccess, onError);
+
+  @JsonKey(ignore: true)
+  @override
+  _$$loginStatusCopyWith<_$loginStatus> get copyWith =>
+      __$$loginStatusCopyWithImpl<_$loginStatus>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)
+        sendCaptcha,
+    required TResult Function(String phone, String captcha,
+            VoidCallback? onSuccess, VoidCallback? onError)
+        cellphone,
+    required TResult Function(VoidCallback? onSuccess, VoidCallback? onError)
+        loginStatus,
+  }) {
+    return loginStatus(onSuccess, onError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)?
+        sendCaptcha,
+    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+            VoidCallback? onError)?
+        cellphone,
+    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+        loginStatus,
+  }) {
+    return loginStatus?.call(onSuccess, onError);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String phone, VoidCallback? onSuccess, VoidCallback? onError)?
+        sendCaptcha,
+    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+            VoidCallback? onError)?
+        cellphone,
+    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+        loginStatus,
+    required TResult orElse(),
+  }) {
+    if (loginStatus != null) {
+      return loginStatus(onSuccess, onError);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_$sendCaptcha value) sendCaptcha,
+    required TResult Function(_$cellphone value) cellphone,
+    required TResult Function(_$loginStatus value) loginStatus,
   }) {
     return loginStatus(this);
   }
@@ -278,8 +626,9 @@ class _$_$requestDetail implements _$requestDetail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$MVURL value)? login,
-    TResult Function(_$requestDetail value)? loginStatus,
+    TResult Function(_$sendCaptcha value)? sendCaptcha,
+    TResult Function(_$cellphone value)? cellphone,
+    TResult Function(_$loginStatus value)? loginStatus,
   }) {
     return loginStatus?.call(this);
   }
@@ -287,8 +636,9 @@ class _$_$requestDetail implements _$requestDetail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$MVURL value)? login,
-    TResult Function(_$requestDetail value)? loginStatus,
+    TResult Function(_$sendCaptcha value)? sendCaptcha,
+    TResult Function(_$cellphone value)? cellphone,
+    TResult Function(_$loginStatus value)? loginStatus,
     required TResult orElse(),
   }) {
     if (loginStatus != null) {
@@ -298,18 +648,28 @@ class _$_$requestDetail implements _$requestDetail {
   }
 }
 
-abstract class _$requestDetail implements LoginEvent {
-  const factory _$requestDetail(final int mvId) = _$_$requestDetail;
+abstract class _$loginStatus implements LoginEvent {
+  const factory _$loginStatus(
+      {final VoidCallback? onSuccess,
+      final VoidCallback? onError}) = _$_$loginStatus;
 
-  int get mvId => throw _privateConstructorUsedError;
+  @override
+  VoidCallback? get onSuccess => throw _privateConstructorUsedError;
+  @override
+  VoidCallback? get onError => throw _privateConstructorUsedError;
+  @override
   @JsonKey(ignore: true)
-  _$$requestDetailCopyWith<_$requestDetail> get copyWith =>
+  _$$loginStatusCopyWith<_$loginStatus> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$LoginNewState {
-  ViewModel<DataWrapResponse<MVURLResponse>>? get mvUrlVm =>
+  ViewModel<VerifyNestCaptchaResponse>? get sentCaptchaVm =>
+      throw _privateConstructorUsedError;
+  ViewModel<NestLoginResponse>? get nestPhoneLoginVm =>
+      throw _privateConstructorUsedError;
+  ViewModel<DataWrapResponse<NestLoginStatusResponse>>? get loginStatusVm =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -322,7 +682,10 @@ abstract class $LoginNewStateCopyWith<$Res> {
   factory $LoginNewStateCopyWith(
           LoginNewState value, $Res Function(LoginNewState) then) =
       _$LoginNewStateCopyWithImpl<$Res>;
-  $Res call({ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm});
+  $Res call(
+      {ViewModel<VerifyNestCaptchaResponse>? sentCaptchaVm,
+      ViewModel<NestLoginResponse>? nestPhoneLoginVm,
+      ViewModel<DataWrapResponse<NestLoginStatusResponse>>? loginStatusVm});
 }
 
 /// @nodoc
@@ -336,13 +699,23 @@ class _$LoginNewStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? mvUrlVm = freezed,
+    Object? sentCaptchaVm = freezed,
+    Object? nestPhoneLoginVm = freezed,
+    Object? loginStatusVm = freezed,
   }) {
     return _then(_value.copyWith(
-      mvUrlVm: mvUrlVm == freezed
-          ? _value.mvUrlVm
-          : mvUrlVm // ignore: cast_nullable_to_non_nullable
-              as ViewModel<DataWrapResponse<MVURLResponse>>?,
+      sentCaptchaVm: sentCaptchaVm == freezed
+          ? _value.sentCaptchaVm
+          : sentCaptchaVm // ignore: cast_nullable_to_non_nullable
+              as ViewModel<VerifyNestCaptchaResponse>?,
+      nestPhoneLoginVm: nestPhoneLoginVm == freezed
+          ? _value.nestPhoneLoginVm
+          : nestPhoneLoginVm // ignore: cast_nullable_to_non_nullable
+              as ViewModel<NestLoginResponse>?,
+      loginStatusVm: loginStatusVm == freezed
+          ? _value.loginStatusVm
+          : loginStatusVm // ignore: cast_nullable_to_non_nullable
+              as ViewModel<DataWrapResponse<NestLoginStatusResponse>>?,
     ));
   }
 }
@@ -354,7 +727,10 @@ abstract class _$LoginNewStateCopyWith<$Res>
           _LoginNewState value, $Res Function(_LoginNewState) then) =
       __$LoginNewStateCopyWithImpl<$Res>;
   @override
-  $Res call({ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm});
+  $Res call(
+      {ViewModel<VerifyNestCaptchaResponse>? sentCaptchaVm,
+      ViewModel<NestLoginResponse>? nestPhoneLoginVm,
+      ViewModel<DataWrapResponse<NestLoginStatusResponse>>? loginStatusVm});
 }
 
 /// @nodoc
@@ -370,13 +746,23 @@ class __$LoginNewStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? mvUrlVm = freezed,
+    Object? sentCaptchaVm = freezed,
+    Object? nestPhoneLoginVm = freezed,
+    Object? loginStatusVm = freezed,
   }) {
     return _then(_LoginNewState(
-      mvUrlVm: mvUrlVm == freezed
-          ? _value.mvUrlVm
-          : mvUrlVm // ignore: cast_nullable_to_non_nullable
-              as ViewModel<DataWrapResponse<MVURLResponse>>?,
+      sentCaptchaVm: sentCaptchaVm == freezed
+          ? _value.sentCaptchaVm
+          : sentCaptchaVm // ignore: cast_nullable_to_non_nullable
+              as ViewModel<VerifyNestCaptchaResponse>?,
+      nestPhoneLoginVm: nestPhoneLoginVm == freezed
+          ? _value.nestPhoneLoginVm
+          : nestPhoneLoginVm // ignore: cast_nullable_to_non_nullable
+              as ViewModel<NestLoginResponse>?,
+      loginStatusVm: loginStatusVm == freezed
+          ? _value.loginStatusVm
+          : loginStatusVm // ignore: cast_nullable_to_non_nullable
+              as ViewModel<DataWrapResponse<NestLoginStatusResponse>>?,
     ));
   }
 }
@@ -384,14 +770,19 @@ class __$LoginNewStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LoginNewState implements _LoginNewState {
-  const _$_LoginNewState({this.mvUrlVm});
+  const _$_LoginNewState(
+      {this.sentCaptchaVm, this.nestPhoneLoginVm, this.loginStatusVm});
 
   @override
-  final ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm;
+  final ViewModel<VerifyNestCaptchaResponse>? sentCaptchaVm;
+  @override
+  final ViewModel<NestLoginResponse>? nestPhoneLoginVm;
+  @override
+  final ViewModel<DataWrapResponse<NestLoginStatusResponse>>? loginStatusVm;
 
   @override
   String toString() {
-    return 'LoginNewState(mvUrlVm: $mvUrlVm)';
+    return 'LoginNewState(sentCaptchaVm: $sentCaptchaVm, nestPhoneLoginVm: $nestPhoneLoginVm, loginStatusVm: $loginStatusVm)';
   }
 
   @override
@@ -399,12 +790,20 @@ class _$_LoginNewState implements _LoginNewState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _LoginNewState &&
-            const DeepCollectionEquality().equals(other.mvUrlVm, mvUrlVm));
+            const DeepCollectionEquality()
+                .equals(other.sentCaptchaVm, sentCaptchaVm) &&
+            const DeepCollectionEquality()
+                .equals(other.nestPhoneLoginVm, nestPhoneLoginVm) &&
+            const DeepCollectionEquality()
+                .equals(other.loginStatusVm, loginStatusVm));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(mvUrlVm));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(sentCaptchaVm),
+      const DeepCollectionEquality().hash(nestPhoneLoginVm),
+      const DeepCollectionEquality().hash(loginStatusVm));
 
   @JsonKey(ignore: true)
   @override
@@ -414,11 +813,19 @@ class _$_LoginNewState implements _LoginNewState {
 
 abstract class _LoginNewState implements LoginNewState {
   const factory _LoginNewState(
-          {final ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm}) =
-      _$_LoginNewState;
+      {final ViewModel<VerifyNestCaptchaResponse>? sentCaptchaVm,
+      final ViewModel<NestLoginResponse>? nestPhoneLoginVm,
+      final ViewModel<DataWrapResponse<NestLoginStatusResponse>>?
+          loginStatusVm}) = _$_LoginNewState;
 
   @override
-  ViewModel<DataWrapResponse<MVURLResponse>>? get mvUrlVm =>
+  ViewModel<VerifyNestCaptchaResponse>? get sentCaptchaVm =>
+      throw _privateConstructorUsedError;
+  @override
+  ViewModel<NestLoginResponse>? get nestPhoneLoginVm =>
+      throw _privateConstructorUsedError;
+  @override
+  ViewModel<DataWrapResponse<NestLoginStatusResponse>>? get loginStatusVm =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

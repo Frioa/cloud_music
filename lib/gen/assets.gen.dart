@@ -10,14 +10,17 @@ import 'package:flutter/widgets.dart';
 class Assets {
   Assets._();
 
+  static const String icArrowDown = 'assets/ic_arrow_down.svg';
   static const AssetGenImage icBtnPause =
       AssetGenImage('assets/ic_btn_pause.png');
   static const AssetGenImage icBtnPlay =
       AssetGenImage('assets/ic_btn_play.png');
+  static const String icClose = 'assets/ic_close.svg';
   static const AssetGenImage icDefaultAvatar =
       AssetGenImage('assets/ic_default_avatar.jpg');
   static const AssetGenImage icDefaultSongSheet =
       AssetGenImage('assets/ic_default_song_sheet.png');
+  static const String icLoginModifyPhone = 'assets/ic_login_modify_phone.svg';
   static const String icMvCollection = 'assets/ic_mv_collection.svg';
   static const String icMvComment = 'assets/ic_mv_comment.svg';
   static const AssetGenImage icMvForwarding =

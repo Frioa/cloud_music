@@ -23,13 +23,14 @@ class LinkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = style?.color ?? Theme.of(context).primaryColor;
+    final color = style?.color ?? Colors.blueAccent;
     final padding = this.padding ??
         EdgeInsets.symmetric(
           vertical: 4.w,
           horizontal: 8.w,
         );
     return InkWell(
+      onTap: onTap,
       child: Padding(
         padding: padding,
         child: Text(

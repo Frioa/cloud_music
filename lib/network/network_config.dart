@@ -11,7 +11,7 @@ late Dio _dio = Dio();
 Dio get dio => _dio;
 
 Future<void> initDio() async {
-  await getApplicationSupportDirectory().then((dir) async {
+  await getApplicationDocumentsDirectory().then((dir) async {
     logger.d('init dio. dir=$dir');
     _dio = Dio()
       ..interceptors.addAll([
