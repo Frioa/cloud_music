@@ -259,7 +259,7 @@ class GifImage extends AssetImage {
       data = await key.bundle.load(key.name);
       // ignore: avoid_catching_errors
     } on FlutterError {
-      PaintingBinding.instance!.imageCache!.evict(key);
+      PaintingBinding.instance.imageCache.evict(key);
       rethrow;
     }
 
@@ -268,7 +268,7 @@ class GifImage extends AssetImage {
     /// ignore the warning that the null-handling logic is dead code).
     /// ignore: unnecessary_null_comparison
     if (data == null) {
-      PaintingBinding.instance!.imageCache!.evict(key);
+      PaintingBinding.instance.imageCache.evict(key);
       throw StateError('Unable to read data');
     }
     return await decode(data.buffer.asUint8List());
@@ -446,7 +446,7 @@ class GifImageStreamCompleter extends ImageStreamCompleter {
       return;
     }
     _frameCallbackScheduled = true;
-    SchedulerBinding.instance!.scheduleFrameCallback(_handleAppFrame);
+    SchedulerBinding.instance.scheduleFrameCallback(_handleAppFrame);
   }
 
   void _emitFrame(ImageInfo imageInfo) {

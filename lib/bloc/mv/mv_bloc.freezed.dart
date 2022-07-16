@@ -72,27 +72,27 @@ class _$MVEventCopyWithImpl<$Res> implements $MVEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$MVURLCopyWith<$Res> {
-  factory _$$MVURLCopyWith(_$MVURL value, $Res Function(_$MVURL) then) =
-      __$$MVURLCopyWithImpl<$Res>;
+abstract class _$$_$MVURLCopyWith<$Res> {
+  factory _$$_$MVURLCopyWith(_$_$MVURL value, $Res Function(_$_$MVURL) then) =
+      __$$_$MVURLCopyWithImpl<$Res>;
   $Res call({int id, VoidCallback onSuccess});
 }
 
 /// @nodoc
-class __$$MVURLCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
-    implements _$$MVURLCopyWith<$Res> {
-  __$$MVURLCopyWithImpl(_$MVURL _value, $Res Function(_$MVURL) _then)
-      : super(_value, (v) => _then(v as _$MVURL));
+class __$$_$MVURLCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
+    implements _$$_$MVURLCopyWith<$Res> {
+  __$$_$MVURLCopyWithImpl(_$_$MVURL _value, $Res Function(_$_$MVURL) _then)
+      : super(_value, (v) => _then(v as _$_$MVURL));
 
   @override
-  _$MVURL get _value => super._value as _$MVURL;
+  _$_$MVURL get _value => super._value as _$_$MVURL;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? onSuccess = freezed,
   }) {
-    return _then(_$MVURL(
+    return _then(_$_$MVURL(
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -124,7 +124,7 @@ class _$_$MVURL implements _$MVURL {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MVURL &&
+            other is _$_$MVURL &&
             const DeepCollectionEquality().equals(other.id, id) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess));
@@ -136,8 +136,8 @@ class _$_$MVURL implements _$MVURL {
 
   @JsonKey(ignore: true)
   @override
-  _$$MVURLCopyWith<_$MVURL> get copyWith =>
-      __$$MVURLCopyWithImpl<_$MVURL>(this, _$identity);
+  _$$_$MVURLCopyWith<_$_$MVURL> get copyWith =>
+      __$$_$MVURLCopyWithImpl<_$_$MVURL>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -206,35 +206,36 @@ abstract class _$MVURL implements MVEvent {
   const factory _$MVURL(final int id, {required final VoidCallback onSuccess}) =
       _$_$MVURL;
 
-  int get id => throw _privateConstructorUsedError;
-  VoidCallback get onSuccess => throw _privateConstructorUsedError;
+  int get id;
+  VoidCallback get onSuccess;
   @JsonKey(ignore: true)
-  _$$MVURLCopyWith<_$MVURL> get copyWith => throw _privateConstructorUsedError;
+  _$$_$MVURLCopyWith<_$_$MVURL> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$requestDetailCopyWith<$Res> {
-  factory _$$requestDetailCopyWith(
-          _$requestDetail value, $Res Function(_$requestDetail) then) =
-      __$$requestDetailCopyWithImpl<$Res>;
+abstract class _$$_$requestDetailCopyWith<$Res> {
+  factory _$$_$requestDetailCopyWith(
+          _$_$requestDetail value, $Res Function(_$_$requestDetail) then) =
+      __$$_$requestDetailCopyWithImpl<$Res>;
   $Res call({int mvId});
 }
 
 /// @nodoc
-class __$$requestDetailCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
-    implements _$$requestDetailCopyWith<$Res> {
-  __$$requestDetailCopyWithImpl(
-      _$requestDetail _value, $Res Function(_$requestDetail) _then)
-      : super(_value, (v) => _then(v as _$requestDetail));
+class __$$_$requestDetailCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
+    implements _$$_$requestDetailCopyWith<$Res> {
+  __$$_$requestDetailCopyWithImpl(
+      _$_$requestDetail _value, $Res Function(_$_$requestDetail) _then)
+      : super(_value, (v) => _then(v as _$_$requestDetail));
 
   @override
-  _$requestDetail get _value => super._value as _$requestDetail;
+  _$_$requestDetail get _value => super._value as _$_$requestDetail;
 
   @override
   $Res call({
     Object? mvId = freezed,
   }) {
-    return _then(_$requestDetail(
+    return _then(_$_$requestDetail(
       mvId == freezed
           ? _value.mvId
           : mvId // ignore: cast_nullable_to_non_nullable
@@ -260,7 +261,7 @@ class _$_$requestDetail implements _$requestDetail {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$requestDetail &&
+            other is _$_$requestDetail &&
             const DeepCollectionEquality().equals(other.mvId, mvId));
   }
 
@@ -270,8 +271,8 @@ class _$_$requestDetail implements _$requestDetail {
 
   @JsonKey(ignore: true)
   @override
-  _$$requestDetailCopyWith<_$requestDetail> get copyWith =>
-      __$$requestDetailCopyWithImpl<_$requestDetail>(this, _$identity);
+  _$$_$requestDetailCopyWith<_$_$requestDetail> get copyWith =>
+      __$$_$requestDetailCopyWithImpl<_$_$requestDetail>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -339,9 +340,9 @@ class _$_$requestDetail implements _$requestDetail {
 abstract class _$requestDetail implements MVEvent {
   const factory _$requestDetail(final int mvId) = _$_$requestDetail;
 
-  int get mvId => throw _privateConstructorUsedError;
+  int get mvId;
   @JsonKey(ignore: true)
-  _$$requestDetailCopyWith<_$requestDetail> get copyWith =>
+  _$$_$requestDetailCopyWith<_$_$requestDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -392,9 +393,10 @@ class _$MVStateCopyWithImpl<$Res> implements $MVStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$MVStateCopyWith<$Res> implements $MVStateCopyWith<$Res> {
-  factory _$MVStateCopyWith(_MVState value, $Res Function(_MVState) then) =
-      __$MVStateCopyWithImpl<$Res>;
+abstract class _$$_MVStateCopyWith<$Res> implements $MVStateCopyWith<$Res> {
+  factory _$$_MVStateCopyWith(
+          _$_MVState value, $Res Function(_$_MVState) then) =
+      __$$_MVStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm,
@@ -402,20 +404,20 @@ abstract class _$MVStateCopyWith<$Res> implements $MVStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$MVStateCopyWithImpl<$Res> extends _$MVStateCopyWithImpl<$Res>
-    implements _$MVStateCopyWith<$Res> {
-  __$MVStateCopyWithImpl(_MVState _value, $Res Function(_MVState) _then)
-      : super(_value, (v) => _then(v as _MVState));
+class __$$_MVStateCopyWithImpl<$Res> extends _$MVStateCopyWithImpl<$Res>
+    implements _$$_MVStateCopyWith<$Res> {
+  __$$_MVStateCopyWithImpl(_$_MVState _value, $Res Function(_$_MVState) _then)
+      : super(_value, (v) => _then(v as _$_MVState));
 
   @override
-  _MVState get _value => super._value as _MVState;
+  _$_MVState get _value => super._value as _$_MVState;
 
   @override
   $Res call({
     Object? mvUrlVm = freezed,
     Object? mvDetailVM = freezed,
   }) {
-    return _then(_MVState(
+    return _then(_$_MVState(
       mvUrlVm: mvUrlVm == freezed
           ? _value.mvUrlVm
           : mvUrlVm // ignore: cast_nullable_to_non_nullable
@@ -447,7 +449,7 @@ class _$_MVState implements _MVState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MVState &&
+            other is _$_MVState &&
             const DeepCollectionEquality().equals(other.mvUrlVm, mvUrlVm) &&
             const DeepCollectionEquality()
                 .equals(other.mvDetailVM, mvDetailVM));
@@ -461,8 +463,8 @@ class _$_MVState implements _MVState {
 
   @JsonKey(ignore: true)
   @override
-  _$MVStateCopyWith<_MVState> get copyWith =>
-      __$MVStateCopyWithImpl<_MVState>(this, _$identity);
+  _$$_MVStateCopyWith<_$_MVState> get copyWith =>
+      __$$_MVStateCopyWithImpl<_$_MVState>(this, _$identity);
 }
 
 abstract class _MVState implements MVState {
@@ -472,13 +474,11 @@ abstract class _MVState implements MVState {
       _$_MVState;
 
   @override
-  ViewModel<DataWrapResponse<MVURLResponse>>? get mvUrlVm =>
-      throw _privateConstructorUsedError;
+  ViewModel<DataWrapResponse<MVURLResponse>>? get mvUrlVm;
   @override
-  ViewModel<DataWrapResponse<MvDetailResponse>>? get mvDetailVM =>
-      throw _privateConstructorUsedError;
+  ViewModel<DataWrapResponse<MvDetailResponse>>? get mvDetailVM;
   @override
   @JsonKey(ignore: true)
-  _$MVStateCopyWith<_MVState> get copyWith =>
+  _$$_MVStateCopyWith<_$_MVState> get copyWith =>
       throw _privateConstructorUsedError;
 }

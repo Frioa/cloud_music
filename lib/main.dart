@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
     return BlocWrapper(
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
-        builder: () {
+        builder: (context, child) {
           return BlocBuilder<AppBloc, AppState>(
             builder: (_, state) {
               return OKToast(

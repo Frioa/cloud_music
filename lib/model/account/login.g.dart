@@ -117,7 +117,7 @@ class _$NestLoginResponseCWProxyImpl implements _$NestLoginResponseCWProxy {
 }
 
 extension $NestLoginResponseCopyWith on NestLoginResponse {
-  /// Returns a callable class that can be used as follows: `instanceOfclass NestLoginResponse extends BaseHttpResponse.name.copyWith(...)` or like so:`instanceOfclass NestLoginResponse extends BaseHttpResponse.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfNestLoginResponse.copyWith(...)` or like so:`instanceOfNestLoginResponse.copyWith.fieldName(...)`.
   _$NestLoginResponseCWProxy get copyWith =>
       _$NestLoginResponseCWProxyImpl(this);
 }
@@ -191,7 +191,7 @@ class _$NestLoginStatusResponseCWProxyImpl
 }
 
 extension $NestLoginStatusResponseCopyWith on NestLoginStatusResponse {
-  /// Returns a callable class that can be used as follows: `instanceOfclass NestLoginStatusResponse extends BaseHttpResponse.name.copyWith(...)` or like so:`instanceOfclass NestLoginStatusResponse extends BaseHttpResponse.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfNestLoginStatusResponse.copyWith(...)` or like so:`instanceOfNestLoginStatusResponse.copyWith.fieldName(...)`.
   _$NestLoginStatusResponseCWProxy get copyWith =>
       _$NestLoginStatusResponseCWProxyImpl(this);
 }

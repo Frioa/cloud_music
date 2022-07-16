@@ -50,13 +50,13 @@ class HomeBottomPlayerWidgetState extends State<HomeBottomPlayerWidget>
   }
 
   void show() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       playerControl.forward(from: playerControl.value);
     });
   }
 
   void hide() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       playerControl.reverse(from: playerControl.value);
     });
   }

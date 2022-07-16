@@ -81,7 +81,7 @@ class _$LoginStateCWProxyImpl implements _$LoginStateCWProxy {
 }
 
 extension $LoginStateCopyWith on LoginState {
-  /// Returns a callable class that can be used as follows: `instanceOfclass LoginState extends Equatable.name.copyWith(...)` or like so:`instanceOfclass LoginState extends Equatable.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfLoginState.copyWith(...)` or like so:`instanceOfLoginState.copyWith.fieldName(...)`.
   _$LoginStateCWProxy get copyWith => _$LoginStateCWProxyImpl(this);
 }
 
@@ -171,6 +171,6 @@ class _$LoginStateActionCWProxyImpl implements _$LoginStateActionCWProxy {
 }
 
 extension $LoginStateActionCopyWith on LoginStateAction {
-  /// Returns a callable class that can be used as follows: `instanceOfclass LoginStateAction extends LoginState.name.copyWith(...)` or like so:`instanceOfclass LoginStateAction extends LoginState.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfLoginStateAction.copyWith(...)` or like so:`instanceOfLoginStateAction.copyWith.fieldName(...)`.
   _$LoginStateActionCWProxy get copyWith => _$LoginStateActionCWProxyImpl(this);
 }

@@ -69,6 +69,6 @@ class _$PlaylistStateCWProxyImpl implements _$PlaylistStateCWProxy {
 }
 
 extension $PlaylistStateCopyWith on PlaylistState {
-  /// Returns a callable class that can be used as follows: `instanceOfclass PlaylistState extends Equatable.name.copyWith(...)` or like so:`instanceOfclass PlaylistState extends Equatable.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfPlaylistState.copyWith(...)` or like so:`instanceOfPlaylistState.copyWith.fieldName(...)`.
   _$PlaylistStateCWProxy get copyWith => _$PlaylistStateCWProxyImpl(this);
 }

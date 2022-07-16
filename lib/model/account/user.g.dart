@@ -197,7 +197,7 @@ class _$NestUserDetailResponseCWProxyImpl
 }
 
 extension $NestUserDetailResponseCopyWith on NestUserDetailResponse {
-  /// Returns a callable class that can be used as follows: `instanceOfclass NestUserDetailResponse extends BaseHttpResponse.name.copyWith(...)` or like so:`instanceOfclass NestUserDetailResponse extends BaseHttpResponse.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfNestUserDetailResponse.copyWith(...)` or like so:`instanceOfNestUserDetailResponse.copyWith.fieldName(...)`.
   _$NestUserDetailResponseCWProxy get copyWith =>
       _$NestUserDetailResponseCWProxyImpl(this);
 }
@@ -313,7 +313,7 @@ class _$NestUserPointCWProxyImpl implements _$NestUserPointCWProxy {
 }
 
 extension $NestUserPointCopyWith on NestUserPoint {
-  /// Returns a callable class that can be used as follows: `instanceOfclass NestUserPoint.name.copyWith(...)` or like so:`instanceOfclass NestUserPoint.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfNestUserPoint.copyWith(...)` or like so:`instanceOfNestUserPoint.copyWith.fieldName(...)`.
   _$NestUserPointCWProxy get copyWith => _$NestUserPointCWProxyImpl(this);
 }
 
@@ -386,7 +386,7 @@ class _$NestUserAccountResponseCWProxyImpl
 }
 
 extension $NestUserAccountResponseCopyWith on NestUserAccountResponse {
-  /// Returns a callable class that can be used as follows: `instanceOfclass NestUserAccountResponse extends BaseHttpResponse.name.copyWith(...)` or like so:`instanceOfclass NestUserAccountResponse extends BaseHttpResponse.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfNestUserAccountResponse.copyWith(...)` or like so:`instanceOfNestUserAccountResponse.copyWith.fieldName(...)`.
   _$NestUserAccountResponseCWProxy get copyWith =>
       _$NestUserAccountResponseCWProxyImpl(this);
 }
@@ -479,7 +479,7 @@ class _$UserRecordSongCWProxyImpl implements _$UserRecordSongCWProxy {
 }
 
 extension $UserRecordSongCopyWith on UserRecordSong {
-  /// Returns a callable class that can be used as follows: `instanceOfclass UserRecordSong.name.copyWith(...)` or like so:`instanceOfclass UserRecordSong.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfUserRecordSong.copyWith(...)` or like so:`instanceOfUserRecordSong.copyWith.fieldName(...)`.
   _$UserRecordSongCWProxy get copyWith => _$UserRecordSongCWProxyImpl(this);
 }
 
@@ -549,7 +549,7 @@ class _$NestUserRecordCWProxyImpl implements _$NestUserRecordCWProxy {
 }
 
 extension $NestUserRecordCopyWith on NestUserRecord {
-  /// Returns a callable class that can be used as follows: `instanceOfclass NestUserRecord.name.copyWith(...)` or like so:`instanceOfclass NestUserRecord.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfNestUserRecord.copyWith(...)` or like so:`instanceOfNestUserRecord.copyWith.fieldName(...)`.
   _$NestUserRecordCWProxy get copyWith => _$NestUserRecordCWProxyImpl(this);
 }
 
@@ -622,7 +622,7 @@ class _$NestUserRecordResponseCWProxyImpl
 }
 
 extension $NestUserRecordResponseCopyWith on NestUserRecordResponse {
-  /// Returns a callable class that can be used as follows: `instanceOfclass NestUserRecordResponse.name.copyWith(...)` or like so:`instanceOfclass NestUserRecordResponse.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfNestUserRecordResponse.copyWith(...)` or like so:`instanceOfNestUserRecordResponse.copyWith.fieldName(...)`.
   _$NestUserRecordResponseCWProxy get copyWith =>
       _$NestUserRecordResponseCWProxyImpl(this);
 }

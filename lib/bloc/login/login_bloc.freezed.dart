@@ -118,24 +118,24 @@ class _$LoginEventCopyWithImpl<$Res> implements $LoginEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$sendCaptchaCopyWith<$Res>
+abstract class _$$_$sendCaptchaCopyWith<$Res>
     implements $LoginEventCopyWith<$Res> {
-  factory _$$sendCaptchaCopyWith(
-          _$sendCaptcha value, $Res Function(_$sendCaptcha) then) =
-      __$$sendCaptchaCopyWithImpl<$Res>;
+  factory _$$_$sendCaptchaCopyWith(
+          _$_$sendCaptcha value, $Res Function(_$_$sendCaptcha) then) =
+      __$$_$sendCaptchaCopyWithImpl<$Res>;
   @override
   $Res call({String phone, VoidCallback? onSuccess, VoidCallback? onError});
 }
 
 /// @nodoc
-class __$$sendCaptchaCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements _$$sendCaptchaCopyWith<$Res> {
-  __$$sendCaptchaCopyWithImpl(
-      _$sendCaptcha _value, $Res Function(_$sendCaptcha) _then)
-      : super(_value, (v) => _then(v as _$sendCaptcha));
+class __$$_$sendCaptchaCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$_$sendCaptchaCopyWith<$Res> {
+  __$$_$sendCaptchaCopyWithImpl(
+      _$_$sendCaptcha _value, $Res Function(_$_$sendCaptcha) _then)
+      : super(_value, (v) => _then(v as _$_$sendCaptcha));
 
   @override
-  _$sendCaptcha get _value => super._value as _$sendCaptcha;
+  _$_$sendCaptcha get _value => super._value as _$_$sendCaptcha;
 
   @override
   $Res call({
@@ -143,7 +143,7 @@ class __$$sendCaptchaCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
     Object? onSuccess = freezed,
     Object? onError = freezed,
   }) {
-    return _then(_$sendCaptcha(
+    return _then(_$_$sendCaptcha(
       phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -181,7 +181,7 @@ class _$_$sendCaptcha implements _$sendCaptcha {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$sendCaptcha &&
+            other is _$_$sendCaptcha &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess) &&
@@ -194,8 +194,8 @@ class _$_$sendCaptcha implements _$sendCaptcha {
 
   @JsonKey(ignore: true)
   @override
-  _$$sendCaptchaCopyWith<_$sendCaptcha> get copyWith =>
-      __$$sendCaptchaCopyWithImpl<_$sendCaptcha>(this, _$identity);
+  _$$_$sendCaptchaCopyWith<_$_$sendCaptcha> get copyWith =>
+      __$$_$sendCaptchaCopyWithImpl<_$_$sendCaptcha>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -286,22 +286,23 @@ abstract class _$sendCaptcha implements LoginEvent {
       {final VoidCallback? onSuccess,
       final VoidCallback? onError}) = _$_$sendCaptcha;
 
-  String get phone => throw _privateConstructorUsedError;
+  String get phone;
   @override
-  VoidCallback? get onSuccess => throw _privateConstructorUsedError;
+  VoidCallback? get onSuccess;
   @override
-  VoidCallback? get onError => throw _privateConstructorUsedError;
+  VoidCallback? get onError;
   @override
   @JsonKey(ignore: true)
-  _$$sendCaptchaCopyWith<_$sendCaptcha> get copyWith =>
+  _$$_$sendCaptchaCopyWith<_$_$sendCaptcha> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$cellphoneCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
-  factory _$$cellphoneCopyWith(
-          _$cellphone value, $Res Function(_$cellphone) then) =
-      __$$cellphoneCopyWithImpl<$Res>;
+abstract class _$$_$cellphoneCopyWith<$Res>
+    implements $LoginEventCopyWith<$Res> {
+  factory _$$_$cellphoneCopyWith(
+          _$_$cellphone value, $Res Function(_$_$cellphone) then) =
+      __$$_$cellphoneCopyWithImpl<$Res>;
   @override
   $Res call(
       {String phone,
@@ -311,14 +312,14 @@ abstract class _$$cellphoneCopyWith<$Res> implements $LoginEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$cellphoneCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements _$$cellphoneCopyWith<$Res> {
-  __$$cellphoneCopyWithImpl(
-      _$cellphone _value, $Res Function(_$cellphone) _then)
-      : super(_value, (v) => _then(v as _$cellphone));
+class __$$_$cellphoneCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$_$cellphoneCopyWith<$Res> {
+  __$$_$cellphoneCopyWithImpl(
+      _$_$cellphone _value, $Res Function(_$_$cellphone) _then)
+      : super(_value, (v) => _then(v as _$_$cellphone));
 
   @override
-  _$cellphone get _value => super._value as _$cellphone;
+  _$_$cellphone get _value => super._value as _$_$cellphone;
 
   @override
   $Res call({
@@ -327,7 +328,7 @@ class __$$cellphoneCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
     Object? onSuccess = freezed,
     Object? onError = freezed,
   }) {
-    return _then(_$cellphone(
+    return _then(_$_$cellphone(
       phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -371,7 +372,7 @@ class _$_$cellphone implements _$cellphone {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$cellphone &&
+            other is _$_$cellphone &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality().equals(other.captcha, captcha) &&
             (identical(other.onSuccess, onSuccess) ||
@@ -389,8 +390,8 @@ class _$_$cellphone implements _$cellphone {
 
   @JsonKey(ignore: true)
   @override
-  _$$cellphoneCopyWith<_$cellphone> get copyWith =>
-      __$$cellphoneCopyWithImpl<_$cellphone>(this, _$identity);
+  _$$_$cellphoneCopyWith<_$_$cellphone> get copyWith =>
+      __$$_$cellphoneCopyWithImpl<_$_$cellphone>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -481,44 +482,44 @@ abstract class _$cellphone implements LoginEvent {
       {final VoidCallback? onSuccess,
       final VoidCallback? onError}) = _$_$cellphone;
 
-  String get phone => throw _privateConstructorUsedError;
-  String get captcha => throw _privateConstructorUsedError;
+  String get phone;
+  String get captcha;
   @override
-  VoidCallback? get onSuccess => throw _privateConstructorUsedError;
+  VoidCallback? get onSuccess;
   @override
-  VoidCallback? get onError => throw _privateConstructorUsedError;
+  VoidCallback? get onError;
   @override
   @JsonKey(ignore: true)
-  _$$cellphoneCopyWith<_$cellphone> get copyWith =>
+  _$$_$cellphoneCopyWith<_$_$cellphone> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$loginStatusCopyWith<$Res>
+abstract class _$$_$loginStatusCopyWith<$Res>
     implements $LoginEventCopyWith<$Res> {
-  factory _$$loginStatusCopyWith(
-          _$loginStatus value, $Res Function(_$loginStatus) then) =
-      __$$loginStatusCopyWithImpl<$Res>;
+  factory _$$_$loginStatusCopyWith(
+          _$_$loginStatus value, $Res Function(_$_$loginStatus) then) =
+      __$$_$loginStatusCopyWithImpl<$Res>;
   @override
   $Res call({VoidCallback? onSuccess, VoidCallback? onError});
 }
 
 /// @nodoc
-class __$$loginStatusCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements _$$loginStatusCopyWith<$Res> {
-  __$$loginStatusCopyWithImpl(
-      _$loginStatus _value, $Res Function(_$loginStatus) _then)
-      : super(_value, (v) => _then(v as _$loginStatus));
+class __$$_$loginStatusCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$_$loginStatusCopyWith<$Res> {
+  __$$_$loginStatusCopyWithImpl(
+      _$_$loginStatus _value, $Res Function(_$_$loginStatus) _then)
+      : super(_value, (v) => _then(v as _$_$loginStatus));
 
   @override
-  _$loginStatus get _value => super._value as _$loginStatus;
+  _$_$loginStatus get _value => super._value as _$_$loginStatus;
 
   @override
   $Res call({
     Object? onSuccess = freezed,
     Object? onError = freezed,
   }) {
-    return _then(_$loginStatus(
+    return _then(_$_$loginStatus(
       onSuccess: onSuccess == freezed
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
@@ -550,7 +551,7 @@ class _$_$loginStatus implements _$loginStatus {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$loginStatus &&
+            other is _$_$loginStatus &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess) &&
             (identical(other.onError, onError) || other.onError == onError));
@@ -561,8 +562,8 @@ class _$_$loginStatus implements _$loginStatus {
 
   @JsonKey(ignore: true)
   @override
-  _$$loginStatusCopyWith<_$loginStatus> get copyWith =>
-      __$$loginStatusCopyWithImpl<_$loginStatus>(this, _$identity);
+  _$$_$loginStatusCopyWith<_$_$loginStatus> get copyWith =>
+      __$$_$loginStatusCopyWithImpl<_$_$loginStatus>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -654,12 +655,12 @@ abstract class _$loginStatus implements LoginEvent {
       final VoidCallback? onError}) = _$_$loginStatus;
 
   @override
-  VoidCallback? get onSuccess => throw _privateConstructorUsedError;
+  VoidCallback? get onSuccess;
   @override
-  VoidCallback? get onError => throw _privateConstructorUsedError;
+  VoidCallback? get onError;
   @override
   @JsonKey(ignore: true)
-  _$$loginStatusCopyWith<_$loginStatus> get copyWith =>
+  _$$_$loginStatusCopyWith<_$_$loginStatus> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -721,11 +722,11 @@ class _$LoginNewStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LoginNewStateCopyWith<$Res>
+abstract class _$$_LoginNewStateCopyWith<$Res>
     implements $LoginNewStateCopyWith<$Res> {
-  factory _$LoginNewStateCopyWith(
-          _LoginNewState value, $Res Function(_LoginNewState) then) =
-      __$LoginNewStateCopyWithImpl<$Res>;
+  factory _$$_LoginNewStateCopyWith(
+          _$_LoginNewState value, $Res Function(_$_LoginNewState) then) =
+      __$$_LoginNewStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {ViewModel<VerifyNestCaptchaResponse>? sentCaptchaVm,
@@ -734,15 +735,15 @@ abstract class _$LoginNewStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$LoginNewStateCopyWithImpl<$Res>
+class __$$_LoginNewStateCopyWithImpl<$Res>
     extends _$LoginNewStateCopyWithImpl<$Res>
-    implements _$LoginNewStateCopyWith<$Res> {
-  __$LoginNewStateCopyWithImpl(
-      _LoginNewState _value, $Res Function(_LoginNewState) _then)
-      : super(_value, (v) => _then(v as _LoginNewState));
+    implements _$$_LoginNewStateCopyWith<$Res> {
+  __$$_LoginNewStateCopyWithImpl(
+      _$_LoginNewState _value, $Res Function(_$_LoginNewState) _then)
+      : super(_value, (v) => _then(v as _$_LoginNewState));
 
   @override
-  _LoginNewState get _value => super._value as _LoginNewState;
+  _$_LoginNewState get _value => super._value as _$_LoginNewState;
 
   @override
   $Res call({
@@ -750,7 +751,7 @@ class __$LoginNewStateCopyWithImpl<$Res>
     Object? nestPhoneLoginVm = freezed,
     Object? loginStatusVm = freezed,
   }) {
-    return _then(_LoginNewState(
+    return _then(_$_LoginNewState(
       sentCaptchaVm: sentCaptchaVm == freezed
           ? _value.sentCaptchaVm
           : sentCaptchaVm // ignore: cast_nullable_to_non_nullable
@@ -789,7 +790,7 @@ class _$_LoginNewState implements _LoginNewState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoginNewState &&
+            other is _$_LoginNewState &&
             const DeepCollectionEquality()
                 .equals(other.sentCaptchaVm, sentCaptchaVm) &&
             const DeepCollectionEquality()
@@ -807,8 +808,8 @@ class _$_LoginNewState implements _LoginNewState {
 
   @JsonKey(ignore: true)
   @override
-  _$LoginNewStateCopyWith<_LoginNewState> get copyWith =>
-      __$LoginNewStateCopyWithImpl<_LoginNewState>(this, _$identity);
+  _$$_LoginNewStateCopyWith<_$_LoginNewState> get copyWith =>
+      __$$_LoginNewStateCopyWithImpl<_$_LoginNewState>(this, _$identity);
 }
 
 abstract class _LoginNewState implements LoginNewState {
@@ -819,16 +820,13 @@ abstract class _LoginNewState implements LoginNewState {
           loginStatusVm}) = _$_LoginNewState;
 
   @override
-  ViewModel<VerifyNestCaptchaResponse>? get sentCaptchaVm =>
-      throw _privateConstructorUsedError;
+  ViewModel<VerifyNestCaptchaResponse>? get sentCaptchaVm;
   @override
-  ViewModel<NestLoginResponse>? get nestPhoneLoginVm =>
-      throw _privateConstructorUsedError;
+  ViewModel<NestLoginResponse>? get nestPhoneLoginVm;
   @override
-  ViewModel<DataWrapResponse<NestLoginStatusResponse>>? get loginStatusVm =>
-      throw _privateConstructorUsedError;
+  ViewModel<DataWrapResponse<NestLoginStatusResponse>>? get loginStatusVm;
   @override
   @JsonKey(ignore: true)
-  _$LoginNewStateCopyWith<_LoginNewState> get copyWith =>
+  _$$_LoginNewStateCopyWith<_$_LoginNewState> get copyWith =>
       throw _privateConstructorUsedError;
 }

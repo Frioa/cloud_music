@@ -42,7 +42,7 @@ class _RotationWidgetState extends State<RotationWidget> with TickerProviderStat
         controller.forward();
       }
     });
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.isStartDefault) controller.forward();
     });
   }

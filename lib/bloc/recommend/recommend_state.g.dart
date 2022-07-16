@@ -55,6 +55,6 @@ class _$RecommendStateCWProxyImpl implements _$RecommendStateCWProxy {
 }
 
 extension $RecommendStateCopyWith on RecommendState {
-  /// Returns a callable class that can be used as follows: `instanceOfclass RecommendState extends Equatable.name.copyWith(...)` or like so:`instanceOfclass RecommendState extends Equatable.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfRecommendState.copyWith(...)` or like so:`instanceOfRecommendState.copyWith.fieldName(...)`.
   _$RecommendStateCWProxy get copyWith => _$RecommendStateCWProxyImpl(this);
 }

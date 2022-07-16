@@ -7,9 +7,10 @@ import io.flutter.plugin.platform.PlatformView
 import io.flutter.plugin.platform.PlatformViewFactory
 
 class MediaSurfaceViewFactory constructor(val callback: SurfaceHolder.Callback) :
-    PlatformViewFactory(StandardMessageCodec.INSTANCE) {
+  PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 
-    override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
-        return MediaSurfaceView(context, callback)
-    }
+  override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
+    return MediaSurfaceView(context!!, callback)
+  }
+
 }

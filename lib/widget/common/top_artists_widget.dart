@@ -18,7 +18,8 @@ class _TopArtistsState extends State<TopArtistsWidget> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       context.read<TopBloc>().add(RequestTopArtistsEvent());
     });
   }

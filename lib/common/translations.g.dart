@@ -5,7 +5,7 @@
  * Locales: 2
  * Strings: 52 (26.0 per locale)
  *
- * Built on 2022-06-27 at 08:03 UTC
+ * Built on 2022-07-16 at 10:38 UTC
  */
 
 import 'package:flutter/widgets.dart';
@@ -78,10 +78,8 @@ class LocaleSettings {
 		_currLocale = locale;
 		_S = _currLocale.translations;
 
-		if (WidgetsBinding.instance != null) {
-			// force rebuild if TranslationProvider is used
-			_translationProviderKey.currentState?.setLocale(_currLocale);
-		}
+		// force rebuild if TranslationProvider is used
+		_translationProviderKey.currentState?.setLocale(_currLocale);
 
 		return _currLocale;
 	}
@@ -126,7 +124,7 @@ class AppLocaleUtils {
 	/// Returns the locale of the device as the enum type.
 	/// Fallbacks to base locale.
 	static AppLocale findDeviceLocale() {
-		final String? deviceLocale = WidgetsBinding.instance?.window.locale.toLanguageTag();
+		final String? deviceLocale = WidgetsBinding.instance.window.locale.toLanguageTag();
 		if (deviceLocale != null) {
 			final typedLocale = _selectLocale(deviceLocale);
 			if (typedLocale != null) {
@@ -307,8 +305,7 @@ class _TranslationsEn {
 	// Internal flat map initialized lazily
 	late final Map<String, dynamic> _flatMap = _buildFlatMap();
 
-	// ignore: unused_field
-	late final _TranslationsEn _root = this;
+	late final _TranslationsEn _root = this; // ignore: unused_field
 
 	// Translations
 	String get next => 'Next';
@@ -327,8 +324,7 @@ class _TranslationsEn {
 class _TranslationsCommonEn {
 	_TranslationsCommonEn._(this._root);
 
-	// ignore: unused_field
-	final _TranslationsEn _root;
+	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
 	String get tenThousand => '万';
@@ -338,8 +334,7 @@ class _TranslationsCommonEn {
 class _TranslationsHomePageEn {
 	_TranslationsHomePageEn._(this._root);
 
-	// ignore: unused_field
-	final _TranslationsEn _root;
+	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
 	String get recommendSongList => '推荐歌单';
@@ -350,8 +345,7 @@ class _TranslationsHomePageEn {
 class _TranslationsLoginPageEn {
 	_TranslationsLoginPageEn._(this._root);
 
-	// ignore: unused_field
-	final _TranslationsEn _root;
+	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Login Page';
@@ -373,8 +367,7 @@ class _TranslationsLoginPageEn {
 class _TranslationsMyPageEn {
 	_TranslationsMyPageEn._(this._root);
 
-	// ignore: unused_field
-	final _TranslationsEn _root;
+	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
 	String get loginBtn => 'Login In';
@@ -384,8 +377,7 @@ class _TranslationsMyPageEn {
 class _TranslationsPlayRecordPageEn {
 	_TranslationsPlayRecordPageEn._(this._root);
 
-	// ignore: unused_field
-	final _TranslationsEn _root;
+	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Playback Record';
@@ -395,8 +387,7 @@ class _TranslationsPlayRecordPageEn {
 class _TranslationsDailySongPageEn {
 	_TranslationsDailySongPageEn._(this._root);
 
-	// ignore: unused_field
-	final _TranslationsEn _root;
+	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Daily song';
@@ -406,8 +397,7 @@ class _TranslationsDailySongPageEn {
 class _TranslationsPlaylistDetailPageEn {
 	_TranslationsPlaylistDetailPageEn._(this._root);
 
-	// ignore: unused_field
-	final _TranslationsEn _root;
+	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
 	String get title => '歌单';
@@ -419,8 +409,7 @@ class _TranslationsPlaylistDetailPageEn {
 class _TranslationsPlayingPageEn {
 	_TranslationsPlayingPageEn._(this._root);
 
-	// ignore: unused_field
-	final _TranslationsEn _root;
+	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Now Playing';
@@ -430,8 +419,7 @@ class _TranslationsPlayingPageEn {
 class _TranslationsMvPageEn {
 	_TranslationsMvPageEn._(this._root);
 
-	// ignore: unused_field
-	final _TranslationsEn _root;
+	final _TranslationsEn _root; // ignore: unused_field
 
 	// Translations
 	String get collection => 'Collection';
@@ -449,10 +437,9 @@ class _TranslationsCn implements _TranslationsEn {
 	@override dynamic operator[](String key) => _flatMap[key];
 
 	// Internal flat map initialized lazily
-	late final Map<String, dynamic> _flatMap = _buildFlatMap();
+	@override late final Map<String, dynamic> _flatMap = _buildFlatMap();
 
-	// ignore: unused_field
-	@override late final _TranslationsCn _root = this;
+	@override late final _TranslationsCn _root = this; // ignore: unused_field
 
 	// Translations
 	@override String get next => '下一步';
@@ -471,8 +458,7 @@ class _TranslationsCn implements _TranslationsEn {
 class _TranslationsCommonCn implements _TranslationsCommonEn {
 	_TranslationsCommonCn._(this._root);
 
-	// ignore: unused_field
-	@override final _TranslationsCn _root;
+	@override final _TranslationsCn _root; // ignore: unused_field
 
 	// Translations
 	@override String get tenThousand => '万';
@@ -482,8 +468,7 @@ class _TranslationsCommonCn implements _TranslationsCommonEn {
 class _TranslationsHomePageCn implements _TranslationsHomePageEn {
 	_TranslationsHomePageCn._(this._root);
 
-	// ignore: unused_field
-	@override final _TranslationsCn _root;
+	@override final _TranslationsCn _root; // ignore: unused_field
 
 	// Translations
 	@override String get recommendSongList => '推荐歌单';
@@ -494,8 +479,7 @@ class _TranslationsHomePageCn implements _TranslationsHomePageEn {
 class _TranslationsLoginPageCn implements _TranslationsLoginPageEn {
 	_TranslationsLoginPageCn._(this._root);
 
-	// ignore: unused_field
-	@override final _TranslationsCn _root;
+	@override final _TranslationsCn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '登录页';
@@ -517,8 +501,7 @@ class _TranslationsLoginPageCn implements _TranslationsLoginPageEn {
 class _TranslationsMyPageCn implements _TranslationsMyPageEn {
 	_TranslationsMyPageCn._(this._root);
 
-	// ignore: unused_field
-	@override final _TranslationsCn _root;
+	@override final _TranslationsCn _root; // ignore: unused_field
 
 	// Translations
 	@override String get loginBtn => '立即登录>';
@@ -528,8 +511,7 @@ class _TranslationsMyPageCn implements _TranslationsMyPageEn {
 class _TranslationsPlayRecordPageCn implements _TranslationsPlayRecordPageEn {
 	_TranslationsPlayRecordPageCn._(this._root);
 
-	// ignore: unused_field
-	@override final _TranslationsCn _root;
+	@override final _TranslationsCn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '播放记录';
@@ -539,8 +521,7 @@ class _TranslationsPlayRecordPageCn implements _TranslationsPlayRecordPageEn {
 class _TranslationsDailySongPageCn implements _TranslationsDailySongPageEn {
 	_TranslationsDailySongPageCn._(this._root);
 
-	// ignore: unused_field
-	@override final _TranslationsCn _root;
+	@override final _TranslationsCn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '每日歌曲';
@@ -550,8 +531,7 @@ class _TranslationsDailySongPageCn implements _TranslationsDailySongPageEn {
 class _TranslationsPlaylistDetailPageCn implements _TranslationsPlaylistDetailPageEn {
 	_TranslationsPlaylistDetailPageCn._(this._root);
 
-	// ignore: unused_field
-	@override final _TranslationsCn _root;
+	@override final _TranslationsCn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '歌单';
@@ -563,8 +543,7 @@ class _TranslationsPlaylistDetailPageCn implements _TranslationsPlaylistDetailPa
 class _TranslationsPlayingPageCn implements _TranslationsPlayingPageEn {
 	_TranslationsPlayingPageCn._(this._root);
 
-	// ignore: unused_field
-	@override final _TranslationsCn _root;
+	@override final _TranslationsCn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '播放中';
@@ -574,8 +553,7 @@ class _TranslationsPlayingPageCn implements _TranslationsPlayingPageEn {
 class _TranslationsMvPageCn implements _TranslationsMvPageEn {
 	_TranslationsMvPageCn._(this._root);
 
-	// ignore: unused_field
-	@override final _TranslationsCn _root;
+	@override final _TranslationsCn _root; // ignore: unused_field
 
 	// Translations
 	@override String get collection => '收藏';
@@ -587,7 +565,7 @@ class _TranslationsMvPageCn implements _TranslationsMvPageEn {
 
 extension on _TranslationsEn {
 	Map<String, dynamic> _buildFlatMap() {
-		return {
+		return <String, dynamic>{
 			'next': 'Next',
 			'common.tenThousand': '万',
 			'HomePage.recommendSongList': '推荐歌单',
@@ -620,7 +598,7 @@ extension on _TranslationsEn {
 
 extension on _TranslationsCn {
 	Map<String, dynamic> _buildFlatMap() {
-		return {
+		return <String, dynamic>{
 			'next': '下一步',
 			'common.tenThousand': '万',
 			'HomePage.recommendSongList': '推荐歌单',

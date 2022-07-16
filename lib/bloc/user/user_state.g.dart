@@ -69,7 +69,7 @@ class _$UserStateCWProxyImpl implements _$UserStateCWProxy {
 }
 
 extension $UserStateCopyWith on UserState {
-  /// Returns a callable class that can be used as follows: `instanceOfclass UserState extends Equatable.name.copyWith(...)` or like so:`instanceOfclass UserState extends Equatable.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfUserState.copyWith(...)` or like so:`instanceOfUserState.copyWith.fieldName(...)`.
   _$UserStateCWProxy get copyWith => _$UserStateCWProxyImpl(this);
 }
 
@@ -147,7 +147,7 @@ class _$UserStateActionCWProxyImpl implements _$UserStateActionCWProxy {
 }
 
 extension $UserStateActionCopyWith on UserStateAction {
-  /// Returns a callable class that can be used as follows: `instanceOfclass UserStateAction extends UserState.name.copyWith(...)` or like so:`instanceOfclass UserStateAction extends UserState.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfUserStateAction.copyWith(...)` or like so:`instanceOfUserStateAction.copyWith.fieldName(...)`.
   _$UserStateActionCWProxy get copyWith => _$UserStateActionCWProxyImpl(this);
 }
 
@@ -197,6 +197,6 @@ class _$UserNewStateCWProxyImpl implements _$UserNewStateCWProxy {
 }
 
 extension $UserNewStateCopyWith on UserNewState {
-  /// Returns a callable class that can be used as follows: `instanceOfclass UserNewState extends Equatable.name.copyWith(...)` or like so:`instanceOfclass UserNewState extends Equatable.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfUserNewState.copyWith(...)` or like so:`instanceOfUserNewState.copyWith.fieldName(...)`.
   _$UserNewStateCWProxy get copyWith => _$UserNewStateCWProxyImpl(this);
 }

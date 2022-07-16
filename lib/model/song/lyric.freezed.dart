@@ -129,11 +129,11 @@ class _$LyricResponseCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$LyricResponseCopyWith<$Res>
+abstract class _$$_LyricResponseCopyWith<$Res>
     implements $LyricResponseCopyWith<$Res> {
-  factory _$LyricResponseCopyWith(
-          _LyricResponse value, $Res Function(_LyricResponse) then) =
-      __$LyricResponseCopyWithImpl<$Res>;
+  factory _$$_LyricResponseCopyWith(
+          _$_LyricResponse value, $Res Function(_$_LyricResponse) then) =
+      __$$_LyricResponseCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool? sgc,
@@ -153,15 +153,15 @@ abstract class _$LyricResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$LyricResponseCopyWithImpl<$Res>
+class __$$_LyricResponseCopyWithImpl<$Res>
     extends _$LyricResponseCopyWithImpl<$Res>
-    implements _$LyricResponseCopyWith<$Res> {
-  __$LyricResponseCopyWithImpl(
-      _LyricResponse _value, $Res Function(_LyricResponse) _then)
-      : super(_value, (v) => _then(v as _LyricResponse));
+    implements _$$_LyricResponseCopyWith<$Res> {
+  __$$_LyricResponseCopyWithImpl(
+      _$_LyricResponse _value, $Res Function(_$_LyricResponse) _then)
+      : super(_value, (v) => _then(v as _$_LyricResponse));
 
   @override
-  _LyricResponse get _value => super._value as _LyricResponse;
+  _$_LyricResponse get _value => super._value as _$_LyricResponse;
 
   @override
   $Res call({
@@ -173,7 +173,7 @@ class __$LyricResponseCopyWithImpl<$Res>
     Object? kLyric = freezed,
     Object? tLyric = freezed,
   }) {
-    return _then(_LyricResponse(
+    return _then(_$_LyricResponse(
       sgc: sgc == freezed
           ? _value.sgc
           : sgc // ignore: cast_nullable_to_non_nullable
@@ -242,7 +242,7 @@ class _$_LyricResponse implements _LyricResponse {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LyricResponse &&
+            other is _$_LyricResponse &&
             const DeepCollectionEquality().equals(other.sgc, sgc) &&
             const DeepCollectionEquality().equals(other.sfy, sfy) &&
             const DeepCollectionEquality().equals(other.qfy, qfy) &&
@@ -266,12 +266,14 @@ class _$_LyricResponse implements _LyricResponse {
 
   @JsonKey(ignore: true)
   @override
-  _$LyricResponseCopyWith<_LyricResponse> get copyWith =>
-      __$LyricResponseCopyWithImpl<_LyricResponse>(this, _$identity);
+  _$$_LyricResponseCopyWith<_$_LyricResponse> get copyWith =>
+      __$$_LyricResponseCopyWithImpl<_$_LyricResponse>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LyricResponseToJson(this);
+    return _$$_LyricResponseToJson(
+      this,
+    );
   }
 }
 
@@ -289,24 +291,24 @@ abstract class _LyricResponse implements LyricResponse {
       _$_LyricResponse.fromJson;
 
   @override
-  bool? get sgc => throw _privateConstructorUsedError;
+  bool? get sgc;
   @override
-  bool? get sfy => throw _privateConstructorUsedError;
+  bool? get sfy;
   @override
-  bool? get qfy => throw _privateConstructorUsedError;
+  bool? get qfy;
   @override
-  int get code => throw _privateConstructorUsedError;
+  int get code;
   @override
-  Lrc get lrc => throw _privateConstructorUsedError;
+  Lrc get lrc;
   @override
   @JsonKey(name: 'klyric')
-  Lrc get kLyric => throw _privateConstructorUsedError;
+  Lrc get kLyric;
   @override
   @JsonKey(name: 'tlyric')
-  Lrc get tLyric => throw _privateConstructorUsedError;
+  Lrc get tLyric;
   @override
   @JsonKey(ignore: true)
-  _$LyricResponseCopyWith<_LyricResponse> get copyWith =>
+  _$$_LyricResponseCopyWith<_$_LyricResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -358,28 +360,28 @@ class _$LrcCopyWithImpl<$Res> implements $LrcCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$LrcCopyWith<$Res> implements $LrcCopyWith<$Res> {
-  factory _$LrcCopyWith(_Lrc value, $Res Function(_Lrc) then) =
-      __$LrcCopyWithImpl<$Res>;
+abstract class _$$_LrcCopyWith<$Res> implements $LrcCopyWith<$Res> {
+  factory _$$_LrcCopyWith(_$_Lrc value, $Res Function(_$_Lrc) then) =
+      __$$_LrcCopyWithImpl<$Res>;
   @override
   $Res call({int version, String lyric});
 }
 
 /// @nodoc
-class __$LrcCopyWithImpl<$Res> extends _$LrcCopyWithImpl<$Res>
-    implements _$LrcCopyWith<$Res> {
-  __$LrcCopyWithImpl(_Lrc _value, $Res Function(_Lrc) _then)
-      : super(_value, (v) => _then(v as _Lrc));
+class __$$_LrcCopyWithImpl<$Res> extends _$LrcCopyWithImpl<$Res>
+    implements _$$_LrcCopyWith<$Res> {
+  __$$_LrcCopyWithImpl(_$_Lrc _value, $Res Function(_$_Lrc) _then)
+      : super(_value, (v) => _then(v as _$_Lrc));
 
   @override
-  _Lrc get _value => super._value as _Lrc;
+  _$_Lrc get _value => super._value as _$_Lrc;
 
   @override
   $Res call({
     Object? version = freezed,
     Object? lyric = freezed,
   }) {
-    return _then(_Lrc(
+    return _then(_$_Lrc(
       version: version == freezed
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
@@ -413,7 +415,7 @@ class _$_Lrc implements _Lrc {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Lrc &&
+            other is _$_Lrc &&
             const DeepCollectionEquality().equals(other.version, version) &&
             const DeepCollectionEquality().equals(other.lyric, lyric));
   }
@@ -427,12 +429,14 @@ class _$_Lrc implements _Lrc {
 
   @JsonKey(ignore: true)
   @override
-  _$LrcCopyWith<_Lrc> get copyWith =>
-      __$LrcCopyWithImpl<_Lrc>(this, _$identity);
+  _$$_LrcCopyWith<_$_Lrc> get copyWith =>
+      __$$_LrcCopyWithImpl<_$_Lrc>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LrcToJson(this);
+    return _$$_LrcToJson(
+      this,
+    );
   }
 }
 
@@ -443,12 +447,12 @@ abstract class _Lrc implements Lrc {
   factory _Lrc.fromJson(Map<String, dynamic> json) = _$_Lrc.fromJson;
 
   @override
-  int get version => throw _privateConstructorUsedError;
+  int get version;
   @override
-  String get lyric => throw _privateConstructorUsedError;
+  String get lyric;
   @override
   @JsonKey(ignore: true)
-  _$LrcCopyWith<_Lrc> get copyWith => throw _privateConstructorUsedError;
+  _$$_LrcCopyWith<_$_Lrc> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -500,21 +504,21 @@ class _$LyricCopyWithImpl<$Res> implements $LyricCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$LyricCopyWith<$Res> implements $LyricCopyWith<$Res> {
-  factory _$LyricCopyWith(_Lyric value, $Res Function(_Lyric) then) =
-      __$LyricCopyWithImpl<$Res>;
+abstract class _$$_LyricCopyWith<$Res> implements $LyricCopyWith<$Res> {
+  factory _$$_LyricCopyWith(_$_Lyric value, $Res Function(_$_Lyric) then) =
+      __$$_LyricCopyWithImpl<$Res>;
   @override
   $Res call({Duration time, String content, double height});
 }
 
 /// @nodoc
-class __$LyricCopyWithImpl<$Res> extends _$LyricCopyWithImpl<$Res>
-    implements _$LyricCopyWith<$Res> {
-  __$LyricCopyWithImpl(_Lyric _value, $Res Function(_Lyric) _then)
-      : super(_value, (v) => _then(v as _Lyric));
+class __$$_LyricCopyWithImpl<$Res> extends _$LyricCopyWithImpl<$Res>
+    implements _$$_LyricCopyWith<$Res> {
+  __$$_LyricCopyWithImpl(_$_Lyric _value, $Res Function(_$_Lyric) _then)
+      : super(_value, (v) => _then(v as _$_Lyric));
 
   @override
-  _Lyric get _value => super._value as _Lyric;
+  _$_Lyric get _value => super._value as _$_Lyric;
 
   @override
   $Res call({
@@ -522,7 +526,7 @@ class __$LyricCopyWithImpl<$Res> extends _$LyricCopyWithImpl<$Res>
     Object? content = freezed,
     Object? height = freezed,
   }) {
-    return _then(_Lyric(
+    return _then(_$_Lyric(
       time: time == freezed
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -561,7 +565,7 @@ class _$_Lyric implements _Lyric {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Lyric &&
+            other is _$_Lyric &&
             const DeepCollectionEquality().equals(other.time, time) &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality().equals(other.height, height));
@@ -576,8 +580,8 @@ class _$_Lyric implements _Lyric {
 
   @JsonKey(ignore: true)
   @override
-  _$LyricCopyWith<_Lyric> get copyWith =>
-      __$LyricCopyWithImpl<_Lyric>(this, _$identity);
+  _$$_LyricCopyWith<_$_Lyric> get copyWith =>
+      __$$_LyricCopyWithImpl<_$_Lyric>(this, _$identity);
 }
 
 abstract class _Lyric implements Lyric {
@@ -587,12 +591,13 @@ abstract class _Lyric implements Lyric {
       required final double height}) = _$_Lyric;
 
   @override
-  Duration get time => throw _privateConstructorUsedError;
+  Duration get time;
   @override
-  String get content => throw _privateConstructorUsedError;
+  String get content;
   @override
-  double get height => throw _privateConstructorUsedError;
+  double get height;
   @override
   @JsonKey(ignore: true)
-  _$LyricCopyWith<_Lyric> get copyWith => throw _privateConstructorUsedError;
+  _$$_LyricCopyWith<_$_Lyric> get copyWith =>
+      throw _privateConstructorUsedError;
 }

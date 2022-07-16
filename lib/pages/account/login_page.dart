@@ -39,7 +39,7 @@ class _LoginPageState extends BasePageState<LoginPage> {
   }
 
   void readCache() {
-    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) async {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       final sp = await SharedPreferences.getInstance();
       final cachePhone = sp.getString(SpKey.phone);
       if (cachePhone != null) phoneController.text = cachePhone;

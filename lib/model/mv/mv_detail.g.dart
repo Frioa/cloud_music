@@ -282,7 +282,7 @@ class _$MvDetailResponseCWProxyImpl implements _$MvDetailResponseCWProxy {
 }
 
 extension $MvDetailResponseCopyWith on MvDetailResponse {
-  /// Returns a callable class that can be used as follows: `instanceOfclass MvDetailResponse.name.copyWith(...)` or like so:`instanceOfclass MvDetailResponse.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfMvDetailResponse.copyWith(...)` or like so:`instanceOfMvDetailResponse.copyWith.fieldName(...)`.
   _$MvDetailResponseCWProxy get copyWith => _$MvDetailResponseCWProxyImpl(this);
 }
 

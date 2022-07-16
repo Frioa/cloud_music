@@ -63,6 +63,6 @@ class _$AppStateCWProxyImpl implements _$AppStateCWProxy {
 }
 
 extension $AppStateCopyWith on AppState {
-  /// Returns a callable class that can be used as follows: `instanceOfclass AppState extends Equatable.name.copyWith(...)` or like so:`instanceOfclass AppState extends Equatable.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfAppState.copyWith(...)` or like so:`instanceOfAppState.copyWith.fieldName(...)`.
   _$AppStateCWProxy get copyWith => _$AppStateCWProxyImpl(this);
 }

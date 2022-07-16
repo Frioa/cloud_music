@@ -109,34 +109,35 @@ class _$PlayerEventCopyWithImpl<$Res> implements $PlayerEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$playSongCopyWith<$Res> {
-  factory _$$playSongCopyWith(
-          _$playSong value, $Res Function(_$playSong) then) =
-      __$$playSongCopyWithImpl<$Res>;
+abstract class _$$_$playSongCopyWith<$Res> {
+  factory _$$_$playSongCopyWith(
+          _$_$playSong value, $Res Function(_$_$playSong) then) =
+      __$$_$playSongCopyWithImpl<$Res>;
   $Res call({Song song, List<Song> songList});
 }
 
 /// @nodoc
-class __$$playSongCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$$playSongCopyWith<$Res> {
-  __$$playSongCopyWithImpl(_$playSong _value, $Res Function(_$playSong) _then)
-      : super(_value, (v) => _then(v as _$playSong));
+class __$$_$playSongCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$_$playSongCopyWith<$Res> {
+  __$$_$playSongCopyWithImpl(
+      _$_$playSong _value, $Res Function(_$_$playSong) _then)
+      : super(_value, (v) => _then(v as _$_$playSong));
 
   @override
-  _$playSong get _value => super._value as _$playSong;
+  _$_$playSong get _value => super._value as _$_$playSong;
 
   @override
   $Res call({
     Object? song = freezed,
     Object? songList = freezed,
   }) {
-    return _then(_$playSong(
+    return _then(_$_$playSong(
       song == freezed
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as Song,
       songList == freezed
-          ? _value.songList
+          ? _value._songList
           : songList // ignore: cast_nullable_to_non_nullable
               as List<Song>,
     ));
@@ -167,21 +168,21 @@ class _$_$playSong implements _$playSong {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$playSong &&
+            other is _$_$playSong &&
             const DeepCollectionEquality().equals(other.song, song) &&
-            const DeepCollectionEquality().equals(other.songList, songList));
+            const DeepCollectionEquality().equals(other._songList, _songList));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(song),
-      const DeepCollectionEquality().hash(songList));
+      const DeepCollectionEquality().hash(_songList));
 
   @JsonKey(ignore: true)
   @override
-  _$$playSongCopyWith<_$playSong> get copyWith =>
-      __$$playSongCopyWithImpl<_$playSong>(this, _$identity);
+  _$$_$playSongCopyWith<_$_$playSong> get copyWith =>
+      __$$_$playSongCopyWithImpl<_$_$playSong>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -286,36 +287,36 @@ abstract class _$playSong implements PlayerEvent {
   const factory _$playSong(final Song song, final List<Song> songList) =
       _$_$playSong;
 
-  Song get song => throw _privateConstructorUsedError;
-  List<Song> get songList => throw _privateConstructorUsedError;
+  Song get song;
+  List<Song> get songList;
   @JsonKey(ignore: true)
-  _$$playSongCopyWith<_$playSong> get copyWith =>
+  _$$_$playSongCopyWith<_$_$playSong> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$songDetailCopyWith<$Res> {
-  factory _$$songDetailCopyWith(
-          _$songDetail value, $Res Function(_$songDetail) then) =
-      __$$songDetailCopyWithImpl<$Res>;
+abstract class _$$_$songDetailCopyWith<$Res> {
+  factory _$$_$songDetailCopyWith(
+          _$_$songDetail value, $Res Function(_$_$songDetail) then) =
+      __$$_$songDetailCopyWithImpl<$Res>;
   $Res call({SongDetail songDetail});
 }
 
 /// @nodoc
-class __$$songDetailCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$$songDetailCopyWith<$Res> {
-  __$$songDetailCopyWithImpl(
-      _$songDetail _value, $Res Function(_$songDetail) _then)
-      : super(_value, (v) => _then(v as _$songDetail));
+class __$$_$songDetailCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$_$songDetailCopyWith<$Res> {
+  __$$_$songDetailCopyWithImpl(
+      _$_$songDetail _value, $Res Function(_$_$songDetail) _then)
+      : super(_value, (v) => _then(v as _$_$songDetail));
 
   @override
-  _$songDetail get _value => super._value as _$songDetail;
+  _$_$songDetail get _value => super._value as _$_$songDetail;
 
   @override
   $Res call({
     Object? songDetail = freezed,
   }) {
-    return _then(_$songDetail(
+    return _then(_$_$songDetail(
       songDetail == freezed
           ? _value.songDetail
           : songDetail // ignore: cast_nullable_to_non_nullable
@@ -341,7 +342,7 @@ class _$_$songDetail implements _$songDetail {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$songDetail &&
+            other is _$_$songDetail &&
             const DeepCollectionEquality()
                 .equals(other.songDetail, songDetail));
   }
@@ -352,8 +353,8 @@ class _$_$songDetail implements _$songDetail {
 
   @JsonKey(ignore: true)
   @override
-  _$$songDetailCopyWith<_$songDetail> get copyWith =>
-      __$$songDetailCopyWithImpl<_$songDetail>(this, _$identity);
+  _$$_$songDetailCopyWith<_$_$songDetail> get copyWith =>
+      __$$_$songDetailCopyWithImpl<_$_$songDetail>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -457,35 +458,35 @@ class _$_$songDetail implements _$songDetail {
 abstract class _$songDetail implements PlayerEvent {
   const factory _$songDetail(final SongDetail songDetail) = _$_$songDetail;
 
-  SongDetail get songDetail => throw _privateConstructorUsedError;
+  SongDetail get songDetail;
   @JsonKey(ignore: true)
-  _$$songDetailCopyWith<_$songDetail> get copyWith =>
+  _$$_$songDetailCopyWith<_$_$songDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$isPlayingCopyWith<$Res> {
-  factory _$$isPlayingCopyWith(
-          _$isPlaying value, $Res Function(_$isPlaying) then) =
-      __$$isPlayingCopyWithImpl<$Res>;
+abstract class _$$_$isPlayingCopyWith<$Res> {
+  factory _$$_$isPlayingCopyWith(
+          _$_$isPlaying value, $Res Function(_$_$isPlaying) then) =
+      __$$_$isPlayingCopyWithImpl<$Res>;
   $Res call({bool isPlaying});
 }
 
 /// @nodoc
-class __$$isPlayingCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$$isPlayingCopyWith<$Res> {
-  __$$isPlayingCopyWithImpl(
-      _$isPlaying _value, $Res Function(_$isPlaying) _then)
-      : super(_value, (v) => _then(v as _$isPlaying));
+class __$$_$isPlayingCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$_$isPlayingCopyWith<$Res> {
+  __$$_$isPlayingCopyWithImpl(
+      _$_$isPlaying _value, $Res Function(_$_$isPlaying) _then)
+      : super(_value, (v) => _then(v as _$_$isPlaying));
 
   @override
-  _$isPlaying get _value => super._value as _$isPlaying;
+  _$_$isPlaying get _value => super._value as _$_$isPlaying;
 
   @override
   $Res call({
     Object? isPlaying = freezed,
   }) {
-    return _then(_$isPlaying(
+    return _then(_$_$isPlaying(
       isPlaying == freezed
           ? _value.isPlaying
           : isPlaying // ignore: cast_nullable_to_non_nullable
@@ -511,7 +512,7 @@ class _$_$isPlaying implements _$isPlaying {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$isPlaying &&
+            other is _$_$isPlaying &&
             const DeepCollectionEquality().equals(other.isPlaying, isPlaying));
   }
 
@@ -521,8 +522,8 @@ class _$_$isPlaying implements _$isPlaying {
 
   @JsonKey(ignore: true)
   @override
-  _$$isPlayingCopyWith<_$isPlaying> get copyWith =>
-      __$$isPlayingCopyWithImpl<_$isPlaying>(this, _$identity);
+  _$$_$isPlayingCopyWith<_$_$isPlaying> get copyWith =>
+      __$$_$isPlayingCopyWithImpl<_$_$isPlaying>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -626,34 +627,35 @@ class _$_$isPlaying implements _$isPlaying {
 abstract class _$isPlaying implements PlayerEvent {
   const factory _$isPlaying(final bool isPlaying) = _$_$isPlaying;
 
-  bool get isPlaying => throw _privateConstructorUsedError;
+  bool get isPlaying;
   @JsonKey(ignore: true)
-  _$$isPlayingCopyWith<_$isPlaying> get copyWith =>
+  _$$_$isPlayingCopyWith<_$_$isPlaying> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$durationCopyWith<$Res> {
-  factory _$$durationCopyWith(
-          _$duration value, $Res Function(_$duration) then) =
-      __$$durationCopyWithImpl<$Res>;
+abstract class _$$_$durationCopyWith<$Res> {
+  factory _$$_$durationCopyWith(
+          _$_$duration value, $Res Function(_$_$duration) then) =
+      __$$_$durationCopyWithImpl<$Res>;
   $Res call({Duration duration});
 }
 
 /// @nodoc
-class __$$durationCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$$durationCopyWith<$Res> {
-  __$$durationCopyWithImpl(_$duration _value, $Res Function(_$duration) _then)
-      : super(_value, (v) => _then(v as _$duration));
+class __$$_$durationCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$_$durationCopyWith<$Res> {
+  __$$_$durationCopyWithImpl(
+      _$_$duration _value, $Res Function(_$_$duration) _then)
+      : super(_value, (v) => _then(v as _$_$duration));
 
   @override
-  _$duration get _value => super._value as _$duration;
+  _$_$duration get _value => super._value as _$_$duration;
 
   @override
   $Res call({
     Object? duration = freezed,
   }) {
-    return _then(_$duration(
+    return _then(_$_$duration(
       duration == freezed
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
@@ -679,7 +681,7 @@ class _$_$duration implements _$duration {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$duration &&
+            other is _$_$duration &&
             const DeepCollectionEquality().equals(other.duration, duration));
   }
 
@@ -689,8 +691,8 @@ class _$_$duration implements _$duration {
 
   @JsonKey(ignore: true)
   @override
-  _$$durationCopyWith<_$duration> get copyWith =>
-      __$$durationCopyWithImpl<_$duration>(this, _$identity);
+  _$$_$durationCopyWith<_$_$duration> get copyWith =>
+      __$$_$durationCopyWithImpl<_$_$duration>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -794,33 +796,33 @@ class _$_$duration implements _$duration {
 abstract class _$duration implements PlayerEvent {
   const factory _$duration(final Duration duration) = _$_$duration;
 
-  Duration get duration => throw _privateConstructorUsedError;
+  Duration get duration;
   @JsonKey(ignore: true)
-  _$$durationCopyWith<_$duration> get copyWith =>
+  _$$_$durationCopyWith<_$_$duration> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$lyricCopyWith<$Res> {
-  factory _$lyricCopyWith(_lyric value, $Res Function(_lyric) then) =
-      __$lyricCopyWithImpl<$Res>;
+abstract class _$$_lyricCopyWith<$Res> {
+  factory _$$_lyricCopyWith(_$_lyric value, $Res Function(_$_lyric) then) =
+      __$$_lyricCopyWithImpl<$Res>;
   $Res call({int id});
 }
 
 /// @nodoc
-class __$lyricCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$lyricCopyWith<$Res> {
-  __$lyricCopyWithImpl(_lyric _value, $Res Function(_lyric) _then)
-      : super(_value, (v) => _then(v as _lyric));
+class __$$_lyricCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$_lyricCopyWith<$Res> {
+  __$$_lyricCopyWithImpl(_$_lyric _value, $Res Function(_$_lyric) _then)
+      : super(_value, (v) => _then(v as _$_lyric));
 
   @override
-  _lyric get _value => super._value as _lyric;
+  _$_lyric get _value => super._value as _$_lyric;
 
   @override
   $Res call({
     Object? id = freezed,
   }) {
-    return _then(_lyric(
+    return _then(_$_lyric(
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -846,7 +848,7 @@ class _$_lyric implements _lyric {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _lyric &&
+            other is _$_lyric &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
@@ -856,8 +858,8 @@ class _$_lyric implements _lyric {
 
   @JsonKey(ignore: true)
   @override
-  _$lyricCopyWith<_lyric> get copyWith =>
-      __$lyricCopyWithImpl<_lyric>(this, _$identity);
+  _$$_lyricCopyWith<_$_lyric> get copyWith =>
+      __$$_lyricCopyWithImpl<_$_lyric>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -961,35 +963,37 @@ class _$_lyric implements _lyric {
 abstract class _lyric implements PlayerEvent {
   const factory _lyric(final int id) = _$_lyric;
 
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @JsonKey(ignore: true)
-  _$lyricCopyWith<_lyric> get copyWith => throw _privateConstructorUsedError;
+  _$$_lyricCopyWith<_$_lyric> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$songListCopyWith<$Res> {
-  factory _$$songListCopyWith(
-          _$songList value, $Res Function(_$songList) then) =
-      __$$songListCopyWithImpl<$Res>;
+abstract class _$$_$songListCopyWith<$Res> {
+  factory _$$_$songListCopyWith(
+          _$_$songList value, $Res Function(_$_$songList) then) =
+      __$$_$songListCopyWithImpl<$Res>;
   $Res call({List<Song> list});
 }
 
 /// @nodoc
-class __$$songListCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$$songListCopyWith<$Res> {
-  __$$songListCopyWithImpl(_$songList _value, $Res Function(_$songList) _then)
-      : super(_value, (v) => _then(v as _$songList));
+class __$$_$songListCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$_$songListCopyWith<$Res> {
+  __$$_$songListCopyWithImpl(
+      _$_$songList _value, $Res Function(_$_$songList) _then)
+      : super(_value, (v) => _then(v as _$_$songList));
 
   @override
-  _$songList get _value => super._value as _$songList;
+  _$_$songList get _value => super._value as _$_$songList;
 
   @override
   $Res call({
     Object? list = freezed,
   }) {
-    return _then(_$songList(
+    return _then(_$_$songList(
       list == freezed
-          ? _value.list
+          ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
               as List<Song>,
     ));
@@ -1017,18 +1021,18 @@ class _$_$songList implements _$songList {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$songList &&
-            const DeepCollectionEquality().equals(other.list, list));
+            other is _$_$songList &&
+            const DeepCollectionEquality().equals(other._list, _list));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(list));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
 
   @JsonKey(ignore: true)
   @override
-  _$$songListCopyWith<_$songList> get copyWith =>
-      __$$songListCopyWithImpl<_$songList>(this, _$identity);
+  _$$_$songListCopyWith<_$_$songList> get copyWith =>
+      __$$_$songListCopyWithImpl<_$_$songList>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1132,27 +1136,28 @@ class _$_$songList implements _$songList {
 abstract class _$songList implements PlayerEvent {
   const factory _$songList(final List<Song> list) = _$_$songList;
 
-  List<Song> get list => throw _privateConstructorUsedError;
+  List<Song> get list;
   @JsonKey(ignore: true)
-  _$$songListCopyWith<_$songList> get copyWith =>
+  _$$_$songListCopyWith<_$_$songList> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$nextSongCopyWith<$Res> {
-  factory _$$nextSongCopyWith(
-          _$nextSong value, $Res Function(_$nextSong) then) =
-      __$$nextSongCopyWithImpl<$Res>;
+abstract class _$$_$nextSongCopyWith<$Res> {
+  factory _$$_$nextSongCopyWith(
+          _$_$nextSong value, $Res Function(_$_$nextSong) then) =
+      __$$_$nextSongCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$nextSongCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$$nextSongCopyWith<$Res> {
-  __$$nextSongCopyWithImpl(_$nextSong _value, $Res Function(_$nextSong) _then)
-      : super(_value, (v) => _then(v as _$nextSong));
+class __$$_$nextSongCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$_$nextSongCopyWith<$Res> {
+  __$$_$nextSongCopyWithImpl(
+      _$_$nextSong _value, $Res Function(_$_$nextSong) _then)
+      : super(_value, (v) => _then(v as _$_$nextSong));
 
   @override
-  _$nextSong get _value => super._value as _$nextSong;
+  _$_$nextSong get _value => super._value as _$_$nextSong;
 }
 
 /// @nodoc
@@ -1168,7 +1173,7 @@ class _$_$nextSong implements _$nextSong {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$nextSong);
+        (other.runtimeType == runtimeType && other is _$_$nextSong);
   }
 
   @override
@@ -1278,19 +1283,21 @@ abstract class _$nextSong implements PlayerEvent {
 }
 
 /// @nodoc
-abstract class _$$preSongCopyWith<$Res> {
-  factory _$$preSongCopyWith(_$preSong value, $Res Function(_$preSong) then) =
-      __$$preSongCopyWithImpl<$Res>;
+abstract class _$$_$preSongCopyWith<$Res> {
+  factory _$$_$preSongCopyWith(
+          _$_$preSong value, $Res Function(_$_$preSong) then) =
+      __$$_$preSongCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$preSongCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
-    implements _$$preSongCopyWith<$Res> {
-  __$$preSongCopyWithImpl(_$preSong _value, $Res Function(_$preSong) _then)
-      : super(_value, (v) => _then(v as _$preSong));
+class __$$_$preSongCopyWithImpl<$Res> extends _$PlayerEventCopyWithImpl<$Res>
+    implements _$$_$preSongCopyWith<$Res> {
+  __$$_$preSongCopyWithImpl(
+      _$_$preSong _value, $Res Function(_$_$preSong) _then)
+      : super(_value, (v) => _then(v as _$_$preSong));
 
   @override
-  _$preSong get _value => super._value as _$preSong;
+  _$_$preSong get _value => super._value as _$_$preSong;
 }
 
 /// @nodoc
@@ -1306,7 +1313,7 @@ class _$_$preSong implements _$preSong {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$preSong);
+        (other.runtimeType == runtimeType && other is _$_$preSong);
   }
 
   @override
@@ -1511,11 +1518,11 @@ class _$PlayerStateCopyWithImpl<$Res> implements $PlayerStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PlayerStateCopyWith<$Res>
+abstract class _$$_PlayerStateCopyWith<$Res>
     implements $PlayerStateCopyWith<$Res> {
-  factory _$PlayerStateCopyWith(
-          _PlayerState value, $Res Function(_PlayerState) then) =
-      __$PlayerStateCopyWithImpl<$Res>;
+  factory _$$_PlayerStateCopyWith(
+          _$_PlayerState value, $Res Function(_$_PlayerState) then) =
+      __$$_PlayerStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {Song? playingSong,
@@ -1530,14 +1537,14 @@ abstract class _$PlayerStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$PlayerStateCopyWithImpl<$Res> extends _$PlayerStateCopyWithImpl<$Res>
-    implements _$PlayerStateCopyWith<$Res> {
-  __$PlayerStateCopyWithImpl(
-      _PlayerState _value, $Res Function(_PlayerState) _then)
-      : super(_value, (v) => _then(v as _PlayerState));
+class __$$_PlayerStateCopyWithImpl<$Res> extends _$PlayerStateCopyWithImpl<$Res>
+    implements _$$_PlayerStateCopyWith<$Res> {
+  __$$_PlayerStateCopyWithImpl(
+      _$_PlayerState _value, $Res Function(_$_PlayerState) _then)
+      : super(_value, (v) => _then(v as _$_PlayerState));
 
   @override
-  _PlayerState get _value => super._value as _PlayerState;
+  _$_PlayerState get _value => super._value as _$_PlayerState;
 
   @override
   $Res call({
@@ -1551,7 +1558,7 @@ class __$PlayerStateCopyWithImpl<$Res> extends _$PlayerStateCopyWithImpl<$Res>
     Object? loopType = freezed,
     Object? playRecord = freezed,
   }) {
-    return _then(_PlayerState(
+    return _then(_$_PlayerState(
       playingSong: playingSong == freezed
           ? _value.playingSong
           : playingSong // ignore: cast_nullable_to_non_nullable
@@ -1573,11 +1580,11 @@ class __$PlayerStateCopyWithImpl<$Res> extends _$PlayerStateCopyWithImpl<$Res>
           : lyricVM // ignore: cast_nullable_to_non_nullable
               as ViewModel<LyricResponse>,
       lyricList: lyricList == freezed
-          ? _value.lyricList
+          ? _value._lyricList
           : lyricList // ignore: cast_nullable_to_non_nullable
               as List<Lyric>,
       songList: songList == freezed
-          ? _value.songList
+          ? _value._songList
           : songList // ignore: cast_nullable_to_non_nullable
               as List<Song>,
       loopType: loopType == freezed
@@ -1585,7 +1592,7 @@ class __$PlayerStateCopyWithImpl<$Res> extends _$PlayerStateCopyWithImpl<$Res>
           : loopType // ignore: cast_nullable_to_non_nullable
               as LoopType,
       playRecord: playRecord == freezed
-          ? _value.playRecord
+          ? _value._playRecord
           : playRecord // ignore: cast_nullable_to_non_nullable
               as List<Song>,
     ));
@@ -1651,7 +1658,7 @@ class _$_PlayerState implements _PlayerState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PlayerState &&
+            other is _$_PlayerState &&
             const DeepCollectionEquality()
                 .equals(other.playingSong, playingSong) &&
             const DeepCollectionEquality()
@@ -1659,11 +1666,12 @@ class _$_PlayerState implements _PlayerState {
             const DeepCollectionEquality().equals(other.isPlaying, isPlaying) &&
             const DeepCollectionEquality().equals(other.duration, duration) &&
             const DeepCollectionEquality().equals(other.lyricVM, lyricVM) &&
-            const DeepCollectionEquality().equals(other.lyricList, lyricList) &&
-            const DeepCollectionEquality().equals(other.songList, songList) &&
+            const DeepCollectionEquality()
+                .equals(other._lyricList, _lyricList) &&
+            const DeepCollectionEquality().equals(other._songList, _songList) &&
             const DeepCollectionEquality().equals(other.loopType, loopType) &&
             const DeepCollectionEquality()
-                .equals(other.playRecord, playRecord));
+                .equals(other._playRecord, _playRecord));
   }
 
   @override
@@ -1674,15 +1682,15 @@ class _$_PlayerState implements _PlayerState {
       const DeepCollectionEquality().hash(isPlaying),
       const DeepCollectionEquality().hash(duration),
       const DeepCollectionEquality().hash(lyricVM),
-      const DeepCollectionEquality().hash(lyricList),
-      const DeepCollectionEquality().hash(songList),
+      const DeepCollectionEquality().hash(_lyricList),
+      const DeepCollectionEquality().hash(_songList),
       const DeepCollectionEquality().hash(loopType),
-      const DeepCollectionEquality().hash(playRecord));
+      const DeepCollectionEquality().hash(_playRecord));
 
   @JsonKey(ignore: true)
   @override
-  _$PlayerStateCopyWith<_PlayerState> get copyWith =>
-      __$PlayerStateCopyWithImpl<_PlayerState>(this, _$identity);
+  _$$_PlayerStateCopyWith<_$_PlayerState> get copyWith =>
+      __$$_PlayerStateCopyWithImpl<_$_PlayerState>(this, _$identity);
 }
 
 abstract class _PlayerState implements PlayerState {
@@ -1698,25 +1706,25 @@ abstract class _PlayerState implements PlayerState {
       required final List<Song> playRecord}) = _$_PlayerState;
 
   @override
-  Song? get playingSong => throw _privateConstructorUsedError;
+  Song? get playingSong;
   @override
-  SongDetail? get songDetail => throw _privateConstructorUsedError;
+  SongDetail? get songDetail;
   @override
-  bool get isPlaying => throw _privateConstructorUsedError;
+  bool get isPlaying;
   @override
-  Duration get duration => throw _privateConstructorUsedError;
+  Duration get duration;
   @override
-  ViewModel<LyricResponse> get lyricVM => throw _privateConstructorUsedError;
+  ViewModel<LyricResponse> get lyricVM;
   @override
-  List<Lyric> get lyricList => throw _privateConstructorUsedError;
+  List<Lyric> get lyricList;
   @override
-  List<Song> get songList => throw _privateConstructorUsedError;
+  List<Song> get songList;
   @override
-  LoopType get loopType => throw _privateConstructorUsedError;
+  LoopType get loopType;
   @override
-  List<Song> get playRecord => throw _privateConstructorUsedError;
+  List<Song> get playRecord;
   @override
   @JsonKey(ignore: true)
-  _$PlayerStateCopyWith<_PlayerState> get copyWith =>
+  _$$_PlayerStateCopyWith<_$_PlayerState> get copyWith =>
       throw _privateConstructorUsedError;
 }

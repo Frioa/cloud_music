@@ -5,7 +5,7 @@ mixin MvAppLifecycleMixin<W extends StatefulWidget> on State<W>, WidgetsBindingO
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -15,7 +15,7 @@ mixin MvAppLifecycleMixin<W extends StatefulWidget> on State<W>, WidgetsBindingO
     }
 
     if (state == AppLifecycleState.resumed) {
-      WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         if (!mounted) return;
         PlayerController.instance.continueplay();
       });
@@ -24,7 +24,7 @@ mixin MvAppLifecycleMixin<W extends StatefulWidget> on State<W>, WidgetsBindingO
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 }

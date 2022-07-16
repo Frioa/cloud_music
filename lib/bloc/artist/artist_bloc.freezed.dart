@@ -86,31 +86,32 @@ class _$ArtistEventCopyWithImpl<$Res> implements $ArtistEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$requestArtistsDetailCopyWith<$Res>
+abstract class _$$_$requestArtistsDetailCopyWith<$Res>
     implements $ArtistEventCopyWith<$Res> {
-  factory _$$requestArtistsDetailCopyWith(_$requestArtistsDetail value,
-          $Res Function(_$requestArtistsDetail) then) =
-      __$$requestArtistsDetailCopyWithImpl<$Res>;
+  factory _$$_$requestArtistsDetailCopyWith(_$_$requestArtistsDetail value,
+          $Res Function(_$_$requestArtistsDetail) then) =
+      __$$_$requestArtistsDetailCopyWithImpl<$Res>;
   @override
   $Res call({int id});
 }
 
 /// @nodoc
-class __$$requestArtistsDetailCopyWithImpl<$Res>
+class __$$_$requestArtistsDetailCopyWithImpl<$Res>
     extends _$ArtistEventCopyWithImpl<$Res>
-    implements _$$requestArtistsDetailCopyWith<$Res> {
-  __$$requestArtistsDetailCopyWithImpl(_$requestArtistsDetail _value,
-      $Res Function(_$requestArtistsDetail) _then)
-      : super(_value, (v) => _then(v as _$requestArtistsDetail));
+    implements _$$_$requestArtistsDetailCopyWith<$Res> {
+  __$$_$requestArtistsDetailCopyWithImpl(_$_$requestArtistsDetail _value,
+      $Res Function(_$_$requestArtistsDetail) _then)
+      : super(_value, (v) => _then(v as _$_$requestArtistsDetail));
 
   @override
-  _$requestArtistsDetail get _value => super._value as _$requestArtistsDetail;
+  _$_$requestArtistsDetail get _value =>
+      super._value as _$_$requestArtistsDetail;
 
   @override
   $Res call({
     Object? id = freezed,
   }) {
-    return _then(_$requestArtistsDetail(
+    return _then(_$_$requestArtistsDetail(
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -136,7 +137,7 @@ class _$_$requestArtistsDetail implements _$requestArtistsDetail {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$requestArtistsDetail &&
+            other is _$_$requestArtistsDetail &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
@@ -146,8 +147,8 @@ class _$_$requestArtistsDetail implements _$requestArtistsDetail {
 
   @JsonKey(ignore: true)
   @override
-  _$$requestArtistsDetailCopyWith<_$requestArtistsDetail> get copyWith =>
-      __$$requestArtistsDetailCopyWithImpl<_$requestArtistsDetail>(
+  _$$_$requestArtistsDetailCopyWith<_$_$requestArtistsDetail> get copyWith =>
+      __$$_$requestArtistsDetailCopyWithImpl<_$_$requestArtistsDetail>(
           this, _$identity);
 
   @override
@@ -212,10 +213,10 @@ abstract class _$requestArtistsDetail implements ArtistEvent {
   const factory _$requestArtistsDetail(final int id) = _$_$requestArtistsDetail;
 
   @override
-  int get id => throw _privateConstructorUsedError;
+  int get id;
   @override
   @JsonKey(ignore: true)
-  _$$requestArtistsDetailCopyWith<_$requestArtistsDetail> get copyWith =>
+  _$$_$requestArtistsDetailCopyWith<_$_$requestArtistsDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -260,31 +261,31 @@ class _$ArtistStateCopyWithImpl<$Res> implements $ArtistStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$ArtistStateCopyWith<$Res>
+abstract class _$$_ArtistStateCopyWith<$Res>
     implements $ArtistStateCopyWith<$Res> {
-  factory _$ArtistStateCopyWith(
-          _ArtistState value, $Res Function(_ArtistState) then) =
-      __$ArtistStateCopyWithImpl<$Res>;
+  factory _$$_ArtistStateCopyWith(
+          _$_ArtistState value, $Res Function(_$_ArtistState) then) =
+      __$$_ArtistStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {ViewModel<DataWrapResponse<ArtistsDetailResponse>> artistDetailVM});
 }
 
 /// @nodoc
-class __$ArtistStateCopyWithImpl<$Res> extends _$ArtistStateCopyWithImpl<$Res>
-    implements _$ArtistStateCopyWith<$Res> {
-  __$ArtistStateCopyWithImpl(
-      _ArtistState _value, $Res Function(_ArtistState) _then)
-      : super(_value, (v) => _then(v as _ArtistState));
+class __$$_ArtistStateCopyWithImpl<$Res> extends _$ArtistStateCopyWithImpl<$Res>
+    implements _$$_ArtistStateCopyWith<$Res> {
+  __$$_ArtistStateCopyWithImpl(
+      _$_ArtistState _value, $Res Function(_$_ArtistState) _then)
+      : super(_value, (v) => _then(v as _$_ArtistState));
 
   @override
-  _ArtistState get _value => super._value as _ArtistState;
+  _$_ArtistState get _value => super._value as _$_ArtistState;
 
   @override
   $Res call({
     Object? artistDetailVM = freezed,
   }) {
-    return _then(_ArtistState(
+    return _then(_$_ArtistState(
       artistDetailVM: artistDetailVM == freezed
           ? _value.artistDetailVM
           : artistDetailVM // ignore: cast_nullable_to_non_nullable
@@ -310,7 +311,7 @@ class _$_ArtistState implements _ArtistState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ArtistState &&
+            other is _$_ArtistState &&
             const DeepCollectionEquality()
                 .equals(other.artistDetailVM, artistDetailVM));
   }
@@ -321,8 +322,8 @@ class _$_ArtistState implements _ArtistState {
 
   @JsonKey(ignore: true)
   @override
-  _$ArtistStateCopyWith<_ArtistState> get copyWith =>
-      __$ArtistStateCopyWithImpl<_ArtistState>(this, _$identity);
+  _$$_ArtistStateCopyWith<_$_ArtistState> get copyWith =>
+      __$$_ArtistStateCopyWithImpl<_$_ArtistState>(this, _$identity);
 }
 
 abstract class _ArtistState implements ArtistState {
@@ -331,10 +332,9 @@ abstract class _ArtistState implements ArtistState {
           artistDetailVM}) = _$_ArtistState;
 
   @override
-  ViewModel<DataWrapResponse<ArtistsDetailResponse>> get artistDetailVM =>
-      throw _privateConstructorUsedError;
+  ViewModel<DataWrapResponse<ArtistsDetailResponse>> get artistDetailVM;
   @override
   @JsonKey(ignore: true)
-  _$ArtistStateCopyWith<_ArtistState> get copyWith =>
+  _$$_ArtistStateCopyWith<_$_ArtistState> get copyWith =>
       throw _privateConstructorUsedError;
 }

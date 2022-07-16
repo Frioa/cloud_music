@@ -52,6 +52,6 @@ class _$TopStateCWProxyImpl implements _$TopStateCWProxy {
 }
 
 extension $TopStateCopyWith on TopState {
-  /// Returns a callable class that can be used as follows: `instanceOfclass TopState extends Equatable.name.copyWith(...)` or like so:`instanceOfclass TopState extends Equatable.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfTopState.copyWith(...)` or like so:`instanceOfTopState.copyWith.fieldName(...)`.
   _$TopStateCWProxy get copyWith => _$TopStateCWProxyImpl(this);
 }

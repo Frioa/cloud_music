@@ -18,10 +18,10 @@ class PlayerOverlay {
     logger.d("PlayerOverlay: showPlayer $init");
     if (!init) {
       init = true;
-      WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         Overlay.of(context)!.insert(overlayEntry);
 
-        WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+        WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
           (_key.currentState as HomeBottomPlayerWidgetState).show();
         });
       });
