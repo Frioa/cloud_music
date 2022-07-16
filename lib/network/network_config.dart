@@ -6,7 +6,7 @@ import 'package:path_provider/path_provider.dart';
 
 import 'http_logger.dart';
 
-late Dio _dio = Dio();
+Dio _dio = Dio();
 
 Dio get dio => _dio;
 

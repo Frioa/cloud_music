@@ -9,10 +9,10 @@ class MyPage extends StatefulWidget {
   const MyPage({Key? key}) : super(key: key);
 
   @override
-  _MyPageState createState() => _MyPageState();
+  MyPageState createState() => MyPageState();
 }
 
-class _MyPageState extends State<MyPage> with AutomaticKeepAliveClientMixin{
+class MyPageState extends State<MyPage> with AutomaticKeepAliveClientMixin{
   @override
   void initState() {
     super.initState();

@@ -51,7 +51,7 @@ class SongListWidget extends StatelessWidget {
     }
 
     Widget _buildItem(Song track, int index) {
-      final _showIcon = showIcon && (track.al?.picUrl != null);
+      final $showIcon = showIcon && (track.al?.picUrl != null);
 
       final playing = context.watch<PlayerBloc>().state.playingSong?.id == track.id;
 
@@ -64,7 +64,7 @@ class SongListWidget extends StatelessWidget {
           height: 68.w,
           child: Row(
             children: [
-              _showIcon ? _buildImage(track.al!.picUrl!) : _buildNum(index, playing),
+              $showIcon ? _buildImage(track.al!.picUrl!) : _buildNum(index, playing),
               SizedBox(width: 12.w),
               Expanded(
                 child: Column(

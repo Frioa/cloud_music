@@ -51,15 +51,15 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
       final List<Song> list = List.from(state.playRecord);
 
       final song = list.removeLast();
-      final _song = PlayerEvent.song(song, state.songList) as _$playSong;
-      requestSong(_song, emit);
+      final $song = PlayerEvent.song(song, state.songList) as $playSong;
+      requestSong($song, emit);
       emit(state.copyWith(playRecord: list));
     } else {
       nextPlay(emit);
     }
   }
 
-  Future<void> requestSong(_$playSong value, Emitter<PlayerState> emit) async {
+  Future<void> requestSong($playSong value, Emitter<PlayerState> emit) async {
     addPlayRecord(value.song, emit);
     emit(state.copyWith(
       playingSong: value.song,
@@ -130,28 +130,28 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
         break;
     }
 
-    final song = PlayerEvent.song(songList[index], songList) as _$playSong;
+    final song = PlayerEvent.song(songList[index], songList) as $playSong;
     requestSong(song, emit);
   }
 }
 
 @freezed
 class PlayerEvent with _$PlayerEvent {
-  const factory PlayerEvent.song(Song song, List<Song> songList) = _$playSong;
+  const factory PlayerEvent.song(Song song, List<Song> songList) = $playSong;
 
-  const factory PlayerEvent.songDetail(SongDetail songDetail) = _$songDetail;
+  const factory PlayerEvent.songDetail(SongDetail songDetail) = $songDetail;
 
-  const factory PlayerEvent.isPlaying(bool isPlaying) = _$isPlaying;
+  const factory PlayerEvent.isPlaying(bool isPlaying) = $isPlaying;
 
-  const factory PlayerEvent.duration(Duration duration) = _$duration;
+  const factory PlayerEvent.duration(Duration duration) = $duration;
 
-  const factory PlayerEvent.lyric(int id) = _lyric;
+  const factory PlayerEvent.lyric(int id) = lyric;
 
-  const factory PlayerEvent.songList(List<Song> list) = _$songList;
+  const factory PlayerEvent.songList(List<Song> list) = $songList;
 
-  const factory PlayerEvent.nextSong() = _$nextSong;
+  const factory PlayerEvent.nextSong() = $nextSong;
 
-  const factory PlayerEvent.preSong() = _$preSong;
+  const factory PlayerEvent.preSong() = $preSong;
 }
 
 enum LoopType {

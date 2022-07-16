@@ -72,6 +72,7 @@ mixin LoginPhoneMixin<T extends StatefulWidget> on State<T> {
     void onSuccess() async {
       final sp = await SharedPreferences.getInstance();
       sp.setString(SpKey.phone, _phoneController.text);
+      if (!mounted) return;
 
       context.read<LoginNewBloc>().add(const LoginEvent.loginStatus());
       context.read<TopBloc>().add(RequestTopArtistsEvent());

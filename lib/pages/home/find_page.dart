@@ -9,10 +9,10 @@ class FindPage extends StatefulWidget {
   const FindPage({Key? key}) : super(key: key);
 
   @override
-  _FundPageState createState() => _FundPageState();
+  FundPageState createState() => FundPageState();
 }
 
-class _FundPageState extends State<FindPage> {
+class FundPageState extends State<FindPage> {
 
   @override
   void didChangeDependencies() {

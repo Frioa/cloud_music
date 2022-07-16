@@ -37,20 +37,20 @@ mixin _$MVEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_$MVURL value) requestMVURL,
-    required TResult Function(_$requestDetail value) requestDetail,
+    required TResult Function($MVURL value) requestMVURL,
+    required TResult Function($requestDetail value) requestDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$requestDetail value)? requestDetail,
+    TResult Function($MVURL value)? requestMVURL,
+    TResult Function($requestDetail value)? requestDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$requestDetail value)? requestDetail,
+    TResult Function($MVURL value)? requestMVURL,
+    TResult Function($requestDetail value)? requestDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,27 +72,27 @@ class _$MVEventCopyWithImpl<$Res> implements $MVEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_$MVURLCopyWith<$Res> {
-  factory _$$_$MVURLCopyWith(_$_$MVURL value, $Res Function(_$_$MVURL) then) =
-      __$$_$MVURLCopyWithImpl<$Res>;
+abstract class _$$$MVURLCopyWith<$Res> {
+  factory _$$$MVURLCopyWith(_$$MVURL value, $Res Function(_$$MVURL) then) =
+      __$$$MVURLCopyWithImpl<$Res>;
   $Res call({int id, VoidCallback onSuccess});
 }
 
 /// @nodoc
-class __$$_$MVURLCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
-    implements _$$_$MVURLCopyWith<$Res> {
-  __$$_$MVURLCopyWithImpl(_$_$MVURL _value, $Res Function(_$_$MVURL) _then)
-      : super(_value, (v) => _then(v as _$_$MVURL));
+class __$$$MVURLCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
+    implements _$$$MVURLCopyWith<$Res> {
+  __$$$MVURLCopyWithImpl(_$$MVURL _value, $Res Function(_$$MVURL) _then)
+      : super(_value, (v) => _then(v as _$$MVURL));
 
   @override
-  _$_$MVURL get _value => super._value as _$_$MVURL;
+  _$$MVURL get _value => super._value as _$$MVURL;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? onSuccess = freezed,
   }) {
-    return _then(_$_$MVURL(
+    return _then(_$$MVURL(
       id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -107,8 +107,8 @@ class __$$_$MVURLCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_$MVURL implements _$MVURL {
-  const _$_$MVURL(this.id, {required this.onSuccess});
+class _$$MVURL implements $MVURL {
+  const _$$MVURL(this.id, {required this.onSuccess});
 
   @override
   final int id;
@@ -124,7 +124,7 @@ class _$_$MVURL implements _$MVURL {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_$MVURL &&
+            other is _$$MVURL &&
             const DeepCollectionEquality().equals(other.id, id) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess));
@@ -136,8 +136,8 @@ class _$_$MVURL implements _$MVURL {
 
   @JsonKey(ignore: true)
   @override
-  _$$_$MVURLCopyWith<_$_$MVURL> get copyWith =>
-      __$$_$MVURLCopyWithImpl<_$_$MVURL>(this, _$identity);
+  _$$$MVURLCopyWith<_$$MVURL> get copyWith =>
+      __$$$MVURLCopyWithImpl<_$$MVURL>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -173,8 +173,8 @@ class _$_$MVURL implements _$MVURL {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_$MVURL value) requestMVURL,
-    required TResult Function(_$requestDetail value) requestDetail,
+    required TResult Function($MVURL value) requestMVURL,
+    required TResult Function($requestDetail value) requestDetail,
   }) {
     return requestMVURL(this);
   }
@@ -182,8 +182,8 @@ class _$_$MVURL implements _$MVURL {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$requestDetail value)? requestDetail,
+    TResult Function($MVURL value)? requestMVURL,
+    TResult Function($requestDetail value)? requestDetail,
   }) {
     return requestMVURL?.call(this);
   }
@@ -191,8 +191,8 @@ class _$_$MVURL implements _$MVURL {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$requestDetail value)? requestDetail,
+    TResult Function($MVURL value)? requestMVURL,
+    TResult Function($requestDetail value)? requestDetail,
     required TResult orElse(),
   }) {
     if (requestMVURL != null) {
@@ -202,40 +202,40 @@ class _$_$MVURL implements _$MVURL {
   }
 }
 
-abstract class _$MVURL implements MVEvent {
-  const factory _$MVURL(final int id, {required final VoidCallback onSuccess}) =
-      _$_$MVURL;
+abstract class $MVURL implements MVEvent {
+  const factory $MVURL(final int id, {required final VoidCallback onSuccess}) =
+      _$$MVURL;
 
   int get id;
   VoidCallback get onSuccess;
   @JsonKey(ignore: true)
-  _$$_$MVURLCopyWith<_$_$MVURL> get copyWith =>
+  _$$$MVURLCopyWith<_$$MVURL> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_$requestDetailCopyWith<$Res> {
-  factory _$$_$requestDetailCopyWith(
-          _$_$requestDetail value, $Res Function(_$_$requestDetail) then) =
-      __$$_$requestDetailCopyWithImpl<$Res>;
+abstract class _$$$requestDetailCopyWith<$Res> {
+  factory _$$$requestDetailCopyWith(
+          _$$requestDetail value, $Res Function(_$$requestDetail) then) =
+      __$$$requestDetailCopyWithImpl<$Res>;
   $Res call({int mvId});
 }
 
 /// @nodoc
-class __$$_$requestDetailCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
-    implements _$$_$requestDetailCopyWith<$Res> {
-  __$$_$requestDetailCopyWithImpl(
-      _$_$requestDetail _value, $Res Function(_$_$requestDetail) _then)
-      : super(_value, (v) => _then(v as _$_$requestDetail));
+class __$$$requestDetailCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
+    implements _$$$requestDetailCopyWith<$Res> {
+  __$$$requestDetailCopyWithImpl(
+      _$$requestDetail _value, $Res Function(_$$requestDetail) _then)
+      : super(_value, (v) => _then(v as _$$requestDetail));
 
   @override
-  _$_$requestDetail get _value => super._value as _$_$requestDetail;
+  _$$requestDetail get _value => super._value as _$$requestDetail;
 
   @override
   $Res call({
     Object? mvId = freezed,
   }) {
-    return _then(_$_$requestDetail(
+    return _then(_$$requestDetail(
       mvId == freezed
           ? _value.mvId
           : mvId // ignore: cast_nullable_to_non_nullable
@@ -246,8 +246,8 @@ class __$$_$requestDetailCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_$requestDetail implements _$requestDetail {
-  const _$_$requestDetail(this.mvId);
+class _$$requestDetail implements $requestDetail {
+  const _$$requestDetail(this.mvId);
 
   @override
   final int mvId;
@@ -261,7 +261,7 @@ class _$_$requestDetail implements _$requestDetail {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_$requestDetail &&
+            other is _$$requestDetail &&
             const DeepCollectionEquality().equals(other.mvId, mvId));
   }
 
@@ -271,8 +271,8 @@ class _$_$requestDetail implements _$requestDetail {
 
   @JsonKey(ignore: true)
   @override
-  _$$_$requestDetailCopyWith<_$_$requestDetail> get copyWith =>
-      __$$_$requestDetailCopyWithImpl<_$_$requestDetail>(this, _$identity);
+  _$$$requestDetailCopyWith<_$$requestDetail> get copyWith =>
+      __$$$requestDetailCopyWithImpl<_$$requestDetail>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -308,8 +308,8 @@ class _$_$requestDetail implements _$requestDetail {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_$MVURL value) requestMVURL,
-    required TResult Function(_$requestDetail value) requestDetail,
+    required TResult Function($MVURL value) requestMVURL,
+    required TResult Function($requestDetail value) requestDetail,
   }) {
     return requestDetail(this);
   }
@@ -317,8 +317,8 @@ class _$_$requestDetail implements _$requestDetail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$requestDetail value)? requestDetail,
+    TResult Function($MVURL value)? requestMVURL,
+    TResult Function($requestDetail value)? requestDetail,
   }) {
     return requestDetail?.call(this);
   }
@@ -326,8 +326,8 @@ class _$_$requestDetail implements _$requestDetail {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$MVURL value)? requestMVURL,
-    TResult Function(_$requestDetail value)? requestDetail,
+    TResult Function($MVURL value)? requestMVURL,
+    TResult Function($requestDetail value)? requestDetail,
     required TResult orElse(),
   }) {
     if (requestDetail != null) {
@@ -337,12 +337,12 @@ class _$_$requestDetail implements _$requestDetail {
   }
 }
 
-abstract class _$requestDetail implements MVEvent {
-  const factory _$requestDetail(final int mvId) = _$_$requestDetail;
+abstract class $requestDetail implements MVEvent {
+  const factory $requestDetail(final int mvId) = _$$requestDetail;
 
   int get mvId;
   @JsonKey(ignore: true)
-  _$$_$requestDetailCopyWith<_$_$requestDetail> get copyWith =>
+  _$$$requestDetailCopyWith<_$$requestDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

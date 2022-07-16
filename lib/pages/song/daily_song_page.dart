@@ -6,10 +6,10 @@ class DailySongPage extends StatefulWidget {
   const DailySongPage({Key? key}) : super(key: key);
 
   @override
-  _DailySongPageState createState() => _DailySongPageState();
+  DailySongPageState createState() => DailySongPageState();
 }
 
-class _DailySongPageState extends State<DailySongPage> {
+class DailySongPageState extends State<DailySongPage> {
   DailySongResponse? response;
 
   @override

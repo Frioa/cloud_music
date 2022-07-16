@@ -14,7 +14,7 @@ class RouteParser extends RouteInformationParser<PageConfiguration> {
     if (uri.pathSegments.isEmpty) {
       return SynchronousFuture(homePage);
     }
-    final path = '/' + uri.pathSegments[0];
+    final path = '/${uri.pathSegments[0]}';
 
     final config = pageFactor(path.toPages());
     return SynchronousFuture(config);

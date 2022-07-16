@@ -78,7 +78,7 @@ class Song {
       singer = '${ar[0].name}/${ar[1].name}';
     }
 
-    return singer + ' - ' + (al?.name ?? '');
+    return '$singer - ${al?.name ?? ''}';
   }
 
   bool get hasMV => mv != 0;

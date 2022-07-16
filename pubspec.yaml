@@ -49,6 +49,8 @@ dependencies:
   freezed_annotation: ^2.0.0
   dartz: ^0.10.1
   oktoast: ^3.2.0
+  cookie_jar: 3.0.1
+
 
 dev_dependencies:
   flutter_test:
@@ -57,7 +59,7 @@ dev_dependencies:
   copy_with_extension_gen: ^4.0.0
   retrofit_generator: ^4.0.2
   build_runner: ^2.2.0
-  flutter_lints: ^1.0.4
+  flutter_lints: ^2.0.1
   json_serializable: ^6.3.1
   flutter_gen_runner: ^4.3.0
   lint: ^1.8.2

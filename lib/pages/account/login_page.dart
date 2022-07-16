@@ -12,10 +12,10 @@ class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  _LoginPageState createState() => _LoginPageState();
+  LoginPageState createState() => LoginPageState();
 }
 
-class _LoginPageState extends BasePageState<LoginPage> {
+class LoginPageState extends BasePageState<LoginPage> {
   final FocusNode phoneFocus = FocusNode();
   final FocusNode captchaFocus = FocusNode();
   late final TextEditingController phoneController = TextEditingController();
@@ -60,6 +60,8 @@ class _LoginPageState extends BasePageState<LoginPage> {
         final sp = await SharedPreferences.getInstance();
         sp.setString(SpKey.phone, phone);
         requestStatus();
+
+        if (!mounted) return;
         R.of(context).pop();
       },
     );

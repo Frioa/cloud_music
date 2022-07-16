@@ -67,10 +67,10 @@ class ImageWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ImageWidgetState createState() => _ImageWidgetState();
+  ImageWidgetState createState() => ImageWidgetState();
 }
 
-class _ImageWidgetState extends State<ImageWidget> with SingleTickerProviderStateMixin {
+class ImageWidgetState extends State<ImageWidget> with SingleTickerProviderStateMixin {
   ImageProvider? _provider;
   late ImageConfiguration _configuration;
 
@@ -100,15 +100,14 @@ class _ImageWidgetState extends State<ImageWidget> with SingleTickerProviderStat
   ImageProvider? get imageProvider {
     if (isSvgPicture) return null;
     if (isNetworkImage) {
-      final _url = (width != null && height != null)
-          ? url +
-              '?param=${(width! * window.devicePixelRatio).floor()}y${(height! * window.devicePixelRatio).floor()}'
+      final $url = (width != null && height != null)
+          ? '$url?param=${(width! * window.devicePixelRatio).floor()}y${(height! * window.devicePixelRatio).floor()}'
           : url;
 
       return ResizeImage.resizeIfNeeded(
         widget.cacheWidth,
         widget.cacheHeight,
-        NetworkImage(_url),
+        NetworkImage($url),
       );
     }
     return ResizeImage.resizeIfNeeded(
@@ -185,10 +184,10 @@ class _ImageWidgetState extends State<ImageWidget> with SingleTickerProviderStat
           width: width,
           height: height,
           child: AnimatedOpacity(
-            child: child,
             opacity: frame == null ? 0 : 1,
             duration: const Duration(seconds: 1),
             curve: widget.opacityCurve ?? Curves.linear,
+            child: child,
           ),
         );
       };

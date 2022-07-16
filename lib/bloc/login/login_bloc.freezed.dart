@@ -57,23 +57,23 @@ mixin _$LoginEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_$sendCaptcha value) sendCaptcha,
-    required TResult Function(_$cellphone value) cellphone,
-    required TResult Function(_$loginStatus value) loginStatus,
+    required TResult Function($sendCaptcha value) sendCaptcha,
+    required TResult Function($cellphone value) cellphone,
+    required TResult Function($loginStatus value) loginStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$sendCaptcha value)? sendCaptcha,
-    TResult Function(_$cellphone value)? cellphone,
-    TResult Function(_$loginStatus value)? loginStatus,
+    TResult Function($sendCaptcha value)? sendCaptcha,
+    TResult Function($cellphone value)? cellphone,
+    TResult Function($loginStatus value)? loginStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$sendCaptcha value)? sendCaptcha,
-    TResult Function(_$cellphone value)? cellphone,
-    TResult Function(_$loginStatus value)? loginStatus,
+    TResult Function($sendCaptcha value)? sendCaptcha,
+    TResult Function($cellphone value)? cellphone,
+    TResult Function($loginStatus value)? loginStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,24 +118,24 @@ class _$LoginEventCopyWithImpl<$Res> implements $LoginEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_$sendCaptchaCopyWith<$Res>
+abstract class _$$$sendCaptchaCopyWith<$Res>
     implements $LoginEventCopyWith<$Res> {
-  factory _$$_$sendCaptchaCopyWith(
-          _$_$sendCaptcha value, $Res Function(_$_$sendCaptcha) then) =
-      __$$_$sendCaptchaCopyWithImpl<$Res>;
+  factory _$$$sendCaptchaCopyWith(
+          _$$sendCaptcha value, $Res Function(_$$sendCaptcha) then) =
+      __$$$sendCaptchaCopyWithImpl<$Res>;
   @override
   $Res call({String phone, VoidCallback? onSuccess, VoidCallback? onError});
 }
 
 /// @nodoc
-class __$$_$sendCaptchaCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements _$$_$sendCaptchaCopyWith<$Res> {
-  __$$_$sendCaptchaCopyWithImpl(
-      _$_$sendCaptcha _value, $Res Function(_$_$sendCaptcha) _then)
-      : super(_value, (v) => _then(v as _$_$sendCaptcha));
+class __$$$sendCaptchaCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$$sendCaptchaCopyWith<$Res> {
+  __$$$sendCaptchaCopyWithImpl(
+      _$$sendCaptcha _value, $Res Function(_$$sendCaptcha) _then)
+      : super(_value, (v) => _then(v as _$$sendCaptcha));
 
   @override
-  _$_$sendCaptcha get _value => super._value as _$_$sendCaptcha;
+  _$$sendCaptcha get _value => super._value as _$$sendCaptcha;
 
   @override
   $Res call({
@@ -143,7 +143,7 @@ class __$$_$sendCaptchaCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
     Object? onSuccess = freezed,
     Object? onError = freezed,
   }) {
-    return _then(_$_$sendCaptcha(
+    return _then(_$$sendCaptcha(
       phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -162,8 +162,8 @@ class __$$_$sendCaptchaCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_$sendCaptcha implements _$sendCaptcha {
-  const _$_$sendCaptcha(this.phone, {this.onSuccess, this.onError});
+class _$$sendCaptcha implements $sendCaptcha {
+  const _$$sendCaptcha(this.phone, {this.onSuccess, this.onError});
 
   @override
   final String phone;
@@ -181,7 +181,7 @@ class _$_$sendCaptcha implements _$sendCaptcha {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_$sendCaptcha &&
+            other is _$$sendCaptcha &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess) &&
@@ -194,8 +194,8 @@ class _$_$sendCaptcha implements _$sendCaptcha {
 
   @JsonKey(ignore: true)
   @override
-  _$$_$sendCaptchaCopyWith<_$_$sendCaptcha> get copyWith =>
-      __$$_$sendCaptchaCopyWithImpl<_$_$sendCaptcha>(this, _$identity);
+  _$$$sendCaptchaCopyWith<_$$sendCaptcha> get copyWith =>
+      __$$$sendCaptchaCopyWithImpl<_$$sendCaptcha>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -249,9 +249,9 @@ class _$_$sendCaptcha implements _$sendCaptcha {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_$sendCaptcha value) sendCaptcha,
-    required TResult Function(_$cellphone value) cellphone,
-    required TResult Function(_$loginStatus value) loginStatus,
+    required TResult Function($sendCaptcha value) sendCaptcha,
+    required TResult Function($cellphone value) cellphone,
+    required TResult Function($loginStatus value) loginStatus,
   }) {
     return sendCaptcha(this);
   }
@@ -259,9 +259,9 @@ class _$_$sendCaptcha implements _$sendCaptcha {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$sendCaptcha value)? sendCaptcha,
-    TResult Function(_$cellphone value)? cellphone,
-    TResult Function(_$loginStatus value)? loginStatus,
+    TResult Function($sendCaptcha value)? sendCaptcha,
+    TResult Function($cellphone value)? cellphone,
+    TResult Function($loginStatus value)? loginStatus,
   }) {
     return sendCaptcha?.call(this);
   }
@@ -269,9 +269,9 @@ class _$_$sendCaptcha implements _$sendCaptcha {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$sendCaptcha value)? sendCaptcha,
-    TResult Function(_$cellphone value)? cellphone,
-    TResult Function(_$loginStatus value)? loginStatus,
+    TResult Function($sendCaptcha value)? sendCaptcha,
+    TResult Function($cellphone value)? cellphone,
+    TResult Function($loginStatus value)? loginStatus,
     required TResult orElse(),
   }) {
     if (sendCaptcha != null) {
@@ -281,10 +281,10 @@ class _$_$sendCaptcha implements _$sendCaptcha {
   }
 }
 
-abstract class _$sendCaptcha implements LoginEvent {
-  const factory _$sendCaptcha(final String phone,
+abstract class $sendCaptcha implements LoginEvent {
+  const factory $sendCaptcha(final String phone,
       {final VoidCallback? onSuccess,
-      final VoidCallback? onError}) = _$_$sendCaptcha;
+      final VoidCallback? onError}) = _$$sendCaptcha;
 
   String get phone;
   @override
@@ -293,16 +293,16 @@ abstract class _$sendCaptcha implements LoginEvent {
   VoidCallback? get onError;
   @override
   @JsonKey(ignore: true)
-  _$$_$sendCaptchaCopyWith<_$_$sendCaptcha> get copyWith =>
+  _$$$sendCaptchaCopyWith<_$$sendCaptcha> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_$cellphoneCopyWith<$Res>
+abstract class _$$$cellphoneCopyWith<$Res>
     implements $LoginEventCopyWith<$Res> {
-  factory _$$_$cellphoneCopyWith(
-          _$_$cellphone value, $Res Function(_$_$cellphone) then) =
-      __$$_$cellphoneCopyWithImpl<$Res>;
+  factory _$$$cellphoneCopyWith(
+          _$$cellphone value, $Res Function(_$$cellphone) then) =
+      __$$$cellphoneCopyWithImpl<$Res>;
   @override
   $Res call(
       {String phone,
@@ -312,14 +312,14 @@ abstract class _$$_$cellphoneCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_$cellphoneCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements _$$_$cellphoneCopyWith<$Res> {
-  __$$_$cellphoneCopyWithImpl(
-      _$_$cellphone _value, $Res Function(_$_$cellphone) _then)
-      : super(_value, (v) => _then(v as _$_$cellphone));
+class __$$$cellphoneCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$$cellphoneCopyWith<$Res> {
+  __$$$cellphoneCopyWithImpl(
+      _$$cellphone _value, $Res Function(_$$cellphone) _then)
+      : super(_value, (v) => _then(v as _$$cellphone));
 
   @override
-  _$_$cellphone get _value => super._value as _$_$cellphone;
+  _$$cellphone get _value => super._value as _$$cellphone;
 
   @override
   $Res call({
@@ -328,7 +328,7 @@ class __$$_$cellphoneCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
     Object? onSuccess = freezed,
     Object? onError = freezed,
   }) {
-    return _then(_$_$cellphone(
+    return _then(_$$cellphone(
       phone == freezed
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
@@ -351,8 +351,8 @@ class __$$_$cellphoneCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_$cellphone implements _$cellphone {
-  const _$_$cellphone(this.phone, this.captcha, {this.onSuccess, this.onError});
+class _$$cellphone implements $cellphone {
+  const _$$cellphone(this.phone, this.captcha, {this.onSuccess, this.onError});
 
   @override
   final String phone;
@@ -372,7 +372,7 @@ class _$_$cellphone implements _$cellphone {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_$cellphone &&
+            other is _$$cellphone &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
             const DeepCollectionEquality().equals(other.captcha, captcha) &&
             (identical(other.onSuccess, onSuccess) ||
@@ -390,8 +390,8 @@ class _$_$cellphone implements _$cellphone {
 
   @JsonKey(ignore: true)
   @override
-  _$$_$cellphoneCopyWith<_$_$cellphone> get copyWith =>
-      __$$_$cellphoneCopyWithImpl<_$_$cellphone>(this, _$identity);
+  _$$$cellphoneCopyWith<_$$cellphone> get copyWith =>
+      __$$$cellphoneCopyWithImpl<_$$cellphone>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -445,9 +445,9 @@ class _$_$cellphone implements _$cellphone {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_$sendCaptcha value) sendCaptcha,
-    required TResult Function(_$cellphone value) cellphone,
-    required TResult Function(_$loginStatus value) loginStatus,
+    required TResult Function($sendCaptcha value) sendCaptcha,
+    required TResult Function($cellphone value) cellphone,
+    required TResult Function($loginStatus value) loginStatus,
   }) {
     return cellphone(this);
   }
@@ -455,9 +455,9 @@ class _$_$cellphone implements _$cellphone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$sendCaptcha value)? sendCaptcha,
-    TResult Function(_$cellphone value)? cellphone,
-    TResult Function(_$loginStatus value)? loginStatus,
+    TResult Function($sendCaptcha value)? sendCaptcha,
+    TResult Function($cellphone value)? cellphone,
+    TResult Function($loginStatus value)? loginStatus,
   }) {
     return cellphone?.call(this);
   }
@@ -465,9 +465,9 @@ class _$_$cellphone implements _$cellphone {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$sendCaptcha value)? sendCaptcha,
-    TResult Function(_$cellphone value)? cellphone,
-    TResult Function(_$loginStatus value)? loginStatus,
+    TResult Function($sendCaptcha value)? sendCaptcha,
+    TResult Function($cellphone value)? cellphone,
+    TResult Function($loginStatus value)? loginStatus,
     required TResult orElse(),
   }) {
     if (cellphone != null) {
@@ -477,10 +477,10 @@ class _$_$cellphone implements _$cellphone {
   }
 }
 
-abstract class _$cellphone implements LoginEvent {
-  const factory _$cellphone(final String phone, final String captcha,
+abstract class $cellphone implements LoginEvent {
+  const factory $cellphone(final String phone, final String captcha,
       {final VoidCallback? onSuccess,
-      final VoidCallback? onError}) = _$_$cellphone;
+      final VoidCallback? onError}) = _$$cellphone;
 
   String get phone;
   String get captcha;
@@ -490,36 +490,36 @@ abstract class _$cellphone implements LoginEvent {
   VoidCallback? get onError;
   @override
   @JsonKey(ignore: true)
-  _$$_$cellphoneCopyWith<_$_$cellphone> get copyWith =>
+  _$$$cellphoneCopyWith<_$$cellphone> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_$loginStatusCopyWith<$Res>
+abstract class _$$$loginStatusCopyWith<$Res>
     implements $LoginEventCopyWith<$Res> {
-  factory _$$_$loginStatusCopyWith(
-          _$_$loginStatus value, $Res Function(_$_$loginStatus) then) =
-      __$$_$loginStatusCopyWithImpl<$Res>;
+  factory _$$$loginStatusCopyWith(
+          _$$loginStatus value, $Res Function(_$$loginStatus) then) =
+      __$$$loginStatusCopyWithImpl<$Res>;
   @override
   $Res call({VoidCallback? onSuccess, VoidCallback? onError});
 }
 
 /// @nodoc
-class __$$_$loginStatusCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
-    implements _$$_$loginStatusCopyWith<$Res> {
-  __$$_$loginStatusCopyWithImpl(
-      _$_$loginStatus _value, $Res Function(_$_$loginStatus) _then)
-      : super(_value, (v) => _then(v as _$_$loginStatus));
+class __$$$loginStatusCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+    implements _$$$loginStatusCopyWith<$Res> {
+  __$$$loginStatusCopyWithImpl(
+      _$$loginStatus _value, $Res Function(_$$loginStatus) _then)
+      : super(_value, (v) => _then(v as _$$loginStatus));
 
   @override
-  _$_$loginStatus get _value => super._value as _$_$loginStatus;
+  _$$loginStatus get _value => super._value as _$$loginStatus;
 
   @override
   $Res call({
     Object? onSuccess = freezed,
     Object? onError = freezed,
   }) {
-    return _then(_$_$loginStatus(
+    return _then(_$$loginStatus(
       onSuccess: onSuccess == freezed
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
@@ -534,8 +534,8 @@ class __$$_$loginStatusCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_$loginStatus implements _$loginStatus {
-  const _$_$loginStatus({this.onSuccess, this.onError});
+class _$$loginStatus implements $loginStatus {
+  const _$$loginStatus({this.onSuccess, this.onError});
 
   @override
   final VoidCallback? onSuccess;
@@ -551,7 +551,7 @@ class _$_$loginStatus implements _$loginStatus {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_$loginStatus &&
+            other is _$$loginStatus &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess) &&
             (identical(other.onError, onError) || other.onError == onError));
@@ -562,8 +562,8 @@ class _$_$loginStatus implements _$loginStatus {
 
   @JsonKey(ignore: true)
   @override
-  _$$_$loginStatusCopyWith<_$_$loginStatus> get copyWith =>
-      __$$_$loginStatusCopyWithImpl<_$_$loginStatus>(this, _$identity);
+  _$$$loginStatusCopyWith<_$$loginStatus> get copyWith =>
+      __$$$loginStatusCopyWithImpl<_$$loginStatus>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -617,9 +617,9 @@ class _$_$loginStatus implements _$loginStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_$sendCaptcha value) sendCaptcha,
-    required TResult Function(_$cellphone value) cellphone,
-    required TResult Function(_$loginStatus value) loginStatus,
+    required TResult Function($sendCaptcha value) sendCaptcha,
+    required TResult Function($cellphone value) cellphone,
+    required TResult Function($loginStatus value) loginStatus,
   }) {
     return loginStatus(this);
   }
@@ -627,9 +627,9 @@ class _$_$loginStatus implements _$loginStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$sendCaptcha value)? sendCaptcha,
-    TResult Function(_$cellphone value)? cellphone,
-    TResult Function(_$loginStatus value)? loginStatus,
+    TResult Function($sendCaptcha value)? sendCaptcha,
+    TResult Function($cellphone value)? cellphone,
+    TResult Function($loginStatus value)? loginStatus,
   }) {
     return loginStatus?.call(this);
   }
@@ -637,9 +637,9 @@ class _$_$loginStatus implements _$loginStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_$sendCaptcha value)? sendCaptcha,
-    TResult Function(_$cellphone value)? cellphone,
-    TResult Function(_$loginStatus value)? loginStatus,
+    TResult Function($sendCaptcha value)? sendCaptcha,
+    TResult Function($cellphone value)? cellphone,
+    TResult Function($loginStatus value)? loginStatus,
     required TResult orElse(),
   }) {
     if (loginStatus != null) {
@@ -649,10 +649,10 @@ class _$_$loginStatus implements _$loginStatus {
   }
 }
 
-abstract class _$loginStatus implements LoginEvent {
-  const factory _$loginStatus(
+abstract class $loginStatus implements LoginEvent {
+  const factory $loginStatus(
       {final VoidCallback? onSuccess,
-      final VoidCallback? onError}) = _$_$loginStatus;
+      final VoidCallback? onError}) = _$$loginStatus;
 
   @override
   VoidCallback? get onSuccess;
@@ -660,7 +660,7 @@ abstract class _$loginStatus implements LoginEvent {
   VoidCallback? get onError;
   @override
   @JsonKey(ignore: true)
-  _$$_$loginStatusCopyWith<_$_$loginStatus> get copyWith =>
+  _$$$loginStatusCopyWith<_$$loginStatus> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

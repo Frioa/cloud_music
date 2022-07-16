@@ -3,7 +3,6 @@ import 'package:cloud_music/bloc/player/player.dart';
 import 'package:cloud_music/common/common.dart';
 import 'package:cloud_music/utils/extension/extionsions.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:media/player_controller.dart';
 
 class LyricWidget extends StatefulWidget {
@@ -20,7 +19,7 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
 
   int get index => indexNotifier.value;
 
-  List<Lyric> get lyricList => Provider.of<PlayerBloc>(context, listen: false).state.lyricList;
+  List<Lyric> get lyricList => context.read()<PlayerBloc>(context, listen: false).state.lyricList;
 
   @override
   void initState() {
@@ -74,7 +73,7 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
   }
 
   List<Widget> get widgets {
-    final lyricList = Provider.of<PlayerBloc>(context, listen: false).state.lyricList;
+    final lyricList = context.read()<PlayerBloc>(context, listen: false).state.lyricList;
     final ans = <Widget>[];
 
     for (int i = 0; i < lyricList.length; i++) {
@@ -88,7 +87,7 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
   /// 二分查找歌词数组下标
   ///
   int findLyricIndex(Duration position) {
-    final lyricList = Provider.of<PlayerBloc>(context, listen: false).state.lyricList;
+    final lyricList = context.read()<PlayerBloc>(context, listen: false).state.lyricList;
     var left = 0;
     var right = lyricList.length - 1;
 

@@ -15,13 +15,13 @@ class MVBloc extends Bloc<MVEvent, MVState> {
     });
   }
 
-  Future<void> requestMvUrl(_$MVURL value, Emitter<MVState> emit) async {
+  Future<void> requestMvUrl($MVURL value, Emitter<MVState> emit) async {
     final response = await MVClient(dio).mvUrl(value.id);
     emit.call(state.copyWith(mvUrlVm: ViewModel.response(response)));
     value.onSuccess.call();
   }
 
-  Future<void> requestMvDetail(_$requestDetail value, Emitter<MVState> emit) async {
+  Future<void> requestMvDetail($requestDetail value, Emitter<MVState> emit) async {
     await MVClient(dio).mvDetail(value.mvId).then((detail) async {
       final info = await MVClient(dio).mvDetailInfo(value.mvId);
       final newDetail = detail.copyWith(
@@ -39,9 +39,9 @@ class MVBloc extends Bloc<MVEvent, MVState> {
 
 @freezed
 class MVEvent with _$MVEvent {
-  const factory MVEvent.requestMVURL(int id, {required VoidCallback onSuccess}) = _$MVURL;
+  const factory MVEvent.requestMVURL(int id, {required VoidCallback onSuccess}) = $MVURL;
 
-  const factory MVEvent.requestDetail(int mvId) = _$requestDetail;
+  const factory MVEvent.requestDetail(int mvId) = $requestDetail;
 }
 
 @freezed

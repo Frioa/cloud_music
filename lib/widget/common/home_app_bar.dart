@@ -32,7 +32,7 @@ class AppBarWidget {
     GestureTapCallback? onLeadingTap,
     GestureTapCallback? onRightTap,
   }) {
-    final _imageSize = imageSize ?? 43.w;
+    final $imageSize = imageSize ?? 43.w;
     final padding = 0.w;
 
     return AppBar(
@@ -46,12 +46,12 @@ class AppBarWidget {
                   SizedBox(width: padding),
                   Container(
                     alignment: Alignment.center,
-                    child: ClipOval(child: ImageWidget(leftImageUrl, size: _imageSize)),
+                    child: ClipOval(child: ImageWidget(leftImageUrl, size: $imageSize)),
                   ),
                 ],
               ),
             )
-          : SizedBox(width: padding + _imageSize),
+          : SizedBox(width: padding + $imageSize),
       actions: [
         rightImageUrl != null
             ? InkWell(
@@ -60,13 +60,13 @@ class AppBarWidget {
                   children: [
                     Container(
                       alignment: Alignment.center,
-                      child: ClipOval(child: ImageWidget(rightImageUrl, size: _imageSize)),
+                      child: ClipOval(child: ImageWidget(rightImageUrl, size: $imageSize)),
                     ),
                     SizedBox(width: padding),
                   ],
                 ),
               )
-            : SizedBox(width: padding + _imageSize)
+            : SizedBox(width: padding + $imageSize)
       ],
     );
   }

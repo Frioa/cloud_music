@@ -31,10 +31,10 @@ class InputWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _InputWidgetState createState() => _InputWidgetState();
+  InputWidgetState createState() => InputWidgetState();
 }
 
-class _InputWidgetState extends State<InputWidget> {
+class InputWidgetState extends State<InputWidget> {
   InputDecoration get decoration => InputDecoration(
         fillColor: Colors.transparent,
         filled: true,

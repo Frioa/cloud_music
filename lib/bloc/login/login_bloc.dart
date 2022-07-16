@@ -47,7 +47,7 @@ class LoginNewBloc extends Bloc<LoginEvent, LoginNewState> {
     });
   }
 
-  Future<void> sentCaptcha(_$sendCaptcha event, Emitter<LoginNewState> emit) async {
+  Future<void> sentCaptcha($sendCaptcha event, Emitter<LoginNewState> emit) async {
     emit.call(state.copyWith(sentCaptchaVm: ViewModel.requesting()));
     await NestLoginClient(dio).sentCaptcha(event.phone).then((response) {
       emit.call(state.copyWith(sentCaptchaVm: ViewModel.response(response)));
@@ -59,7 +59,7 @@ class LoginNewBloc extends Bloc<LoginEvent, LoginNewState> {
     });
   }
 
-  Future<void> cellphone(_$cellphone event, Emitter<LoginNewState> emit) async {
+  Future<void> cellphone($cellphone event, Emitter<LoginNewState> emit) async {
     emit.call(state.copyWith(nestPhoneLoginVm: ViewModel.requesting()));
     await NestLoginClient(dio).cellPhone(event.phone, '', captcha: event.captcha).then(
       (response) async {
@@ -73,7 +73,7 @@ class LoginNewBloc extends Bloc<LoginEvent, LoginNewState> {
     });
   }
 
-  Future<void> loginState(_$loginStatus event, Emitter<LoginNewState> emit) async {
+  Future<void> loginState($loginStatus event, Emitter<LoginNewState> emit) async {
     emit.call(state.copyWith(loginStatusVm: ViewModel.requesting()));
     await NestLoginClient(dio).loginStatus().then(
       (response) async {
@@ -90,13 +90,13 @@ class LoginNewBloc extends Bloc<LoginEvent, LoginNewState> {
 @freezed
 class LoginEvent with _$LoginEvent {
   const factory LoginEvent.sendCaptcha(String phone,
-      {VoidCallback? onSuccess, VoidCallback? onError}) = _$sendCaptcha;
+      {VoidCallback? onSuccess, VoidCallback? onError}) = $sendCaptcha;
 
   const factory LoginEvent.cellphone(String phone, String captcha,
-      {VoidCallback? onSuccess, VoidCallback? onError}) = _$cellphone;
+      {VoidCallback? onSuccess, VoidCallback? onError}) = $cellphone;
 
   const factory LoginEvent.loginStatus({VoidCallback? onSuccess, VoidCallback? onError}) =
-      _$loginStatus;
+      $loginStatus;
 }
 
 @freezed
