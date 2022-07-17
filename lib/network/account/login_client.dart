@@ -144,4 +144,12 @@ abstract class NestLoginClient {
   //   调用登录接口的速度比调用其他接口慢 , 因为登录过程调用了加密算法
   @GET("/register/anonimous")
   Future<BaseHttpResponse> registerAnonimous();
+
+  // 获取账号信息
+  // 说明 : 登录后调用此接口 ,可获取用户账号信息
+  //
+  // 接口地址 : /user/account
+  //
+  // 调用例子 : /user/account
+
 }

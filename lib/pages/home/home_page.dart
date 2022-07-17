@@ -24,7 +24,7 @@ class _HomePageState extends BasePageState<HomePage> {
 
     _globalEventSubscription = GlobalContextHandler().handleEvent(context);
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      // context.read<LoginNewBloc>().add(const LoginEvent.loginStatus());
+      context.read<LoginNewBloc>().add(const LoginEvent.loginStatus());
     });
   }
 

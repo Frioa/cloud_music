@@ -126,6 +126,7 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
         index = songList.indexWhere((e) => e.id == state.playingSong?.id);
         break;
       case LoopType.listLoop:
+        if (songList.isEmpty) return;
         index = (songList.indexWhere((e) => e.id == state.playingSong?.id) + 1) % songList.length;
         break;
     }
