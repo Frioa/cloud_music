@@ -19,7 +19,7 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
 
   int get index => indexNotifier.value;
 
-  List<Lyric> get lyricList => context.read()<PlayerBloc>(context, listen: false).state.lyricList;
+  List<Lyric> get lyricList => context.read<PlayerBloc>().state.lyricList;
 
   @override
   void initState() {
@@ -73,7 +73,7 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
   }
 
   List<Widget> get widgets {
-    final lyricList = context.read()<PlayerBloc>(context, listen: false).state.lyricList;
+    final lyricList = context.read<PlayerBloc>().state.lyricList;
     final ans = <Widget>[];
 
     for (int i = 0; i < lyricList.length; i++) {
@@ -87,9 +87,9 @@ class _LyricWidgetState extends State<LyricWidget> with TickerProviderStateMixin
   /// 二分查找歌词数组下标
   ///
   int findLyricIndex(Duration position) {
-    final lyricList = context.read()<PlayerBloc>(context, listen: false).state.lyricList;
-    var left = 0;
-    var right = lyricList.length - 1;
+    final lyricList = context.read<PlayerBloc>().state.lyricList;
+    int left = 0;
+    int right = lyricList.length - 1;
 
     while (left < right) {
       final mid = (left + right + 1) ~/ 2;

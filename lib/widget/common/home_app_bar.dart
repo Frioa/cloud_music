@@ -36,7 +36,7 @@ class AppBarWidget {
     final padding = 0.w;
 
     return AppBar(
-      leadingWidth: 69.w,
+      // leadingWidth: 69.w,
       title: SizedBox(height: 63.w, child: Center(child: title)),
       leading: leftImageUrl != null
           ? InkWell(
