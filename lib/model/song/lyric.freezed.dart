@@ -26,9 +26,9 @@ mixin _$LyricResponse {
   int get code => throw _privateConstructorUsedError;
   Lrc get lrc => throw _privateConstructorUsedError;
   @JsonKey(name: 'klyric')
-  Lrc get kLyric => throw _privateConstructorUsedError;
+  Lrc? get kLyric => throw _privateConstructorUsedError;
   @JsonKey(name: 'tlyric')
-  Lrc get tLyric => throw _privateConstructorUsedError;
+  Lrc? get tLyric => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,12 +47,12 @@ abstract class $LyricResponseCopyWith<$Res> {
       bool? qfy,
       int code,
       Lrc lrc,
-      @JsonKey(name: 'klyric') Lrc kLyric,
-      @JsonKey(name: 'tlyric') Lrc tLyric});
+      @JsonKey(name: 'klyric') Lrc? kLyric,
+      @JsonKey(name: 'tlyric') Lrc? tLyric});
 
   $LrcCopyWith<$Res> get lrc;
-  $LrcCopyWith<$Res> get kLyric;
-  $LrcCopyWith<$Res> get tLyric;
+  $LrcCopyWith<$Res>? get kLyric;
+  $LrcCopyWith<$Res>? get tLyric;
 }
 
 /// @nodoc
@@ -98,11 +98,11 @@ class _$LyricResponseCopyWithImpl<$Res>
       kLyric: kLyric == freezed
           ? _value.kLyric
           : kLyric // ignore: cast_nullable_to_non_nullable
-              as Lrc,
+              as Lrc?,
       tLyric: tLyric == freezed
           ? _value.tLyric
           : tLyric // ignore: cast_nullable_to_non_nullable
-              as Lrc,
+              as Lrc?,
     ));
   }
 
@@ -114,15 +114,23 @@ class _$LyricResponseCopyWithImpl<$Res>
   }
 
   @override
-  $LrcCopyWith<$Res> get kLyric {
-    return $LrcCopyWith<$Res>(_value.kLyric, (value) {
+  $LrcCopyWith<$Res>? get kLyric {
+    if (_value.kLyric == null) {
+      return null;
+    }
+
+    return $LrcCopyWith<$Res>(_value.kLyric!, (value) {
       return _then(_value.copyWith(kLyric: value));
     });
   }
 
   @override
-  $LrcCopyWith<$Res> get tLyric {
-    return $LrcCopyWith<$Res>(_value.tLyric, (value) {
+  $LrcCopyWith<$Res>? get tLyric {
+    if (_value.tLyric == null) {
+      return null;
+    }
+
+    return $LrcCopyWith<$Res>(_value.tLyric!, (value) {
       return _then(_value.copyWith(tLyric: value));
     });
   }
@@ -141,15 +149,15 @@ abstract class _$$_LyricResponseCopyWith<$Res>
       bool? qfy,
       int code,
       Lrc lrc,
-      @JsonKey(name: 'klyric') Lrc kLyric,
-      @JsonKey(name: 'tlyric') Lrc tLyric});
+      @JsonKey(name: 'klyric') Lrc? kLyric,
+      @JsonKey(name: 'tlyric') Lrc? tLyric});
 
   @override
   $LrcCopyWith<$Res> get lrc;
   @override
-  $LrcCopyWith<$Res> get kLyric;
+  $LrcCopyWith<$Res>? get kLyric;
   @override
-  $LrcCopyWith<$Res> get tLyric;
+  $LrcCopyWith<$Res>? get tLyric;
 }
 
 /// @nodoc
@@ -197,11 +205,11 @@ class __$$_LyricResponseCopyWithImpl<$Res>
       kLyric: kLyric == freezed
           ? _value.kLyric
           : kLyric // ignore: cast_nullable_to_non_nullable
-              as Lrc,
+              as Lrc?,
       tLyric: tLyric == freezed
           ? _value.tLyric
           : tLyric // ignore: cast_nullable_to_non_nullable
-              as Lrc,
+              as Lrc?,
     ));
   }
 }
@@ -233,10 +241,10 @@ class _$_LyricResponse implements _LyricResponse {
   final Lrc lrc;
   @override
   @JsonKey(name: 'klyric')
-  final Lrc kLyric;
+  final Lrc? kLyric;
   @override
   @JsonKey(name: 'tlyric')
-  final Lrc tLyric;
+  final Lrc? tLyric;
 
   @override
   bool operator ==(dynamic other) {
@@ -284,8 +292,8 @@ abstract class _LyricResponse implements LyricResponse {
       final bool? qfy,
       required final int code,
       required final Lrc lrc,
-      @JsonKey(name: 'klyric') required final Lrc kLyric,
-      @JsonKey(name: 'tlyric') required final Lrc tLyric}) = _$_LyricResponse;
+      @JsonKey(name: 'klyric') required final Lrc? kLyric,
+      @JsonKey(name: 'tlyric') required final Lrc? tLyric}) = _$_LyricResponse;
 
   factory _LyricResponse.fromJson(Map<String, dynamic> json) =
       _$_LyricResponse.fromJson;
@@ -302,10 +310,10 @@ abstract class _LyricResponse implements LyricResponse {
   Lrc get lrc;
   @override
   @JsonKey(name: 'klyric')
-  Lrc get kLyric;
+  Lrc? get kLyric;
   @override
   @JsonKey(name: 'tlyric')
-  Lrc get tLyric;
+  Lrc? get tLyric;
   @override
   @JsonKey(ignore: true)
   _$$_LyricResponseCopyWith<_$_LyricResponse> get copyWith =>

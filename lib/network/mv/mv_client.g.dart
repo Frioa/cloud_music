@@ -10,7 +10,7 @@ part of 'mv_client.dart';
 
 class _MVClient implements MVClient {
   _MVClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://netease-cloud-music-api-mu-opal.vercel.app';
+    baseUrl ??= 'https://neteasecloudmusicapi.yueqiqi.top/';
   }
 
   final Dio _dio;

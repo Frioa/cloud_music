@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 class Constants {
   // https://netease-cloud-music-api-mu-opal.vercel.app/
-  static const String nestBaseUrl = 'https://netease-cloud-music-api-mu-opal.vercel.app';
+  static const String nestBaseUrl = 'https://neteasecloudmusicapi.yueqiqi.top/';
 
   static bool get isRelease => kReleaseMode;
 

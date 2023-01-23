@@ -10,7 +10,7 @@ part of 'search.dart';
 
 class _SearchClient implements SearchClient {
   _SearchClient(this._dio, {this.baseUrl}) {
-    baseUrl ??= 'https://netease-cloud-music-api-mu-opal.vercel.app';
+    baseUrl ??= 'https://neteasecloudmusicapi.yueqiqi.top/';
   }
 
   final Dio _dio;

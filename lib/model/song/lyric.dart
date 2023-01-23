@@ -12,9 +12,9 @@ class LyricResponse extends BaseHttpResponse with _$LyricResponse {
     bool? sfy,
     bool? qfy,
     required int code,
-    required Lrc lrc,
-    @JsonKey(name: 'klyric') required Lrc kLyric,
-    @JsonKey(name: 'tlyric') required Lrc tLyric,
+    Lrc? lrc,
+    @JsonKey(name: 'klyric') required Lrc? kLyric,
+    @JsonKey(name: 'tlyric') required Lrc? tLyric,
   }) = _LyricResponse;
 
   factory LyricResponse.init() => LyricResponse(

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ElevateButtonWidget extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
-  final bool? loading;
+  final bool loading;
   final Color loadingColor;
 
   const ElevateButtonWidget(
@@ -23,8 +23,8 @@ class ElevateButtonWidget extends StatelessWidget {
         width: double.infinity,
         height: 40.w,
         child: ElevatedButton(
-          onPressed: onPressed,
-          child: (loading ?? false)
+          onPressed: loading ? null : onPressed,
+          child: loading
               ? SizedBox(
                   width: 16.w,
                   height: 16.w,

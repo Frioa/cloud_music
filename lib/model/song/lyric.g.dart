@@ -13,8 +13,12 @@ _$_LyricResponse _$$_LyricResponseFromJson(Map<String, dynamic> json) =>
       qfy: json['qfy'] as bool?,
       code: json['code'] as int,
       lrc: Lrc.fromJson(json['lrc'] as Map<String, dynamic>),
-      kLyric: Lrc.fromJson(json['klyric'] as Map<String, dynamic>),
-      tLyric: Lrc.fromJson(json['tlyric'] as Map<String, dynamic>),
+      kLyric: json['klyric'] == null
+          ? null
+          : Lrc.fromJson(json['klyric'] as Map<String, dynamic>),
+      tLyric: json['tlyric'] == null
+          ? null
+          : Lrc.fromJson(json['tlyric'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_LyricResponseToJson(_$_LyricResponse instance) =>

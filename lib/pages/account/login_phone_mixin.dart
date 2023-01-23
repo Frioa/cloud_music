@@ -7,6 +7,7 @@ import 'package:cloud_music/utils/utils.dart';
 import 'package:cloud_music/widget/app/app.dart';
 import 'package:cloud_music/widget/common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,6 +16,7 @@ mixin LoginPhoneMixin<T extends StatefulWidget> on State<T> {
   late bool _isPhonePage = true;
   int _timeSec = 0;
   Timer? _retryTimer;
+
   late final TextEditingController _phoneController = TextEditingController()
     ..addListener(() {
       if (_phoneController.text.length >= Constants.phoneMaxLength) {
@@ -61,7 +63,8 @@ mixin LoginPhoneMixin<T extends StatefulWidget> on State<T> {
       initTimer();
     }
 
-    void onError() {}
+    void onError() {
+    }
 
     context.read<LoginNewBloc>().add(
           LoginEvent.sendCaptcha(_phoneController.text, onSuccess: onSuccess, onError: onError),
@@ -113,6 +116,7 @@ mixin LoginPhoneMixin<T extends StatefulWidget> on State<T> {
 
   Widget _buildInput() {
     return InputWidget(
+      enable: !loading,
       textInputType: TextInputType.phone,
       controller: _phoneController,
       hintText: S.loginPage.phoneHint,
@@ -200,7 +204,7 @@ mixin LoginPhoneMixin<T extends StatefulWidget> on State<T> {
   }
 
   Widget _buildCAPTCHA() {
-    Widget _retryText() {
+    Widget retryText() {
       if (loading) {
         return SizedBox(
           width: 16.w,
@@ -238,7 +242,7 @@ mixin LoginPhoneMixin<T extends StatefulWidget> on State<T> {
               onTap: () => setState(() => _isPhonePage = true),
             ),
             const Expanded(child: SizedBox()),
-            _retryText(),
+            retryText(),
           ],
         ),
         SizedBox(height: 16.w),

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 
 class InputWidget extends StatefulWidget {
   final String? hintText;
+  final bool enable;
   final TextEditingController? controller;
   final TextInputType? textInputType;
   final FocusNode? focusNode;
@@ -18,6 +19,7 @@ class InputWidget extends StatefulWidget {
   const InputWidget({
     Key? key,
     this.hintText,
+    this.enable = true,
     this.controller,
     this.textInputType,
     this.focusNode,
@@ -62,6 +64,7 @@ class InputWidgetState extends State<InputWidget> {
     return SizedBox(
       height: 54.w,
       child: TextFormField(
+        enabled: widget.enable,
         maxLength: widget.maxLength,
         focusNode: widget.focusNode,
         decoration: decoration,
