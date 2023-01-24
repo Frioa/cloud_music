@@ -5,7 +5,7 @@
 
 // coverage:ignore-file
 // ignore_for_file: type=lint
-// ignore_for_file: directives_ordering,unnecessary_import
+// ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal
 
 import 'package:flutter/widgets.dart';
 
@@ -32,6 +32,24 @@ class Assets {
   static const AssetGenImage icPotinRight =
       AssetGenImage('assets/ic_potin_right.jpg');
   static const String icSearchLight = 'assets/ic_search_light.svg';
+
+  /// List of all assets
+  List<dynamic> get values => [
+        icArrowDown,
+        icBtnPause,
+        icBtnPlay,
+        icClose,
+        icDefaultAvatar,
+        icDefaultSongSheet,
+        icLoginModifyPhone,
+        icMvCollection,
+        icMvComment,
+        icMvForwarding,
+        icMvNote,
+        icMvPraise,
+        icPotinRight,
+        icSearchLight
+      ];
 }
 
 class AssetGenImage {
@@ -91,6 +109,8 @@ class AssetGenImage {
       cacheHeight: cacheHeight,
     );
   }
+
+  ImageProvider provider() => AssetImage(_assetName);
 
   String get path => _assetName;
 

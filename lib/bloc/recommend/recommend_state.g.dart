@@ -23,9 +23,9 @@ abstract class _$RecommendStateCWProxy {
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfRecommendState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfRecommendState.copyWith.fieldName(...)`
 class _$RecommendStateCWProxyImpl implements _$RecommendStateCWProxy {
-  final RecommendState _value;
-
   const _$RecommendStateCWProxyImpl(this._value);
+
+  final RecommendState _value;
 
   @override
   RecommendState recommendSheetResponse(
@@ -47,7 +47,8 @@ class _$RecommendStateCWProxyImpl implements _$RecommendStateCWProxy {
       recommendSheetResponse:
           recommendSheetResponse == const $CopyWithPlaceholder() ||
                   recommendSheetResponse == null
-              ? _value.recommendSheetResponse
+              // ignore: unnecessary_non_null_assertion
+              ? _value.recommendSheetResponse!
               // ignore: cast_nullable_to_non_nullable
               : recommendSheetResponse as ViewModel<RecommendSheetResponse>,
     );
@@ -56,5 +57,6 @@ class _$RecommendStateCWProxyImpl implements _$RecommendStateCWProxy {
 
 extension $RecommendStateCopyWith on RecommendState {
   /// Returns a callable class that can be used as follows: `instanceOfRecommendState.copyWith(...)` or like so:`instanceOfRecommendState.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$RecommendStateCWProxy get copyWith => _$RecommendStateCWProxyImpl(this);
 }

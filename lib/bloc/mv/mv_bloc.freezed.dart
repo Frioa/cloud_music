@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'mv_bloc.dart';
 
@@ -24,8 +24,8 @@ mixin _$MVEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int id, VoidCallback onSuccess)? requestMVURL,
-    TResult Function(int mvId)? requestDetail,
+    TResult? Function(int id, VoidCallback onSuccess)? requestMVURL,
+    TResult? Function(int mvId)? requestDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,8 +43,8 @@ mixin _$MVEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function($MVURL value)? requestMVURL,
-    TResult Function($requestDetail value)? requestDetail,
+    TResult? Function($MVURL value)? requestMVURL,
+    TResult? Function($requestDetail value)? requestDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,45 +59,46 @@ mixin _$MVEvent {
 /// @nodoc
 abstract class $MVEventCopyWith<$Res> {
   factory $MVEventCopyWith(MVEvent value, $Res Function(MVEvent) then) =
-      _$MVEventCopyWithImpl<$Res>;
+      _$MVEventCopyWithImpl<$Res, MVEvent>;
 }
 
 /// @nodoc
-class _$MVEventCopyWithImpl<$Res> implements $MVEventCopyWith<$Res> {
+class _$MVEventCopyWithImpl<$Res, $Val extends MVEvent>
+    implements $MVEventCopyWith<$Res> {
   _$MVEventCopyWithImpl(this._value, this._then);
 
-  final MVEvent _value;
   // ignore: unused_field
-  final $Res Function(MVEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
 abstract class _$$$MVURLCopyWith<$Res> {
   factory _$$$MVURLCopyWith(_$$MVURL value, $Res Function(_$$MVURL) then) =
       __$$$MVURLCopyWithImpl<$Res>;
+  @useResult
   $Res call({int id, VoidCallback onSuccess});
 }
 
 /// @nodoc
-class __$$$MVURLCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
+class __$$$MVURLCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res, _$$MVURL>
     implements _$$$MVURLCopyWith<$Res> {
   __$$$MVURLCopyWithImpl(_$$MVURL _value, $Res Function(_$$MVURL) _then)
-      : super(_value, (v) => _then(v as _$$MVURL));
+      : super(_value, _then);
 
-  @override
-  _$$MVURL get _value => super._value as _$$MVURL;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? onSuccess = freezed,
+    Object? id = null,
+    Object? onSuccess = null,
   }) {
     return _then(_$$MVURL(
-      id == freezed
+      null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-      onSuccess: onSuccess == freezed
+      onSuccess: null == onSuccess
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
               as VoidCallback,
@@ -125,17 +126,17 @@ class _$$MVURL implements $MVURL {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$$MVURL &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(id), onSuccess);
+  int get hashCode => Object.hash(runtimeType, id, onSuccess);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$$MVURLCopyWith<_$$MVURL> get copyWith =>
       __$$$MVURLCopyWithImpl<_$$MVURL>(this, _$identity);
 
@@ -151,8 +152,8 @@ class _$$MVURL implements $MVURL {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int id, VoidCallback onSuccess)? requestMVURL,
-    TResult Function(int mvId)? requestDetail,
+    TResult? Function(int id, VoidCallback onSuccess)? requestMVURL,
+    TResult? Function(int mvId)? requestDetail,
   }) {
     return requestMVURL?.call(id, onSuccess);
   }
@@ -182,8 +183,8 @@ class _$$MVURL implements $MVURL {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function($MVURL value)? requestMVURL,
-    TResult Function($requestDetail value)? requestDetail,
+    TResult? Function($MVURL value)? requestMVURL,
+    TResult? Function($requestDetail value)? requestDetail,
   }) {
     return requestMVURL?.call(this);
   }
@@ -218,25 +219,25 @@ abstract class _$$$requestDetailCopyWith<$Res> {
   factory _$$$requestDetailCopyWith(
           _$$requestDetail value, $Res Function(_$$requestDetail) then) =
       __$$$requestDetailCopyWithImpl<$Res>;
+  @useResult
   $Res call({int mvId});
 }
 
 /// @nodoc
-class __$$$requestDetailCopyWithImpl<$Res> extends _$MVEventCopyWithImpl<$Res>
+class __$$$requestDetailCopyWithImpl<$Res>
+    extends _$MVEventCopyWithImpl<$Res, _$$requestDetail>
     implements _$$$requestDetailCopyWith<$Res> {
   __$$$requestDetailCopyWithImpl(
       _$$requestDetail _value, $Res Function(_$$requestDetail) _then)
-      : super(_value, (v) => _then(v as _$$requestDetail));
+      : super(_value, _then);
 
-  @override
-  _$$requestDetail get _value => super._value as _$$requestDetail;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? mvId = freezed,
+    Object? mvId = null,
   }) {
     return _then(_$$requestDetail(
-      mvId == freezed
+      null == mvId
           ? _value.mvId
           : mvId // ignore: cast_nullable_to_non_nullable
               as int,
@@ -262,15 +263,15 @@ class _$$requestDetail implements $requestDetail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$$requestDetail &&
-            const DeepCollectionEquality().equals(other.mvId, mvId));
+            (identical(other.mvId, mvId) || other.mvId == mvId));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(mvId));
+  int get hashCode => Object.hash(runtimeType, mvId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$$requestDetailCopyWith<_$$requestDetail> get copyWith =>
       __$$$requestDetailCopyWithImpl<_$$requestDetail>(this, _$identity);
 
@@ -286,8 +287,8 @@ class _$$requestDetail implements $requestDetail {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int id, VoidCallback onSuccess)? requestMVURL,
-    TResult Function(int mvId)? requestDetail,
+    TResult? Function(int id, VoidCallback onSuccess)? requestMVURL,
+    TResult? Function(int mvId)? requestDetail,
   }) {
     return requestDetail?.call(mvId);
   }
@@ -317,8 +318,8 @@ class _$$requestDetail implements $requestDetail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function($MVURL value)? requestMVURL,
-    TResult Function($requestDetail value)? requestDetail,
+    TResult? Function($MVURL value)? requestMVURL,
+    TResult? Function($requestDetail value)? requestDetail,
   }) {
     return requestDetail?.call(this);
   }
@@ -360,35 +361,39 @@ mixin _$MVState {
 /// @nodoc
 abstract class $MVStateCopyWith<$Res> {
   factory $MVStateCopyWith(MVState value, $Res Function(MVState) then) =
-      _$MVStateCopyWithImpl<$Res>;
+      _$MVStateCopyWithImpl<$Res, MVState>;
+  @useResult
   $Res call(
       {ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm,
       ViewModel<DataWrapResponse<MvDetailResponse>>? mvDetailVM});
 }
 
 /// @nodoc
-class _$MVStateCopyWithImpl<$Res> implements $MVStateCopyWith<$Res> {
+class _$MVStateCopyWithImpl<$Res, $Val extends MVState>
+    implements $MVStateCopyWith<$Res> {
   _$MVStateCopyWithImpl(this._value, this._then);
 
-  final MVState _value;
   // ignore: unused_field
-  final $Res Function(MVState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? mvUrlVm = freezed,
     Object? mvDetailVM = freezed,
   }) {
     return _then(_value.copyWith(
-      mvUrlVm: mvUrlVm == freezed
+      mvUrlVm: freezed == mvUrlVm
           ? _value.mvUrlVm
           : mvUrlVm // ignore: cast_nullable_to_non_nullable
               as ViewModel<DataWrapResponse<MVURLResponse>>?,
-      mvDetailVM: mvDetailVM == freezed
+      mvDetailVM: freezed == mvDetailVM
           ? _value.mvDetailVM
           : mvDetailVM // ignore: cast_nullable_to_non_nullable
               as ViewModel<DataWrapResponse<MvDetailResponse>>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -398,31 +403,31 @@ abstract class _$$_MVStateCopyWith<$Res> implements $MVStateCopyWith<$Res> {
           _$_MVState value, $Res Function(_$_MVState) then) =
       __$$_MVStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {ViewModel<DataWrapResponse<MVURLResponse>>? mvUrlVm,
       ViewModel<DataWrapResponse<MvDetailResponse>>? mvDetailVM});
 }
 
 /// @nodoc
-class __$$_MVStateCopyWithImpl<$Res> extends _$MVStateCopyWithImpl<$Res>
+class __$$_MVStateCopyWithImpl<$Res>
+    extends _$MVStateCopyWithImpl<$Res, _$_MVState>
     implements _$$_MVStateCopyWith<$Res> {
   __$$_MVStateCopyWithImpl(_$_MVState _value, $Res Function(_$_MVState) _then)
-      : super(_value, (v) => _then(v as _$_MVState));
+      : super(_value, _then);
 
-  @override
-  _$_MVState get _value => super._value as _$_MVState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? mvUrlVm = freezed,
     Object? mvDetailVM = freezed,
   }) {
     return _then(_$_MVState(
-      mvUrlVm: mvUrlVm == freezed
+      mvUrlVm: freezed == mvUrlVm
           ? _value.mvUrlVm
           : mvUrlVm // ignore: cast_nullable_to_non_nullable
               as ViewModel<DataWrapResponse<MVURLResponse>>?,
-      mvDetailVM: mvDetailVM == freezed
+      mvDetailVM: freezed == mvDetailVM
           ? _value.mvDetailVM
           : mvDetailVM // ignore: cast_nullable_to_non_nullable
               as ViewModel<DataWrapResponse<MvDetailResponse>>?,
@@ -450,19 +455,17 @@ class _$_MVState implements _MVState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MVState &&
-            const DeepCollectionEquality().equals(other.mvUrlVm, mvUrlVm) &&
-            const DeepCollectionEquality()
-                .equals(other.mvDetailVM, mvDetailVM));
+            (identical(other.mvUrlVm, mvUrlVm) || other.mvUrlVm == mvUrlVm) &&
+            (identical(other.mvDetailVM, mvDetailVM) ||
+                other.mvDetailVM == mvDetailVM));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(mvUrlVm),
-      const DeepCollectionEquality().hash(mvDetailVM));
+  int get hashCode => Object.hash(runtimeType, mvUrlVm, mvDetailVM);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_MVStateCopyWith<_$_MVState> get copyWith =>
       __$$_MVStateCopyWithImpl<_$_MVState>(this, _$identity);
 }

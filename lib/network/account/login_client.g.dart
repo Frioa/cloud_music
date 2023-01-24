@@ -6,10 +6,13 @@ part of 'login_client.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
 class _NestLoginClient implements NestLoginClient {
-  _NestLoginClient(this._dio, {this.baseUrl}) {
+  _NestLoginClient(
+    this._dio, {
+    this.baseUrl,
+  }) {
     baseUrl ??= 'https://neteasecloudmusicapi.yueqiqi.top/';
   }
 
@@ -18,45 +21,67 @@ class _NestLoginClient implements NestLoginClient {
   String? baseUrl;
 
   @override
-  Future<NestLoginResponse> cellPhone(phone, password,
-      {md5Password, captcha}) async {
+  Future<NestLoginResponse> cellPhone(
+    phone,
+    password, {
+    md5Password,
+    captcha,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'phone': phone,
       r'password': password,
       r'md5_password': md5Password,
-      r'captcha': captcha
+      r'captcha': captcha,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<NestLoginResponse>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/login/cellphone',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<NestLoginResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/login/cellphone',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = NestLoginResponse.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<NestLoginResponse> email(email, password, {md5Password}) async {
+  Future<NestLoginResponse> email(
+    email,
+    password, {
+    md5Password,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'email': email,
       r'password': password,
-      r'md5_password': md5Password
+      r'md5_password': md5Password,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<NestLoginResponse>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/login',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<NestLoginResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/login',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = NestLoginResponse.fromJson(_result.data!);
     return value;
   }
@@ -69,11 +94,18 @@ class _NestLoginClient implements NestLoginClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<DataWrapResponse<NestQrKeyResponse>>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/login/qr/key',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        _setStreamType<DataWrapResponse<NestQrKeyResponse>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/login/qr/key',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = DataWrapResponse<NestQrKeyResponse>.fromJson(
       _result.data!,
       (json) => NestQrKeyResponse.fromJson(json as Map<String, dynamic>),
@@ -82,23 +114,33 @@ class _NestLoginClient implements NestLoginClient {
   }
 
   @override
-  Future<DataWrapResponse<NestQrCreateResponse>> getQrCreate(key,
-      {qrimg = true, timestamp}) async {
+  Future<DataWrapResponse<NestQrCreateResponse>> getQrCreate(
+    key, {
+    qrimg = true,
+    timestamp,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'key': key,
       r'qrimg': qrimg,
-      r'timestamp': timestamp
+      r'timestamp': timestamp,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<DataWrapResponse<NestQrCreateResponse>>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/login/qr/create',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        _setStreamType<DataWrapResponse<NestQrCreateResponse>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/login/qr/create',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = DataWrapResponse<NestQrCreateResponse>.fromJson(
       _result.data!,
       (json) => NestQrCreateResponse.fromJson(json as Map<String, dynamic>),
@@ -107,21 +149,31 @@ class _NestLoginClient implements NestLoginClient {
   }
 
   @override
-  Future<NestQrCheckResponse> getQrCheck(key, {timestamp}) async {
+  Future<NestQrCheckResponse> getQrCheck(
+    key, {
+    timestamp,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'key': key,
-      r'timestamp': timestamp
+      r'timestamp': timestamp,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<NestQrCheckResponse>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/login/qr/check',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        _setStreamType<NestQrCheckResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/login/qr/check',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = NestQrCheckResponse.fromJson(_result.data!);
     return value;
   }
@@ -133,30 +185,47 @@ class _NestLoginClient implements NestLoginClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<VerifyNestCaptchaResponse>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/captcha/sent',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        _setStreamType<VerifyNestCaptchaResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/captcha/sent',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = VerifyNestCaptchaResponse.fromJson(_result.data!);
     return value;
   }
 
   @override
-  Future<VerifyNestCaptchaResponse> verifyCaptcha(phone, captcha) async {
+  Future<VerifyNestCaptchaResponse> verifyCaptcha(
+    phone,
+    captcha,
+  ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'phone': phone,
-      r'captcha': captcha
+      r'captcha': captcha,
     };
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<VerifyNestCaptchaResponse>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/captcha/verify',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        _setStreamType<VerifyNestCaptchaResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/captcha/verify',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = VerifyNestCaptchaResponse.fromJson(_result.data!);
     return value;
   }
@@ -168,11 +237,18 @@ class _NestLoginClient implements NestLoginClient {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<DataWrapResponse<NestLoginStatusResponse>>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/login/status',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        _setStreamType<DataWrapResponse<NestLoginStatusResponse>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/login/status',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = DataWrapResponse<NestLoginStatusResponse>.fromJson(
       _result.data!,
       (json) => NestLoginStatusResponse.fromJson(json as Map<String, dynamic>),
@@ -186,12 +262,19 @@ class _NestLoginClient implements NestLoginClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseHttpResponse>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/login/refresh',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BaseHttpResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/login/refresh',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = BaseHttpResponse.fromJson(_result.data!);
     return value;
   }
@@ -202,12 +285,19 @@ class _NestLoginClient implements NestLoginClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseHttpResponse>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/register/anonimous',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BaseHttpResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/register/anonimous',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = BaseHttpResponse.fromJson(_result.data!);
     return value;
   }

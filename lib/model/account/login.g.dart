@@ -7,19 +7,19 @@ part of 'login.dart';
 // **************************************************************************
 
 abstract class _$NestLoginResponseCWProxy {
-  NestLoginResponse account(NestAccount? account);
-
-  NestLoginResponse bindings(List<NestBinding>? bindings);
-
   NestLoginResponse code(int code);
-
-  NestLoginResponse cookie(String cookie);
 
   NestLoginResponse loginType(int loginType);
 
+  NestLoginResponse token(String token);
+
+  NestLoginResponse cookie(String cookie);
+
+  NestLoginResponse account(NestAccount? account);
+
   NestLoginResponse profile(NestProfile? profile);
 
-  NestLoginResponse token(String token);
+  NestLoginResponse bindings(List<NestBinding>? bindings);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NestLoginResponse(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -28,45 +28,45 @@ abstract class _$NestLoginResponseCWProxy {
   /// NestLoginResponse(...).copyWith(id: 12, name: "My name")
   /// ````
   NestLoginResponse call({
-    NestAccount? account,
-    List<NestBinding>? bindings,
     int? code,
-    String? cookie,
     int? loginType,
-    NestProfile? profile,
     String? token,
+    String? cookie,
+    NestAccount? account,
+    NestProfile? profile,
+    List<NestBinding>? bindings,
   });
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfNestLoginResponse.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfNestLoginResponse.copyWith.fieldName(...)`
 class _$NestLoginResponseCWProxyImpl implements _$NestLoginResponseCWProxy {
+  const _$NestLoginResponseCWProxyImpl(this._value);
+
   final NestLoginResponse _value;
 
-  const _$NestLoginResponseCWProxyImpl(this._value);
+  @override
+  NestLoginResponse code(int code) => this(code: code);
+
+  @override
+  NestLoginResponse loginType(int loginType) => this(loginType: loginType);
+
+  @override
+  NestLoginResponse token(String token) => this(token: token);
+
+  @override
+  NestLoginResponse cookie(String cookie) => this(cookie: cookie);
 
   @override
   NestLoginResponse account(NestAccount? account) => this(account: account);
+
+  @override
+  NestLoginResponse profile(NestProfile? profile) => this(profile: profile);
 
   @override
   NestLoginResponse bindings(List<NestBinding>? bindings) =>
       this(bindings: bindings);
 
   @override
-  NestLoginResponse code(int code) => this(code: code);
-
-  @override
-  NestLoginResponse cookie(String cookie) => this(cookie: cookie);
-
-  @override
-  NestLoginResponse loginType(int loginType) => this(loginType: loginType);
-
-  @override
-  NestLoginResponse profile(NestProfile? profile) => this(profile: profile);
-
-  @override
-  NestLoginResponse token(String token) => this(token: token);
-
-  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `NestLoginResponse(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -75,57 +75,62 @@ class _$NestLoginResponseCWProxyImpl implements _$NestLoginResponseCWProxy {
   /// NestLoginResponse(...).copyWith(id: 12, name: "My name")
   /// ````
   NestLoginResponse call({
-    Object? account = const $CopyWithPlaceholder(),
-    Object? bindings = const $CopyWithPlaceholder(),
     Object? code = const $CopyWithPlaceholder(),
-    Object? cookie = const $CopyWithPlaceholder(),
     Object? loginType = const $CopyWithPlaceholder(),
-    Object? profile = const $CopyWithPlaceholder(),
     Object? token = const $CopyWithPlaceholder(),
+    Object? cookie = const $CopyWithPlaceholder(),
+    Object? account = const $CopyWithPlaceholder(),
+    Object? profile = const $CopyWithPlaceholder(),
+    Object? bindings = const $CopyWithPlaceholder(),
   }) {
     return NestLoginResponse(
+      code: code == const $CopyWithPlaceholder() || code == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.code!
+          // ignore: cast_nullable_to_non_nullable
+          : code as int,
+      loginType: loginType == const $CopyWithPlaceholder() || loginType == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.loginType!
+          // ignore: cast_nullable_to_non_nullable
+          : loginType as int,
+      token: token == const $CopyWithPlaceholder() || token == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.token!
+          // ignore: cast_nullable_to_non_nullable
+          : token as String,
+      cookie: cookie == const $CopyWithPlaceholder() || cookie == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.cookie!
+          // ignore: cast_nullable_to_non_nullable
+          : cookie as String,
       account: account == const $CopyWithPlaceholder()
           ? _value.account
           // ignore: cast_nullable_to_non_nullable
           : account as NestAccount?,
-      bindings: bindings == const $CopyWithPlaceholder()
-          ? _value.bindings
-          // ignore: cast_nullable_to_non_nullable
-          : bindings as List<NestBinding>?,
-      code: code == const $CopyWithPlaceholder() || code == null
-          ? _value.code
-          // ignore: cast_nullable_to_non_nullable
-          : code as int,
-      cookie: cookie == const $CopyWithPlaceholder() || cookie == null
-          ? _value.cookie
-          // ignore: cast_nullable_to_non_nullable
-          : cookie as String,
-      loginType: loginType == const $CopyWithPlaceholder() || loginType == null
-          ? _value.loginType
-          // ignore: cast_nullable_to_non_nullable
-          : loginType as int,
       profile: profile == const $CopyWithPlaceholder()
           ? _value.profile
           // ignore: cast_nullable_to_non_nullable
           : profile as NestProfile?,
-      token: token == const $CopyWithPlaceholder() || token == null
-          ? _value.token
+      bindings: bindings == const $CopyWithPlaceholder()
+          ? _value.bindings
           // ignore: cast_nullable_to_non_nullable
-          : token as String,
+          : bindings as List<NestBinding>?,
     );
   }
 }
 
 extension $NestLoginResponseCopyWith on NestLoginResponse {
   /// Returns a callable class that can be used as follows: `instanceOfNestLoginResponse.copyWith(...)` or like so:`instanceOfNestLoginResponse.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$NestLoginResponseCWProxy get copyWith =>
       _$NestLoginResponseCWProxyImpl(this);
 }
 
 abstract class _$NestLoginStatusResponseCWProxy {
-  NestLoginStatusResponse account(NestAccount? account);
-
   NestLoginStatusResponse code(int code);
+
+  NestLoginStatusResponse account(NestAccount? account);
 
   NestLoginStatusResponse profile(NestProfile? profile);
 
@@ -136,8 +141,8 @@ abstract class _$NestLoginStatusResponseCWProxy {
   /// NestLoginStatusResponse(...).copyWith(id: 12, name: "My name")
   /// ````
   NestLoginStatusResponse call({
-    NestAccount? account,
     int? code,
+    NestAccount? account,
     NestProfile? profile,
   });
 }
@@ -145,16 +150,16 @@ abstract class _$NestLoginStatusResponseCWProxy {
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfNestLoginStatusResponse.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfNestLoginStatusResponse.copyWith.fieldName(...)`
 class _$NestLoginStatusResponseCWProxyImpl
     implements _$NestLoginStatusResponseCWProxy {
+  const _$NestLoginStatusResponseCWProxyImpl(this._value);
+
   final NestLoginStatusResponse _value;
 
-  const _$NestLoginStatusResponseCWProxyImpl(this._value);
+  @override
+  NestLoginStatusResponse code(int code) => this(code: code);
 
   @override
   NestLoginStatusResponse account(NestAccount? account) =>
       this(account: account);
-
-  @override
-  NestLoginStatusResponse code(int code) => this(code: code);
 
   @override
   NestLoginStatusResponse profile(NestProfile? profile) =>
@@ -169,19 +174,20 @@ class _$NestLoginStatusResponseCWProxyImpl
   /// NestLoginStatusResponse(...).copyWith(id: 12, name: "My name")
   /// ````
   NestLoginStatusResponse call({
-    Object? account = const $CopyWithPlaceholder(),
     Object? code = const $CopyWithPlaceholder(),
+    Object? account = const $CopyWithPlaceholder(),
     Object? profile = const $CopyWithPlaceholder(),
   }) {
     return NestLoginStatusResponse(
+      code: code == const $CopyWithPlaceholder() || code == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.code!
+          // ignore: cast_nullable_to_non_nullable
+          : code as int,
       account: account == const $CopyWithPlaceholder()
           ? _value.account
           // ignore: cast_nullable_to_non_nullable
           : account as NestAccount?,
-      code: code == const $CopyWithPlaceholder() || code == null
-          ? _value.code
-          // ignore: cast_nullable_to_non_nullable
-          : code as int,
       profile: profile == const $CopyWithPlaceholder()
           ? _value.profile
           // ignore: cast_nullable_to_non_nullable
@@ -192,6 +198,7 @@ class _$NestLoginStatusResponseCWProxyImpl
 
 extension $NestLoginStatusResponseCopyWith on NestLoginStatusResponse {
   /// Returns a callable class that can be used as follows: `instanceOfNestLoginStatusResponse.copyWith(...)` or like so:`instanceOfNestLoginStatusResponse.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$NestLoginStatusResponseCWProxy get copyWith =>
       _$NestLoginStatusResponseCWProxyImpl(this);
 }

@@ -26,9 +26,9 @@ abstract class _$PlaylistStateCWProxy {
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfPlaylistState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfPlaylistState.copyWith.fieldName(...)`
 class _$PlaylistStateCWProxyImpl implements _$PlaylistStateCWProxy {
-  final PlaylistState _value;
-
   const _$PlaylistStateCWProxyImpl(this._value);
+
+  final PlaylistState _value;
 
   @override
   PlaylistState playlistDetailResponse(
@@ -56,12 +56,14 @@ class _$PlaylistStateCWProxyImpl implements _$PlaylistStateCWProxy {
       playlistDetailResponse:
           playlistDetailResponse == const $CopyWithPlaceholder() ||
                   playlistDetailResponse == null
-              ? _value.playlistDetailResponse
+              // ignore: unnecessary_non_null_assertion
+              ? _value.playlistDetailResponse!
               // ignore: cast_nullable_to_non_nullable
               : playlistDetailResponse as ViewModel<PlayDetailResponse>,
       trackAllResponse: trackAllResponse == const $CopyWithPlaceholder() ||
               trackAllResponse == null
-          ? _value.trackAllResponse
+          // ignore: unnecessary_non_null_assertion
+          ? _value.trackAllResponse!
           // ignore: cast_nullable_to_non_nullable
           : trackAllResponse as ViewModel<TrackAllResponse>,
     );
@@ -70,5 +72,6 @@ class _$PlaylistStateCWProxyImpl implements _$PlaylistStateCWProxy {
 
 extension $PlaylistStateCopyWith on PlaylistState {
   /// Returns a callable class that can be used as follows: `instanceOfPlaylistState.copyWith(...)` or like so:`instanceOfPlaylistState.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$PlaylistStateCWProxy get copyWith => _$PlaylistStateCWProxyImpl(this);
 }

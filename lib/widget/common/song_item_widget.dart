@@ -20,7 +20,7 @@ class SongListWidget extends StatelessWidget {
   }) : super(key: key);
 
   Widget buildSheet(BuildContext context, List<Song> songs) {
-    Widget _buildImage(String url) {
+    Widget buildImage(String url) {
       return ImageWidget(
         url,
         size: 32.w,
@@ -29,7 +29,7 @@ class SongListWidget extends StatelessWidget {
       );
     }
 
-    Widget _buildNum(int index, bool showPlaying) {
+    Widget buildNum(int index, bool showPlaying) {
       if (showPlaying) {
         return Icon(
           Icons.music_note_outlined,
@@ -50,7 +50,7 @@ class SongListWidget extends StatelessWidget {
       );
     }
 
-    Widget _buildItem(Song track, int index) {
+    Widget buildItem(Song track, int index) {
       final $showIcon = showIcon && (track.al?.picUrl != null);
 
       final playing = context.watch<PlayerBloc>().state.playingSong?.id == track.id;
@@ -64,7 +64,7 @@ class SongListWidget extends StatelessWidget {
           height: 68.w,
           child: Row(
             children: [
-              $showIcon ? _buildImage(track.al!.picUrl!) : _buildNum(index, playing),
+              $showIcon ? buildImage(track.al!.picUrl!) : buildNum(index, playing),
               SizedBox(width: 12.w),
               Expanded(
                 child: Column(
@@ -108,7 +108,7 @@ class SongListWidget extends StatelessWidget {
       );
     }
 
-    Widget _buildHeader(int? trackCount) {
+    Widget buildHeader(int? trackCount) {
       return Container(
         margin: EdgeInsets.symmetric(horizontal: 26.w, vertical: 15.w),
         child: Row(
@@ -138,7 +138,7 @@ class SongListWidget extends StatelessWidget {
       );
     }
 
-    Widget _buildSongList() {
+    Widget buildSongList() {
       final list = [
         Expanded(
           child: ListView.builder(
@@ -148,13 +148,13 @@ class SongListWidget extends StatelessWidget {
                 return Column(
                   children: [
                     headerWidget,
-                    _buildHeader(songs.length),
-                    _buildItem(songs[index], index),
+                    buildHeader(songs.length),
+                    buildItem(songs[index], index),
                   ],
                 );
               }
 
-              return _buildItem(songs[index], index);
+              return buildItem(songs[index], index);
             },
           ),
         ),
@@ -163,7 +163,7 @@ class SongListWidget extends StatelessWidget {
       return Expanded(child: Column(children: list));
     }
 
-    return _buildSongList();
+    return buildSongList();
   }
 
   @override

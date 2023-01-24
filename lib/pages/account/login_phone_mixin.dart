@@ -7,7 +7,6 @@ import 'package:cloud_music/utils/utils.dart';
 import 'package:cloud_music/widget/app/app.dart';
 import 'package:cloud_music/widget/common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:oktoast/oktoast.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

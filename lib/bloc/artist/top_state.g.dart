@@ -22,9 +22,9 @@ abstract class _$TopStateCWProxy {
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfTopState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfTopState.copyWith.fieldName(...)`
 class _$TopStateCWProxyImpl implements _$TopStateCWProxy {
-  final TopState _value;
-
   const _$TopStateCWProxyImpl(this._value);
+
+  final TopState _value;
 
   @override
   TopState topArtistsVm(ViewModel<TopArtistsResponse> topArtistsVm) =>
@@ -44,7 +44,8 @@ class _$TopStateCWProxyImpl implements _$TopStateCWProxy {
     return TopState(
       topArtistsVm:
           topArtistsVm == const $CopyWithPlaceholder() || topArtistsVm == null
-              ? _value.topArtistsVm
+              // ignore: unnecessary_non_null_assertion
+              ? _value.topArtistsVm!
               // ignore: cast_nullable_to_non_nullable
               : topArtistsVm as ViewModel<TopArtistsResponse>,
     );
@@ -53,5 +54,6 @@ class _$TopStateCWProxyImpl implements _$TopStateCWProxy {
 
 extension $TopStateCopyWith on TopState {
   /// Returns a callable class that can be used as follows: `instanceOfTopState.copyWith(...)` or like so:`instanceOfTopState.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$TopStateCWProxy get copyWith => _$TopStateCWProxyImpl(this);
 }

@@ -202,7 +202,6 @@ void VideoChannel::onDraw(uint8_t **data, int *linesize, int width, int height) 
     }
 
     ANativeWindow_setBuffersGeometry(window, width, height, WINDOW_FORMAT_RGBA_8888);
-    LOGI("onDraw 设置 window 的宽高 w=%d h=%d", width, height);
 
     ANativeWindow_Buffer buffer;
     if (ANativeWindow_lock(window, &buffer, nullptr) != 0) {
@@ -220,7 +219,6 @@ void VideoChannel::onDraw(uint8_t **data, int *linesize, int width, int height) 
     uint8_t *srcData = data[0];
     int srcSize = linesize[0];
 
-    LOGI("一行一行拷贝 buffer.height: %d", buffer.height);
     for (int i = 0; i < buffer.height; i++) {
         memcpy(dstData + i * dstSize, srcData + i * srcSize, srcSize);
     }

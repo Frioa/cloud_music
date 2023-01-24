@@ -12,7 +12,9 @@ _$_LyricResponse _$$_LyricResponseFromJson(Map<String, dynamic> json) =>
       sfy: json['sfy'] as bool?,
       qfy: json['qfy'] as bool?,
       code: json['code'] as int,
-      lrc: Lrc.fromJson(json['lrc'] as Map<String, dynamic>),
+      lrc: json['lrc'] == null
+          ? null
+          : Lrc.fromJson(json['lrc'] as Map<String, dynamic>),
       kLyric: json['klyric'] == null
           ? null
           : Lrc.fromJson(json['klyric'] as Map<String, dynamic>),

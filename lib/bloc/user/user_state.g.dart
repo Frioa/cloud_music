@@ -27,9 +27,9 @@ abstract class _$UserStateCWProxy {
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfUserState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfUserState.copyWith.fieldName(...)`
 class _$UserStateCWProxyImpl implements _$UserStateCWProxy {
-  final UserState _value;
-
   const _$UserStateCWProxyImpl(this._value);
+
+  final UserState _value;
 
   @override
   UserState nestUserAccountResponse(
@@ -70,6 +70,7 @@ class _$UserStateCWProxyImpl implements _$UserStateCWProxy {
 
 extension $UserStateCopyWith on UserState {
   /// Returns a callable class that can be used as follows: `instanceOfUserState.copyWith(...)` or like so:`instanceOfUserState.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$UserStateCWProxy get copyWith => _$UserStateCWProxyImpl(this);
 }
 
@@ -97,9 +98,9 @@ abstract class _$UserStateActionCWProxy {
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfUserStateAction.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfUserStateAction.copyWith.fieldName(...)`
 class _$UserStateActionCWProxyImpl implements _$UserStateActionCWProxy {
-  final UserStateAction _value;
-
   const _$UserStateActionCWProxyImpl(this._value);
+
+  final UserStateAction _value;
 
   @override
   UserStateAction action(UserAction action) => this(action: action);
@@ -129,7 +130,8 @@ class _$UserStateActionCWProxyImpl implements _$UserStateActionCWProxy {
   }) {
     return UserStateAction(
       action: action == const $CopyWithPlaceholder() || action == null
-          ? _value.action
+          // ignore: unnecessary_non_null_assertion
+          ? _value.action!
           // ignore: cast_nullable_to_non_nullable
           : action as UserAction,
       nestUserAccountResponse:
@@ -148,6 +150,7 @@ class _$UserStateActionCWProxyImpl implements _$UserStateActionCWProxy {
 
 extension $UserStateActionCopyWith on UserStateAction {
   /// Returns a callable class that can be used as follows: `instanceOfUserStateAction.copyWith(...)` or like so:`instanceOfUserStateAction.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$UserStateActionCWProxy get copyWith => _$UserStateActionCWProxyImpl(this);
 }
 
@@ -167,9 +170,9 @@ abstract class _$UserNewStateCWProxy {
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfUserNewState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfUserNewState.copyWith.fieldName(...)`
 class _$UserNewStateCWProxyImpl implements _$UserNewStateCWProxy {
-  final UserNewState _value;
-
   const _$UserNewStateCWProxyImpl(this._value);
+
+  final UserNewState _value;
 
   @override
   UserNewState userSheetVm(ViewModel<UserSheetResponse> userSheetVm) =>
@@ -189,7 +192,8 @@ class _$UserNewStateCWProxyImpl implements _$UserNewStateCWProxy {
     return UserNewState(
       userSheetVm:
           userSheetVm == const $CopyWithPlaceholder() || userSheetVm == null
-              ? _value.userSheetVm
+              // ignore: unnecessary_non_null_assertion
+              ? _value.userSheetVm!
               // ignore: cast_nullable_to_non_nullable
               : userSheetVm as ViewModel<UserSheetResponse>,
     );
@@ -198,5 +202,6 @@ class _$UserNewStateCWProxyImpl implements _$UserNewStateCWProxy {
 
 extension $UserNewStateCopyWith on UserNewState {
   /// Returns a callable class that can be used as follows: `instanceOfUserNewState.copyWith(...)` or like so:`instanceOfUserNewState.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$UserNewStateCWProxy get copyWith => _$UserNewStateCWProxyImpl(this);
 }

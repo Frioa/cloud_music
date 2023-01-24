@@ -1,7 +1,6 @@
 import 'dart:ffi'; // For FFI
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 part 'player_native.dart';

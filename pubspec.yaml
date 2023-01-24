@@ -16,26 +16,25 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  styled_widget: ^0.4.0+3
   auto_size_text: ^3.0.0
   banner_carousel: ^1.2.1
   collection: ^1.15.0
-  copy_with_extension: ^4.0.0
-  equatable: ^2.0.3
-  ffi: ^1.1.2
+  copy_with_extension: ^5.0.0
+  equatable: ^2.0.5
+  ffi: ^2.0.1
   fast_i18n: ^5.12.6
-  flutter_bloc: ^8.0.1
-  cupertino_icons: ^1.0.2
-  json_annotation: ^4.6.0
-  dio: ^4.0.4
-  dio_cache_interceptor: ^3.3.0
+  flutter_bloc: ^8.1.1
+  cupertino_icons: ^1.0.5
+  json_annotation: ^4.8.0
+  dio: ^4.0.6
+  dio_cache_interceptor: ^3.3.1
   dio_cache_interceptor_hive_store: ^3.2.0
-  shared_preferences: ^2.0.12
+  shared_preferences: ^2.0.17
   dio_cookie_manager: ^2.0.0  #latest version
   path_provider: ^2.0.8
-  flutter_svg: ^1.0.3
+  flutter_svg: ^1.1.6
   #  permission_handler: ^8.3.0
-  video_player: ^2.3.0
+  video_player: ^2.5.1
   marquee: ^2.2.3
   pin_code_fields: ^7.4.0
 
@@ -44,13 +43,13 @@ dependencies:
   breakpad:
     path: breakpad
 
-  flutter_screenutil: 5.5.3+2
+  flutter_screenutil: 5.6.0
 
   logger: ^1.1.0
-  retrofit: ^3.0.1+1
+  retrofit: ^3.3.1
   freezed_annotation: ^2.0.0
   dartz: ^0.10.1
-  oktoast: ^3.2.0
+  oktoast: ^3.3.1
   cookie_jar: 3.0.1
 
 
@@ -58,14 +57,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  copy_with_extension_gen: ^4.0.0
-  retrofit_generator: ^4.0.2
+  copy_with_extension_gen: ^5.0.0
+  retrofit_generator: ^4.2.0
   build_runner: ^2.2.0
   flutter_lints: ^2.0.1
-  json_serializable: ^6.3.1
-  flutter_gen_runner: ^4.3.0
-  lint: ^1.8.2
-  freezed: ^2.1.0+1
+  json_serializable: ^6.6.0
+  flutter_gen_runner: ^5.1.0+1
+  lint: ^2.0.1
+  freezed: ^2.3.2
 
 flutter:
   assets:

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'artist_bloc.dart';
 
@@ -24,7 +24,7 @@ mixin _$ArtistEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int id)? requestArtistsDetail,
+    TResult? Function(int id)? requestArtistsDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,7 +41,7 @@ mixin _$ArtistEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$requestArtistsDetail value)? requestArtistsDetail,
+    TResult? Function(_$requestArtistsDetail value)? requestArtistsDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,28 +60,32 @@ mixin _$ArtistEvent {
 abstract class $ArtistEventCopyWith<$Res> {
   factory $ArtistEventCopyWith(
           ArtistEvent value, $Res Function(ArtistEvent) then) =
-      _$ArtistEventCopyWithImpl<$Res>;
+      _$ArtistEventCopyWithImpl<$Res, ArtistEvent>;
+  @useResult
   $Res call({int id});
 }
 
 /// @nodoc
-class _$ArtistEventCopyWithImpl<$Res> implements $ArtistEventCopyWith<$Res> {
+class _$ArtistEventCopyWithImpl<$Res, $Val extends ArtistEvent>
+    implements $ArtistEventCopyWith<$Res> {
   _$ArtistEventCopyWithImpl(this._value, this._then);
 
-  final ArtistEvent _value;
   // ignore: unused_field
-  final $Res Function(ArtistEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -92,27 +96,25 @@ abstract class _$$_$requestArtistsDetailCopyWith<$Res>
           $Res Function(_$_$requestArtistsDetail) then) =
       __$$_$requestArtistsDetailCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int id});
 }
 
 /// @nodoc
 class __$$_$requestArtistsDetailCopyWithImpl<$Res>
-    extends _$ArtistEventCopyWithImpl<$Res>
+    extends _$ArtistEventCopyWithImpl<$Res, _$_$requestArtistsDetail>
     implements _$$_$requestArtistsDetailCopyWith<$Res> {
   __$$_$requestArtistsDetailCopyWithImpl(_$_$requestArtistsDetail _value,
       $Res Function(_$_$requestArtistsDetail) _then)
-      : super(_value, (v) => _then(v as _$_$requestArtistsDetail));
+      : super(_value, _then);
 
-  @override
-  _$_$requestArtistsDetail get _value =>
-      super._value as _$_$requestArtistsDetail;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
+    Object? id = null,
   }) {
     return _then(_$_$requestArtistsDetail(
-      id == freezed
+      null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
@@ -138,15 +140,15 @@ class _$_$requestArtistsDetail implements _$requestArtistsDetail {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_$requestArtistsDetail &&
-            const DeepCollectionEquality().equals(other.id, id));
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(runtimeType, id);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_$requestArtistsDetailCopyWith<_$_$requestArtistsDetail> get copyWith =>
       __$$_$requestArtistsDetailCopyWithImpl<_$_$requestArtistsDetail>(
           this, _$identity);
@@ -162,7 +164,7 @@ class _$_$requestArtistsDetail implements _$requestArtistsDetail {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(int id)? requestArtistsDetail,
+    TResult? Function(int id)? requestArtistsDetail,
   }) {
     return requestArtistsDetail?.call(id);
   }
@@ -191,7 +193,7 @@ class _$_$requestArtistsDetail implements _$requestArtistsDetail {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_$requestArtistsDetail value)? requestArtistsDetail,
+    TResult? Function(_$requestArtistsDetail value)? requestArtistsDetail,
   }) {
     return requestArtistsDetail?.call(this);
   }
@@ -234,29 +236,33 @@ mixin _$ArtistState {
 abstract class $ArtistStateCopyWith<$Res> {
   factory $ArtistStateCopyWith(
           ArtistState value, $Res Function(ArtistState) then) =
-      _$ArtistStateCopyWithImpl<$Res>;
+      _$ArtistStateCopyWithImpl<$Res, ArtistState>;
+  @useResult
   $Res call(
       {ViewModel<DataWrapResponse<ArtistsDetailResponse>> artistDetailVM});
 }
 
 /// @nodoc
-class _$ArtistStateCopyWithImpl<$Res> implements $ArtistStateCopyWith<$Res> {
+class _$ArtistStateCopyWithImpl<$Res, $Val extends ArtistState>
+    implements $ArtistStateCopyWith<$Res> {
   _$ArtistStateCopyWithImpl(this._value, this._then);
 
-  final ArtistState _value;
   // ignore: unused_field
-  final $Res Function(ArtistState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? artistDetailVM = freezed,
+    Object? artistDetailVM = null,
   }) {
     return _then(_value.copyWith(
-      artistDetailVM: artistDetailVM == freezed
+      artistDetailVM: null == artistDetailVM
           ? _value.artistDetailVM
           : artistDetailVM // ignore: cast_nullable_to_non_nullable
               as ViewModel<DataWrapResponse<ArtistsDetailResponse>>,
-    ));
+    ) as $Val);
   }
 }
 
@@ -267,26 +273,26 @@ abstract class _$$_ArtistStateCopyWith<$Res>
           _$_ArtistState value, $Res Function(_$_ArtistState) then) =
       __$$_ArtistStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {ViewModel<DataWrapResponse<ArtistsDetailResponse>> artistDetailVM});
 }
 
 /// @nodoc
-class __$$_ArtistStateCopyWithImpl<$Res> extends _$ArtistStateCopyWithImpl<$Res>
+class __$$_ArtistStateCopyWithImpl<$Res>
+    extends _$ArtistStateCopyWithImpl<$Res, _$_ArtistState>
     implements _$$_ArtistStateCopyWith<$Res> {
   __$$_ArtistStateCopyWithImpl(
       _$_ArtistState _value, $Res Function(_$_ArtistState) _then)
-      : super(_value, (v) => _then(v as _$_ArtistState));
+      : super(_value, _then);
 
-  @override
-  _$_ArtistState get _value => super._value as _$_ArtistState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? artistDetailVM = freezed,
+    Object? artistDetailVM = null,
   }) {
     return _then(_$_ArtistState(
-      artistDetailVM: artistDetailVM == freezed
+      artistDetailVM: null == artistDetailVM
           ? _value.artistDetailVM
           : artistDetailVM // ignore: cast_nullable_to_non_nullable
               as ViewModel<DataWrapResponse<ArtistsDetailResponse>>,
@@ -312,16 +318,16 @@ class _$_ArtistState implements _ArtistState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ArtistState &&
-            const DeepCollectionEquality()
-                .equals(other.artistDetailVM, artistDetailVM));
+            (identical(other.artistDetailVM, artistDetailVM) ||
+                other.artistDetailVM == artistDetailVM));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(artistDetailVM));
+  int get hashCode => Object.hash(runtimeType, artistDetailVM);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ArtistStateCopyWith<_$_ArtistState> get copyWith =>
       __$$_ArtistStateCopyWithImpl<_$_ArtistState>(this, _$identity);
 }

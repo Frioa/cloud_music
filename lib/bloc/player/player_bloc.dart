@@ -75,7 +75,10 @@ class PlayerBloc extends Bloc<PlayerEvent, PlayerState> {
     });
 
     await PlaylistClient(dio).lyric(value.song.id).then((value) {
-      final list = value.lrc.lyric.split('\n');
+      final list = value.lrc?.lyric.split('\n');
+      if (list == null) {
+        return null;
+      }
 
       /// 解析歌词: 并计算 UI 列表中的高度
       /// TODO: 正则表达式

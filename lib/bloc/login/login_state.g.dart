@@ -30,9 +30,9 @@ abstract class _$LoginStateCWProxy {
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfLoginState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfLoginState.copyWith.fieldName(...)`
 class _$LoginStateCWProxyImpl implements _$LoginStateCWProxy {
-  final LoginState _value;
-
   const _$LoginStateCWProxyImpl(this._value);
+
+  final LoginState _value;
 
   @override
   LoginState nestLoginResponse(NestLoginResponse? nestLoginResponse) =>
@@ -82,6 +82,7 @@ class _$LoginStateCWProxyImpl implements _$LoginStateCWProxy {
 
 extension $LoginStateCopyWith on LoginState {
   /// Returns a callable class that can be used as follows: `instanceOfLoginState.copyWith(...)` or like so:`instanceOfLoginState.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$LoginStateCWProxy get copyWith => _$LoginStateCWProxyImpl(this);
 }
 
@@ -112,9 +113,9 @@ abstract class _$LoginStateActionCWProxy {
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfLoginStateAction.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfLoginStateAction.copyWith.fieldName(...)`
 class _$LoginStateActionCWProxyImpl implements _$LoginStateActionCWProxy {
-  final LoginStateAction _value;
-
   const _$LoginStateActionCWProxyImpl(this._value);
+
+  final LoginStateAction _value;
 
   @override
   LoginStateAction action(LoginAction action) => this(action: action);
@@ -149,7 +150,8 @@ class _$LoginStateActionCWProxyImpl implements _$LoginStateActionCWProxy {
   }) {
     return LoginStateAction(
       action: action == const $CopyWithPlaceholder() || action == null
-          ? _value.action
+          // ignore: unnecessary_non_null_assertion
+          ? _value.action!
           // ignore: cast_nullable_to_non_nullable
           : action as LoginAction,
       nestLoginResponse: nestLoginResponse == const $CopyWithPlaceholder()
@@ -172,5 +174,6 @@ class _$LoginStateActionCWProxyImpl implements _$LoginStateActionCWProxy {
 
 extension $LoginStateActionCopyWith on LoginStateAction {
   /// Returns a callable class that can be used as follows: `instanceOfLoginStateAction.copyWith(...)` or like so:`instanceOfLoginStateAction.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$LoginStateActionCWProxy get copyWith => _$LoginStateActionCWProxyImpl(this);
 }

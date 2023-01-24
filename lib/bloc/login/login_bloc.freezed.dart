@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'login_bloc.dart';
 
@@ -16,8 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginEvent {
-  VoidCallback? get onSuccess => throw _privateConstructorUsedError;
-  VoidCallback? get onError => throw _privateConstructorUsedError;
+  void Function()? get onSuccess => throw _privateConstructorUsedError;
+  void Function()? get onError => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -32,13 +32,13 @@ mixin _$LoginEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String phone, VoidCallback? onSuccess, VoidCallback? onError)?
         sendCaptcha,
-    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+    TResult? Function(String phone, String captcha, VoidCallback? onSuccess,
             VoidCallback? onError)?
         cellphone,
-    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+    TResult? Function(VoidCallback? onSuccess, VoidCallback? onError)?
         loginStatus,
   }) =>
       throw _privateConstructorUsedError;
@@ -64,9 +64,9 @@ mixin _$LoginEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function($sendCaptcha value)? sendCaptcha,
-    TResult Function($cellphone value)? cellphone,
-    TResult Function($loginStatus value)? loginStatus,
+    TResult? Function($sendCaptcha value)? sendCaptcha,
+    TResult? Function($cellphone value)? cellphone,
+    TResult? Function($loginStatus value)? loginStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,33 +87,37 @@ mixin _$LoginEvent {
 abstract class $LoginEventCopyWith<$Res> {
   factory $LoginEventCopyWith(
           LoginEvent value, $Res Function(LoginEvent) then) =
-      _$LoginEventCopyWithImpl<$Res>;
-  $Res call({VoidCallback? onSuccess, VoidCallback? onError});
+      _$LoginEventCopyWithImpl<$Res, LoginEvent>;
+  @useResult
+  $Res call({void Function()? onSuccess, void Function()? onError});
 }
 
 /// @nodoc
-class _$LoginEventCopyWithImpl<$Res> implements $LoginEventCopyWith<$Res> {
+class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
+    implements $LoginEventCopyWith<$Res> {
   _$LoginEventCopyWithImpl(this._value, this._then);
 
-  final LoginEvent _value;
   // ignore: unused_field
-  final $Res Function(LoginEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? onSuccess = freezed,
     Object? onError = freezed,
   }) {
     return _then(_value.copyWith(
-      onSuccess: onSuccess == freezed
+      onSuccess: freezed == onSuccess
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
-              as VoidCallback?,
-      onError: onError == freezed
+              as void Function()?,
+      onError: freezed == onError
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
-              as VoidCallback?,
-    ));
+              as void Function()?,
+    ) as $Val);
   }
 }
 
@@ -124,35 +128,35 @@ abstract class _$$$sendCaptchaCopyWith<$Res>
           _$$sendCaptcha value, $Res Function(_$$sendCaptcha) then) =
       __$$$sendCaptchaCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String phone, VoidCallback? onSuccess, VoidCallback? onError});
 }
 
 /// @nodoc
-class __$$$sendCaptchaCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+class __$$$sendCaptchaCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$$sendCaptcha>
     implements _$$$sendCaptchaCopyWith<$Res> {
   __$$$sendCaptchaCopyWithImpl(
       _$$sendCaptcha _value, $Res Function(_$$sendCaptcha) _then)
-      : super(_value, (v) => _then(v as _$$sendCaptcha));
+      : super(_value, _then);
 
-  @override
-  _$$sendCaptcha get _value => super._value as _$$sendCaptcha;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phone = freezed,
+    Object? phone = null,
     Object? onSuccess = freezed,
     Object? onError = freezed,
   }) {
     return _then(_$$sendCaptcha(
-      phone == freezed
+      null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      onSuccess: onSuccess == freezed
+      onSuccess: freezed == onSuccess
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
-      onError: onError == freezed
+      onError: freezed == onError
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
@@ -182,18 +186,18 @@ class _$$sendCaptcha implements $sendCaptcha {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$$sendCaptcha &&
-            const DeepCollectionEquality().equals(other.phone, phone) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess) &&
             (identical(other.onError, onError) || other.onError == onError));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType,
-      const DeepCollectionEquality().hash(phone), onSuccess, onError);
+  int get hashCode => Object.hash(runtimeType, phone, onSuccess, onError);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$$sendCaptchaCopyWith<_$$sendCaptcha> get copyWith =>
       __$$$sendCaptchaCopyWithImpl<_$$sendCaptcha>(this, _$identity);
 
@@ -215,13 +219,13 @@ class _$$sendCaptcha implements $sendCaptcha {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String phone, VoidCallback? onSuccess, VoidCallback? onError)?
         sendCaptcha,
-    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+    TResult? Function(String phone, String captcha, VoidCallback? onSuccess,
             VoidCallback? onError)?
         cellphone,
-    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+    TResult? Function(VoidCallback? onSuccess, VoidCallback? onError)?
         loginStatus,
   }) {
     return sendCaptcha?.call(phone, onSuccess, onError);
@@ -259,9 +263,9 @@ class _$$sendCaptcha implements $sendCaptcha {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function($sendCaptcha value)? sendCaptcha,
-    TResult Function($cellphone value)? cellphone,
-    TResult Function($loginStatus value)? loginStatus,
+    TResult? Function($sendCaptcha value)? sendCaptcha,
+    TResult? Function($cellphone value)? cellphone,
+    TResult? Function($loginStatus value)? loginStatus,
   }) {
     return sendCaptcha?.call(this);
   }
@@ -304,6 +308,7 @@ abstract class _$$$cellphoneCopyWith<$Res>
           _$$cellphone value, $Res Function(_$$cellphone) then) =
       __$$$cellphoneCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String phone,
       String captcha,
@@ -312,36 +317,35 @@ abstract class _$$$cellphoneCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$$cellphoneCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+class __$$$cellphoneCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$$cellphone>
     implements _$$$cellphoneCopyWith<$Res> {
   __$$$cellphoneCopyWithImpl(
       _$$cellphone _value, $Res Function(_$$cellphone) _then)
-      : super(_value, (v) => _then(v as _$$cellphone));
+      : super(_value, _then);
 
-  @override
-  _$$cellphone get _value => super._value as _$$cellphone;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? phone = freezed,
-    Object? captcha = freezed,
+    Object? phone = null,
+    Object? captcha = null,
     Object? onSuccess = freezed,
     Object? onError = freezed,
   }) {
     return _then(_$$cellphone(
-      phone == freezed
+      null == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String,
-      captcha == freezed
+      null == captcha
           ? _value.captcha
           : captcha // ignore: cast_nullable_to_non_nullable
               as String,
-      onSuccess: onSuccess == freezed
+      onSuccess: freezed == onSuccess
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
-      onError: onError == freezed
+      onError: freezed == onError
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
@@ -373,23 +377,20 @@ class _$$cellphone implements $cellphone {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$$cellphone &&
-            const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality().equals(other.captcha, captcha) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.captcha, captcha) || other.captcha == captcha) &&
             (identical(other.onSuccess, onSuccess) ||
                 other.onSuccess == onSuccess) &&
             (identical(other.onError, onError) || other.onError == onError));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(captcha),
-      onSuccess,
-      onError);
+  int get hashCode =>
+      Object.hash(runtimeType, phone, captcha, onSuccess, onError);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$$cellphoneCopyWith<_$$cellphone> get copyWith =>
       __$$$cellphoneCopyWithImpl<_$$cellphone>(this, _$identity);
 
@@ -411,13 +412,13 @@ class _$$cellphone implements $cellphone {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String phone, VoidCallback? onSuccess, VoidCallback? onError)?
         sendCaptcha,
-    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+    TResult? Function(String phone, String captcha, VoidCallback? onSuccess,
             VoidCallback? onError)?
         cellphone,
-    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+    TResult? Function(VoidCallback? onSuccess, VoidCallback? onError)?
         loginStatus,
   }) {
     return cellphone?.call(phone, captcha, onSuccess, onError);
@@ -455,9 +456,9 @@ class _$$cellphone implements $cellphone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function($sendCaptcha value)? sendCaptcha,
-    TResult Function($cellphone value)? cellphone,
-    TResult Function($loginStatus value)? loginStatus,
+    TResult? Function($sendCaptcha value)? sendCaptcha,
+    TResult? Function($cellphone value)? cellphone,
+    TResult? Function($loginStatus value)? loginStatus,
   }) {
     return cellphone?.call(this);
   }
@@ -501,30 +502,30 @@ abstract class _$$$loginStatusCopyWith<$Res>
           _$$loginStatus value, $Res Function(_$$loginStatus) then) =
       __$$$loginStatusCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({VoidCallback? onSuccess, VoidCallback? onError});
 }
 
 /// @nodoc
-class __$$$loginStatusCopyWithImpl<$Res> extends _$LoginEventCopyWithImpl<$Res>
+class __$$$loginStatusCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$$loginStatus>
     implements _$$$loginStatusCopyWith<$Res> {
   __$$$loginStatusCopyWithImpl(
       _$$loginStatus _value, $Res Function(_$$loginStatus) _then)
-      : super(_value, (v) => _then(v as _$$loginStatus));
+      : super(_value, _then);
 
-  @override
-  _$$loginStatus get _value => super._value as _$$loginStatus;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? onSuccess = freezed,
     Object? onError = freezed,
   }) {
     return _then(_$$loginStatus(
-      onSuccess: onSuccess == freezed
+      onSuccess: freezed == onSuccess
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
-      onError: onError == freezed
+      onError: freezed == onError
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
               as VoidCallback?,
@@ -562,6 +563,7 @@ class _$$loginStatus implements $loginStatus {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$$loginStatusCopyWith<_$$loginStatus> get copyWith =>
       __$$$loginStatusCopyWithImpl<_$$loginStatus>(this, _$identity);
 
@@ -583,13 +585,13 @@ class _$$loginStatus implements $loginStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             String phone, VoidCallback? onSuccess, VoidCallback? onError)?
         sendCaptcha,
-    TResult Function(String phone, String captcha, VoidCallback? onSuccess,
+    TResult? Function(String phone, String captcha, VoidCallback? onSuccess,
             VoidCallback? onError)?
         cellphone,
-    TResult Function(VoidCallback? onSuccess, VoidCallback? onError)?
+    TResult? Function(VoidCallback? onSuccess, VoidCallback? onError)?
         loginStatus,
   }) {
     return loginStatus?.call(onSuccess, onError);
@@ -627,9 +629,9 @@ class _$$loginStatus implements $loginStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function($sendCaptcha value)? sendCaptcha,
-    TResult Function($cellphone value)? cellphone,
-    TResult Function($loginStatus value)? loginStatus,
+    TResult? Function($sendCaptcha value)? sendCaptcha,
+    TResult? Function($cellphone value)? cellphone,
+    TResult? Function($loginStatus value)? loginStatus,
   }) {
     return loginStatus?.call(this);
   }
@@ -682,7 +684,8 @@ mixin _$LoginNewState {
 abstract class $LoginNewStateCopyWith<$Res> {
   factory $LoginNewStateCopyWith(
           LoginNewState value, $Res Function(LoginNewState) then) =
-      _$LoginNewStateCopyWithImpl<$Res>;
+      _$LoginNewStateCopyWithImpl<$Res, LoginNewState>;
+  @useResult
   $Res call(
       {ViewModel<VerifyNestCaptchaResponse>? sentCaptchaVm,
       ViewModel<NestLoginResponse>? nestPhoneLoginVm,
@@ -690,14 +693,16 @@ abstract class $LoginNewStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoginNewStateCopyWithImpl<$Res>
+class _$LoginNewStateCopyWithImpl<$Res, $Val extends LoginNewState>
     implements $LoginNewStateCopyWith<$Res> {
   _$LoginNewStateCopyWithImpl(this._value, this._then);
 
-  final LoginNewState _value;
   // ignore: unused_field
-  final $Res Function(LoginNewState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? sentCaptchaVm = freezed,
@@ -705,19 +710,19 @@ class _$LoginNewStateCopyWithImpl<$Res>
     Object? loginStatusVm = freezed,
   }) {
     return _then(_value.copyWith(
-      sentCaptchaVm: sentCaptchaVm == freezed
+      sentCaptchaVm: freezed == sentCaptchaVm
           ? _value.sentCaptchaVm
           : sentCaptchaVm // ignore: cast_nullable_to_non_nullable
               as ViewModel<VerifyNestCaptchaResponse>?,
-      nestPhoneLoginVm: nestPhoneLoginVm == freezed
+      nestPhoneLoginVm: freezed == nestPhoneLoginVm
           ? _value.nestPhoneLoginVm
           : nestPhoneLoginVm // ignore: cast_nullable_to_non_nullable
               as ViewModel<NestLoginResponse>?,
-      loginStatusVm: loginStatusVm == freezed
+      loginStatusVm: freezed == loginStatusVm
           ? _value.loginStatusVm
           : loginStatusVm // ignore: cast_nullable_to_non_nullable
               as ViewModel<DataWrapResponse<NestLoginStatusResponse>>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -728,6 +733,7 @@ abstract class _$$_LoginNewStateCopyWith<$Res>
           _$_LoginNewState value, $Res Function(_$_LoginNewState) then) =
       __$$_LoginNewStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {ViewModel<VerifyNestCaptchaResponse>? sentCaptchaVm,
       ViewModel<NestLoginResponse>? nestPhoneLoginVm,
@@ -736,15 +742,13 @@ abstract class _$$_LoginNewStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_LoginNewStateCopyWithImpl<$Res>
-    extends _$LoginNewStateCopyWithImpl<$Res>
+    extends _$LoginNewStateCopyWithImpl<$Res, _$_LoginNewState>
     implements _$$_LoginNewStateCopyWith<$Res> {
   __$$_LoginNewStateCopyWithImpl(
       _$_LoginNewState _value, $Res Function(_$_LoginNewState) _then)
-      : super(_value, (v) => _then(v as _$_LoginNewState));
+      : super(_value, _then);
 
-  @override
-  _$_LoginNewState get _value => super._value as _$_LoginNewState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? sentCaptchaVm = freezed,
@@ -752,15 +756,15 @@ class __$$_LoginNewStateCopyWithImpl<$Res>
     Object? loginStatusVm = freezed,
   }) {
     return _then(_$_LoginNewState(
-      sentCaptchaVm: sentCaptchaVm == freezed
+      sentCaptchaVm: freezed == sentCaptchaVm
           ? _value.sentCaptchaVm
           : sentCaptchaVm // ignore: cast_nullable_to_non_nullable
               as ViewModel<VerifyNestCaptchaResponse>?,
-      nestPhoneLoginVm: nestPhoneLoginVm == freezed
+      nestPhoneLoginVm: freezed == nestPhoneLoginVm
           ? _value.nestPhoneLoginVm
           : nestPhoneLoginVm // ignore: cast_nullable_to_non_nullable
               as ViewModel<NestLoginResponse>?,
-      loginStatusVm: loginStatusVm == freezed
+      loginStatusVm: freezed == loginStatusVm
           ? _value.loginStatusVm
           : loginStatusVm // ignore: cast_nullable_to_non_nullable
               as ViewModel<DataWrapResponse<NestLoginStatusResponse>>?,
@@ -791,23 +795,21 @@ class _$_LoginNewState implements _LoginNewState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_LoginNewState &&
-            const DeepCollectionEquality()
-                .equals(other.sentCaptchaVm, sentCaptchaVm) &&
-            const DeepCollectionEquality()
-                .equals(other.nestPhoneLoginVm, nestPhoneLoginVm) &&
-            const DeepCollectionEquality()
-                .equals(other.loginStatusVm, loginStatusVm));
+            (identical(other.sentCaptchaVm, sentCaptchaVm) ||
+                other.sentCaptchaVm == sentCaptchaVm) &&
+            (identical(other.nestPhoneLoginVm, nestPhoneLoginVm) ||
+                other.nestPhoneLoginVm == nestPhoneLoginVm) &&
+            (identical(other.loginStatusVm, loginStatusVm) ||
+                other.loginStatusVm == loginStatusVm));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(sentCaptchaVm),
-      const DeepCollectionEquality().hash(nestPhoneLoginVm),
-      const DeepCollectionEquality().hash(loginStatusVm));
+  int get hashCode =>
+      Object.hash(runtimeType, sentCaptchaVm, nestPhoneLoginVm, loginStatusVm);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_LoginNewStateCopyWith<_$_LoginNewState> get copyWith =>
       __$$_LoginNewStateCopyWithImpl<_$_LoginNewState>(this, _$identity);
 }

@@ -16,7 +16,7 @@ class RecommendSheetWidget extends StatelessWidget {
         if (!vm.hasData) return const SizedBox();
         final response = vm.response!;
 
-        Widget _item(int index) {
+        Widget item(int index) {
           if (index >= response.recommend.length) return const SizedBox();
           final recommend = response.recommend[index];
 
@@ -46,7 +46,7 @@ class RecommendSheetWidget extends StatelessWidget {
           );
         }
 
-        Widget _body(BoxConstraints constraints) {
+        Widget body(BoxConstraints constraints) {
           return SizedBox(
             width: constraints.maxWidth,
             child: Column(
@@ -55,18 +55,18 @@ class RecommendSheetWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _item(0),
-                    _item(1),
-                    _item(2),
+                    item(0),
+                    item(1),
+                    item(2),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _item(3),
-                    _item(4),
-                    _item(5),
+                    item(3),
+                    item(4),
+                    item(5),
                   ],
                 ),
               ],
@@ -76,7 +76,7 @@ class RecommendSheetWidget extends StatelessWidget {
 
         return LayoutBuilder(
           builder: (context, constraints) {
-            return _body(constraints);
+            return body(constraints);
           },
         );
       },
